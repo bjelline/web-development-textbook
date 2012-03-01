@@ -1,0 +1,24 @@
+<%= render 'header' %>
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			<% if @item[:title] %>
+                          <div class="page-header">
+				<h2 class="title"><%= @item[:title] %></h2>
+                          </div>
+			<% end %>
+			
+			<%= yield %>
+		
+			<%= render 'article_footer' %>
+		</div>
+		
+		<%= render 'sidebar' %>
+		
+	</article>
+	<!-- /body -->
+
+<%= render 'footer' %>
