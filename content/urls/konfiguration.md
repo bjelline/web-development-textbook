@@ -36,7 +36,7 @@ Achtung: die Konfiguration ist am Internet Information Server normalerweise ande
 Was passiert wenn keine Datei mit dem richtigen Namen vorhanden ist? Die zwei Möglichkeiten sehen Sie in Abbildung 43: entweder eine Auflistung der Dateien im Ordner oder eine Fehlermeldung.
 
  
-![Abbildung 43: Zugriff auf einen Ordner ohne Standard-Dokument (index.html): Auflistung oder Fehlermeldung](/images/image138.png)
+![Abbildung 43: Zugriff auf einen Ordner ohne Standard-Dokument (index.html): Auflistung oder Fehlermeldung](/images/apache-directory-index.png)
 
 Die entsprechenden Apache-Konfigurationsanweisung dazu sind:
 
