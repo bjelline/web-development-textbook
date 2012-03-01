@@ -2,18 +2,19 @@
 title: HTTP
 order: 30
 ---
-HTTP ist in RFC 26168 definiert. HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. Im ersten Semester wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.
+HTTP in der aktuell gültigen Version 1.1 ist in [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) definiert. HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. Im ersten Semester wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.
 
 Ablauf im Überblick
 ---------------------
 Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich. 
 
-    1. Der Browser analysiert die URL: falls Sie eine IP-Adresse enthält geht’s weiter zum nächsten Schritt. Falls sie einen Domain Namen enthält wird dieser mittels DNS-Lookup in die entsprechende IP-Adresse übersetzt.
-    2. Der Browser baut eine TCP-Verbindung zum Server auf (Default: Port 80)
-    3. Der Browser sendet über die TCP-Verbindung einen HTTP-Request; dieser besteht aus einer ersten Zeile, einem Header und manchmal einem Body.
-    4. Der Webserver nimmt den Request entgegen und analysiert ihn. Meistens interpretiert er ihn als Aufforderung, eine bestimmte Datei aus dem Dateisystem zu lesen.
-    5. Der Webserver schickt über die TCP-Verbindung einen HTTP-Response an den Browser, dieser besteht aus einem Statuscode, z. B. „200 OK\n\n“, einem Header und dem Inhalt des angeforderten Dokuments. 
-    6. Der Browser nimmt das Dokument in Empfang, stellt es geeignet dar, und beendet die TCP-Verbindung.
+1. Der Browser analysiert die URL: falls Sie eine IP-Adresse enthält geht’s weiter zum nächsten Schritt. Falls sie einen Domain Namen enthält wird dieser mittels DNS-Lookup in die entsprechende IP-Adresse übersetzt.
+2. Der Browser baut eine TCP-Verbindung zum Server auf (Default: Port 80)
+3. Der Browser sendet über die TCP-Verbindung einen HTTP-Request; dieser besteht aus einer ersten Zeile (Request-Line), mehreren Header-Zeilen und manchmal einem Body.
+4. Der Webserver nimmt den Request entgegen und analysiert ihn. Der Webserver entscheidet, ob er zur Beantwortung der Anfrage nur eine bestimmte Datei aus dem Dateisystem zu liest, oder ein Programm aufruft.
+5. Der Webserver schickt über die TCP-Verbindung einen HTTP-Response an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource. 
+6. Der Browser nimmt das Dokument in Empfang, stellt es geeignet dar, und beendet die TCP-Verbindung.
+
 Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.
 
 Aufbau von Request und Response
