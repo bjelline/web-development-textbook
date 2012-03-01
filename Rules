@@ -88,15 +88,6 @@ preprocess do
     "php-vorbereitung", 
     "http", 
     "git", 
-    "wordpress", 
-    "php", 
-    "php-mysql", 
-    "session", 
-    "rest", 
-    "ajax", 
-    "php-mysql-2", 
-    "apache", 
-    "ausblick", 
   ]
 
   @chapters = {}
@@ -129,8 +120,10 @@ preprocess do
   @chapterOrder.each do |folder|
     myitems = @groupedItems[ folder ]
     @chapters[ folder ] = {}
-    @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
-    @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
+    if ! @groupedItems[folder].nil? then
+      @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
+      @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
+    end
     @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").upcase
     @chapters[ folder ][ :folder ] = folder
   end

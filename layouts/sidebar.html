@@ -5,18 +5,22 @@
         <hr>
         
         <ul class="nav nav-list">
-        <% @site.config[:chapters].each do |folder, chapter| %>
-          <li <% if folder == @item[:chapter] %>class="active"<% end %>><a href="/<%= folder %>"><%= chapter[:title] %></a>
-            <ul class="sub">
-              <% if @site.config[:chapters][folder] %>
-                <% @site.config[:chapters][folder][:items].each do|i| %>
-                  <% if i[:title] && !(i[:filename] =~ /\/dex\.md$/) %>
-                  <li <% if @item[:filename] == i[:filename] %>class="active"<% end %>><a href="<%= i.path %>"><%= i[:title] %></a></li>
+        <% if ! @site.config[:chapters].nil? then %>
+          <% @site.config[:chapters].each do |folder, chapter| %>
+            <li <% if folder == @item[:chapter] %>class="active"<% end %>><a href="/<%= folder %>"><%= chapter[:title] %></a>
+              <ul class="sub">
+                <% if @site.config[:chapters][folder] %>
+                  <% if @site.config[:chapters][folder][:items] %>
+                    <% @site.config[:chapters][folder][:items].each do|i| %>
+                      <% if i[:title] && !(i[:filename] =~ /\/dex\.md$/) %>
+                      <li <% if @item[:filename] == i[:filename] %>class="active"<% end %>><a href="<%= i.path %>"><%= i[:title] %></a></li>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-            </ul>
-          </li>
+              </ul>
+            </li>
+          <% end %>
         <% end %>
         </ul>
 
