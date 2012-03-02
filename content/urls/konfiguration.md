@@ -5,19 +5,22 @@ order: 20
 
 Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt. Andere Webserver (z.B: Internet Information Server von Microsoft) verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.
 
-Die Apache-Konfiguration müssen Sie noch nicht anwenden können, sie ist hier nur zur Information angeführt. Eventuell können Sie im Fach „Operations &amp; IT“ diese Information in diesem Semester anwenden, auf jeden Fall im nächsten Semester in „Webprogrammierung 2“.
-
 ### Betriebssystem des Webservers
-Die Webserver der FH sind ausnahmslos UNIX-Server. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie die Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.
+Viele Webserver werden auf einem UNIX-Betriebssystem betrieben. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.
 
-Ein Link auf die Datei bild.JPG funktioniert unter Windows oder MacOS auch, wenn er bild.jpg geschreiben wird.
+Ein Link auf die Datei `bild.JPG` funktioniert unter Windows oder MacOS auch, wenn er `bild.jpg` geschreiben wird.
 
-Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr! bild.jpg und bild.JPG sind zwei unterschiedliche Dateien!
+Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr! `bild.jpg` und `bild.JPG` sind zwei unterschiedliche Dateien!
 
 ### Webspace und Ordner
-Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient. Für den Webserver mediacube.at ist dies der Ordner /var/www/virthosts/mediacube.at/
+Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient.
 
-URLhttp://mediacube.at/pix/weg-zur-saline.jpg Dateisystem /var/www/virthosts/mediacube.at/pix/weg-zur-saline.jpgDie Apache-Konfiguration dazu sieht so aus:
+|URL                      |Pfad im Dateisystem|
+|+------------------------|+------------------|
+|http://mediacube.at/pix/weg-zur-saline.jpg | /var/www/virthosts/mediacube.at/pix/weg-zur-saline.jpg
+{: class="table table-condensed table-bordered" style="width:auto"}
+
+Die Apache-Konfiguration dazu sieht so aus:
 
     <VirtualHost mediacube.at>
     DocumentRoot /var/www/virthosts/mediacube.at/

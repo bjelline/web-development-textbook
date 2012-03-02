@@ -6,10 +6,6 @@ homepage: true
 Softwareentwicklung für das World Wide Web <br>
 für das Informatik- oder Medieninformatik-Studium.
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
-</div>
 
 Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
 zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
