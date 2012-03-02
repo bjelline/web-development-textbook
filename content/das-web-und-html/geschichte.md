@@ -60,10 +60,8 @@ Dieses Lehrbuch handelt hauptsächlich von der Technik des Web.
 Verlieren Sie dabei nicht aus den Augen, wie wichtig das Web ist, und wie sehr 
 es unsere Gesellschaft schon verändert hat. Das Web ist heute überall: 
  
-![Abbildung 2: das Web ist überall: vom ältesten zum neusten Gerät](/images/web-on-many-devices.png)
+![Abbildung 2: das Web ist überall: vom ältesten zum neusten Gerät, in Bildung und Arbeit, 3. und 1. Welt](/images/web-on-many-devices.png)
 
- 
-Abbildung 3: das Web ist überall: in Bildung und Arbeit, 3. und 1. Welt 
 Und das Web ist noch nicht "fertig erfunden". 
 Die Erfindung der maschinellen Massen-Produktion von Büchern durch Johannes Gutenberg 
 im 15.Jahrhundert war nur der Auslöser,schaffte nur die Voraussetzung für weitere 
@@ -72,75 +70,22 @@ Reformation, politisches Pamphlet, Revolution, wissenschaftliche Publikation, ..
 Die Erfindung des Web um 1990 herum ist wahrscheinlich eine ähnlich fruchtbare Erfindung, 
 die die Voraussetzung für viele Folge-Erfindungen schafft. Die gesellschaftlichen 
 Auswirkungen können wir noch nicht absehen, wir sind mittendrin:
-1993
-2010
 
- 
- 
-Die interaktive 
-Landkarte war 
-eine sehr frühe An–
-wendung des Web. 
-Heute ist eine Reise 
-ohne diese Karten 
-kaum noch 
-vorstellbar. Was 
-kommt nach 
-Streetview?
- 
-1995
-2010
+![Abbildung: Interaktive Landkarten](/images/landkarten.png)
 
+Die interaktive Landkarte war eine sehr frühe Anwendung des Web: der "Xeroc Parc Map Viewer" ging 1993 online[&rarr;](https://en.wikipedia.org/wiki/Xerox_PARC_Map_Viewer).  Heute ist eine Reise ohne Online-Karten kaum noch vorstellbar. Was kommt nach Streetview?
  
+![Abbildung: Buchhandeln im Internet: Amazon 1995 und Amazon 2012](/images/buchhandel.png)
  
-Bücher über das 
-Web zu verkaufen 
-erscheint im 
-Nachhinein als ganz 
-einfache Idee. Es 
-hat den Buchmarkt 
-weltweit verändert, 
-und wird es weitet 
-tun. 
+Bücher über das Web zu verkaufen erscheint im Nachhinein als ganz einfache Idee. Es hat den Buchmarkt 
+weltweit verändert, und wird es weitet tun. 
 
-2002
-2010
+![Abbildung: Wikipedia 2001 und 2012](/images/wikipedia.png)
+ 
+Im Jahr 2000 war eine Enzyklopädie noch das teuer bezahlte Werk von wenigen ExpertInnen. 2001 wurde Wikipedia gestartet. Die Erfindung der Wikipedia hat nicht nur den Markt für Enzyklopädien zerstört, sondern auch unsere Vorstellung wie Wissen gesammelt werden kann völlig verändert. 
 
+![Abbildung: Facebook 2004 und 2010](/images/facebook.png)
  
- 
-Im Jahr 2000 war 
-eine Enzyklopädie 
-noch das teuer 
-bezahlte Werk von 
-wenigen 
-ExpertInnen. Die 
-Erfindung der 
-Wikipedia hat nicht 
-nur den Markt für 
-Enzyklopädien 
-zerstört, sondern 
-auch unsere 
-Vorstellung wie 
-Wissen gesammelt 
-werden kann völlig 
-verändert. 
-
-2004
-2010
-
- 
- 
-Dass ich am Web 
-speichern kann wer 
-meine Freund-
-Innen sind, um 
-dann mit diesen 
-FreundInnen kurze 
-"Status-meldungen" 
-auszutausche - das 
-wurde erst im 
-21.Jahrhundert 
-erfunden. Wie geht 
-es weiter?
+Dass ich am Web speichern kann wer meine FreundInnen sind, um dann mit diesen FreundInnen kurze "Status-meldungen" auszutausche - das wurde erst im 21.Jahrhundert erfunden. Wie geht es weiter?
 
 

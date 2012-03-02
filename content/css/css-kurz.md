@@ -43,9 +43,9 @@ Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie ver
 
 ![Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height](/images/image066.png)
 
-Mit text-align können Sie die Ausrichtung des Texts im Absatz festlegen: left, right, center oder justify (Blocksatz). Blocksatz wird aber am Web bis jetzt sehr wenig verwendet,da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei  im Blocksatz oft häßliche Löcher. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird justify besser verwendbar.
+Mit `text-align` können Sie die Ausrichtung des Texts im Absatz festlegen: `left`, `right`, `center` oder `justify` (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird `justify` besser verwendbar.
 
-Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit text-indent festlegen. Die Zeilenhöhe wird mit line-height festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. 1.5em – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. 
+Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit `text-indent` festlegen. Die Zeilenhöhe wird mit `line-height` festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. `1.5em` – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. 
 
 CSS erforschen mit Firebug
 ---------------------------

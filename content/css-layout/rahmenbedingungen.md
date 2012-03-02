@@ -21,11 +21,19 @@ Vergleichen Sie die höchsten hier dargestellte Auflösungen mit der geringsten 
 
 Achtung, diese Angaben sind in Pixel – die reale Größe des Ausgabegerätes (24“ Desktop, 13“ Laptop, mobiles Endgerät) ist bei gleicher Pixel-Auflösung sehr unterschiedlich! Mobile Geräte haben eine geringe Auflösung, aber eine höhere Pixeldichte:
 
-GerätNeuPixelDiagonale
+|Gerät|Erscheinungsjahr|Pixel|Diagonale Inch|Pixel per Inch|
+|+----|+---------------|+----|+-------------|+-------------|
+|Altes 19” LCD Display|2008|1280 × 1024|19 in|86 ppi|
+|15” Macbook Pro|2007|1440 × 900|15.4 in|110 ppi|
+|Sony PSP 7th gen|09/2005|480 × 272|4.3 in |128 ppi|
+|Apple IPhone3|06/2009|480 × 320|3.5 in |163 ppi|
+|Apple IPhone4|06/2010|960 × 640|3.5 in|326 ppi |
+|Amazon Kindle, 3rd gen|11/2007|600 × 800|6 in |167 ppi |
+|Google Nexus One |1/2010|800 × 480|3.7 in |254 ppi |
+|Android Galaxy Nexus|11/2011|1280 × 720|4.65 in |316 ppi |
+{: class="table table-condensed table-bordered" style="width:auto"}
 
-InchPixel per
-
-InchAltes 19” LCD Display20081280 × 102419 in86 ppi15” Macbook Pro20071440 × 90015.4 in110 ppiSony PSP 7th gen09/2005480 × 2724.3 in 128 ppiApple IPhone306/2009480 × 3203.5 in 163 ppiApple IPhone406/2010960 × 6403.5 in326 ppi Amazon Kindle, 3rd gen11/2007600 × 8006 in 167 ppi Google Nexus One 1/2010800 × 4803.7 in 254 ppi Android Galaxy Nexus11/20111280 × 7204.65 in 316 ppi Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.
+Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.
 
  
 ![Abbildung 26: Statistik über die Bildschirmauflösung,](/images/image097.png)
@@ -43,63 +51,63 @@ Entwurf für mehrere Auflösungen
 ----------------------------------
 Wie gehen WebdesignerInnen mit den verschiedenen Auflösungen um? Ein paar Varianten:
 
-1) Ignorieren und für die eigene Bildschirmauflösung entwerfen.  Manchmal in Kombination mit der Beschriftung „best viewed at 1600x1200“
+1.  Ignorieren und für die eigene Bildschirmauflösung entwerfen.  Manchmal in Kombination mit der Beschriftung „best viewed at 1600x1200“
 
-2) Ignorieren dass es viele Bildschirmauflösungen gibt, und für das Minimum entwerfen. 
+2.  Ignorieren dass es viele Bildschirmauflösungen gibt, und für das Minimum entwerfen. 
 
-3) Ein Entwurf der für mehrere Auflösungen funktioniert
+3.  Ein Entwurf der für mehrere Auflösungen funktioniert
 
-4) Zwei oder drei Entwürfe, die den gleichen Inhalt für verschiedene Auflösungen unterschiedlich darstellen.
+4.  Zwei oder drei Entwürfe, die den gleichen Inhalt für verschiedene Auflösungen unterschiedlich darstellen.
 
 Dazu ein strenges Urteil:
 
-1) ist völlig inadäquat für das Medium Web. „best viewed“ ist eine Zumutung für alle LeserInnen auf ‚unpassenden’  Ausgabegeräten. Stellen Sie sich vor, der Architekt der FH hätte eine Treppe zum Eingang zum Foyer eingeplant, und dann ein Schild daneben gestellt „FH nur benutzbar für Leute die Treppen steigen können“.   Was würden sich wohl RollstuhlfahrerInnen oder Leute mit Kinderwagen dazu denken?
+1) ist völlig inadäquat für das Medium Web. „best viewed“ ist eine Zumutung für alle LeserInnen auf "unpassenden"  Ausgabegeräten. Stellen Sie sich vor, am Eingang eines Gebäudes wäre neben der Treppe ein Schild angebracht „nur benutzbar für Leute die Treppen steigen können“. Das Problem wurde erkannt, und absichtlich nicht gelöst?
 
 2) Zeigt schon ein Minimum an Wissen über das Web, ignoriert aber die gestalterische Herausforderung des Mediums. Weil solch ein Entwurf auf einem Bildschirm mit hoher Auflösung sehr klein auf einer großen leeren Fläche erscheint wird es spöttisch „Briefmarkenlayout“ genannt.
 
 3) +  4)  Nur das verdient wirklich die Bezeichnung „Webdesign“.
 
-Ein Beispiel für Variante 3 :
+Technische Umsetzung 
+--------------------
 
-Darstellung der Seite bei einer Auflösung von 800x600:
-Navigation (linke Spalte) und Content ist sichtbar.
-
-Eine Spalte rechts mit untergeordnetem Content ist nur durch Scrollen nach rechts erreichbar.Darstellung der Seite bei einer Auflösung von 1024x768
-
-Navigation, Content und Zusatz-Content voll sichtbar.Darstellung der Seite bei einer Auflösung von 1280 x 1024
-
-Navigation, Content und Zusatz-Content voll sichtbar. 
-
-Der „leere“ Teil der Webseite wird durch das Hintergrundbild interessant gestaltet.Darstellung der Seite bei einer Auflösung von 1600x1200.
-
-Navigation, Content und Zusatz-Content voll sichtbar. 
-
-Der „leere“ Teil der Webseite wird durch das Hintergrundbild interessant gestaltet.
-
-Das Hintergrundbild wiederholt sich zwar vertikal, aber horizontal zeigt es auch bei dieser Auflösung neue Details.Dieses Beispiel ist „linksbündig“. Die aktuelle Webseite der FH ist bei höheren Auflösungen zentriert:
-
+Kleine Unterschiede im vorhandenen Platz kann man durch zentrierung des Inhalts augleichen (siehe auch "Briefmarkenlayout")
 
 ![Abbildung 28: Aktuelle Homepage der FH Salzburg (November 2009)](/images/image110.png)
 
-Dieser Effekt wird mit einer fixen Breite und einem Margin von „auto“ links und rechts erzielt:
 
-div#wrap {
+<css caption="fixen Breite und automatischer Seitenabstand ergeben eine Zentierung des Inhalts">
+  div#wrap {
+    width: 76em;
+    margin: 0 auto;
+  }
+</css>
 
-	width: 76em;
-	margin: 0 auto;
-}
+
+Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in "A List Apart" unter dem Begriff "Responsive Webdesign" popularisiert [&rarr;](http://www.alistapart.com/articles/responsive-web-design/). 
+
+![Das erste Beispiel für "Responsive Webdesign": Darstellung der Seite auf verschiedenen Breiten](/images/responsive.png)
+
+Luke Wroblewski schlug schon 2009 unter dem Slogan "Mobile First" vor, zuerst die mobile Version der Website zu gestalten, und davon dann die "größeren" Versionen abzuleiten [&rarr;](http://www.lukew.com/ff/entry.asp?933).
 
 
-Variante 4) ist erste seit 2011 in den meisten Browsern möglich. Dafür sind mediaqueries in CSS3 notwendig.
+Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine "Verzweigung" in CSS.
 
-600 px Breite800 px Breite1280 px Breite
+<css caption="CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel">
+  @media screen and (max-device-width: 480px) {
+    .column {
+      float: none;
+    }
+    /* weitere Regeln für kleine Screens */
+  }
+  /* allgemein gültige Regeln */
+</css>
 
 Bilder
 -------
 Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist im Jahr 2011 anders.
 
- Pixel
-Als Bildformate für &lt;img&gt; Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt (siehe auch Kapitel 2.1.2, Seite 22). Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:
+### Pixel
+Als Bildformate für `<img>` Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:
 
 
 ![Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt](/images/image117.png)
@@ -110,10 +118,13 @@ Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-
 
 ![Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt](/images/image119.png)
 
- Vektor
+### Vektor
+
 Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag: 
 
     <img src="circle.svg">
+
+![Abbildung: Kreis in SVG-Darstelllung](/images/circle.svg)
 
 SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder anderen Vektor-Programmen erstellen.
 
@@ -132,9 +143,9 @@ SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder
         <circle id="myCircle" cx="50%" cy="50%" r="100" fill="url(#orange_red)" />
     </svg>
 
-Das Attribut preserveAspectRatio6 im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.
+Das Attribut `preserveAspectRatio` im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.
 
- Canvas
+### Canvas
 
 Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.
 
@@ -145,12 +156,7 @@ Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML u
 Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt. 
 
 
-![Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen](/images/image124.png)
+![Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen](/images/zeilenumbruch.png)
 
-Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und verkleinert, oder nur der Text wird verändern, die Bilder aber bleiben gleich. Häufiger ist die erste Variante (Default-Einstellung der meisten Browser). Abbildung 32 zeigt das entsprechnde Menü in Firefox. Der letzte Punkt des Menüs „Nur Text zoomen“ kann aktiviert oder deaktiviert werden.
-
-
-![Abbildung 32: Menü zum Verändern der Schriftgröße in Firefox](/images/image126.png)
-
-Wenn die Textgröße unabhängig von der Bildgröße verändert wird, verändern sich damit die Proportionen und das Layout der Seite. Dies ist eine besondere Herausforderung für das Design der Seite.
+Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und verkleinert, oder nur der Text wird verändern, die Bilder aber bleiben gleich. Häufiger ist die erste Variante (Default-Einstellung der meisten Browser). Abbildung 32 zeigt das entsprechnde Menü in Firefox. 
 

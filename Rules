@@ -16,7 +16,7 @@ require "json"
 
 class Nanoc3::Filter
   class CodeBlocks < Nanoc3::Filter
-    LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript",
+    LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
                   "css" => "css", "plain" => "plain", "erb" => "ruby; html-script: true", "htmlcode" => "html",
                   "markup" => "xml", "xml" => "xml", "shell" => "plain", "yaml" => "yaml" }
 
