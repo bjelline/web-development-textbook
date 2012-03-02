@@ -4,37 +4,44 @@ order: 20
 ---
 Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:
 
-      <head>
-      <script>
-      function setcolor( c ) {
-              b = document.getElementById('farbfeld');
-              b.style.backgroundColor = c
-      }
-      </script>
-      <body id="farbfeld">
-      <h1>Farbwahl</h1>
-      <form>
-          <input type="button" value="Rot"  onclick="setcolor('red')" />
-          <input type="button" value="Grün" onclick="setcolor('#0F0')" />
-          <input type="button" value="Blau" onclick="setcolor('blue')" />
-      </form>
-      </body>
-In dieser Webseite ist an den vier markierten Stellen Javascript zu finden. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen wollen brauchen ein Grundverständnis von Javascript.
+<htmlcode caption="Vollständige Webseite mit Javascript">
+<head>
+<script>
+function setcolor( c ) {
+        b = document.getElementById('farbfeld');
+        b.style.backgroundColor = c
+}
+</script>
+<body id="farbfeld">
+<h1>Farbwahl</h1>
+<form>
+    <input type="button" value="Rot"  onclick="setcolor('red')" />
+    <input type="button" value="Grün" onclick="setcolor('#0F0')" />
+    <input type="button" value="Blau" onclick="setcolor('blue')" />
+</form>
+</body>
+</htmlcode>
 
-Deswegen klären wir erst einmal wie Javascript eingebunden wird. 
+In dieser Webseite ist an vier Stellen Javascript zu finden. Im `script` Tag im Head, und dreimal in einem Attribut des `input`-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. 
+
+Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen brauchen ein Grundverständnis von Javascript.
+
+Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird. 
 
 Einbindung von Javascript
 --------------------------
- Externe Javascript-Datei
-Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem &lt;script&gt;-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: 
+
+### Externe Javascript-Datei
+
+Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem `script`-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: 
 
 
-      <script src="jquery.js" type="text/javascript"></script>
+    <script src="jquery.js" type="text/javascript"></script>
 
-Wird der &lt;script&gt;-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen &lt;script&gt; und &lt;/script&gt; enthalten. Achtung: die Schreibweise ohne Ende-Tag: &lt;script src=“jquery“&gt; ist nicht erlaubt!
+Wird der `script`-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen `<script>` und `</script>` enthalten. Achtung: die Schreibweise ohne Ende-Tag: `<script src="jquery">` ist nicht erlaubt!
 
- Der <script>-Tag 
-Javascript-Programme können im HTML-Code mit dem &lt;script&gt;-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:
+### Der &lt;script>-Tag 
+Javascript-Programme können im HTML-Code mit dem `script`-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:
 
       <h1>Selbstzerstörung</h1>
       <script>
@@ -46,29 +53,33 @@ Javascript-Programme können im HTML-Code mit dem &lt;script&gt;-Tag eingebettet
       </script>
       <p><strong>Peng!</strong>
 
-Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Der Befehl document.write(), der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch document.write verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.
+Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode `document.write()`, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch `document.write()` verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.
 
- Javascript in einer URL
+### Javascript in einer URL
+
 Als URL kann man auch ein kleines Javascript-Programm angeben, z. B. bei einem Link:
 
       <a href="javascript:location='http://www.google.at/'">zu Google nur mit Javascript</a>
+
 Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.  
 
 Hier eine Version die dem Prinzip der „graceful degradation“ entspricht. Sie funktioniert mit und ohne Javascript sinnvoll:
 
       <a href="http://www.google.at" onclick="ok=confirm('go?'); return ok;">google</a>
+
 Ohne Javascript ist es ein ganz normaler Link zu google.
 
-Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler false zurückgibt wird das Event unterbrochen.
+Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler `false` zurückgibt wird das Event unterbrochen.
 
- Die onevent - Attribute
+##  Die onevent - Attribute
+
 Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten (siehe Kapitel 4.5.5, Seite 82)
 
 Ein paar typische Events mit ihren typischen HTML-Tags:
 
       <body onload="...">
 
-Das Programm wird ausgeführt, nachdem die ganze Seite geladen + fertig dargestellt ist
+Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist
 
 
       <a href="..." onmouseover="...">
@@ -78,7 +89,7 @@ Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: on
 
       <input type="button" onclick="...">
 
-Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß true oder false zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll. 
+Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß `true` oder `false` zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll. 
 
 
       <form onsubmit="...">
@@ -96,9 +107,6 @@ Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascrip
 Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde
 
 
-Eine ausführliche Liste der Events, und eine ausführliche Auflistung welcher HTML-Tag mit welchem Event kombiniert werden kann, finden Sie z.B. in selfhtml10. 
-
-
 Syntax von Javascript
 ----------------------
 
@@ -106,8 +114,9 @@ Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C
 
 Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Funktionen existieren können, die zu diesem Objekt gehören.
 
-Zum Beispiel das Objekt document ist in Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):
+Zum Beispiel das Objekt `document` ist bei Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):
 
+<javascript>
       // document.location          // diese Eigenschaft speichert die aktuelle URL
       document.location = "http://io9.com";  
            // wenn man einen neuen Wert in location speichert surft der Browser hin
@@ -115,15 +124,16 @@ Zum Beispiel das Objekt document ist in Javascript im Browser immer vorhanden. E
       document.alert("hi");  // die Methode alert zeigt ein Popup-Fenster an
 
       document.alert("meine URL ist " + document.location);
+</javascript>
                  
-Es gibt in Javascript aber auch „normale“ Variablen und Funktionen, nicht nur Objekte, Eigenschaften und Methoden. Folgendes Beispiel verwendet die Methode getElementById des document-Objekts um ein bestimmtes DIV in der Webseite auszuwählen. 
+Es gibt in Javascript aber auch „normale“ Variablen und Funktionen, nicht nur Objekte, Eigenschaften und Methoden. Folgendes Beispiel verwendet die Methode `getElementById` des `document`-Objekts um ein bestimmtes `div` in der Webseite auszuwählen. 
 
 
 ![Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/](/images/image254.png)
 
 In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. 
 
-Auch die folgenden Beispiele können Sie direkt in Firebug in der Console ausprobieren wie in Abbildung 58 gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet, mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. 
+Auch die folgenden Beispiele können Sie direkt in Firebug in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet, mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. 
 
 
 ![Abbildung 58: Javascript Console in Firebug](/images/image264.png)
@@ -135,8 +145,10 @@ Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – d
       a = "ein text";     // typeof(a) == "string"
       a = true;          // typeof(a) == "boolean"
       a = undefined;    // typeof(a) == "undefined"
- Arrays
-Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: b[0], b[1], …  Aber eigentlich sind Arrays schon Objekte. 
+
+### Arrays
+
+Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: `b[0]`, `b[1]`, …  Aber eigentlich sind Arrays schon Objekte. 
 
 Für das Erzeugen des Arrays gibt es zwei Schreibweisen
 
@@ -144,6 +156,7 @@ Für das Erzeugen des Arrays gibt es zwei Schreibweisen
       b = ["eins", 2, 3.141, true];           // JSON-Schreibweise
       b = new Array("eins", 2, 3.141, true);  // Objekt-Schreibweise  
                 // typeof(b) == "object"
+
 Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,...). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.
 
       var i,t;
@@ -154,7 +167,9 @@ Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,...
           i++;
       }   
       alert(t);
- Objekte
+
+### Objekte
+
 Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise mit geschwungenen Klammern eignet sich gut für einmalige Objekte. Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Instanziierungs-Funktion besser geeignet.
 
       var c;
@@ -173,12 +188,13 @@ Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen f
 
       alert("Das Shirt ist " + c.farbe ); 
       alert("Das Shirt ist " + c["farbe"] );
+
 In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Variable gespeichert sein:
 
       e = "beschriftung";
       alert("Die Beschriftung lautet " + c[e] );
-Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:
 
+Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:
 
       var i,t;
       t = "Das Objekt:\n";
@@ -229,32 +245,37 @@ Ein simples Beispiel: ein bestimmter Tag wird über die ID ausgewählt und sein 
 
       d = document.getElementById("person_25“);
       d.setAttribute("style", "display:none");
+
 Diese beiden Zeilen könnten auch zu einer kombiniert werden:
 
-document.getElementById("person_25“).setAttribute("style", "display:none");
+    document.getElementById("person_25“).setAttribute("style", "display:none");
 
 Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.
 
-Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode document.querySelectorAll():
+Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode `document.querySelectorAll()`:
 
-inputs = document.querySelectorAll("input");
+    inputs = document.querySelectorAll("input");
 
-i=0;
+    i=0;
 
-while(i &lt; inputs.length) {
+    while(i &lt; inputs.length) {
 
-    console.log("input mit name " + inputs[i].name );
-    i++;
-}
+        console.log("input mit name " + inputs[i].name );
+        i++;
+    }
+
 Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen.
 
       <span id="v_25" class="vorname">Benjamin</span>
+
 Das erste und einzige Kind des Span ist ein Text-Node:
 
       vn = document.getElementById("v_25").firstChild.data;
+
 oder – etwas kürzer – über die Eigenschaft textContent:
 
       vn = document.getElementById("v_25").textContent;
+
 textContent funktioniert auch bei Nodes die noch weitere verschachtelte Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.
 
 Manipulation des DOM 
@@ -295,7 +316,7 @@ Noch einmal die Liste der wichtigen Objekte, Methoden, Eigenschaften. Die fett g
 
 Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft innerHTML:
 
-document.querySelector("body").innerHTML = "&lt;p&gt;Alles &lt;b&gt;ganz&lt;/b&gt; neu&lt;/p&gt;“;
+    document.querySelector("body").innerHTML = "<p>Alles <b>ganz</b> neu</p>“;
 
 Mit cloneNode kann man einen ganzen Teil-Baum duplizieren, und wo anders wieder einfügen. So kann man z.B. in einem Pizza-Bestell-Formular die Eingabeelement für eine Pizza in einer div zusammenfassen:
 
@@ -316,16 +337,19 @@ Mit cloneNode kann man einen ganzen Teil-Baum duplizieren, und wo anders wieder 
           <label>anything else?<input type="text" name="comment[]"  /></label>
         </p>
       </div>
+
 Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:
 
       var first_pizza = document.querySelector("div.pizza");
       var new_pizza = first_pizza.cloneNode(true);
       first_pizza.insertBefore(new_pizza, null);
+
 Einfügen von Event Handlern
 -----------------------------
 Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:
 
-<input value="0" name="in"  onchange="hier Javascript">
+    <input value="0" name="in"  onchange="hier Javascript">
+
 Mit der Methode addEventListener kann das auch von Javascript aus erfolgen. Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.
 
 
@@ -340,6 +364,7 @@ Im HTML-Code fügen wir dafür einen span-Tag ein:
           …
         </p>
       </div>
+
 Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die funktion removeMe. Mit addEventListener können wir dann die Funktion als zuständig für das click-event am span.removthis definieren.
 
       function removeMe(e){
@@ -357,25 +382,30 @@ Der Canvas wird durch zwei Objekte in Javascript repräsentiert: ein Canvas-Obje
 
       var my_canvas = document.getElementById("c");
       var my_context = my_canvas.getContext("2d");
+
 Wir verwenden erst einmal die 2-dimensionale Zeichenfläche. Wenn Sie dann mehr von Computergrafik verstehen, können Sie auch die 3d-Version, genannt „webgl“ verwenden.
 
 Achsenparallelle Rechtecke zeichnet man mit fillRect:
 
       my_context.fillRect(50, 50, 20, 20);
+
 Linien ziehen kann man mit moveTo und lineTo. Die Linie erscheint erst, wenn man die abschließende Stroke-Methode aufruft:
 
       my_context.moveTo(10, 20);
       my_context.lineTo(10, 50);
       my_context.strokeStyle = "#4a4";
       my_context.stroke();
+
 Text auf den Canvas schreiben kann man mit dem font-Befehl:
 
       my_context.font = "bold 12px sans-serif"; 
       my_context.fillText("hier bin ich", 10, 50);
+
 Bilder die sich bereits in der Webseite befinden kann man in den Canvas kopieren:
 
       var cat = document.getElementById("cat");   
       my_context.drawImage(cat, 0, 0);
+
 Oder man kann ganz neue Bilder laden. Achtung: da das laden eines Bildes einige Zeit dauert verwenden wir hier das onload Event: erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:
 
       var cat = new Image();   
@@ -383,9 +413,6 @@ Oder man kann ganz neue Bilder laden. Achtung: da das laden eines Bildes einige 
       cat.onload = function() {     
         my_context.drawImage(cat, 0, 0);   
       };
-Diese Beispiel zu Canvas stammen alle aus dem Canvas-Kapitel11 von Mark Pilgrims „Dive into HTML5“.
 
-
-
-
+Diese Beispiel zu Canvas stammen alle aus dem [Canvas-Kapitel](http://diveintohtml5.info/canvas.html) von Mark Pilgrims „Dive into HTML5“.
 

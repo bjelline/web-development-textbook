@@ -19,16 +19,19 @@ Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefo
 
 Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery wird nur an einer Stelle, im Head des Dokuments eingebaut. Das nennt man „unobstrusive Javascript“.
 
-<script type = "text/javscript" 
-          src  = "http://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document).ready(function(){ 
-      // Javascript code here 
-}); 
-</script>
-</head>
-<body>
-      <!--  plain html here, no onclick or onload or ... -->
-</body>
+<htmlcode>
+  <script type = "text/javscript" 
+            src  = "http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+  $(document).ready(function(){ 
+        // Javascript code here 
+  }); 
+  </script>
+  </head>
+  <body>
+        <!--  plain html here, no onclick or onload or ... -->
+  </body>
+</htmlcode>
+
 Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern der Amazon Simple Storage Services (s3). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.
 

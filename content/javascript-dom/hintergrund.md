@@ -25,71 +25,16 @@ Es gibt noch eine zweite Programmiersprache mit sehr ähnlichem Namen: Java. Die
 
 
 
-Javascript
-
-
-Java
-
-
-Wer hat’s erfunden?
-
-
-Netscape / Brendan Eich
-
-
-Sun / James Gosling
-
-
-
-
-Interpretiert Sprache
-
-
-Kompilierte Sprache
-
-
-Typbindung
-
-
-Wenige Datentypen, Probleme werden erst zur Laufzeit erkannt
-
-
-Datentypen und Klassen werden streng unterschieden und zur Compilezeit geprüft
-
-
-Verwendung
-
-
-Im Webbrowser, am Webserver, in Flash, in Illustrator und Indesign
-
-
-Überall (Chipkarten, am Server, im Browser, im Handy)
-
-Projekte
-
-
-Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc. 
-
-
-Alle, auch Großprojekte mit vielen „Mannjahren“
-
-
-ProgrammiererInnen
-
-
-Auch Web-DesignerInnen
-
-
-Nur InformatikerInnen
-
-
-Objektorientierung
-
-
-Objekte und Prototypen
-
-
-Objekte und Klassen
+|                      |Javascript                | Java                |
+|+---------------------|+-------------------------|+--------------------|
+| Wer hat’s erfunden?  | Netscape / Brendan Eich  | Sun / James Gosling |
+|                      | Interpretiert Sprache    | Kompilierte Sprache |
+| Typen                | Wenige Datentypen, Probleme werden erst zur Laufzeit erkannt | Datentypen und Klassen werden streng unterschieden und zur Compilezeit geprüft |
+|  Objektorientierung |  Objekte und Prototypen  |  Objekte und Klassen |
+| Verwendung           | Im Webbrowser, am Webserver (node.js), in Flash, in Illustrator und Indesign | Überall (Chipkarten, am Server, im Browser, im Handy) |
+| Projekte | Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc. | Alle, auch Großprojekte mit vielen Jahren Entwicklungszei |
+| Wer |  Auch Web-DesignerInnen | Nur InformatikerInnen |
+{: class="table table-condensed table-bordered" style="width:auto"}
 
 
 Geschichte von Javascript
@@ -135,11 +80,7 @@ In folgendem Beispiel ist der markierte &lt;li&gt;-Tag innerhalb des &lt;ol&gt;-
         </div> ...
 Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:
 
-* Mache ein beliebiges Element des DOM unsichtbar 
-
-(z. B. die ganze Liste)
-* Ändere den Style eines beliebigen Elements 
-
-(z. B. die Schriftart der Überschrift)
+* Mache ein beliebiges Element des DOM unsichtbar (z. B. die ganze Liste)
+* Ändere den Style eines beliebigen Elements (z. B. die Schriftart der Überschrift)
 * Füge neue Elemente ein (z. B. drei zusätzliche Listenpunkte)
 

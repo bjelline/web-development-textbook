@@ -7,11 +7,13 @@ jQuery bietet eine etwas kürzere Schriebweise statt addEventListener an. Z.B. d
       $("h1").click(function() {
           alert("ein h1 wurde geklickt");
       });
+
 Innerhalb der Funktion steht die Variable this zu Verfügung um den angeklickten Tag als jQuery Objekt zu erhalten:
 
       $("h1").click(function() {
           $(this).hide();   /* versteckt den angeklickten h1 tag */
       });
+
 Dazu ein vollständiges Beispiel: zu mehreren Überschriften gibt es Text, der bei Klick auf die Überschrift versteckt bzw. angezeigt werden soll:
 
       <h2 class="more">Vertiefendes Studium</h2>
@@ -21,6 +23,7 @@ Dazu ein vollständiges Beispiel: zu mehreren Überschriften gibt es Text, der b
       <div class="extra">
       <p>Das Schwerpunktstudium Steuerung zielt auf die Ausbildung von Führungskräften der Kreativwirtschaft.</p> 
       </div>
+
 Dazu das vollständige Javascript-Programm mit jQuery:
 
       <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -32,5 +35,6 @@ Dazu das vollständige Javascript-Programm mit jQuery:
           });
       }); 
       </script>
+
 this ist innerhalb der Funktion der angeklickte Tag. Mit dem jQuery-Befehl next() wird nach dem nächsten Tag im HTML-Code gesucht, hier nach dem nächsten Tag mit der Klasse extra. Auf den gefundenen Tag wird der befehl toggle() angewandt, der zwishcen sichtbar und unsichtbar hin und her schlatet (mit display:none)
 
