@@ -30,7 +30,7 @@ Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die
           // und hier die Ausgabe
           include "footer.php";
     ?>
-<php>
+</php>
 
 Viele Datensätze aus der Datenbank lesen
 ------------------------------------------
@@ -39,7 +39,7 @@ In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehrer
 <php caption="personen.php">
     $query = $dbh->query("SELECT * FROM users WHERE profile_visible=1 ORDER BY RAND() LIMIT 1,10");
     $personen = $query->fetchAll(PDO::FETCH_OBJ);
-<php>
+</php>
 
 Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):
 
