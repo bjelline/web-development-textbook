@@ -127,9 +127,11 @@ In der Datei personen.php wird zu jeder Person ein passender Link zu person.php 
     </li>
 </php>
 
-Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingeben!
+Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingibt!
 
 `http://meinedomain.at/person.php?pid=666`
+
+Der Zugriffsschutz ist also ein eigenes Thema, das auch in `person.php` wieder behandelt werden muss.
 
 
 Datensätze suchen
