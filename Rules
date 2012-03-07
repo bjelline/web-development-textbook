@@ -88,6 +88,9 @@ preprocess do
     "php-vorbereitung", 
     "http", 
     "git", 
+    "wordpress",
+    "php",
+    "php-mysql",
   ]
 
   @chapters = {}
