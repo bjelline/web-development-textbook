@@ -22,71 +22,77 @@ MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von 
 
 Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: 
 
-<shell caption="Daten aus Datei in Datenbank laden">
-    > mysql –u username –p datenbankname < portfolio.sandbox.sql
+`mysql –u username –p datenbankname < portfolio.sandbox.sql`
+
 Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 
-    mysql> show tables;
+<sql caption="Tabellen in der Datenbank anzeigen">
+mysql> show tables;
 
-    +-----------------------------+
-    | Tables_in_portfolio_sandbox |
-    +-----------------------------+
-    | macht                       | 
-    | media                       | 
-    | media_werk                  | 
-    | person                      | 
-    | rollen                      | 
-    | student                     | 
-    ...
-    | werk                        | 
-    +-----------------------------+
-    16 rows in set (0.00 sec)
-</shell>
++------------------------------------------+
+| Tables_in_portfolio_sandbox              |
++------------------------------------------+
+| agegroups                                |
+| agegroups_studycourses_departments_users |
+| assets                                   |
+| awardyears                               |
+| departments                              |
+| projects                                 |
+| projects_roles_users                     |
+| projects_tags                            |
+| roles                                    |
+| studycourses                             |
+| tags                                     |
+| urls                                     |
+| users                                    |
++------------------------------------------+
+13 rows in set (0.01 sec)
+</sql>
 
 Describe zeigt den Aufbau einer bestimmten Tabelle:
     
 <sql caption="Tabelle beschreiben mit describe">
-    mysql> describe person;
-
-    +------------+--------------+------+-----+---------+----------------+
-    | Field      | Type         | Null | Key | Default | Extra          |
-    +------------+--------------+------+-----+---------+----------------+
-    | pid        | bigint(20)   |      | PRI | NULL    | auto_increment |
-    | uid        | varchar(8)   | YES  | MUL | NULL    |                |
-    | vorname    | varchar(40)  |      |     |         |                |
-    | nachname   | varchar(50)  |      |     |         |                |
-    | profil     | text         |      |     |         |                |
-    | mail       | varchar(40)  | YES  | MUL | NULL    |                |
-    | web        | varchar(200) | YES  |     | NULL    |                |
-    | blog       | varchar(200) | YES  |     | NULL    |                |
-    | feed       | varchar(200) | YES  |     | NULL    |                |
-    | title      | varchar(10)  | YES  |     | NULL    |                |
-    | isfemale   | tinyint(4)   |      |     | 0       |                |
-    | bildpfad   | varchar(250) | YES  | MUL | NULL    |                |
-    | ifshow     | tinyint(4)   |      |     | 0       |                |
-    | facebookid | bigint(20)   | YES  |     | NULL    |                |
-    +------------+--------------+------+-----+---------+----------------+
-    14 rows in set (0.00 sec)
+mysql> describe users;
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| id              | int(11)      | NO   | PRI | NULL    | auto_increment |
+| firstname       | varchar(255) | YES  |     | NULL    |                |
+| surname         | varchar(255) | YES  |     | NULL    |                |
+| email           | varchar(255) | YES  | UNI | NULL    |                |
+| isfemale        | tinyint(1)   | YES  |     | NULL    |                |
+| profile_visible | tinyint(1)   | YES  |     | NULL    |                |
+| created_at      | datetime     | YES  |     | NULL    |                |
+| updated_at      | datetime     | YES  |     | NULL    |                |
+| avatar          | varchar(255) | YES  |     | NULL    |                |
+| fullname        | varchar(255) | YES  | MUL | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
 </sql>
 
 Select und Join funktionieren wie erwartet:
 
 <sql caption="SQL-Befehle absetzten in der MySQL-Shell">
-    mysql> select pid,vorname from person limit 1,8;
+mysql> select id,firstname from users limit 0,5;
++----+-----------+
+| id | firstname |
++----+-----------+
+|  1 | Brigitte  |
+|  2 | Lea       |
+|  3 | Stefan    |
+|  4 | Karin     |
+|  5 | Katharina |
++----+-----------+
+5 rows in set (0.00 sec)
 
-    +-----+-------------+
-    | pid | vorname     |
-    +-----+-------------+
-    |   2 | Paul        |
-    |   3 | Edvard Paul |
-    |   4 | Sandra      |
-    |   5 | Philipp     |
-    |   6 | Antal       |
-    |   7 | Sebastian   |
-    |   8 | Johannes    |
-    |   9 | Ivan        |
-    +-----+-------------+
-    10 rows in set (0.00 sec)
+mysql> select projects.id,projects.title,urls.url from projects left join urls on projects.id=urls.project_id where projects.id=101;
++-----+---------------------+---------------------------------------------------------+
+| id  | title               | url                                                     |
++-----+---------------------+---------------------------------------------------------+
+| 101 | Every step you take | http://www.everystepyoutake.org/                        |
+| 101 | Every step you take | https://mediacube.at/wiki/index.php/Every_step_you_take |
++-----+---------------------+---------------------------------------------------------+
+2 rows in set (0.01 sec)
 </sql>
 
 Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der [&rarr;Dokumentation](http://dev.mysql.com/) entnehmen.
@@ -182,11 +188,11 @@ Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Date
 
 <php caption="Daten mit SELECT lesen">
     $query =$dbh->query(
-         "SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10"
+         "SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10"
     );
     $personen = $query->fetchAll(PDO::FETCH_OBJ);
     foreach($personen as $person) {
-          echo "$person->vorname $person->mail</br>\n";
+          echo "$person->firstname $person->email</br>\n";
     }
 </php>
 
@@ -198,11 +204,11 @@ Ein ganz wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern 
 
 <php caption="Ineffizientes Lesen aus der Datenbank">
     // FALSCH !!!
-    $query =$dbh->query("SELECT * FROM person");
+    $query =$dbh->query("SELECT * FROM users");
     $personen = $query->fetchAll(PDO::FETCH_OBJ);
     foreach($personen as $person ) {
-        if($person->ifshow) {
-          echo "$person->vorname $person->mail</br>\n";
+        if($person->profile_visible) {
+          echo "$person->firstname $person->email</br>\n";
         }
     }
     // FALSCH !!!
@@ -211,20 +217,20 @@ Ein ganz wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern 
 Richtig wäre, den Filter bereits im SELECT einzubauen:
 
 <php caption="Effizientes Lesen aus der Datenbank">
-    $query =$dbh->query("SELECT * FROM person WHERE ifshow");
+    $query =$dbh->query("SELECT * FROM users WHERE profile_visible");
     $personen = $query->fetchAll(PDO::FETCH_OBJ);
-    foreach($personen as $person ) {
-          echo "$person->vorname $person->mail</br>\n";
+    foreach($personen as $person) {
+          echo "$person->firstname $person->email</br>\n";
     }
 </php>
 
-Zu diesem Prinzip gehört auch die konsequente Verwendung der richtigen Datentypen in der Datenbank:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“
+Zu diesem Prinzip gehört auch die konsequente Verwendung der richtigen Datentypen in der Datenbank:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum älter als 300 Tage ist“
 
 <sql caption="select mit verwendung von Datums-Angaben">
-    select titel,pub_datum from werk 
-    where datediff( curdate( ) , pub_datum ) <= 100; 
+    select title,publicationdate from projects
+    where datediff( curdate( ) , publicationdate ) > 300; 
 </sql>
 
-Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.
+Zeigt Titel und Publikations-Datum aller Werke die vor mehr als 300 Tagen publiziert wurden.
 
 

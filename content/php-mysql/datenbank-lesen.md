@@ -37,36 +37,43 @@ Viele Datensätze aus der Datenbank lesen
 In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:
 
 <php caption="personen.php">
-    $query = $dbh->query("SELECT * FROM users WHERE profile_visible=1 ORDER BY RAND() LIMIT 1,10");
+    $query = $dbh->query("SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10");
     $personen = $query->fetchAll(PDO::FETCH_OBJ);
 </php>
 
 Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):
 
 <php caption="Output von print_r($personen)">
-    Array ( 
-
-          [0] => stdClass Object
-              (   
-                  [pid] => 948
-                  [uid] => fhs30410
-                  [vorname] => Thomas
-                  [nachname] => Czernik
-                  [isfemale] => 0
-                  [ifshow] => 1
-              )
-
-          [1] => stdClass Object
-              (   
-                  [pid] => 151
-                  [uid] => yzachari
-                  [vorname] => Yvonne
-                  [nachname] => Zacharias
-                  [isfemale] => 1
-                  [ifshow] => 1
-              )
-          ...
-    )
+Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 422
+            [firstname] => Hubert jun.
+            [surname] => Hoelzl
+            [email] => hhoelzl.mmt-b2008@fh-salzburg.ac.at
+            [isfemale] => 0
+            [profile_visible] => 1
+            [created_at] => 2011-06-01 09:54:16
+            [updated_at] => 2011-06-01 17:14:58
+            [avatar] => 
+            [fullname] => Hubert jun. Hoelzl
+        )
+    [1] => stdClass Object
+        (
+            [id] => 313
+            [firstname] => Marcel
+            [surname] => Uekermann
+            [email] => muekermann.mma-b2007@fh-salzburg.ac.at
+            [isfemale] => 0
+            [profile_visible] => 1
+            [created_at] => 2011-06-01 09:54:12
+            [updated_at] => 2011-06-01 09:54:12
+            [avatar] => 
+            [fullname] => Marcel Uekermann
+        )
+    ...
+)
 </php>
 
 Einzelne Daten aus der Datenbank lesen
@@ -75,7 +82,7 @@ In der Datei `home.php` finden Sie zwei Beispiele für das Lesen einzelner Daten
 
 <php caption="Beispiel aus home.php">
     $ergebnis = $dbh->query( 
-           "SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible=1" )->fetch();
+           "SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible" )->fetch();
     $anz_personen = $ergebnis['anzahl'];
 </php>
 
@@ -86,8 +93,8 @@ Wenn Sie die Datei `person.php` mit einem Parameter aufrufen person.php?pid=586 
 In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit `profile_visible=0` gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil `profile_visible=0` ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.
 
 <php caption="Beispiel aus home.php">
-    $pid = 0 + $_GET['pid'];
-    $stm = $dbh->query ( "SELECT * FROM users WHERE profile_visible=1 AND pid=$pid" );
+    $pid = $_GET['pid'];
+    $stm = $dbh->query ( "SELECT * FROM users WHERE profile_visible AND id=$pid" );
     $person = $stm->fetch(PDO::FETCH_OBJ);
     if( $person === FALSE ) {
               die("<p>Konnte keine passenden Daten aus der Datenbank lesen.</p>");
@@ -110,8 +117,8 @@ Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert: d
     ?>
       <p> 
           <?= $anrede ?>
-          <?= $person->vorname ?>
-          <?= $person->nachname ?>
+          <?= $person->firstname ?>
+          <?= $person->surname ?>
           hat insgesamt x Werke in dieser Datenbank.
           <?= $ersie ?>
           hat den Usernamen <?= $person->uid ?>.
@@ -122,8 +129,8 @@ In der Datei personen.php wird zu jeder Person ein passender Link zu person.php 
 
 <php>
     <li>
-      <b><?= $person->vorname ?> <?= $person->nachname?></b>
-      <a href="person.php?pid=<?= $person->pid ?>">mehr</a>
+      <b><?= $person->firstname ?> <?= $person->surname?></b>
+      <a href="person.php?pid=<?= $person->id ?>">mehr</a>
     </li>
 </php>
 
@@ -155,12 +162,12 @@ Wir werden uns später noch genauer mit der Sicherheitsproblematik von SQL-State
 
 <php>
     if( $suchwort ) {
-
               $personen = $dbh->query (
                   "SELECT * FROM users WHERE profile_visible=1 AND firstname LIKE '$suchwort' "
                   )->fetchAll(PDO::FETCH_OBJ);
               $found = count($personen);
     }
+  ....
     if ( $suchwort ) : ?>
 
               <p>Suche nach '<?= $suchwort ?>' hat <?= $found ?> Ergebnisse geliefert:</p>
