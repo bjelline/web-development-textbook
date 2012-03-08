@@ -28,6 +28,7 @@ Achtung, diese Angaben sind in Pixel – die reale Größe des Ausgabegerätes (
 |Sony PSP 7th gen|09/2005|480 × 272|4.3 in |128 ppi|
 |Apple IPhone3|06/2009|480 × 320|3.5 in |163 ppi|
 |Apple IPhone4|06/2010|960 × 640|3.5 in|326 ppi |
+|Apple IPad 3rd gen|03/2011|2048×1536|12 in|264 ppi |
 |Amazon Kindle, 3rd gen|11/2007|600 × 800|6 in |167 ppi |
 |Google Nexus One |1/2010|800 × 480|3.7 in |254 ppi |
 |Android Galaxy Nexus|11/2011|1280 × 720|4.65 in |316 ppi |
