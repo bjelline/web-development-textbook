@@ -91,6 +91,8 @@ preprocess do
     "wordpress",
     "php",
     "php-mysql",
+    "session",
+    "php-mysql-2",
   ]
 
   @chapters = {}
