@@ -50,12 +50,13 @@ Seit 2005 wir unter dem Schlagwort AJAX Javascript eng mit der serverseitigen We
 
 Seit ca. 2008 sind offline-fähige Javascript-Applikationen möglich: Der Browser speichert alle notwendigen Teil der Website permanent ab, und kann die Applikation auch benutzen wenn keine Internetverbindung (mehr) besteht. Dies Applikationen haben z.B: auf dem iPad eine große Bedeutung.
 
-Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint. 
-
-
-
-
 ![Abbildung 56: Offline Applikation everytimezone.com](/images/image252.png)
+
+Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, ...
+
+
+
+
 
 
 Document Object Model
@@ -65,7 +66,9 @@ Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (die
 
 Das DOM einer Webseite kann man sich als Baum vorstellen, ähnlich der Ordnerstruktur im Dateisystem.  Sie kennen diese Idee schon von CSS und den CSS-Selektoren.
 
-In folgendem Beispiel ist der markierte &lt;li&gt;-Tag innerhalb des &lt;ol&gt;-Tags, der &lt;li&gt;-Tag enthält wiederum einen &lt;a&gt;-Tag. 
+In folgendem Beispiel ist der markierte `li`-Tag innerhalb des `ol`-Tags, der `li`-Tag enthält wiederum einen `a`-Tag. 
+
+![Abbildung: Bild des DOM, erzeugt mit dem DOM Inspektor von Mozilla](/images/dom.png)
 
       <html>
       <body>
@@ -78,6 +81,7 @@ In folgendem Beispiel ist der markierte &lt;li&gt;-Tag innerhalb des &lt;ol&gt;-
           <li><a href="#bla">zweiter Link</a></li>
         </ol>
         </div> ...
+
 Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:
 
 * Mache ein beliebiges Element des DOM unsichtbar (z. B. die ganze Liste)

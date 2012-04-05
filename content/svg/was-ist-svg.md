@@ -30,7 +30,8 @@ definiert: HTML und XML.
 ## SVG
 
 <svg width="200" height="200" style="float:left;">
-<circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="yellow" />
+    <circle cx="100" cy="100" r="80"                 stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect    x="80"   y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
 
 Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
@@ -47,6 +48,15 @@ im Browser nativ dargestellt.
 
 <htmlcode caption="Einbindung von SVG in HTML">
   <svg width="200" height="200" style="float:left;">
-    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="yellow" />
+    <circle cx="100" cy="100" r="80"                 stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect    x="80"   y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
   </svg>
 </htmlcode>
+
+Mit SVG kann man zweidimensional zeichnen, die grafischen Objekte werden
+- wie bei HTML - in einem DOM gespeichert und können Manipuliert werden. Zur
+Darstellung im Browser werden sie mit dem [Painters Algorithm](http://de.wikipedia.org/wiki/Painter%27s_Algorithmus) gezeichnet:
+"spätere" Objekte übermalen "frühere" Objekte. Deswegen überdeckt das blaue Rechteck
+im Beispiel den grünen Kreis.
+
+

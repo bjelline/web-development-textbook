@@ -31,7 +31,7 @@ In Google Chrome gibt es ebenfalls eine Console wie in Abbildung gezeigt, das en
 
 Popup-Fenster
 --------------
-Mit den Befehlen alert, confirm und prompt können Sie kleine Popup-Fenster öffnen:
+Mit den Befehlen `alert`, `confirm` und `prompt` können Sie kleine Popup-Fenster öffnen:
 
 <javascript caption="Popup-Fenster">
 alert("peng, du bist tot!");
@@ -49,15 +49,17 @@ Formulare
 Mit der Konsole von Firebug können Sie auch Formulare genauer untersuchen. Achtung! Wir geben ab jetzt allen Formular-Eingabefeldern nicht nur einen name, sondern auch eine id, das erleichtert die Handhabung in Javascript!
 
 
-      <form method="get" action="mail.php"> 
-      <label for="mail">E-Mail:
-         <input type="text" name="mail" id="mail" placeholder="e-mail adresse">
-      </label>
-      <label>Hochschule:   
-          <input type="text" name="hochschule" id="hochschule" value="FH Salzburg"> 
-      </label> 
-      <input type="submit" value="speichern">
-      </form>
+<htmlcode>
+  <form method="get" action="mail.php"> 
+  <label for="mail">E-Mail:
+     <input type="text" name="mail" id="mail" placeholder="e-mail adresse">
+  </label>
+  <label>Hochschule:   
+      <input type="text" name="hochschule" id="hochschule" value="FH Salzburg"> 
+  </label> 
+  <input type="submit" value="speichern">
+  </form>
+</htmlcode>
 
 ![Abbildung 54: Mit Firebug Formulare und Eingabefelder auslesen](/images/image242.png)
 
@@ -93,34 +95,38 @@ Der Browser interpretiert das Javascript und fügt das Ergebnis zu einem HTML-Do
 Ein Anwendungsbeispiel dieses Befehls: Ich will ein Dropdown-Menü mit vielen Einträgen, bin aber zu faul um alle `option`-Tags einzutippen.
 
 
-      <form>
-         <select name="Anzahl" id="Anzahl">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
-             <option>4</option>
-             <option>5</option>
-             <option>6</option>
-             <option>7</option>
-             ...
-         </select>
-         <input type="submit">
-      </form>
+<htmlcode>
+  <form>
+     <select name="Anzahl" id="Anzahl">
+         <option>1</option>
+         <option>2</option>
+         <option>3</option>
+         <option>4</option>
+         <option>5</option>
+         <option>6</option>
+         <option>7</option>
+         ...
+     </select>
+     <input type="submit">
+  </form>
+</htmlcode>
 
 Ich ersetze also die option-Tags durch eine Schleife in Javascript:
 
-      <form>
-         <select name="Anzahl" id="Anzahl">
-             <script language="javascript">
-                var i=0;
-                while(i <= 50) {
-                    document.write("<option>" + i + "</option>");
-                    i++;
-                }
-             </script>
-         </select>
-         <input type="submit">
-      </form>
+<htmlcode>
+  <form>
+     <select name="Anzahl" id="Anzahl">
+         <script language="javascript">
+            var i=0;
+            while(i <= 50) {
+                document.write("<option>" + i + "</option>");
+                i++;
+            }
+         </script>
+     </select>
+     <input type="submit">
+  </form>
+</htmlcode>
 
 Mit Ansicht &rarr; Quelltext sieht man den Javascript-Code, In Firebug sieht man das Ergebnis:
 
@@ -149,19 +155,25 @@ Ein Beispiel für ereignisgesteuerte Programmierung mit einem Web-Formular: Das 
 
 Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis multipliziert werden und in die rechte Spalte geschrieben werden. Betrachten wir zuerst diesen Schritt alleine an einem vereinfachten Formular mit einem Eingabefeld und einem span-tag für die Ausgabe
 
-    <input value="0" name="in">
-    <span id="out"></span>
+<htmlcode>
+  <input value="0" name="in">
+  <span id="out"></span>
+</htmlcode>
 
 Für die Formulierung „Wenn in das Feld in ein neuer Wert eingegeben wird, dann...“  gibt es ein passendes Event in HTML/Javascript: onchange. Die wird als Attribut in den HTML-Code des Eingabefeldes geschrieben:
 
-    <input value="0" name="in"  onchange="hier Javascript">
-    <span id="out"></span>   
+<htmlcode>
+  <input value="0" name="in"  onchange="hier Javascript">
+  <span id="out"></span>   
+</htmlcode>
 
 In das Attribut kann nun Javascript-Code eingefügt werden der die richtige Berechnung vornimmt und das Ergebnis in das richtige Element schreibt:
 
-    <input value="0" name="in"  
-             onchange="document.getElementById('out').innerHTML = this.value * 100">
-    <span id="out"></span>   
+<htmlcode>
+  <input value="0" name="in"  
+           onchange="document.getElementById('out').innerHTML = this.value * 100">
+  <span id="out"></span>   
+</htmlcode>
 
 Betrachten wir die Javascript-Befehl im Detail: Es handelt sich um eine Zuweisung mit =.
 
@@ -173,56 +185,67 @@ Auf der linken Seite der Zuweisung wird zuerst mit document.getElementById('out'
 
 Nun wäre es natürlich unpraktisch in das onchange-Attribut ein längeres Javascript-Programm zu schreiben. Dafür kann man in Javascript Funktionen definieren, die dann nur noch aufgerufen werden. Z.B. um die Gesamtsumme im Bestellformular zu berechnen ist eine Funktion praktisch:
 
-    <head>
-    <script language="javascript">
-    function compute() { 	
+<htmlcode>
+  <head>
+  <script language="javascript">
+  function compute() { 	
 
-    document.getElementById('outtotal').innerHTML =  	      
+  document.getElementById('outtotal').innerHTML =  	      
 
-            document.getElementById('in1').value * 100 		
-          + document.getElementById('in2').value * 200 		
-          + document.getElementById('in3').value * 0 		
-          + document.getElementById('in4').value * 1000 		
-          + document.getElementById('in5').value * 10 		
-          + document.getElementById('in6').value * 5 
-    }
-    </script>
-    </head>
-    <body>
+          document.getElementById('in1').value * 100 		
+        + document.getElementById('in2').value * 200 		
+        + document.getElementById('in3').value * 0 		
+        + document.getElementById('in4').value * 1000 		
+        + document.getElementById('in5').value * 10 		
+        + document.getElementById('in6').value * 5 
+  }
+  </script>
+  </head>
+  <body>
+</htmlcode>
+
 Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.
 
 Achtung: beim „rechnen“ mit Eingabefelder von Javascript tritt häufig folgender Fehler auf: in Javascript werden die Datentypen int, float, char, zwar unterschieden, aber nicht deklariert. Es kann in einer Variable einmal ein String und einmal eine Zahl gespeichert sein:
 
-    var a,b,c;
-    a = 10;
-    document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
-    document.write(a + 20);
-    a = "zehn";
-    document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
-    document.write(a + 20);
-    a = "10";
-    document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
-    document.write(a + 20);
+<htmlcode>
+  var a,b,c;
+  a = 10;
+  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write(a + 20);
+  a = "zehn";
+  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write(a + 20);
+  a = "10";
+  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write(a + 20);
+</htmlcode>
 
 Hier der Output des Programms:
 
-    wie viel ist 10 plus 20? 30
-    wie viel ist 10 plus 20? zehn20
-    wie viel ist 10 plus 20? 1020
+<plain>
+  wie viel ist 10 plus 20? 30
+  wie viel ist 10 plus 20? zehn20
+  wie viel ist 10 plus 20? 1020
+</plain>
 
-Der + Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.
+Der `+` Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.
 
-Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. 100 + 200 + 0 + 0 + 0 + 0 wäre 1002000000. Bei der Multiplikation mit * tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. 
+Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. `100 + 200 + 0 + 0 + 0 + 0` wäre `1002000000`. Bei der Multiplikation mit `*` tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. 
 
 Mit der Funktion parseInt() können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.
 
-    a = "10";
-    document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
-    document.write(parseInt(a) + 20);
+<javascript>
+  a = "10";
+  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write(parseInt(a) + 20);
+</javascript>
 
 gibt das erwartete ergebnis
 
-    wie viel ist 10 plus 20? 30
+<plain>
+  wie viel ist 10 plus 20? 30
+</plain>
 
 
 Formular prüfen
@@ -235,8 +258,11 @@ Dafür gibt es das Event „onsubmit“ im form-Tag.
   <form name="pizzaformular" 
         action="http://webwelt.horus.at/html/form/echo.cgi"
         onsubmit= "wert=formularok(); return wert;">
+</htmlcode>
+
 Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. Entsprechend kann man eine Funktion schreiben:
 
+<htmlcode>
   <script>
       function formularok() {
 	    var ok, fehler;
