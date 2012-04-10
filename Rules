@@ -94,6 +94,7 @@ preprocess do
     "session",
     "php-mysql-2",
     "svg",
+    "javascript",
   ]
 
   @chapters = {}
