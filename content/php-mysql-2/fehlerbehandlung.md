@@ -143,4 +143,8 @@ Bei einem realen Beispiel würde man nicht die `exec` Methode verwenden,
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
 bleibt gleich.
 
+## Exceptions in Javascript
+
+Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
+gar nicht lohnt näher darauf einzugehen. Siehe [Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1](http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html)
 

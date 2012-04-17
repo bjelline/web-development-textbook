@@ -3,9 +3,17 @@ title: Objekte + Prototypen
 order: 20
 ---
 
+Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
+Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
+z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in Javascript oder .. oder .. nicht der Fall.
+
+Trotzdem gibt es in Javascript Mechanismen wie Vererbung und Komposition.
+
+In diesem Kapitel lernen wir diese Mechanismen kennen.
+
 ## Objekt mit Objekten
 
-In folgendem Beispiel hat der Konstruktur drei Argumente. Als
+In folgendem Beispiel hat der Konstruktor `Studiengang` drei Argumente. Als
 drittes Argument wird ein Objekt übergeben:
 
 <javascript caption="Objekt mit Objekt">
@@ -25,9 +33,11 @@ drittes Argument wird ein Objekt übergeben:
   mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hochschule );
 </javascript>
 
+§
+
 Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
-beiden Studiengangs-Objekten `mmtb` und `mmtb` auf das gleiche Objekt im
-Speicher verwiesen:
+beiden Studiengangs-Objekten `mmtb` und `mmtb` auf das gleiche Objekt 
+verwiesen:
 
 ![Abbildung: Objekt mit Objekt](/images/objekt-mit-objekt.png)
 
@@ -42,6 +52,8 @@ mmtb.constructor === Studiengang;
 hochschule.constructor === Object;
 </javascript>
 
+![Abbildung: Objekt mit Konstruktor](/images/objekt-mit-objekt-und-constructor.png)
+
 Dieser Konstruktor wird auch verwendet, um die Fragen `instanceof` zu beantworten:
 
 <javascript caption="Fortsetzung: Operator instanceof">
@@ -50,7 +62,9 @@ hochschule instanceof Object;
 mmtb instanceof Object;
 </javascript>
 
-![Abbildung: Objekt mit Konstruktor](/images/objekt-mit-objekt-und-constructor.png)
+`mmtb` ist auch eine Instanz von `Object`! Es muss also eine Art Vererbungs-Hierarchie
+geben, die wir noch nicht kennen, in der `Studiengang` als Kind von `Object` geführt wird.
+Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.
 
 
 ## Objekt und Konstruktor und Prototyp

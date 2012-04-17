@@ -112,7 +112,7 @@ Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist `this` au
 </javascript>
 
 
-Eigentlich ist der erste Fall ein Spezialfall dieses zweiten.Falles: wird eine Funktion ohne Objekt aufgerufen `f()`,
+Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen `f()`,
 dann nimmt Javascript ein implizites Objekt an:
 
 <javascript caption="this in einer normalen Funktion (explizite schreibweise)">
@@ -127,12 +127,12 @@ dann nimmt Javascript ein implizites Objekt an:
 </javascript>
 
 Nun macht auch das erste Argument der Funktionen `call` und `apply` Sinn: das erste
-Argument gibt das Objekt an, auf dem die Methode aufgeruft werden soll: 
+Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: 
 
 <javascript caption="Verschiedene Arten eine Methode aufzurufen">
   objekt.f("hallo ", 10);
-  f.call(objekt, "hallo ", 10);
-  f.apply(objekt, [  "hallo ", 10 ]  );
+  objekt.f.call(objekt, "hallo ", 10);
+  objekt.f.apply(objekt, [  "hallo ", 10 ]  );
 </javascript>
 
 Bei Event-Handlern wird `this` anders gesetzt:

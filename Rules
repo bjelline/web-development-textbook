@@ -15,6 +15,35 @@ require "curb"
 require "json"
 
 class Nanoc3::Filter
+  class Slides < Nanoc3::Filter
+    def run(content, params={})
+      @string = content.dup
+
+      @output = "<div class='slide'>"
+      @pending = ""
+
+      until @string.empty?
+        match = scan_until /^(#+|--+)/m
+
+        break if !match
+        @output << match.pre_match
+        @output << "</div>\n<div class='slide'>\n\n"
+        @output << match[0]
+      end
+
+      @output << @string
+      @output << "</div>"
+
+      @output
+    end
+
+    def scan_until(regex)
+      match = @string.match(regex)
+      return unless match
+      @string = match.post_match
+      match
+    end
+  end
   class CodeBlocks < Nanoc3::Filter
     LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
                   "css" => "css", "plain" => "plain", "erb" => "ruby; html-script: true", "htmlcode" => "html",
@@ -74,7 +103,8 @@ class Nanoc3::Filter
   end
 end
 
-Nanoc3::Filter.register 'CodeBlocks',        :code_blocks
+Nanoc3::Filter.register 'CodeBlocks',    :code_blocks
+Nanoc3::Filter.register 'Slides',        :slides
 
 preprocess do
   @chapterOrder = [
@@ -106,11 +136,7 @@ preprocess do
   @items.each do |item|
     item[:chapter] = item[:filename].split('/')[1] 
     item[:chapter_title] = item[:chapter].gsub(/-/, " ").upcase
-    if item[:github]
-      @github_users[ item[:github] ] = nil
-    else
-      item[:github] = "bjelline"
-    end
+    item[:github] = "bjelline"
   end
 
   @github_users.each do |username, wat|
@@ -182,7 +208,6 @@ compile '*' do
   end
 end
 
-
 route '*' do
   #p [item.identifier, item[:extension], item.binary?]
   if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png'
@@ -192,6 +217,37 @@ route '*' do
   else
     # /foo/ -> /foo/index.html
     item.identifier + 'index.html'
+  end
+end
+
+compile '/assets/*', :rep => :slide do
+  # don’t filter or layout
+end
+
+compile '/images/*', :rep => :slide  do
+end
+
+compile '*', :rep => :slide do
+  filter :code_blocks
+  filter :slides
+  filter filters[item[:extension].to_sym] || item[:extension].to_sym
+  if item[:homepage]
+  elsif item.identifier.match /\/dex\/$/
+  else
+    layout 'slide'
+  end
+end
+
+route '*', :rep => :slide do
+  if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png'
+    nil
+  elsif item[:homepage]
+    nil
+  elsif item.identifier.match /\/dex\/$/
+    nil
+  else
+    # /foo/ -> /foo/index.html
+    item.identifier + 'slide.html'
   end
 end
 
