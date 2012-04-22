@@ -15,6 +15,7 @@ Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“
 
 ![Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet](/images/image363.png)
 
+§
 
 An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:
 
@@ -70,6 +71,8 @@ Für unsere Applikation werden wir das verwenden, um den Usernamen des angemelde
 
 ![Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit](/images/image364.png)
 
+§
+
 Das Login-Formular (Dateiname `login.php`) sieht ganz einfach aus und sendet die Daten mit POST wieder an `login.php`:
 
 ![Abbildung 147: Login-Formular der Applikation](/images/image365.png)
@@ -94,6 +97,8 @@ Das Logout erfolgt ebenfalls mit der Methode POST:
   </form>
 </htmlcode>
 
+§
+
 Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.
 
 <php>
@@ -112,6 +117,8 @@ Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gese
   session_destroy();
   header("Location: index.php")
 </php>
+
+§
 
 Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung wie hier mit Location: sinnvoll. 
 
@@ -133,6 +140,8 @@ Achtung: die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist
 
     include "header.php";
 </php>
+
+§
 
 Hier noch mal die Dateien:
 

@@ -15,6 +15,13 @@ require "curb"
 require "json"
 
 class Nanoc3::Filter
+  class Peek < Nanoc3::Filter
+    def run(content, params={})
+      puts "#{content.length} bytes of content."
+      content
+    end
+  end
+
   class Slides < Nanoc3::Filter
     def run(content, params={})
       @string = content.dup
@@ -23,12 +30,16 @@ class Nanoc3::Filter
       @pending = ""
 
       until @string.empty?
-        match = scan_until /^(#+|--+)/m
+        match = scan_until /^(<h[123].*?>|<hr>+|<p>§<.p>)/m
 
         break if !match
         @output << match.pre_match
         @output << "</div>\n<div class='slide'>\n\n"
-        @output << match[0]
+        if match[0] =~ /§/
+          # discard match
+        else
+          @output << match[0] 
+        end
       end
 
       @output << @string
@@ -105,6 +116,7 @@ end
 
 Nanoc3::Filter.register 'CodeBlocks',    :code_blocks
 Nanoc3::Filter.register 'Slides',        :slides
+Nanoc3::Filter.register 'Peek',          :peek
 
 preprocess do
   @chapterOrder = [
@@ -229,8 +241,9 @@ end
 
 compile '*', :rep => :slide do
   filter :code_blocks
+  filter :kramdown
+  #filter filters[item[:extension].to_sym] || item[:extension].to_sym
   filter :slides
-  filter filters[item[:extension].to_sym] || item[:extension].to_sym
   if item[:homepage]
   elsif item.identifier.match /\/dex\/$/
   else

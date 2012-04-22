@@ -2,11 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title><%= @item[:title] %> - als Präsentation</title>
+	<title><%= @item[:title] %> - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
 	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
 	
 	<!-- Any other extension CSS files go here. -->
 	
@@ -16,13 +26,32 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1><%= @item[:title] %></h1>
+          <p><a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel</a></p>
+          </div>
 	  <%= yield %>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel</a></p>
+          </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 <!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
 
 <!-- Add any other extension JS files here -->
 

@@ -39,6 +39,8 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
           fill="#73d216" fill-opacity="0.6" />
 </htmlcode>
 
+§
+
 Viele Attribute kann man alternativ auch über CSS definieren.
 
 <htmlcode caption="Attribute per CSS">
@@ -58,6 +60,8 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.
           fill="#edd400" fill-opacity="0.59" stroke="#c4a000" stroke-width="2" />
 </htmlcode>
 
+§
+
 Wird der Befehl als Großbuchstaben geschrieben, dann werden die Koordinaten
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
 Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:
@@ -69,6 +73,8 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:
 | V,v      | VLineTo         | y         | Ziehe eine vertikale Linie zur angegebenen Koordinate    |
 | Z,z      | Close Path      |           | Schliesse den Pfad (gehe zurück zum Anfangspunkt)        |
 {: class="table table-condensed table-bordered" style="width:auto"}
+
+§
 
 Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:
@@ -100,6 +106,8 @@ an und für sich noch nicht sehr spannend:
     <text x="122" y="81">Kreis + Ellipse</text>
 </htmlcode>
 
+§
+
 Mit dem Tag `textpath` kann der Text entlang eines
 beliebigen Pfades gesetzt werden.
 
@@ -121,4 +129,17 @@ beliebigen Pfades gesetzt werden.
     </text>
   </g>
 </svg>
+
+
+<htmlcode>
+<defs>
+<path id="my_path" d="M 100,200 C 200,100 300,  0 400,100
+      C 500,200 600,300 700,200 C 800,100 900,100 900,100" />
+</defs>
+<text font-family="Verdana" font-size="42.5" fill="red" >
+  <textPath xlink:href="#my_path">
+    Es geht hinauf, und hinunter, und wieder...
+  </textPath>
+</text>
+</htmlcode>
 

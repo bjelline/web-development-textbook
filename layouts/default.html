@@ -8,6 +8,7 @@
 			<% if @item[:title] %>
                           <div class="page-header">
 				<h2 class="title"><%= @item[:title] %></h2>
+                                <a href="<%= @item.rep_named(:slide).path %>">als Präsentation</a>
                           </div>
 			<% end %>
 			

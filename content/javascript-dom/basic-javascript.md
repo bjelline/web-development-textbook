@@ -167,6 +167,11 @@ Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – d
   a = undefined;    // typeof(a) == "undefined"
 </javascript>
 
+Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden: 
+bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
+darüber nur noch floats.  Die Details
+können Sie in [How numbers are encoded in JavaScript](http://www.2ality.com/2012/04/number-encoding.html) nachlesen.
+
 ### Arrays
 
 Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: `b[0]`, `b[1]`, …  Aber eigentlich sind Arrays schon Objekte. 
