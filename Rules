@@ -30,14 +30,16 @@ class Nanoc3::Filter
       @pending = ""
 
       until @string.empty?
-        match = scan_until /^(<h[123].*?>|<hr>+|<p>§<.p>)/m
+        match = scan_until /^(<h[123].*?>|<hr>+|^(<p>)*§(<.p>)*)$/m
 
         break if !match
         @output << match.pre_match
         @output << "</div>\n<div class='slide'>\n\n"
         if match[0] =~ /§/
+          puts "ignore #{match[0]}"
           # discard match
         else
+          puts "output #{match[0]}"
           @output << match[0] 
         end
       end
@@ -211,6 +213,7 @@ end
 compile '*' do
   filter :code_blocks
   filter filters[item[:extension].to_sym] || item[:extension].to_sym
+  filter :slides
   if item[:homepage]
     layout 'home'
   elsif item.identifier.match /\/dex\/$/
