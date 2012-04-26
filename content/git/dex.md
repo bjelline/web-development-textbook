@@ -15,4 +15,4 @@ title: GIT
 ### Weitere Informationsquellen
 * [Das git community book](http://book.git-scm.com/)
 * [Deutsche Referenz zu git](http://weinimo.de/Git-Hilfen/)
-
+* [A Visual Git Reference](http://marklodato.github.com/visual-git-guide/index-en.html)

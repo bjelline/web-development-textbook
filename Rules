@@ -137,6 +137,7 @@ preprocess do
     "php-mysql",
     "session",
     "php-mysql-2",
+    "security",
     "svg",
     "javascript",
   ]
