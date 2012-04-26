@@ -41,6 +41,6 @@ lokales Koordinatensystem definieren.
   </g>
 </htmlcode>
 
-<div class="alert"><a class="close" data-dismiss="alert">×</a><strong>ToDo</strong> hier fehlt noch Text zu den verschiedenen Transformationen und der Transformations-Matrix.</div>
+<div class="alert"><strong>ToDo</strong> hier fehlt noch Text zu den verschiedenen Transformationen und der Transformations-Matrix.</div>
 
 

@@ -5,4 +5,8 @@ order: 100
 
 Die OWASP beschreibt dieses Problem allgemein so:
 
-Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Nutzer auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Para-meter für Umleitungen, so dass Angreifer die Zielseiten selbst festlegen können.
+Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.
+
+
+<div class="alert"><strong>ToDo</strong> hier fehlt noch eine Beispiel Implementierung in PHP</div>
+
