@@ -11,9 +11,9 @@ Nun wollen wir uns genauer mit Javascript beschäftigen.
 * Was eine Closure ist
 * Das Javascript eine objektorientierte Sprache ohne Klassen ist
 * Wie prototypen für Vererbung in Javascript verwendet werden
-* Wie Closures im Modul-Pattern verwendet werden, um Zugriffsschutz herzustellen
+* (Wie Closures im Modul-Pattern verwendet werden, um Zugriffsschutz herzustellen - (kapitel fehlt noch)
 
 ### Was Sie können sollten
 * Funktionen in Javascript verwenden
 * Objekte in Javascript verwenden
-* Module in Javascript verwenden
+* Module in Javascript verwenden - (kapitel fehlt noch)
