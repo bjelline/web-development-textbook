@@ -5,24 +5,9 @@ order: 40
 
 Die OWASP beschreibt dieses Problem ungefähr so:
 
-> Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. Anwendungen prüfen dabei nicht immer, ob die BenutzerIn für den Zugriff auf diese autorisiert ist. Dies führt zu unsicheren direkten Objektreferenzen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.
+> Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.
 
-
-## Nur was serverseitig geprüft wird ist sicher
-
-Bei der Programmierung von Web-Applikationen muss man sich immer bewusst sein,
-dass Alles was im Client passiert, bzw vom Client geschickt wird, manipuliert werden kann.
-Meine Serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
-sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist.
-
-Gängige Fehleinschätzungen dieser Art sind:
-
-* Wenn ich keinen Link dazu machen findet das eh niemand.
-** Das ist falsch!
-* Wenn ich die Daten in ein hidden-field im Formular schreibe können sie nicht verändert werden
-** Das ist falsch!
-* Wenn die Daten des Formulars per POST übertragen werden können sie nicht manipuliert werden
-** Das ist falsch!
+Dieser Punkt hängt eng mit [/security/a8-url/](A8 - Mangelhafter URL-Zugriffsschutz) zusammen.
 
 ## Beispiel für unsichere direkte Referenz
 
@@ -60,8 +45,8 @@ statt IDs verwendet. Sie sind auch unter dem namen "friendly urls" und (z.B. in 
 Die Verwendung von Slugs hat mehrere Vorteile:
 
 1. Das erraten eines weiteren Keys ist nicht so leicht wie bei Zahlen
-2. URLs werden dadurch leichter lesbar und sind leichter zu merken
-3. Auch Suchmaschinen lesen den Text des Slugs, er gilt genauso wie der Text der Seite
+2. URLs werden dadurch leichter lesbar und sind leichter zu erinnern
+3. Auch Suchmaschinen lesen den Text des Slugs, die Seite kann auch unter den Stichwörtern des Slugs gefunden werden
 
 Mit folgender Konfigurations-Datei `.htaccess` wir der Apache-Webserver angewiesen
 beim Aufruf der URL `/item/text-der-slug` in Wirklichkeit das PHP-Programm `view_item.php` mit dem Parameter 
@@ -84,12 +69,12 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:
 
 Eine denkbar schlechte Implementiereung dieser Galerie wäre:
 
-<html caption="Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!">
+<htmlcode caption="Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!">
   <img src="<?= $_GET['img'] ?>">
   <?php
   include $_GET['text'];  // nicht so programmieren!!!
   ?>
-</html>
+</htmlcode>
 
 Mit diesem Programm kann man durch einfaches ändern der URL beliebige
 Dateien am Server "erforschen". 

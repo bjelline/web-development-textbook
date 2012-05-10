@@ -8,6 +8,7 @@ Rund um Authentifizierung und Session-Management treten viele Probleme auf.
 ## Keine Information in Fehlermeldungen preisgeben
 
 Authentisierung kann aus vielen Gründen fehl schlagen: 
+
 * der Username existiert gar nicht
 * dieser Account ist gesperrt
 * das Passwort passt nicht
@@ -22,14 +23,19 @@ von Usernamen genau so geheim halten wie die Passwörter.
 
 ## Session ID wie Passwort schützen
 
-Das Protokoll HTTP ist stateless.  Wenn man trotzdem UserInnen Authentifizieren
-will, dann muss bei jedem Request eine Authentifizierende Information, zum Beispiel eine Session-ID,
-mitgeschickt werden.  Dies geschieht zum Beispiel in einem Cookie.  Wenn es gelingt diese Information abzuhören und wieder
-zu verwenden, dann erhält man den gleichen Zugang wie die eigentliche UserIn.
+Das Protokoll HTTP ist stateless.  Wenn man trotzdem UserInnen authentifizieren
+will, dann muss bei jedem Request eine authentifizierende Information, zum Beispiel eine Session-ID,
+mitgeschickt werden.  Dies geschieht zum Beispiel in einem Cookie.  
 
-Deswegen ist es notwendig jeden Request über SSL/TLS zu verschlüsseln!
+Wenn es gelingt diese Information abzuhören und wieder zu verwenden, 
+dann erhält man den gleichen Zugang wie die eigentliche UserIn. Diese
+Art der Angriffs nennt man "Replay Attacke" - ein Request wird abehört und
+gleich wieder verwendet.
 
-Nicht nur Passwörter, sondern auch Session Ids sind überall vor dem Abhören zu schützen - auch in Logfiles.
+Um Passwörter ebenso wie Session Ids und Cookies vor dem Abhören zu 
+schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/TLS möglich.
+Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
+Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln.
 
 ## Nicht selbst implementieren
 
@@ -37,15 +43,19 @@ Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management z
 
 PHP liefert bereits ein fertiges Session-System.
 
-## Neue Session wenn bei Login / Logout / neuen Rechten
+## Neue Session bei Login / Logout / neuen Rechten
 
-Bei der "Session Fixation" Attacke versucht die HackerIn eine Session-ID für eine andere BenutzerIn  der
-attackierten Site vorzugeben.  Wenn das gelingt, und sich die andere BenutzerIn später einloggt, kann die HackerIn
-mit der bekannten Session ID die Session der anderen BenutzerIn (inklusive Rechte) übernehmen.
+Die "Session Fixation" Attacke funktioniert mit der Session Id. Ein Beispiel:
+
+Alyssa P. Hacker sendet einen Link an Peter Publikum. Dieser Link führt
+zur Bank von Peter Publikum, und gibt schon eine Session Id vor. Wenn sich
+Peter Publikum nun bei seinem Online-Banking einloggt, die Session Id aber
+gleich bleibt, dann kann Alyssa P. Hacker mit der gleichen Session die Online Banking
+Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.
 
 Um diese Art der Attacke zu vermeiden muss man beim Login und Logout jeweils eine neue Session starten.
 
-In PHP geht das mit den befehlen:
+In PHP geht das mit folgenden Befehlen:
 
 <php caption="neue Session starten nach erfolgreichem Login">
   session_start();
@@ -57,6 +67,6 @@ In PHP geht das mit den befehlen:
 
 ## Mehr
 
-Siehe [Authentication Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
-
-Siehe [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
+Die OWAAS bietet noch mehr Informationen zu diesem Thema an
+im  [Authentication Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
+und im [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet).

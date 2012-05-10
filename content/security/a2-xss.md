@@ -30,6 +30,7 @@ Cross Site Scripting kann komplett vermieden werden, wenn man niemals Input von 
 Das ist ein seltener, aber sehr sicherer Fall.
 
 XSS vermeinden kann man mit zwei Verteidigungs-Linien:
+
 * Schon bei der Eingabe (mit einer white-list) alles Entfernen was nicht harmlos ist. 
 * Bei der Ausgabe immer ein geeignetes Escaping verwenden
 

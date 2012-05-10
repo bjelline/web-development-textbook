@@ -42,8 +42,8 @@ Im dritten und schlechtesten Fall ist weiter zu beachten:
 
 * Bei der Validierung des Inputs immer ein ‘white list’ verwenden, also nur Zeichen erlauben die harmlos sind (auf der "weissen Liste" stehen), alle anderen verwerfen
 
-
 Unabhängig von den oben genannten Punkt gilt noch die Empfehlung:
+
 * Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungen Injection minimiert werden.
 
 

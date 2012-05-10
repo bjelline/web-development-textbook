@@ -36,10 +36,10 @@ class Nanoc3::Filter
         @output << match.pre_match
         @output << "</div>\n<div class='slide'>\n\n"
         if match[0] =~ /§/
-          puts "ignore #{match[0]}"
+          #puts "ignore #{match[0]}"
           # discard match
         else
-          puts "output #{match[0]}"
+          #puts "output #{match[0]}"
           @output << match[0] 
         end
       end
