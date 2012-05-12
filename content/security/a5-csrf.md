@@ -79,12 +79,12 @@ Wenn ein Request verarbeitet wird, wird überprüft ob das Token vorhanden
 ist und noch gültig ist:
 
 <php caption="Check des Tokens">
-  if (!isset($_SESSION['token']))            raise TokenException;
-  if ($_POST['token'] != $_SESSION['token']) raise TokenExeption;
+  if (!isset($_SESSION['token']))            throw TokenException;
+  if ($_POST['token'] != $_SESSION['token']) throw TokenException;
 
   $token_age = time() - $_SESSION['token_time'];
    
-  if ($token_age > 300)                      raise TokenException;
+  if ($token_age > 300)                      throw TokenException;
 </php>
 
 ## Quellen
