@@ -68,15 +68,25 @@ verwendet werden; x,y,z für Koordinaten. Diese Konvention muss man nicht einhal
 aber man sollte nicht gegen sie arbeiten:
 
 <javascript caption="Kurze Variablennamen und Konventionen aus der Mathematik">
-// gegen die Konvention          //     // mit der Konvention
-var x=0;                         //     var i=0;
-var i,k;                         //     var x,y;
-while( x < 10 ) {                //     while( i < 10 ) {
-  i = rand(0,100);               //       x = rand(0,100);
-  k = rand(0,200);               //       y = rand(0,200);
-  drawStarAt( i,k );             //       drawStarAt( x,y );
-  x++;                           //       i++;
-}                                //     }
+// gegen die Konvention
+var x=0;
+var i,k;
+while( x < 10 ) {
+  i = rand(0,100);
+  k = rand(0,200);
+  drawStarAt( i,k );
+  x++;
+}
+§
+// mit der Konvention
+var i=0;
+var x,y;
+while( i < 10 ) {
+  x = rand(0,100);
+  y = rand(0,200);
+  drawStarAt( x,y );
+  i++;
+}
 </javascript>
 
 

@@ -100,12 +100,26 @@ class Nanoc3::Filter
     def generate_brushes(tag, replace, filename, caption)
       match = scan_until %r{</#{tag}>}
       if match and match.pre_match then
-        @output << %{<div class="example">\n}
-        @output << %{<div class="filename">#{filename}</div>\n} if filename
-        @output << %{<h4 class="caption">#{replace.capitalize} Code <small>#{caption}</small></h4>\n} if caption
-        @output << %{<pre class="lang-#{replace} prettyprint linenums">} 
-        @output << CGI.escapeHTML(match.pre_match) << %{</pre>}
-        @output << %{</div>\n}
+        code = match.pre_match;
+        if match = code.match(/§/)  then
+          code1 = match.pre_match
+          code2 = match.post_match
+          @output << %{<div class="example twopane">\n}
+          @output << %{<div class="filename">#{filename}</div>\n} if filename
+          @output << %{<h4 class="caption">#{replace.capitalize} Code <small>#{caption}</small></h4>\n} if caption
+          @output << %{<pre class="lang-#{replace} prettyprint linenums left">} 
+          @output << CGI.escapeHTML(code1) << %{</pre>}
+          @output << %{<pre class="lang-#{replace} prettyprint linenums right">} 
+          @output << CGI.escapeHTML(code2) << %{</pre>}
+          @output << %{<div class="clearfix"></div></div>\n}
+        else 
+          @output << %{<div class="example">\n}
+          @output << %{<div class="filename">#{filename}</div>\n} if filename
+          @output << %{<h4 class="caption">#{replace.capitalize} Code <small>#{caption}</small></h4>\n} if caption
+          @output << %{<pre class="lang-#{replace} prettyprint linenums">} 
+          @output << CGI.escapeHTML(code) << %{</pre>}
+          @output << %{</div>\n}
+        end
       end
     end
 
