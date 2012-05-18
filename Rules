@@ -154,6 +154,7 @@ preprocess do
     "security",
     "svg",
     "javascript",
+    "applied-javascript",
   ]
 
   @chapters = {}
