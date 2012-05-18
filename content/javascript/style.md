@@ -42,7 +42,7 @@ Aber das ist eher der Ausnahmefall.
 
 Ein Programm wieder und wieder zu verändert, bis es endlich funktionert, nennt man **Debugging**.
 Oft ist hier Schluss - das Programm funktioniert ja schliesslich! Aber auch wenn die Funktionalität
-fertig gestellt ist kann man das Programm weiter bessern: besser lesbar, besser veränderbar, besser wartbar.
+fertig gestellt ist kann man das Programm weiter verbessern: besser lesbar machen, besser veränderbar, besser wartbar.
 
 Eine Veränderung am Programm, die die Funktionalität unverändert lässt, und andere Aspekte
 des Programmes verbessert, nennt man **Refactoring**. Dabei geht man in kleinen Schritten vor:
@@ -53,10 +53,15 @@ einzelnen Schritt ist das Programm wieder funktionstüchtig.
 Wenn man ein Versionskontrollsystem verwendet kann man nach jedem Schritt ein commit mit einer
 passenden log-message machen.
 
+Wenn man Code liest, und Stellen entdeckt, die man verbessern könnte, dann nennt man
+die üblen Stellen **Code Smells**.
 
 ## Variablen
 
 Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
+Variablen sollen so kurz wie möglich, aber nicht kürzer sein.
+
+### Konvenelle Variablennamen
 
 Aus der Mathematik wurde Konventionen übernommen, z.B. dass i,j,k als Zähler für Schleifen
 verwendet werden; x,y,z für Koordinaten. Diese Konvention muss man nicht einhalten,
@@ -75,12 +80,214 @@ while( x < 10 ) {                //     while( i < 10 ) {
 </javascript>
 
 
-## Fixe Werte durch Variablen ersetzen.
+### Fixe Werte durch Variablen ersetzen
 
 Nebenbemerkung: In Javascript gibt es keine Konstanten im Sinne von C/C++/Java: Der Wert jeder Variable kann
 im Lauf des Programms verändert werden.  
 
-<div class="alert"><strong>ToDo</strong> mehr Beispiele</div>
+Wenn in einem Programm dieselbe Zahl mehrmals vorkommt kann das ein Hinweis
+sein, dass man eine Konstante / Variable verwenden sollte. Folgendes Programm
+zeichnet ein Rechteck in ein neu geschaffens SVG:
+
+<javascript caption="Rechteck zeichnen - mit fixen Zahlen">
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width",  1024);
+  svg.setAttribute("height", 768);
+
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  frame.setAttribute( 'x', 0 );
+  frame.setAttribute( 'y', 0 );
+  frame.setAttribute( 'width', 1024 );
+  frame.setAttribute( 'height', 768 );
+  frame.setAttribute( 'stroke', 'black' );
+  frame.setAttribute( 'stroke-width', 1 );
+  frame.setAttribute( 'fill', 'red' );
+  svg.appendChild( frame );
+
+  document.querySelector("body").appendChild( svg );
+</javascript>
+
+§
+
+Die Größe des Rahmens ist hier eigentlich von der Größe des SVG abhängig,
+es macht also Sinn eine Variable zu verwenden:
+
+<javascript caption="Rechteck zeichnen - mit fixen Zahlen">
+  var svg_width  = 1024;
+  var svg_height = 768;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width",  svg_width);
+  svg.setAttribute("height", svg_height);
+
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  frame.setAttribute( 'x', 0 );
+  frame.setAttribute( 'y', 0 );
+  frame.setAttribute( 'width', svg_width );
+  frame.setAttribute( 'height', svg_height );
+  frame.setAttribute( 'stroke', 'black' );
+  frame.setAttribute( 'stroke-width', 1 );
+  frame.setAttribute( 'fill', 'red' );
+  svg.appendChild( frame );
+
+  document.querySelector("body").appendChild( svg );
+</javascript>
+
+§
+
+Nun kann man auch die Breite des Rahmens in einer Variablen speichern:
+
+
+<javascript caption="Rechteck zeichnen - mit Variable für Rahmenbreite">
+  var svg_width  = 1024;
+  var svg_height = 768;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width",  svg_width);
+  svg.setAttribute("height", svg_height);
+
+  var frame_border_width = 10;
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  frame.setAttribute( 'x', frame_border_width/2 );
+  frame.setAttribute( 'y', frame_border_width/2 );
+  frame.setAttribute( 'width', svg_width - frame_border_width );
+  frame.setAttribute( 'height', svg_height  - frame_border_width  );
+  frame.setAttribute( 'stroke', 'black' );
+  frame.setAttribute( 'stroke-width',  frame_border_width  );
+  frame.setAttribute( 'fill', 'red' );
+  svg.appendChild( frame );
+
+  document.querySelector("body").appendChild( svg );
+</javascript>
+
+
+
+## Code wiederverwenden
+
+Ein ganz wichtiger **Code Smell** ist kopierter Code:  die gleichen Zeilen finde 
+ich an mehreren Stellen im Programm. Je größer der wiederholte Teil, desto schlimmer.
+
+Im schlimmsten Fall ist kopierter Code ein Hinweis darauf, dass der Code
+gar nicht verstanden, sondern nur wiederverwendet wurde. Diese Art ein Programm
+zu erzeugen nennt man [Cargo Cult Programming](http://en.wikipedia.org/wiki/Cargo_cult_programming) 
+- das Verwenden oder Nachahmen von Technik die man nicht versteht [Bilder](https://www.google.com/search?q=Cargo+cult+airplane&tbm=isch).
+
+### Schleife statt kopierterm Code
+
+Es sollen drei Quadrate nebeneinander gezeichnet werden. In diesem Beispiel
+wurde der Code zum Zeichnen des Quadrats kopiert, nur die X-Koordinate
+unterscheidet sich.
+
+<javascript caption="Zeichne drei Quadrate - mit kopiertem Code">
+var svg_width  = 1024;
+var svg_height = 768;
+var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width",  svg_width);
+svg.setAttribute("height", svg_height);
+
+var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+frame.setAttribute( 'x', 1 );
+frame.setAttribute( 'y', 1 );
+frame.setAttribute( 'width', 20 );
+frame.setAttribute( 'height', 20 );
+frame.setAttribute( 'stroke', 'black' );
+frame.setAttribute( 'stroke-width',  1);
+frame.setAttribute( 'fill', 'red' );
+svg.appendChild( frame );
+
+var frame_border_width = 10;
+var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+frame.setAttribute( 'x', 21 );
+frame.setAttribute( 'y', 1 );
+frame.setAttribute( 'width', 20 );
+frame.setAttribute( 'height', 20 );
+frame.setAttribute( 'stroke', 'black' );
+frame.setAttribute( 'stroke-width',  1);
+frame.setAttribute( 'fill', 'red' );
+svg.appendChild( frame );
+
+var frame_border_width = 10;
+var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+frame.setAttribute( 'x', 41 );
+frame.setAttribute( 'y', 1 );
+frame.setAttribute( 'width', 20 );
+frame.setAttribute( 'height', 20 );
+frame.setAttribute( 'stroke', 'black' );
+frame.setAttribute( 'stroke-width',  1);
+frame.setAttribute( 'fill', 'red' );
+svg.appendChild( frame );
+
+document.querySelector("body").appendChild( svg );
+</javascript>
+
+§ 
+
+Da der einzige Unterschied zwischen den kopierten Code-Zeilen die
+X-Koordinate ist, und diese stetig ansteigt, kann man hier eine 
+Schleife verwenden, um den Code wiederzuverwenden.
+
+Aus der Schleifenvariable i = 0,1,2 kann ganz einfach
+die X-Koordinate x = 1, 21, 41 berechnet werden: `x = i * 20 + 1`;
+
+<javascript caption="Zeichne drei Quadrate - mit Schleife">
+var svg_width  = 1024;
+var svg_height = 768;
+var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width",  svg_width);
+svg.setAttribute("height", svg_height);
+
+var i=0;
+while( i < 3 ) {
+
+  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  frame.setAttribute( 'x', i * 20 + 1 );
+  frame.setAttribute( 'y', 1 );
+  frame.setAttribute( 'width', 20 );
+  frame.setAttribute( 'height', 20 );
+  frame.setAttribute( 'stroke', 'black' );
+  frame.setAttribute( 'stroke-width',  1);
+  frame.setAttribute( 'fill', 'red' );
+  svg.appendChild( frame );
+
+  i++;
+}
+
+document.querySelector("body").appendChild( svg );
+</javascript>
+
+### Funktion statt kopiertem Code
+
+Eine noch bessere Art der Wiederverwertung von Code ist die
+Funktion. Dabei muss man sich entscheiden, welche Argumente
+die Funktion akzeptieren soll. Nur die X-Koordinate?  
+X-, Y-Koordinate, Länge und Breite?  Je nachdem in welcher
+Weise der Code wieder verwendet werden soll ergeben sich andere
+Argumente.
+
+<javascript caption="Zeichne drei Quadrate - mit Funktion">
+  var svg_width  = 1024;
+  var svg_height = 768;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width",  svg_width);
+  svg.setAttribute("height", svg_height);
+
+  function addRect( svg, x,y,w,h ) {
+    var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    frame.setAttribute( 'x', x);
+    frame.setAttribute( 'y', y );
+    frame.setAttribute( 'width',w);
+    frame.setAttribute( 'height', h);
+    frame.setAttribute( 'stroke', 'black' );
+    frame.setAttribute( 'stroke-width',  1);
+    frame.setAttribute( 'fill', 'red' );
+    svg.appendChild( frame );
+  }
+
+  addRect( svg,  1, 1, 20, 20 );
+  addRect( svg, 21, 1, 20, 20 );
+  addRect( svg, 41, 1, 20, 20 );
+
+  document.querySelector("body").appendChild( svg );
+</javascript>
+
 
 ## Quellen
 
@@ -92,6 +299,7 @@ Dieses Kapitel beschreibt u.a. einen Teil der Coding Conventions von Douglas Cro
 
 Das Beispiel für nicht-lesbaren Code wurde mit dem Google Closure Compiler erzeugt.
 (achtung: "Closure" ist hier ein Eigenname - ein sehr verwirrender Eigenname. Stellen
-Sie sich vor man würde ein Auto nach einem Bauteil benennen, z.B. 'Opel Kurbelwell', 'VW Fensterheber', 'Fiat Zündkerze'.)
+Sie sich vor man würde ein Modell eines Autos nach einem Bauteil benennen, 
+z.B. 'Opel Kurbelwelle', 'VW Fensterheber', 'Fiat Zündkerze' als Name eines bestimmten Modells.)
 
 * [Google Closure Compiler](http://closure-compiler.appspot.com/home)
