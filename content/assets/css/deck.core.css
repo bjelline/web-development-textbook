@@ -192,6 +192,7 @@ body.deck-container {
   width: auto;
   min-height: 100%;
   position: relative;
+  padding-top: 1em;
 }
 .slide h1 {
   font-size: 4.5em;
