@@ -66,15 +66,15 @@ while( i < $q.length ) {
 §
 // Nodes mit CSS-Selektor auswählen
 arr = document
-        .querySelectorAll("class");
+        .querySelectorAll(".class");
 
 // wie viele sind es?
-if( node_array.length > 1 ) {
+if( arr.length > 1 ) {
   console.log("mehrere");
 }
 
 // in jQuery-Objekt
-$q = $(node_array);
+$q = $(arr);
 
 
 
@@ -100,7 +100,7 @@ arr = document.querySelectorAll("h2");
 // jQuery 
 
 // Eine Node nach ID auswählen 
-$q = $("id");
+$q = $("#id");
 
 // Erste Node mit CSS-Selektor auswählen
 $q = $("h2:first");
