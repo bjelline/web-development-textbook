@@ -323,7 +323,7 @@ BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den 
 Zeitbeschränkung von Sessions einen Sinn macht: Zum Verhindern von
 [Cross Site Request Forgeries - CSRF](/security/a5-csrf/).  Das
 ist aber nur bei Operationen sinnvoll, die etwas am Server ändern,
-bzw. die Daten abfragen die besonder geschützt werden müssen.
+bzw. die Daten abfragen die besonders geschützt werden müssen.
 
 Die "Liste der Bücher mit dem Wert `Web` im Titel" ist nicht schützenswert.
 

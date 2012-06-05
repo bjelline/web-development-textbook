@@ -23,7 +23,7 @@ pre {
 }
 
 .example.twopane pre {
-  width: 45%;
+  width: 42%;
   float:left; 
 }
 
@@ -36,4 +36,8 @@ pre.right {
   border-left: none; 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+}
+
+a[name]:before {
+   content: "";
 }

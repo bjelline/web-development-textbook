@@ -64,7 +64,7 @@ Das ist völlig problemloses HTML
   <p>bla bla ...</p>
 </section>
 ...
-§
+__|__
 #navigation {
   position: fixed;
   z-index: 10;
@@ -225,6 +225,16 @@ Diese Herangehensweise - Feature Detection, dann Flags setzen,
 die im weiteren Code verwendet werden können - wird von der Library
 [modernizr](http://modernizr.com/) für eine lange Liste von Features
 angeboten.
+
+§
+
+In ganz seltenen Fällen muss man doch Browser Detection machen.
+Eine Gute Library dafür ist [HTML5 please](http://api.html5please.com/).
+Damit kann man eine Liste von Features angeben die erfüllt sein
+müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
+wird eine entsprechende Meldung angezeigt
+
+![HTML5 please Fehlermeldung](/images/html5please.png)
 
 §
 

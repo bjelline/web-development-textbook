@@ -46,7 +46,7 @@ Für die Darstellung im Browser war aber damals die Installation eines Plugins n
 Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer) wird SVG
 im Browser nativ dargestellt.
 
-<htmlcode caption="Einbindung von SVG in HTML">
+<htmlcode caption="Einbindung von SVG in HTML (Inline-SVG)">
   <svg width="200" height="200" style="float:left;">
     <circle cx="100" cy="100" r="80"                 stroke="black" stroke-width="2" fill="#4e9a06" />
     <rect    x="80"   y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
@@ -59,4 +59,5 @@ Darstellung im Browser werden sie mit dem [Painters Algorithm](http://de.wikiped
 "spätere" Objekte übermalen "frühere" Objekte. Deswegen überdeckt das blaue Rechteck
 im Beispiel den grünen Kreis.
 
-
+Inline SVG wird heute von den aktuellen Browsersn unterstütz, siehe
+[can i use](http://caniuse.com/#feat=svg-html5)

@@ -32,7 +32,7 @@ $q = $("#idname");
 // DOM-Node extrahieren:
 node = $q.get(0);
 node = $q[0];
-§
+__|__
 // von Javascript zu jQuery
 
 // Eine Node nach ID auswählen 
@@ -63,7 +63,7 @@ var i=0, arr=Array();
 while( i < $q.length ) {
   arr[i] = $q.get(i);
 }
-§
+__|__
 // Nodes mit CSS-Selektor auswählen
 arr = document
         .querySelectorAll(".class");
@@ -90,23 +90,23 @@ Wie wählt man Nodes aus der DOM aus?
 // Eine Node nach ID auswählen
 node = document.getElementById("id");
 
-// Erste Node mit CSS-Selektor auswählen
+// Erste Node auswählen
 node = document.querySelector("h2");
 
 
-// Alle Nodes mit CSS-Selektor auswählen
+// Alle Nodes auswählen
 arr = document.querySelectorAll("h2");
-§
+__|__
 // jQuery 
 
 // Eine Node nach ID auswählen 
 $q = $("#id");
 
-// Erste Node mit CSS-Selektor auswählen
-$q = $("h2:first");
-$q = $("h2").first();
+// Erste Node auswählen
+$q = $("h2:first");   
+$q = $("h2").first(); 
 
-// Alle Nodes mit CSS-Selektor auswählen
+// Alle Nodes auswählen
 $q = $("h2");
 </javascript>
 
@@ -131,7 +131,7 @@ while( i < node.children.length ) {
 
 
 
-§
+__|__
 // jQuery 
 
 // hinauf zur Eltern-Node (Mehrzahl!)
@@ -151,18 +151,71 @@ $n = $q.next('p');
 
 ## Attribute
 
-Wie liest man Attribute aus, wie setzt man sie?
+Wie liest man Attribute aus, wie setzt man sie? Das ist in reinem Javascript
+sogar etwas einfacher als mit jQuery: die Attribute sind einfach Eigenschaften
+des jeweiligen Nodes und könnnen direkt manipuiert werden.
+
+jQuery erleichtert einerseits das Verarbeiten einer ganzen Liste von Nodes,
+und bietet andererseites ein paar besser verständliche Werte für Attribute:
 
 <javascript caption="Attribute lesen und setzen">
-// plain Javascript
-// todo
-§
-// jQuery 
-// todo
+// plain Javascript - nur erstes h2!
+document.querySelector('h2').align;
+document.querySelector('h2')
+  .align = 'center';
+
+// Form-Element deaktivieren
+document.querySelector('input')
+  .disabled = "disabled";
+
+// existiert nicht
+
+
+
+
+__|__
+// jQuery - alle h2!
+$('h2').attr('align');
+$('h2')
+  .attr('align', 'center');
+
+// Form-Element deaktivieren
+$('input')
+  .attr('disabled', true);
+
+// Node nach Attribut auswählen:
+// Input-Tag mit ID und Attribut 
+// 'name' das auf '_no' endet
+$('input[id][name$='_no'])
+
 </javascript>
 
+Bei der Manipulation von CSS ist zu beachent: die Schreibweise
+von CSS-Eigenschaften mit einem Minus-Zeichen lässt sich nicht
+nach Javascript übertragen.  In Javscript wird deswegen aus 
+`background-color` die Eigenschaft `backgroundColor`.
 
-## Einfügen
+<javascript caption="Style setzen">
+// Style setzen - Schreibweise!
+document.querySelector('h2')
+  .style.backgroundColor = "yellow";
+
+
+
+
+
+__|__
+// Style setzen
+ $('h2')
+  .css('background-color', 'yellow');
+
+// mehrere Eigenschaften setzen
+ $('h2')
+  .css({backgroundColor: 'yellow',
+    color: 'red'});
+</javascript>
+
+## HTML einfügen
 
 Wie fügt man eine Node in die DOM ein?
 
@@ -185,7 +238,8 @@ node.innerHTML =
   "<a href='page.html'>Hallo</a>";
 
 
-§
+
+__|__
 // jQuery 
 
 // Text einfügen
@@ -204,6 +258,7 @@ $l = $("<a>")
        .attr('href', 'page.html')
        .text('Hallo');
 $n.append($l);
+
 </javascript>
 
 ## Clonen
@@ -212,10 +267,36 @@ Wie kopiert oder verschiebt man eine vorhandene Node?
 
 <javascript caption="Node clonen">
 // plain Javascript
-// todo
-§
-// jQuery 
-// todo
+
+// dolly kopieren und einfügen
+var d2 = document
+  .getElementById('dolly')
+  .cloneNode();
+document.getElementById('ziel')
+  .appendChild(d2);
+
+// kirk ans ziel verschieben
+var beam = document
+  .getElementById('kirk')
+  .removeChild();
+document.getElementById('ziel')
+  .appendChild(beam);
+__|__
+// jQuery
+
+// dolly kopieren und einfügen
+$('#dolly').clone().appendTo('#ziel');
+
+
+
+
+
+// kirk ans ziel verschieben
+$('#ziel').append($('kirk').remove());
+
+
+
+
 </javascript>
 
 
@@ -227,7 +308,7 @@ Wie fügt man einen Event-Handler ein?
 <javascript caption="Events">
 // plain Javascript
 node.addEventListener("click", f);
-§
+__|__
 // jQuery 
 $n.on("click", f);
 </javascript>

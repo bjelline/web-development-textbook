@@ -22,6 +22,13 @@ class Nanoc3::Filter
     end
   end
 
+  class NoSlides < Nanoc3::Filter
+    def run(content, params={})
+      @output = content.dup.gsub(/^.*§.*$/,'');
+      @output
+    end
+  end
+
   class Slides < Nanoc3::Filter
     def run(content, params={})
       @string = content.dup
@@ -30,7 +37,7 @@ class Nanoc3::Filter
       @pending = ""
 
       until @string.empty?
-        match = scan_until /^(<h[1234].*?>|<hr>+|^(<p>)*§(<.p>)*)$/m
+        match = scan_until /^(<h[123].*?>|<hr>+|^(<p>)*§(<.p>)*)$/m
 
         break if !match
 
@@ -102,7 +109,9 @@ class Nanoc3::Filter
       match = scan_until %r{</#{tag}>}
       if match and match.pre_match then
         code = match.pre_match;
-        if match = code.match(/§/)  then
+        if code.match(/<\/javascript>/)  then
+          puts "this is an ERROR!"
+        elsif match = code.match(/^__\|__$/)  then
           code1 = match.pre_match
           code2 = match.post_match
           @output << %{<div class="example twopane">\n}
@@ -133,6 +142,7 @@ end
 
 Nanoc3::Filter.register 'CodeBlocks',    :code_blocks
 Nanoc3::Filter.register 'Slides',        :slides
+Nanoc3::Filter.register 'NoSlides',      :noslides
 Nanoc3::Filter.register 'Peek',          :peek
 
 preprocess do
@@ -228,9 +238,9 @@ route "/dex" do
 end
 
 compile '*' do
+  filter :noslides
   filter :code_blocks
   filter filters[item[:extension].to_sym] || item[:extension].to_sym
-  filter :slides
   if item[:homepage]
     layout 'home'
   elsif item.identifier.match /\/dex\/$/
