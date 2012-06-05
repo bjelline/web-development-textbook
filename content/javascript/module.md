@@ -122,7 +122,7 @@ Beachten sie dabei die Klammern rund um die Funktions-Definition:
 <javascript caption="Schreibweise für sofort ausgewertete Funktionen">
 var g = (function(){
   return 42;
-)();
+})();
 </javascript>
 
 §
@@ -143,7 +143,7 @@ var g = (function(){
   c = new Ding();
 
   return a;
-)();
+})();
 </javascript>
 
 §
