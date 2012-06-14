@@ -46,8 +46,8 @@ Passwörtern und den dazugehörigen Hash-Werten.
 Level 2: gesalzene Passwörter, stärkere Hashes.  Das ist der aktuelle Stand der
 Technik.
 
-(Bachfeld(2011): Cracker-Bremse - Passwörter unknackbar speichern. In c't 13/2011)[http://www.heise.de/security/artikel/Passwoerter-unknackbar-speichern-1253931.html?view=print]
+[Bachfeld(2011): Cracker-Bremse - Passwörter unknackbar speichern. In c't 13/2011](http://www.heise.de/security/artikel/Passwoerter-unknackbar-speichern-1253931.html?view=print)
 
-Bachfeld verweist auf die PHP Library (PHPpass)[http://www.openwall.com/phpass/]
+Bachfeld verweist auf die PHP Library [PHPpass](http://www.openwall.com/phpass/)
 
 
