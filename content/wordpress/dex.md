@@ -30,4 +30,6 @@ In diesem Kapitel lernen Sie '''Wordpresss''' als Beispiel für so ein System ke
 * [Dokumetation von Wordpress](http://codex.wordpress.org/)
 
 
+### Vertiefung
 
+* [Wordpress und Git](http://c3mdigital.com/adding-git-to-your-wordpress-development-workflow/)

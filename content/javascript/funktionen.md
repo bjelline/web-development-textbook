@@ -15,7 +15,7 @@ Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
       result += s;
       x--;
     }
-    return s;
+    return result;
   }
 
   r2 = function ( s, x ) {

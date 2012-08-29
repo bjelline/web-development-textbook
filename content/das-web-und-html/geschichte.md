@@ -13,6 +13,8 @@ Zu dieser Zeit – Anfang der 90er Jahre – war das Internet ein rein akademisc
 sehr geringen Bandbreite,  <!-- XE "Bandbreite" -->  wie folgendes „fact sheet“ aus der Zeit 
 dokumentiert:
 
+§
+
 <plain>
     Date: Fri, 20 Mar 1992 13:50:09 
     From: dekker@rare.nl (Marieke G. Dekker) 

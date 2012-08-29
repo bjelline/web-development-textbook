@@ -17,3 +17,7 @@ Nun wollen wir uns genauer mit Javascript als Programmiersprache beschäftigen.
 * Funktionen in Javascript verwenden
 * Objekte in Javascript verwenden
 * Module in Javascript verwenden - (kapitel fehlt noch)
+
+
+## Vertiefung
+* [JavaScript Game Code Organization](http://buildnewgames.com/js-game-code-org/)

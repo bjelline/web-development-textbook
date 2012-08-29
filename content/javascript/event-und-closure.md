@@ -211,7 +211,8 @@ Ein Data-Attribut könnte man mit Javascript setzen. Hier ein Versuch:
 
 <javascript caption="Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht">
   c = document.getElementById("circle_1");
-  c.setAttribute("data-myobject", { color: 'red', no: 42 } ); // Versuch ein Objekt zu speichern
+  // Versuch ein Objekt zu speichern
+  c.setAttribute("data-myobject", { color: 'red', no: 42 } ); 
 
   o = c.getAttribute("data-editorobject");    // auslesen der Daten
   typeof o        // ergibt "string"
@@ -252,7 +253,7 @@ addDragability( other_jsobj, other_element );
 Wenn man die Beschreibung von Drag-and-Drop nochmal betrachtet ...
 
 * Wenn die Maus-Taste gedrückt wird, und der Mauszeiger über einem Rechteck oder Kreis steht, dann beginnt das Drag-and-Drop. Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt müssen gespeichert werden.
-* Wenn die Maus sich beweget, und wir in einem Drag-and-Drop sind, dann wird die differenz zwischen aktueller Maus-Position und der Start-Position berechnet. Das ergibt einen Translations-Vektor. Dieser Vektor wird zur Startposition des Objekts addiert und ergibt die aktuelle Position des Objekts. ("Drag")
+* Wenn die Maus sich beweget, und wir in einem Drag-and-Drop sind, dann wird die Differenz zwischen aktueller Maus-Position und der Start-Position berechnet. Das ergibt einen Translations-Vektor. Dieser Vektor wird zur Startposition des Objekts addiert und ergibt die aktuelle Position des Objekts. ("Drag")
 * Wenn die Maus los gelassen wird wird Drag-and-Drop beendet
 
 und das nun in Event-Listener umsetzen will kommt man zu folgender Struktur
@@ -260,13 +261,15 @@ und das nun in Event-Listener umsetzen will kommt man zu folgender Struktur
 <javascript caption="Struktur der Event-Listener für Drag-and-Drop">
 function addDragability( jsobj, element ) {
   function onMove(e) {
-    // die differenz zwischen aktueller Maus-Position und der Start-Position berechnen. 
-    // Das ergibt einen Translations-Vektor. 
-    // Diesen Vektor zur Startposition des Objekts addieren, aktuelle Position des Objekts setzen
+    // die Differenz zwischen aktueller Maus-Position und der 
+    // Start-Position berechnen. Das ergibt einen Translations-Vektor. 
+    // Diesen Vektor zur Startposition des Objekts addieren, 
+    // aktuelle Position des Objekts setzen
   }
   function onMouseDown(e) {
     // Drag-und-Drop beginnt: den richtigen eventlistener für mousemove setzen
-    // Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt müssen gespeichert werden.
+    // Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt 
+    // müssen gespeichert werden.
   }
   function onMouseUp(e) {
     // Drag-and-Drop beenden: nicht mehr gebrauchte event-listener entfernen

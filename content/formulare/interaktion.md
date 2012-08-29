@@ -31,3 +31,6 @@ Im linken Formular wird die Anzahl der bestellten Pizzas auf zwei Arten festgele
 Im rechten Formular wird diese Redundanz vermieden.
 
 
+## Vertiefung
+
+* [Warenkorb und Checkout - eine aktuelle Darstellung](http://www.lukew.com/ff/entry.asp?1579)
