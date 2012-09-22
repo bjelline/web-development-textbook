@@ -301,4 +301,7 @@ Damit sind beide Prinzipien voll erfüllt:
 * unobstrusive javascript - kein Javascript-Code im HTML
 
 
+§
 
+History auch in HTML4 Browsern verwenden:
+https://github.com/balupton/History.js/

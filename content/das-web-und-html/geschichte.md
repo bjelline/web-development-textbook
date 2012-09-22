@@ -5,7 +5,7 @@ order: 10
 
 Viele moderne Erfindungen sind das Ergebnis von Teamarbeit und langen 
 Planungsprozessen. Nicht so das World Wide Web: es geht auf eine einzelne Person zurück. 
-Tim Berners-Lee,  <!-- XE "Berners-Lee:Tim" -->  gebürtiger Engländer und studierter Physiker, hat 
+**Tim Berners-Lee**,  <!-- XE "Berners-Lee:Tim" -->  gebürtiger Engländer und studierter Physiker, hat 
 es in den Jahren 1989, 1990, 1991 als EDV-Mitarbeiter am CERN  <!-- XE "CERN" -->   in der 
 Schweiz entwickelt.
 
@@ -44,6 +44,8 @@ dokumentiert:
     between 256 and 512 kilobits per second. 
 </plain>
 
+§
+
 Neben E-Mail und FTP wurden USEnet Newsgroups – ähnlich den heutigen 
 Diskussionsforen –  als wichtigste Form des Datenaustausches verwendet, meist im 
 Textmodus ohne grafische Oberfläche.
@@ -58,33 +60,52 @@ Screenshot des Line Mode Browsers  <!-- XE "Line Mode Browsers" -->    <!-- XE "
 zu sehen, der die damalige Homepage des CERN anzeigt. Der Line Mode Browser 
 funktionierte ohne Grafik. Links konnten mit Nummern aufgerufen werden.
 
-Dieses Lehrbuch handelt hauptsächlich von der Technik des Web.
+§
+
+Dieses Lehrbuch handelt hauptsächlich von der **Technik** des Web.
 Verlieren Sie dabei nicht aus den Augen, wie wichtig das Web ist, und wie sehr 
 es unsere Gesellschaft schon verändert hat. Das Web ist heute überall: 
  
 ![Abbildung 2: das Web ist überall: vom ältesten zum neusten Gerät, in Bildung und Arbeit, 3. und 1. Welt](/images/web-on-many-devices.png)
 
+§
+
 Und das Web ist noch nicht "fertig erfunden". 
+
 Die Erfindung der maschinellen Massen-Produktion von Büchern durch Johannes Gutenberg 
-im 15.Jahrhundert war nur der Auslöser,schaffte nur die Voraussetzung für weitere 
+im 15.Jahrhundert war nur der Auslöser, schaffte nur die Voraussetzung für weitere 
 Erfindungen und große gesellschaftliche Veränderungen: Massenhafte Verbreitung der Bibel, 
 Reformation, politisches Pamphlet, Revolution, wissenschaftliche Publikation, ... . 
+
 Die Erfindung des Web um 1990 herum ist wahrscheinlich eine ähnlich fruchtbare Erfindung, 
 die die Voraussetzung für viele Folge-Erfindungen schafft. Die gesellschaftlichen 
 Auswirkungen können wir noch nicht absehen, wir sind mittendrin:
+
+§
 
 ![Abbildung: Interaktive Landkarten](/images/landkarten.png)
 
 Die interaktive Landkarte war eine sehr frühe Anwendung des Web: der "Xeroc Parc Map Viewer" ging 1993 online[&rarr;](https://en.wikipedia.org/wiki/Xerox_PARC_Map_Viewer).  Heute ist eine Reise ohne Online-Karten kaum noch vorstellbar. Was kommt nach Streetview?
  
+§
+
 ![Abbildung: Buchhandeln im Internet: Amazon 1995 und Amazon 2012](/images/buchhandel.png)
  
 Bücher über das Web zu verkaufen erscheint im Nachhinein als ganz einfache Idee. Es hat den Buchmarkt 
-weltweit verändert, und wird es weitet tun. 
+weltweit verändert, und wird es weiter tun.  Wann werden E-Books die
+Papier-Bücher ablösen?  Wer braucht noch eine Buchhandlung in der Kleinstadt,
+wenn Amazon doch überallhin liefert?
+
+§
 
 ![Abbildung: Wikipedia 2001 und 2012](/images/wikipedia.png)
  
-Im Jahr 2000 war eine Enzyklopädie noch das teuer bezahlte Werk von wenigen ExpertInnen. 2001 wurde Wikipedia gestartet. Die Erfindung der Wikipedia hat nicht nur den Markt für Enzyklopädien zerstört, sondern auch unsere Vorstellung wie Wissen gesammelt werden kann völlig verändert. 
+Im Jahr 2000 war eine Enzyklopädie noch das teuer bezahlte Werk von wenigen
+ExpertInnen. 2001 wurde Wikipedia gestartet. Die Erfindung der Wikipedia hat
+nicht nur den Markt für Enzyklopädien zerstört, sondern auch unsere Vorstellung
+verändert wie Wissen gesammelt werden kann. 
+
+§
 
 ![Abbildung: Facebook 2004 und 2010](/images/facebook.png)
  

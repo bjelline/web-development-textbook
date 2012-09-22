@@ -61,6 +61,7 @@ Body des HTTP-Response enthält das gesamte Dokument
 Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.
 
 Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).
+Siehe http://httpstatus.es/
 
 Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet. 
 

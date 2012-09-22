@@ -7,8 +7,10 @@ Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie
 nachschlagen. 
 
 HTML hat sich in den ca. 20 Jahren seines Bestehens weit entwickelt. Die Version 5, die wir 
-verwenden, ist ein relativ neuer Standard, der aber in den aktuellen Versionen der gägnigen 
+verwenden, ist ein relativ neuer Standard, der aber in den aktuellen Versionen der gängigen 
 Browsern bereits umgesetzt ist. 
+
+§
 
 In den letzten 10 Jahren wurde auch XHTML neben HTML verwendet. Das X von XHTML 
 steht für die Kompatibilität mit XML  <!-- XE "XML" -->  . Die Dateien haben dabei weiterhin die 
@@ -16,33 +18,59 @@ Endung .htm oder .html (nur sehr selten oder .xhtm, .xhtml). Im Unterschied zu H
 XHTML strenger in der Schreibweise. Am Web finden Sie sowohl Tutorials zu HTML als 
 auch zu XHTML – lassen Sie sich davon nicht verwirren!
 
+
+Arbeitsablauf
+---------
+Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:
+
+1. Code im Editor eintippen
+2. Abspeichern
+3. Zum Browser wechseln
+4. Neu Laden
+5. zurück zu 1.
+
+Es gibt verschiedene Online-Tools um HTMl auszuprobieren:
+
+* [Slowparse](http://toolness.github.com/slowparse/demo/) erklärt die Struktur von HTML, hilft Fehler zu finden
+
+Zeichensatz
+-----------
+
 HTML-Dateien bestehen aus reinem Text, in unserem Falle entweder aus Text im Format 
-ISO 8859-1 (Latin-1)  oder im Format utf-8. Abbildung 8 zeigt wie dieses Format im 
-Windows Notpad / Editor gesetzt wird: ISO 8859-1 wird hier als ANSI bezeichnet. 
+ISO 8859-1 (Latin-1)  oder im Format utf-8. Mit Latin-1 ist man auf das
+lateineische Alphabet mit westeuropäischen Sonderzeichen beschränkt - man kann
+im selben Dokument nicht auch grieschische, hebräische, arabische, japanische
+Zeichen darstellen.  Mit utf-8 hat man den gesamten Zeichensatz der Menschheit
+zur Verfügung. Mein Empfehlung lautet: immer utf-8 Verwenden.
+
  
 ![Abbildung 8: Auswahl des Charactersets „Unicode“  ](/images/image037.jpg)
 
-beim Speichern mit dem Windows Notepad / Editor und dem Mac TextWrangler
+Abbildung 8 zeigt wie diese Charactersets in Windows- und Mac-Programmen
+dargestellt werden. Links im Bild, in Notepad, wird ISO 8859-1 als ANIS
+bezeichnet. Rechts im Bild, im Mac-Programm Textwrangler, ist die Bezeichnung
+klarer. 
 
 Sonderzeichen
 -------------
 
 Sonderzeichen in HTML nennt man „character entities  <!-- XE "character entities" -->  “. Sie haben 
-die From &entityname; 
+die From `&entityname;`
 
 Folgende Character Entities müssen Sie verwenden:
 
-|Gewünschtes Zeichen|Character Entity|
+|Gewünschtes Zeichen | Character Entity|
 |:--------:|:-------:|
 | <                 | &amp;lt;  |
 | >                 | &amp;gt;  |
 | &                 | &amp;amp; |
 {: class="table table-condensed table-bordered" style="width:auto"}
 
+
 Folgende Character Entities können Sie vermeiden, indem Sie das Zeichen selbst im Code 
 verwenden:
 
-|Gewünschtes Zeichen|Character Entity|
+|Gewünschtes Zeichen | Character Entity|
 |:--------:|:-------:|
 |Ä                  | &amp;Auml;  |
 |ä                  | &amp;auml;  |
@@ -55,91 +83,120 @@ HTML-Tags
 Die gewünschte Formatierung des Textes wird mit HTML-Tag  <!-- XE "Tag" -->  s angegeben
 
 1.  Tags sind zwischen spitzen Klammern eingeschlossen. 
-2.  Zu (fast) jedem "Anfangs-Tag" gibt es einen "End-Tag", der sich nur durch den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. <p>hier der Absatz</p>. 
-3.  Nur in XHTML müssen "alleinstehende" Tags mit einem Schrägstrich am Ende geschrieben werden:  <br /> In HTML5 schreibt man diesen Tag (wieder) als  <br> 
+2.  Zu (fast) jedem "Anfangs-Tag" gibt es einen "End-Tag", der sich nur durch
+den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. `<p>`hier der Absatz`</p>`. 
+3.  Nur in XHTML müssen "alleinstehende" Tags mit einem Schrägstrich am Ende
+geschrieben werden:  `<br />` In HTML5 schreibt man diesen Tag (wieder) als `<br>`
 4.  In XHTML werden Tags immer klein geschrieben, bei HTML ist  die Groß- oder Kleinschreibung egal. 
 
 
-1.4.3	Whitespace 
+Whitespace 
+---------
+
 Sogenannter "whitespace  <!-- XE "whitespace" -->  " - das sind mehrere Leerzeichen, 
 Tabulatoren und Zeilenumbrüche hintereinander – wird vom Browser völlig ignoriert. Ob Sie 
 also in Ihrer HTML-Datei ein Leerzeichen oder 7 Leerzeilen einfügen macht keinen 
 Unterschied. (gar kein Leerzeichen oder ein Leerzeichen macht schon einen Unterschied) 
 Die folgenden beiden Dokumente sind also äquivalent:
 
-<htmlcode caption="Nur ein zeilenumbruch; Darstellung gleich wie im nächsten Beispiel">
+<htmlcode caption="Zeilenumbruch im Code ist egal, Darstellung gleich">
     <p>Halli 
     Hallo</p>
-</htmlcode>
 
-<htmlcode caption="Mehrere zeilenumbrüche; Darstellung gleich wie im vorhgehenden Beispiel">
+
+__|__
     <p>
     Halli
     Hallo
     </p>
 </htmlcode>
 
-Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag <br  <!-- XE "br" -->   
-> verwenden um einen Zeilenumbruch  <!-- XE "Zeilenumbruch" -->   auf der Webseite zu erzeugen 
+Zeilenumbruch
+------------
+
+Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag 
+ `<br>` verwenden um einen Zeilenumbruch  auf der Webseite zu erzeugen 
 – dies ist aber nur selten sinnvoll, da der Browser einen automatischen Zeilenumbruch 
-durchführt. 
+durchführt, um den Text im vorhandenen Platz optimal darzustellen.
 
 Attribute
 ---------
 
-Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag <img  <!-- XE "img" -->  > der ein 
-Bild  <!-- XE "Bild" -->   in die Seite einfügt (Englisch: Image). Die wichtigsten Attribute von <img> 
-sind src  <!-- XE "src" -->   (von Source = Quelle) und alt  <!-- XE "alt" -->   (Alternative Darstellung). 
+Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag `<img>` der ein 
+Bild  in die Seite einfügt (Englisch: Image). Die wichtigsten Attribute von
+`<img>` sind `src`   (von Source = Quelle) und `alt`     (Alternative
+Darstellung, Ersatztext). 
 
-    <img src="neu.gif" alt="Das ist neu!">
+<htmlcode>
+<img src="neu.gif" alt="Das ist neu!">
+</htmlcode>
 
 Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben:
 
-    <img alt="Das ist neu!" src="neu.gif">
+<htmlcode>
+<img alt="Das ist neu!" src="neu.gif">
 
-oder
 
-    <img                   alt="Das ist Neu!"  
-    src="neu.gif"    
+__|__
+<img  alt="Das ist Neu!"  
     bli="bla, blo" 
+    src="neu.gif"    
     >
+</htmlcode>
+
+Unbekannte Tags und Attribute
+-------------------
 
 Das Attribut bli, welches nicht zu HTML gehört, also kein Browser kennt, wird wie andere 
 unbekannte Attribute einfach ignoriert. 
-Der Wert eines Attributes muß in Anführungszeichen geschrieben werden. (in HTML gab es 
-eine Ausnahme für Werte die keine Leerzeichen enthalten (wie z. B. Zahlen), diese konnten 
-auch ohne Anführungszeichen geschrieben werden, bei XHTML ist das verboten)
 
-    <img alt="Das ist Neu!" src="neu.gif" 
-    width=50 height=15>
+Der Wert eines Attributes muß in XHTML immer in Anführungszeichen geschrieben
+werden, in HTML kann man die Anführungszeichen weglasse, dann endet der Wert
+beim nächsten Leerzeichen.
+
+<htmlcode>
+<img alt="Das ist Neu!" src="neu.gif" 
+     width=50 height=15>
+</htmlcode>
 
 ACHTUNG: ein häufiger Fehler ist es, das zweite Anführungszeichen zu vergessen:
 
-    <img alt="Das ist neu!" src="neu.gif >
+<htmlcode>
+  <img alt="Das ist neu!" src="neu.gif >
+</htmlcode>
 
 Kompatibilität 
 --------------
 
 Jeder Browser (egal ob Chrome, Firefox, Safari, Microsoft Internet Explorer, Opera,...) kann 
 jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Dreamweaver, Frontpage, 
-GoLive,... ) kann jedes HTML-Dokument bearbeitet werden. Neue Tags, die z. B. ein 
-Browser nicht erkennt, sind zu ignorieren – es gibt keine Fehlermeldungen!
+GoLive,... ) kann jedes HTML-Dokument bearbeitet werden. 
+
+So soll das Web funktionieren.   (Die schweren Fälle, wo es manchmal doch nicht
+funktioniert, verschieben wir auf etwas später.)
+
+§
+
+Neue Tags, die z. B. ein 
+Browser nicht erkennt, sind zu ignorieren – es gibt 
+**keine Fehlermeldungen**!
 
 Wenn das W3C in HTML Version 21 beispielsweise den neuen Tag &lt;jump&gt; (hüpfenden Text) 
 einführen würde, können Sie diesen Tag auf Ihrer Webseite verwenden. Der Text würde 
 jedoch nur in den neuesten Versionen der Browser (die schon die Version 21 kennen) 
 hüpfend dargestellt. In älteren Browsern wird der Tag &lt;jump&gt; ignoriert:
 
-<htmlcode caption="Ein Browser der den jump-Tag schon kennt stellt ihn entsprechend dar">
+<htmlcode caption="Neuer Tag in neuem Browser, Interpretation in altem Browser">
     <p>Dies ist meine erste 
     <jump>supercoole</jump> 
     Webseite!!!! </p>
-</htmlcode>
-
-<htmlcode caption="Ein älterer Browser ignoriert den jump-Tag; er liest also">
-    <p>Dies ist meine erste supercoole 
+__|__
+    <p>Dies ist meine erste 
+    supercoole 
     Webseite!!!!</p>
 </htmlcode>
+
+§
 
 Bevor Sie also einen neuen Tag einsetzen, sollten Sie sich darüber klar sein, welche 
 Versionen der Browser diesen Tag darstellen und wie viel Prozent Ihres Zielpublikums schon 
