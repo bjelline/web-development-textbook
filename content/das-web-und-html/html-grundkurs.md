@@ -241,7 +241,7 @@ blockbildende Tags tun das nicht.
 
 Der em-Tag ist nicht-blockbildend und wird im zweiten Absatz auf zwei Zeilen umgebrochen. 
 
-Blockbildende Tags für Text
+### Blockbildende Tags für Text
 
 <htmlcode caption="Normaler Fließ-Text">
     <p>Text text text, text text. Text 
@@ -250,7 +250,11 @@ Blockbildende Tags für Text
     text text. </p>
 </htmlcode>
 
-<htmlcode caption="Zentrierter Text
+In folgendem Beispiel wird schon ein bisschen CSS verwendet, hier
+mit Hilfe des Attributes `style`. CSS ist für die Darstellung von
+HTML zuständig, hier verwenden wir es um den Text im Absatz zu zentrieren.
+
+<htmlcode caption="Zentrierter Text">
     <p style="text-align:center;">Text 
     text text, text text. Text text 
     text, text text. Text text text, 
@@ -258,11 +262,18 @@ Blockbildende Tags für Text
     text. </p>
 </htmlcode>
 
-<htmlcode caption="Überschriften"
+Überschriften werden für die Strukturierung des Textes verwendet,
+mehr als 3 Ebenen braucht man selten:
+
+<htmlcode caption="Überschriften">
     <h1>Überschriftstext</h1>
     <h2>Überschriftstext</h2>
     <h3>Überschriftstext</h3>
 </htmlcode>
+
+Neu in HTML5 ist der `nav` Tag zur Auszeichnung von
+Navigations-Menüs. Achtung: dieser Tag hat erst mal
+keine sichtbare Wirkung. 
 
 <htmlcode caption="Bereich mit Navigations-Menü, Links">
     <nav>  
@@ -271,6 +282,8 @@ Blockbildende Tags für Text
     </nav>
 </htmlcode>
 
+Auch die folgenden drei Tags haben keine sichtbare Wirkung,
+sondern dienen erst mal nur zu Strukturierung des Dokuments.
 
 <htmlcode caption="Weitere Tags zur Strukturierung der Seite">
     <header> .... </header>
@@ -278,12 +291,14 @@ Blockbildende Tags für Text
     <aside> .... </aside>
 </htmlcode>
 
+Für umfangreiche Zitate gibt es einen blockbildenden Tag:
+
 <htmlcode caption="Block-Zitat (eingerückt)">
     <blockquote>Alle meine Entchen<br> 
     schwimmen auf dem See</blockquote>
 </htmlcode>
 
-Nicht-Blockbildende Tags für Text 
+### Nicht-Blockbildende Tags für Text 
 
 Diese müssen Sie innerhalb eines Blocks verwenden. Diese Formate werden unterschieden 
 in logische und physische Elemente. 
@@ -298,19 +313,22 @@ Die logischen Tags geben die genaue Darstellung nicht vor.
 
 Physische Tags geben die genaue Darstellung vor. Das sind eigentlich „altmodische 
 Tags“,  besonders der font-Tag wurde schon um das Jahr 2000 herum durch Stylesheets 
-vollständig ersetzt, und sollte möglichst nicht mehr verwendet werden. (Sie werden ihn aber 
-in „alten“ Dokumenten noch finden):
+vollständig ersetzt, und sollte möglichst nicht mehr verwendet werden. Sie werden 
+diese Tag in „alten“ Dokumenten aber noch finden:
 
+<htmlcode caption="veraltete Tags zum formatieren von Text">
+Eine <b>fette</b> Sache                      (VERALTET!)
+Eine <i>schräge</i> Sache                    (VERALTET!)
+<font face="Arial">Text</font>               (VERALTET!)
+<font color="red">rot</font>                 (VERALTET!)
+</htmlcode>
 
-|Gewünschte Darstellung|Code|
-|:---|:---|
-|Fettgedruckter Text|Eine <b>fette</b> Sache|
-|Kursiver Text |und eine <i>schräge</i> Sache|
-|Text in einer bestimmten Schriftart |<font face="Arial">Text</font>|
-|Text in einer bestimmen Farbe |<font color="red">rot</font>|
-|Text in einer bestimmten Schriftart, moderne Schreibweise |<span style="font-family:Arial;">Text</span>|
-|Text in einer bestimmen Farbe |<span style="color:red;">rot</span>|
-{: class="table table-condensed table-bordered" style="width:auto"}
+Heute verwendet man CSS im `style`-Attribut statt dessen:
+
+<htmlcode caption="veraltete Tags zum formatieren von Text">
+<span style="font-family:Arial;">Text</span> (aktuelle Schreibweise)
+<span style="color:red;">rot</span>          (aktuelle Schreibweise)
+</htmlcode>
 
 Bilder
 ------
@@ -319,14 +337,16 @@ Bilder werden in separaten Dateien gespeichert, in der HTML-Datei erfolgt nur ei
 auf die Bild  <!-- XE "Bild" -->  datei. Als Attribut src  <!-- XE "src" -->   im img-Tag können Sie eine 
 absolute oder relative URL angeben:
 
-|Gewünschte Darstellung|Code|
-|:---|:---|
-|Bild (URL absolut) |<img src="http://www.google.at/intl/de_at/images/logo.gif" alt="Google"> 
-|Bild (URL relativ) |<img src="neu.gif">
-|Bild mit Ersatztext (enthält wichtige Information) |<img src="10prozent.gif" alt="jetzt 10% verbilligt!">
-|Bild ohne Alternativtext (nur Dekoration) |<img src="zierleiste.gif" alt="">
-|Bild nach links (Text fließt rechts vorbei) |<img src="neu.gif" style="float:left;" alt="neu">
-{: class="table table-condensed table-bordered" style="width:auto"}
+<htmlcode caption="Bilder">
+<img src="http://www.google.at/intl/de_at/images/logo.gif" alt="Google">  
+<img src="neu.gif"> 
+<img src="10prozent.gif" alt="jetzt 10% verbilligt!"> 
+    (mit Ersatztext, weil das Bild wichtige Information enthält)
+<img src="zierleiste.gif" alt=""> 
+    (ohne Ersatztext, weil das Bild zur zur Dekoration dient)
+<img src="neu.gif" style="float:left;" alt="neu"> 
+    (Bild nach links, Text fließt rechts vorbei)
+</htmlcode>
 
 Für Blinde, Suchmaschinen, Browser die keine Bilder darstellen können, u.s.w. gibt man für 
 jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem AddOn 
@@ -334,7 +354,7 @@ jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <
 Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberichts.
  
  
-![Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)](/images/image044.png)
+![Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)](/images/wetter-alt.png)
 
 Als Datenformate für <img>-Bilder werden drei Pixel-Formate von vielen Browsern 
 unterstützt, erst seit kurzem auch das Vektor-Format svg:
@@ -366,24 +386,27 @@ canvas-Tag und Javascript kann man Bilder zeichnen.
 Links
 -----
 
-Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  skönnen Sie eine absolute oder relative 
+Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  können Sie eine absolute oder relative 
 URL angeben:
+
+<htmlcode caption="Links">
 Link zu Webseite (absolute URL)
     <a href="http://cnn.com">zu CNN</a>
-Link zu Webseite im selben Ordner (relative URL)  <!-- XE "a" -->  
+Link zu Webseite im selben Ordner (relative URL)  
     <a href="seite2.htm">mehr</a>
 Link zu E-Mail Adresse
     <a href="mailto:aa@bb.cc">Mail</a>
 Bild als Link
     <a href="seite2.htm"><img src="mehr.gif"alt="zur Seite 2"></a>
+</htmlcode>
 
 Gesamt-Struktur einer Webseite
 ------------------------------
 
 Eine HTML Seite hat ein Grundgerüst.  <!-- XE "Doctype" -->    <!-- XE "head" -->    <!-- XE "body" -->   aus 
-DOCTYPE, html, head und body. Der erste Tag ist der DOCTYPE, er gibt die Version von 
-HTML an, die verwendet wird. Es folgt der HTML-Tag. Innerhalb des HTML-Tags gibt es erst 
-einen HEAD und dann einen BODY-Tag – nicht mehr und nicht weniger.
+`DOCTYPE`, `html`, `head` und `body`. Der erste Tag ist der `DOCTYPE`, er gibt die Version von 
+HTML an, die verwendet wird. Es folgt der `html`-Tag. Innerhalb des `html`-Tags gibt es erst 
+einen `head` und dann einen `body`-Tag – nicht mehr und nicht weniger.
 Hier am Beispiel von HTML5: 
 
 <htmlcode caption="Grundgerüst eines HTML5 Dokuments">
@@ -441,7 +464,7 @@ Tabellen
 --------
 
 Um eine Tabelle  <!-- XE "Tabelle" -->    <!-- XE "table" -->    <!-- XE "tr" -->    <!-- XE "td" -->    <!-- XE "th" -->   zu erzeugen 
-müssen Sie die Tags <table>, <tr> (Table Row = Tabellenhzeile) und <td> (Table Data) 
+müssen Sie die Tags ´table´, ´tr´ (Table Row = Tabellenhzeile) und ´td´ (Table Data) 
 richtig ineinander verschachteln
 
     <table style="border-collapse:collapse;"> 
@@ -458,13 +481,17 @@ richtig ineinander verschachteln
     </table>
 
 Der Rahmen der Tabelle ist normalerweise unsichtbar, mit einer Zeile CSS wird er hier auf 
-sichtbar geschalten. Achtung! Diese Zeile muss innerhalb des <head>-Tags des Dokuments 
-gespeichert sein, nicht innerhalb des <body> !
+sichtbar geschalten. 
 
     <style>td {  border:2px #ddd solid; padding: 5px; }</style>
 
 HTML-Tabellen wurden früher in Webseiten für das Layout  <!-- XE "Layout:mit Tabellen" -->   der 
-Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu finden. Moderne 
-Webseiten werden mit CSS-Layouts gestaltet.
+Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu
+finden.  Dazu noch ein Literaturhinweis:
+
+[http://shouldiusetablesforlayout.com/](http://shouldiusetablesforlayout.com/)
+
+
+Moderne Webseiten werden mit CSS-Layouts gestaltet.
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen. 
 

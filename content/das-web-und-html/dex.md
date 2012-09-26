@@ -19,7 +19,7 @@ in das World Wide Web.
 ### Was Sie können sollten
 
 * Ich kann ein einfaches Dokument im HTML erstellen, oder einen vorgegebenen Text in HTML umwandeln
-* Ich kann die Korrektheit des HTMLCodes mit dem Validator des World Wide Web Consortium prüfen, und fehler ausbessern bis es valide ist
+* Ich kann die Korrektheit des HTMLCodes mit dem Validator des World Wide Web Consortium prüfen, und Fehler ausbessern bis der Code valide ist
 * Ich kann die Dateien einer Webseite auf einen Webserver hochladen
 
 ### Quellen und empfohlene Literatur
