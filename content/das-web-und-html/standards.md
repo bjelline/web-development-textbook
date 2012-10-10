@@ -57,8 +57,8 @@ die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->   und Mozi
 Alle eben erwähnten Browser haben gemeinsam, dass sie auf einem typischen „Büro-
 Computer“ eingesetzt werden, einem Computer mit grafischer Oberfläche und einem Farb-
 Monitor. 
-Es gibt aber auch „exotischere“ Browser. Abbildung 5 zeigt den Browser lynx  <!-- XE "lynx" -->    
-<!-- XE "Browser:lynx" -->  , der nur Text darstellt, aber keine Bilder. Daneben sehen Sie eine 
+Es gibt aber auch „exotischere“ Browser. Abbildung 5 zeigt den Browser lynx,
+der nur Text darstellt, aber keine Bilder. Daneben sehen Sie eine 
 „Braille  <!-- XE "Braille" -->   Ausgabezeile“, ein Gerät, das eine Zeile Text in eine Zeile 
 Blindenschrift übersetzt. Mit diesem Webbrowser und diesem Ausgabegerät können Blinde 
 im Web surfen. 

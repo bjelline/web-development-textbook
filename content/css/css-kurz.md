@@ -2,6 +2,69 @@
 title: Kurzvorstellung von Stylesheets
 order: 10
 ---
+
+
+Von Anfang an sollte eine HTML-Datei keine Information darüber enthalten, wie der Text dargestellt werden soll - keine Schriftart oder Schriftgröße. HTML sollte nur strukturelle Information enthalten („das ist eine Überschrift“ aber nicht „Helvetica 24pt“). Die Formatierungs-Information sollte in sogenannten „Stylesheets“ gespeichert werden, das Format für die Stylesheets war aber noch nicht definiert. Im Jahre 1993 sah eine typische Webseite so aus
+
+<htmlcode caption="typische Webseite von 1993 - HTML-Code stellt nur die Struktur dar">
+  <html><body>
+  <h1>Das Studium</h1>
+  <p>Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
+  </body></html>
+</htmlcode>
+
+Da es keine Stylesheets gab „erfand“ Netscape ab 1994 zusätzliche HTML-Tags, die die Darstellung der Webseite festlegen. Andere Browser übernahmen diese Tags von Netscape. 
+
+<htmlcode caption="typische Webseite von 1995 - Neue HTML-Tags für visuelle Darstellung">
+  <html><body>
+  <h1><font face="Arial" color="blue">Das Studium</font></h1>
+  <p><font size="+1">S</font>tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...</p>
+  <p><font size="+1">P</font>rojekte und Praxissemster stellen schon während des Studiums die Verbindung...</p>
+  </body></html>
+</htmlcode>
+
+Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code komplizierter und unübersichtlicher. Erst ab ab 1995 wurde endlich an den Standards für Stylesheets gearbeitet, seit den frühen 2000ern ist die Unterstützung in den gängigen Browsern vorhanden. So sieht nun eine HTML-Seite mit separatem Stylesheet aus:
+
+Die html-Datei
+
+<htmlcode caption="typische Webseite von 2001 - HTML-Tags für Struktur, Verweis auf CSS">
+  <link rel="stylesheet"
+        type="text/css"
+        href="fh.css">
+  </head><body>
+  <h1>Das Studium</h1>
+  <p>Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
+  </body></html>
+</htmlcode>
+
+<css caption="Die Datei fh.css">
+h1 { 
+    font-family: Arial;
+    color: blue; 
+}
+p:first-letter {
+
+    font-size: large;
+}
+</css>
+
+Mit der Trennung von Stylesheet und HTML wurde HTML wieder einfacher und übersichtlicher. Besonders das nachträgliche Verändern der Gestaltung wurde vereinfacht. 
+Wichtige Argumente für den Einsatz von Stylesheets sind:
+
+* Zusätzliche Gestaltungsmöglichkeiten
+* Einheitliche Gestaltung von mehreren Webseiten
+* Arbeitsteilung zwischen DesignerInnen (die CSS erstellen) und RedakteuerInnen (die Inhalte erstellen)
+
+Aber Achtung: CSS ist nicht die Lösung jedes Problems:
+
+* Mit Stylesheets können Sie nur Elemente verändern, die schon in der HTML-Datei vorhanden sind. Es können keine neuen Elemente eingefügt werden. 
+* Um ein Stylesheet zu erstellen, muss die DesignerIn die HTML-Tags kennen, z. B. wissen, dass h1, h2, h3 für die Überschriften stehen. 
+* Damit das Stylesheet wirkt, muss die RedakteurIn, die das HTML-Dokument erstellt, die richtigen HTML-Tags verwenden, z. B. Überschriften wirklich mit h1, h2, h3 formatieren, und nicht mit b, i, font. 
+
+
+Beispiel
+--------
+
 Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:
 
     <style type="text/css">
@@ -20,7 +83,7 @@ Listing 1:  Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen
 
 An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völig anders als die von HTML. 
 
-Schriftart
+Interpretation
 -----------
 Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er. (Man kann Schriften auch verlinken - aber das ist mehr ein Thema für MMA).
 
@@ -30,22 +93,6 @@ In Zeile 3 Vergleichen Sie Zeile 3 mit Zeile 7: Schriftnamen die ein Leerzeichen
 
 Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:
 
-sans-serif serif cursive fantasy monospace. 
-
-Schriftgröße
----------------
-Die Schriftgrößen-Angabe in Zeile 4 verwendet Pixel als Maßeinheit. Diese Maßeinheit macht bei der Darstellung am Screen,besonders in Kombination mit Pixel-Bildern Sinn. 
-
-Absätze
----------
-Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:
-
-
-![Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height](/images/image066.png)
-
-Mit `text-align` können Sie die Ausrichtung des Texts im Absatz festlegen: `left`, `right`, `center` oder `justify` (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird `justify` besser verwendbar.
-
-Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit `text-indent` festlegen. Die Zeilenhöhe wird mit `line-height` festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. `1.5em` – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. 
 
 CSS erforschen mit Firebug
 ---------------------------

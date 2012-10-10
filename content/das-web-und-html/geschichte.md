@@ -16,32 +16,32 @@ dokumentiert:
 §
 
 <plain>
-    Date: Fri, 20 Mar 1992 13:50:09 
-    From: dekker@rare.nl (Marieke G. Dekker) 
-    Subject: ebone fact sheet, for your information 
-    .... 
-    Ebone will operate a core backbone between London, Stockholm, 
-    Amsterdam, Geneva, and France (Montpellier). 
-     
-     
-                            Stockholm  E 
-                                     /   \ 
-                          256 Kbps /       \ 512 Kbps 
-                                 /           \ 
-                               /               \ 
-                       London E                 E Amsterdam 
-                              |                 | 
-                              |        512 Kbps | 
-                              |                 | 
-                              |                 | 
-                              | 256 Kbps        | 
-                              |                 | 
-         France (Montpellier) E-----------------E CERN 
-                                   256 Kbps 
-     
-    Intercontinental links to the United States are provided from London, 
-    Stockholm and Geneva. The European links operate initially at speeds 
-    between 256 and 512 kilobits per second. 
+Date: Fri, 20 Mar 1992 13:50:09 
+From: dekker@rare.nl (Marieke G. Dekker) 
+Subject: ebone fact sheet, for your information 
+.... 
+Ebone will operate a core backbone between London, Stockholm, 
+Amsterdam, Geneva, and France (Montpellier). 
+ 
+ 
+                        Stockholm  E 
+                                 /   \ 
+                      256 Kbps /       \ 512 Kbps 
+                             /           \ 
+                           /               \ 
+                   London E                 E Amsterdam 
+                          |                 | 
+                          |        512 Kbps | 
+                          |                 | 
+                          |                 | 
+                          | 256 Kbps        | 
+                          |                 | 
+     France (Montpellier) E-----------------E CERN 
+                               256 Kbps 
+ 
+Intercontinental links to the United States are provided from London, 
+Stockholm and Geneva. The European links operate initially at speeds 
+between 256 and 512 kilobits per second. 
 </plain>
 
 §
