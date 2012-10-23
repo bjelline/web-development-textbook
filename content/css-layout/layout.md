@@ -81,6 +81,8 @@ Zentrieren mit Auto
 
 Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt. 
 
+[Demo-Seite dazu](/images/width-auto.html)
+
 <css>
 div#main {
   width:500px; 
