@@ -2,27 +2,11 @@
 title: CSS Selektoren im Detail
 order: 30
 ---
-Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (HTML oder auch ein XML) als Baum (im mathematische Sinne) angesehen werden kann. Mit dieser Vorstellung ergeben sich neue Fachwörter:
 
-Die Tags werden als Elemente bezeichnet. So ist in folgendem Beispiel das erste li-Element innerhalb des ol-Elements. Das li Element enthält wiederum ein a Element, und dieses einen Text „erster Link“. 
-
-    <html>
-    <body>
-        <p>Navigation</p>
-        <h1>Überschrift</h1>
-        <div class="intro">
-          <h2>Dies und Das</h2>
-          <ol>
-            <li><a href="#bla">erster Link</a></li>
-            <li><a href="#bla">zweiter Link</a></li>
-          </ol>
-        </div> ...
-
-Aus der Mathematik (Graphentheorie) ergeben sich die Fachwörter für dei Teile des Baums: Ein Elemente werden als Nodes oder Knoten bezeichnet. Für die Beziehungen zwischen Nodes werden die Begriffe Eltern, Kind, Nachkommen, Vorfahren verwedent: `h1` ist ein Kind von `body`, „Überschrift“ ist das erste Kind von `h1`. „Überschrift“ ist damit ein Nachkomme von `body`.
-
-Damit haben wir das Vokabular um auch kompliziertere CSS-Selektoren zu verstehen.
-
-In Kapitel 2.2.2 haben Sie CSS Selektoren für Klassen und IDs kennen gelernt. In der CSS 2.1 Spezifikation werden u.a. folgende Schreibweisen für Selektoren beschrieben8:
+Im Kapitel [CSS Selektoren](/css/basic-selectors/) haben Sie CSS schon
+einige Selektoren
+kennen gelernt. In der CSS 2.1 Spezifikation werden u.a. 
+folgende Schreibweisen für Selektoren beschrieben:
 
 |Name|Muster |Beschreibung|
 |+---|+------|+-----------|
@@ -52,3 +36,71 @@ Empty pseudo-class|:empty |Element ist ganz leer – enthält weder Kinder-Knote
 |Pseudo-Element|E::first-letter E::first-line p::first-letter |Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nicht explizit drinnen ist: Obwohl im Abstz der erste Buchstabe nicht extra in einen Tag eingeschlossen ist kann man ihn mit p::first-letter auswählen.|
 {: class="table table-condensed table-bordered" style="width:auto"}
 
+
+Child Selector
+---------
+
+Wir kennen schon den Descendant Selector, der beliebige Nachfahren auswählt.
+Der Child Selector ist auf direkte Kinder beschränkt.
+
+<css>
+  li > a { color: yellow; }
+</css>
+
+
+![Document Object Model und Selektor](/images/selector-child.png)
+
+Pseudo Classes
+---------
+
+Wir haben im Zusammenhang mit Links schon die Pseudo Classes `:link` und
+`:visited` kennen gelernt, und im Zusammenhang mit Interaktion `:hover` und
+`:focus`.
+
+Es gibt noch eine Hand voll weiterer Pseudo Classes:
+
+* `:first-child` selektiert ein Element nur, wenn es das erste Kind seiner Eltern-Node ist
+* `:first-letter`  selektiert nur den ersten Buchstaben!  Das funktioniert auch,
+  wenn der Buchstabe gar keine eigenen Node in der DOM ist!
+* `:first-word`  selektiert das erste Wort.  Das funktioniert auch,
+  wenn das Wort      gar keine eigenen Node in der DOM ist!
+* `::selection` der aktuell ausgewählte Bereich, siehe [css-tricks](http://css-tricks.com/examples/DifferentSelectionColors/)
+* `:nth-child(odd)` wählt jedes zweite Element aus - 1,3,5,...
+* `:nth-child(even)` wählt jedes zweite Element aus - 2,4,6,...
+
+
+
+<css>
+  li:first-child { color: yellow; }
+</css>
+
+
+![Document Object Model und Selektor](/images/selector-firstchild.png)
+
+
+Adjacent selector
+---------
+
+Dieser Selector wählt das direkte Geschwister-Node aus.
+
+<css>
+  p + h1 { color: yellow; }
+  li + li { color: yellow; }
+</css>
+
+
+![Document Object Model und Selektor](/images/selector-adj.png)
+
+
+
+Kombinationen von Selektoren
+---------
+
+Wenn man mehrere Selektoren kombiniert hat das Komma die geringste präzedenz:
+
+<css>
+  p, div a { color: yellow; }
+</css>
+
+
+![Document Object Model und Selektor](/images/selector-precedence.png)

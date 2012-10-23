@@ -256,6 +256,8 @@ route '*' do
     # /foo/ -> /foo.ext
     #p item.identifier.chop + '.' + item[:extension]
     item.identifier.chop + '.' + item[:extension]
+  elsif item[:extension] == 'html'
+    item.identifier.chop + '.' + item[:extension]
   else
     # /foo/ -> /foo/index.html
     item.identifier + 'index.html'
