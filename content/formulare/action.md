@@ -3,18 +3,27 @@ title: Daten absenden
 order: 20
 ---
 
-Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt. Diese action wird direkt im &lt;form&gt;-Tag angegeben.
+Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button
+drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt.
+Diese action wird direkt im `<form>`-Tag angegeben.
 
+<htmlcode>
+<form action="http://multimediatechnology.at/~fhs666/pizza/bestellung.php">
+</htmlcode>
 
-      <form action="http://multimediatechnology.at/~fhs666/pizza/bestellung.php">
+Für die Verarbeitung der Daten braucht man ein serverseitiges  Programm - hier
+zum Beispiel ein PHP-Programm.
 
 Daten an E-Mail senden
 -----------------------
 
-Wenn Sie kein Möglichkeit haben, am Webserver zu programmieren, bleibt als Alternative, die Daten direkt per E-Mail zu senden. So sieht der entsprechende HTML-Code des Formulars aus:
+Wenn Sie kein Möglichkeit haben, am Webserver zu programmieren, bleibt als
+Alternative, die Daten direkt per E-Mail zu senden. So sieht der entsprechende
+HTML-Code des Formulars aus:
 
-
-      <form action="mailto:ich@priv.at" method="POST" enctype="text/plain">
+<htmlcode>
+<form action="mailto:ich@priv.at" method="POST" enctype="text/plain">
+</htmlcode>
 
 Achtung: diese Art die Daten zu senden ist sehr fehleranfällig: hierfür muß am Client-Computer nicht nur der Browser funktionieren, sondern auch das E-Mail Programm. Das E-Mail Programm muß richtig konfiguriert sein. Das ist auf vielen Computern am Internet nicht der Fall, oft werden die Daten also nicht erfolgreich versandt sondern gehen verloren.
 
@@ -35,27 +44,36 @@ In Abbildung 49 sehen Sie ein (leicht vereinfachtes) Bestellformular für Flugze
 
 ![Abbildung 49: Formular mit Methode GET](/images/image230.png)
 
-
-Wenn die UserIn auf „Bestellung absenden“ drückt, baut der Browser aus der action und den Namen und Werten der einzelnen Eingabefelder eine URL zusammen, die dann aufgerufen wird wie in Abbildung 50 gezeigt.
+Wenn die UserIn auf „Bestellung absenden“ drückt, baut der Browser aus der
+action und den Namen und Werten der einzelnen Eingabefelder eine URL zusammen,
+die dann aufgerufen wird.
 
 
 ![Abbildung 50: URL einer GET-Anfrage](/images/image232.png)
 
+## URL der GET-Anfrage
 
 Die komplette URL lautet im Beispiel:
 
-      http://localhost/php/test.php?anzahl=4&adresse=Jakob+Haringer+Str.1%0D%0A5020+Salzburg
+<htmlcode>
+http://localhost/php/test.php?anzahl=4&adresse=Jakob+Haringer+Str.1%0D%0A5020+Salzburg
+</htmlcode>
 
 Die URL wird zusammengestellt aus:
 
-* der Action (aus dem form-Tag)
-* ? (einem Fragezeichen )
-* für alle Eingabefelder, getrennt durch & (kaufmännisches Und):
+* der `action` aus dem `form`-Tag, hier `http://localhost/php/test.php`
+* `?` (einem Fragezeichen )
+* für alle Eingabefelder, getrennt durch `&` (kaufmännisches Und):
     * Name des Eingabefeldes
     * = (Gleich Zeichen)
     * Eingegebener / angeklickter Wert
 
-Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute, Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein % gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396). Diese Codierung nennt man URL-Encoding.
+Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute,
+Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt
+Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein %
+gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396).
+Diese Codierung nennt man URL-Encoding. (siehe
+[HTML 4.01 Specification](http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1).)
 
 
 URL als Programm-Schnittstelle
@@ -63,40 +81,51 @@ URL als Programm-Schnittstelle
 
 Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:
 
-
-    http://www.google.com/search?q=Schokolade
+<htmlcode>
+http://www.google.com/search?q=Schokolade
+</htmlcode>
 
 Sie können diese URL einfach direkt in den Browser eintippen, ohne das Eingabeformular von Google zu verwenden. Sie können diese URL in den Lesezeichen/Favoriten Ihres Browsers speichern oder in einem Link verwenden:
 
+<htmlcode>
+<a href="http://www.google.com/search?q=schokolade">Suche nach Schokolade</a>
+</htmlcode>
 
-    <a href="http://www.google.com/search?q=schokolade">Suche nach Schokolade</a>
-
+§
 Gerade bei Suchmaschinen wird diese Möglichkeit oft genutzt: z.B. durch die Suchfelder, die in den Browsern eingebaut sind:
 
 
 ![Abbildung 51: Suchfeld von Firefox](/images/image237.png)
 
 
-Wenn Sie eine Web-Applikation erstellen müssen Sie auch darauf gefasst sein, dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs konstruieren und aufrufen. Die URL (und nicht das Formular) ist also eine öffentliche Schnittstelle zu Ihrem Programm!
+Wenn Sie eine Web-Applikation erstellen müssen Sie auch darauf gefasst sein,
+dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs
+konstruieren und aufrufen. Die **URL** (und nicht das Formular) ist also eine
+**öffentliche Schnittstelle** zu Ihrem Programm!
+
+## pricing attack
 
 Ein lehrreiches Beispiel aus der Frühzeit des Web: es gab einst Webshops, die den Preis der Waren als verstecktes Eingabefeld im Formular speicherten:
 
 <htmlcode caption="Airbus Bestell-Formular">
 <form action="order.php" method="GET">
-        Anzahl: <input name="anzahl"> <br>
-        Adresse: <textarea name="adresse"></textarea><br>
-        Preis: 1.000.000 DM  
-        <input type="hidden" name="preis" value="1000000">
-        <input type="submit" value="Bestellung absenden">
+  Anzahl: <input name="anzahl"> <br>
+  Adresse: <textarea name="adresse"></textarea><br>
+  Preis: 1.000.000 DM  
+  <input type="hidden" name="preis" value="1000000">
+  <input type="submit" value="Bestellung absenden">
 </form>
 </htmlcode>
 
 Das gibt der KundIn die Chance ein „Gegenangebot“ zu senden (als „pricing attack“ bekannt):
 
+<htmlcode>
+http://happyshop.com/order.php?anzahl=4&adresse=Urstein+Süd+.1&preis=10
+</htmlcode>
 
-      http://happyshop.com/order.php?anzahl=4&adresse=Urstein+Süd+.1&preis=10
-
-Wenn nun das Programm `order.php` einfach den Preis aus der URL übernimmt und auf die Rechnung schreibt, wird der Airbus recht günstig (für die KundIn) verkauft.
+Wenn nun das Programm `order.php` einfach den Preis aus der URL übernimmt und
+auf die Rechnung schreibt, wird der Airbus recht günstig (für die KundIn)
+verkauft.
 
 Merke: Alle Eingaben die eine Web-Applikation erhält sind mit extremer Skepsis zu betrachten! 
 

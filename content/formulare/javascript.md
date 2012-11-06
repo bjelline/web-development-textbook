@@ -6,7 +6,7 @@ Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Di
 
 Javascript Einbetten
 ---------------------
-Javascript kann innerhalb des &lt;script&gt;-Tags irgendwo in den HTML-Code eingefügt werden.
+Javascript kann innerhalb des `<script>`-Tags irgendwo in den HTML-Code eingefügt werden.
 
 <htmlcode caption="Berechnungen in Javascript, in einem script-Tag">
 <h1>Hallo Welt</h1>
@@ -18,7 +18,11 @@ Javascript kann innerhalb des &lt;script&gt;-Tags irgendwo in den HTML-Code eing
 </script>
 </htmlcode>
 
-Ohne Output merkt man aber gar nichts davon: In Firefox kann man mit der Konsole von Firebug die Variablen auslesen wie in Abbildung 52 gezeigt.
+Ohne Output merkt man aber gar nichts davon, das dieses Programm läuft.
+
+### Konsole
+
+In Firefox kann man mit der Konsole von Firebug die Variablen auslesen wie in Abbildung 52 gezeigt.
 
 
 ![Abbildung 52: Mit firebug den Wert einzelnen Javascript-Variablen  auslesen](/images/image239.png)
@@ -50,16 +54,18 @@ Mit der Konsole von Firebug können Sie auch Formulare genauer untersuchen. Acht
 
 
 <htmlcode>
-  <form method="get" action="mail.php"> 
-  <label for="mail">E-Mail:
-     <input type="text" name="mail" id="mail" placeholder="e-mail adresse">
-  </label>
-  <label>Hochschule:   
-      <input type="text" name="hochschule" id="hochschule" value="FH Salzburg"> 
-  </label> 
-  <input type="submit" value="speichern">
-  </form>
+<form method="get" action="mail.php"> 
+<label for="mail">E-Mail:
+   <input type="text" name="mail" id="mail">
+</label>
+<label>Hochschule:   
+    <input type="text" name="hochschule" id="hochschule"> 
+</label> 
+<input type="submit" value="speichern">
+</form>
 </htmlcode>
+
+§
 
 ![Abbildung 54: Mit Firebug Formulare und Eingabefelder auslesen](/images/image242.png)
 
@@ -83,7 +89,14 @@ Mit dem Befehl `document.write()` kann Text/Code in den HTML-Code eingefügt wer
 <p>Hallo HTML</p>
 </htmlcode>
 
-Der Browser interpretiert das Javascript und fügt das Ergebnis zu einem HTML-Dokument zusammen. Achtung: Dieses resultierende HTML-Dokument existiert nur im Haupt-Speicher des einen Computers auf dem der Browser gerade läuft, es wird nie abgespeichert! Mit Firebug kann man es aber sehen:
+Der Browser interpretiert das Javascript und fügt das Ergebnis zu einem
+HTML-Dokument zusammen. 
+
+§
+
+Achtung: Das resultierende HTML-Dokument existiert
+nur im Haupt-Speicher des einen Computers auf dem der Browser gerade läuft, es
+wird nie abgespeichert! Mit Firebug kann man den erzeugen Code aber sehen:
 
 
 <htmlcode>
@@ -92,40 +105,43 @@ Der Browser interpretiert das Javascript und fügt das Ergebnis zu einem HTML-Do
 <p>Hallo HTML</p>
 </htmlcode>
 
+§
+
 Ein Anwendungsbeispiel dieses Befehls: Ich will ein Dropdown-Menü mit vielen Einträgen, bin aber zu faul um alle `option`-Tags einzutippen.
 
-
 <htmlcode>
-  <form>
-     <select name="Anzahl" id="Anzahl">
-         <option>1</option>
-         <option>2</option>
-         <option>3</option>
-         <option>4</option>
-         <option>5</option>
-         <option>6</option>
-         <option>7</option>
-         ...
-     </select>
-     <input type="submit">
-  </form>
+<form>
+ <select name="anzahl" id="anzahl">
+   <option>1</option>
+   <option>2</option>
+   <option>3</option>
+   <option>4</option>
+   <option>5</option>
+   <option>6</option>
+   <option>7</option>
+   ...
+ </select>
+ <input type="submit">
+</form>
 </htmlcode>
+
+§
 
 Ich ersetze also die option-Tags durch eine Schleife in Javascript:
 
 <htmlcode>
-  <form>
-     <select name="Anzahl" id="Anzahl">
-         <script language="javascript">
-            var i=0;
-            while(i <= 50) {
-                document.write("<option>" + i + "</option>");
-                i++;
-            }
-         </script>
-     </select>
-     <input type="submit">
-  </form>
+<form>
+  <select name="Anzahl" id="Anzahl">
+    <script language="javascript">
+      var i=0;
+      while(i <= 50) {
+        document.write("<option>" + i + "</option>");
+        i++;
+      }
+    </script>
+  </select>
+  <input type="submit">
+</form>
 </htmlcode>
 
 Mit Ansicht &rarr; Quelltext sieht man den Javascript-Code, In Firebug sieht man das Ergebnis:
@@ -136,9 +152,15 @@ Sollte man diese Möglichkeit nutzen?  Der Nachteil: Falls Javascript nicht funk
 
 Ereignisse und Ereignisgesteuerte Programmierung
 -------------------------------------------------
-Javascript ist hauptsächlich eine Programmiersprache für das „Frontend“, für die Gestaltung von Benutzerschnittstellen. Für grafische Benutzerschnittstellen hat sich ein besonderer Programmierstil entwickelt: die ereignisgesteuerte Programmierung. Dieser Stil kommt auch in Actionscript (in Flash), in Visual Basic, u.s.w. zum Einsatz.
+Javascript ist hauptsächlich eine Programmiersprache für das „Frontend“, für die
+Gestaltung von Benutzerschnittstellen. Für grafische Benutzerschnittstellen hat
+sich ein besonderer Programmierstil entwickelt: die ereignisgesteuerte
+Programmierung. Dieser Stil kommt auch in Actionscript (in Flash), in Visual
+Basic, u.s.w. zum Einsatz.
 
 Dabei lösen Ereignis, die die BenutzerIn setzt, bestimmte Programmteile aus.
+
+## Events im Browser
 
 Im Webbrowser sind solche Ereignisse z.B.: 
 
@@ -149,11 +171,19 @@ Im Webbrowser sind solche Ereignisse z.B.:
 
 Eine Liste der wichtigsten Events bzw. on-Attributen für HTML-Tags finden Sie in der [DOM Level 2 Event Specification](http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-eventgroupings-htmlevents-h3).
 
+## Beispiel
+
 Ein Beispiel für ereignisgesteuerte Programmierung mit einem Web-Formular: Das Bestellformular für Bücher soll automatisch den Gesamtpreis berechnen.
 
 ![Abbildung 55: Bestellformular für Bücher mit Berechnung](/images/image248.png)
 
-Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis multipliziert werden und in die rechte Spalte geschrieben werden. Betrachten wir zuerst diesen Schritt alleine an einem vereinfachten Formular mit einem Eingabefeld und einem span-tag für die Ausgabe
+Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis
+multipliziert werden und in die rechte Spalte geschrieben werden. 
+
+### 1.Schritt: eine Berechnung
+
+Betrachten wir zuerst einen Schritt der Berechnung alleine an einem vereinfachten Formular mit einem
+Eingabefeld und einem span-tag für die Ausgabe.
 
 <htmlcode>
   <input value="0" name="in">
@@ -167,57 +197,74 @@ Für die Formulierung „Wenn in das Feld in ein neuer Wert eingegeben wird, dan
   <span id="out"></span>   
 </htmlcode>
 
+§
+
 In das Attribut kann nun Javascript-Code eingefügt werden der die richtige Berechnung vornimmt und das Ergebnis in das richtige Element schreibt:
 
 <htmlcode>
-  <input value="0" name="in"  
-           onchange="document.getElementById('out').innerHTML = this.value * 100">
-  <span id="out"></span>   
+<input value="0" name="in" 
+  onchange="document.getElementById('out').innerHTML = this.value * 100">
+<span id="out"></span>   
 </htmlcode>
 
-Betrachten wir die Javascript-Befehl im Detail: Es handelt sich um eine Zuweisung mit =.
+Betrachten wir die Javascript-Befehl im Detail: Es handelt sich um eine
+Zuweisung mit `=`.
 
-Auf der rechten Seite der Zuweisung befindet sich die Variable „this“, diese verweist auf das Element, das das Event ausgelöst hat, in diesem Fall also das Eingabefeld. Mit this.value kann aus dem Eingabefeld der eingegebene Wert (als String) ausgelesen werden.
+Auf der rechten Seite der Zuweisung befindet sich die Variable `this`, diese
+verweist auf das Element, das das Event ausgelöst hat, in diesem Fall also das
+Eingabefeld. Mit `this.value` kann aus dem Eingabefeld der eingegebene Wert (als
+String) ausgelesen werden.
 
 Dieser Wert wird nun mit 100 multipliziert. In Javascript ist dabei keine explizite Typ-Umwandlung von String zu Zahl nötig, das erledigt der Javascript-Compiler automatisch. Das Ergebnis auf der rechten Seite ist also eine Zahl, z.B. 300.
 
-Auf der linken Seite der Zuweisung wird zuerst mit document.getElementById('out') ein bestimmter HTML-Tag ausgewählt, hier ist es der span-Tag. Diesem Tag wird dann als „inneres HTML“ das Ergebnis der Multiplikation zugewisen. Dabei wir die Zahl (z.B. 300) wieder in einen String zurückverwandelt (z.B. "300").
+Auf der linken Seite der Zuweisung wird zuerst mit
+`document.getElementById('out')` ein bestimmter HTML-Tag ausgewählt, hier ist es
+der span-Tag. Diesem Tag wird dann als „inneres HTML“ das Ergebnis der
+Multiplikation zugewisen. Dabei wir die Zahl (z.B. 300) wieder in einen String
+zurückverwandelt (z.B. "300").
+
+§
 
 Nun wäre es natürlich unpraktisch in das onchange-Attribut ein längeres Javascript-Programm zu schreiben. Dafür kann man in Javascript Funktionen definieren, die dann nur noch aufgerufen werden. Z.B. um die Gesamtsumme im Bestellformular zu berechnen ist eine Funktion praktisch:
 
 <htmlcode>
-  <head>
-  <script language="javascript">
-  function compute() { 	
+<head>
+<script language="javascript">
+function compute() { 	
 
   document.getElementById('outtotal').innerHTML =  	      
 
-          document.getElementById('in1').value * 100 		
-        + document.getElementById('in2').value * 200 		
-        + document.getElementById('in3').value * 0 		
-        + document.getElementById('in4').value * 1000 		
-        + document.getElementById('in5').value * 10 		
-        + document.getElementById('in6').value * 5 
-  }
-  </script>
-  </head>
-  <body>
+    document.getElementById('in1').value * 100 		
+  + document.getElementById('in2').value * 200 		
+  + document.getElementById('in3').value * 0 		
+  + document.getElementById('in4').value * 1000 		
+  + document.getElementById('in5').value * 10 		
+  + document.getElementById('in6').value * 5 
+}
+</script>
+</head>
+<body>
 </htmlcode>
 
 Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.
 
-Achtung: beim „rechnen“ mit Eingabefelder von Javascript tritt häufig folgender Fehler auf: in Javascript werden die Datentypen int, float, char, zwar unterschieden, aber nicht deklariert. Es kann in einer Variable einmal ein String und einmal eine Zahl gespeichert sein:
+§
+
+Achtung: beim „rechnen“ mit Eingabefelder von Javascript tritt häufig folgender
+Fehler auf: in Javascript werden die Datentypen number, string, boolean, object zwar unterschieden, 
+aber nicht deklariert. Es kann in einer Variable einmal ein
+String und einmal eine Zahl gespeichert sein:
 
 <htmlcode>
   var a,b,c;
   a = 10;
-  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write("wie viel ist 10 plus 20? ");
   document.write(a + 20);
   a = "zehn";
-  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write("wie viel ist 10 plus 20? ");
   document.write(a + 20);
   a = "10";
-  document.write("&lt;br /&gt;wie viel ist 10 plus 20? ");
+  document.write("wie viel ist 10 plus 20? ");
   document.write(a + 20);
 </htmlcode>
 
@@ -229,11 +276,13 @@ Hier der Output des Programms:
   wie viel ist 10 plus 20? 1020
 </plain>
 
+§
+
 Der `+` Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.
 
 Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. `100 + 200 + 0 + 0 + 0 + 0` wäre `1002000000`. Bei der Multiplikation mit `*` tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. 
 
-Mit der Funktion parseInt() können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.
+Mit der Funktion `parseInt()` können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.
 
 <javascript>
   a = "10";
@@ -250,62 +299,67 @@ gibt das erwartete ergebnis
 
 Formular prüfen
 -----------------
-Mit Javascript kann man schon vor dem Absenden des Formulares prüfen ob wichtige Daten eingegeben wurden, und das Einsenden des Formulares verhindern falls dem nicht so ist. 
+Mit HTML5 kann man mit den Attributen `required` und `pattern` einfache Prüfungen 
+vornehmen. Das Formular kann erst gesendet werden, wenn alle Prüfungen erfüllt
+sind.
+
+Mit Javascript kann man noch komplizierte Prüfungen vornehmen, und ebenfalls
+verhindern, dass das Formular abgesendet werden kann.
 
 Dafür gibt es das Event „onsubmit“ im form-Tag. 
 
 <htmlcode>
-  <form name="pizzaformular" 
-        action="http://webwelt.horus.at/html/form/echo.cgi"
-        onsubmit= "wert=formularok(); return wert;">
+<form name="pizzaformular" 
+  action="http://webcode.multimediatechnology.at/code/echo.php"
+  onsubmit= "wert=formularok(); return wert;">
 </htmlcode>
 
-Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. Entsprechend kann man eine Funktion schreiben:
+Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. 
+
+§
+
+Entsprechend kann man eine Funktion schreiben:
 
 <htmlcode>
-  <script>
-      function formularok() {
-	    var ok, fehler;
-	    ok = true;
-		fehler = "";
-		
-		if ( document.getElementById('liefername').value == "" ) {
-		    fehler += "Sie müssen den Empfänger angeben\n";
-			ok = false;
-		}
-		if ( document.getElementById('adresse')..value == "" ) {
-		    fehler += "Sie müssen eine Lieferadresse angeben\n";
-			ok = false;
-		}		
-		
-		// weitere Überprüfungen
+<script>
+  function formularok() {
+    var ok, fehler;
+    ok = true;
+    fehler = "";
+    
+    if ( document.getElementById('liefername').value == "" ) {
+        fehler += "Sie müssen den Empfänger angeben\n";
+        ok = false;
+    }
+    if ( document.getElementById('adresse')..value == "" ) {
+        fehler += "Sie müssen eine Lieferadresse angeben\n";
+        ok = false;
+    }		
+    
+    // weitere Überprüfungen
 
-		
-	    if ( ok ) {
-			return true;
-		} else {
-			alert("Das Formular ist nicht ok:\n"  + fehler );
-			return false;
-		}
-	}
+    
+    if ( ok ) {
+      return true;
+    } else {
+      alert("Das Formular ist nicht ok:\n"  + fehler );
+      return false;
+    }
+ }
 </script>
 </head>
 
 <body>
-
-<form name     = "pizzaformular" 
+  <form name     = "pizzaformular" 
         action   = "http://webwelt.horus.at/html/form/echo.cgi"
         onsubmit = "wert=formularok(); return wert;">
+  Empfänger: <input type="text" name="liefername" id="liefername"> <br>
+  Adresse: <input type="text" name="adresse" id="adresse"> in 5020 Salzburg<br>
+  Telefon/Handy: <input type="text" name="tel" id="tel"> in 5020 Salzburg<br>
 
-Empfänger: &lt;input type="text" name="liefername" id="liefername" /&gt; &lt;br /&gt;
-
-Adresse: &lt;input type="text" name="adresse" id="adresse" /&gt; in 5020 Salzburg&lt;br /&gt;
-
-Telefon/Handy: &lt;input type="text" name="tel" id="tel" /&gt; in 5020 Salzburg&lt;br /&gt;
-
-
-<input name="" type="submit" />
-</form>
+  <input name="" type="submit" />
+  </form>
+</body>
 </htmlcode>
 
 
