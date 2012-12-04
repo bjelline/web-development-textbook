@@ -5,7 +5,7 @@ order: 15
 
 Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
 mit `<a name=...>` gesetzt, über ein Navigationsmenü soll man diese erreichen
-können.  [Diese Seite](http://brigitte-jelline.at) zeigt ein funktionierendes
+können.  [Diese Seite](http://brigitte-jellinek.at) zeigt ein funktionierendes
 Beispiel (letzte Version).
 
 ### Version 1
