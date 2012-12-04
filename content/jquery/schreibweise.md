@@ -112,6 +112,9 @@ Die beiden Funktionen können nur auf die gleiche Weise aufgerufen werden:
   anon();
 </javascript>
 
+document ready
+---------------
+
 Bei der Verwendung von jQuery werden oft Funktionen ohne Namen verwendet. Ein Beispiel ist die `ready`-Funktion: Die Funktion `ready()` von jQuery verlangt ein Argument: eine Funktion, die aufgerufen werden soll wenn die Webseite vollständig geladen ist:
 
 <javascript>

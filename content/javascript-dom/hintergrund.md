@@ -3,7 +3,13 @@ title: Hintergründe
 order: 10
 ---
 
+Anwendungsgebiet
+----------------
+
 Javascript ist eine Programmiersprache die in HTML eingebettet und vom Browser interpretiert wird. Im Browser ist der Wirkungsbereich von Javascript auf das Fenster und das aktuelle Dokument beschränkt – es kann nicht die Festplatte formatieren oder Excel starten. 
+
+Typische Verwendung
+-------------------
 
 Neben der Verwendung für kleine Effekte im Browser hat Javascript noch weitere wichtige Anwendungsgebiete:
 
@@ -32,7 +38,7 @@ Es gibt noch eine zweite Programmiersprache mit sehr ähnlichem Namen: Java. Die
 | Typen                | Wenige Datentypen, Probleme werden erst zur Laufzeit erkannt | Datentypen und Klassen werden streng unterschieden und zur Compilezeit geprüft |
 |  Objektorientierung |  Objekte und Prototypen  |  Objekte und Klassen |
 | Verwendung           | Im Webbrowser, am Webserver (node.js), in Flash, in Illustrator und Indesign | Überall (Chipkarten, am Server, im Browser, im Handy) |
-| Projekte | Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc. | Alle, auch Großprojekte mit vielen Jahren Entwicklungszei |
+| Projekte | Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS Frontend als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc. | Alle, auch Großprojekte mit vielen Jahren Entwicklungszeit |
 | Wer |  Auch Web-DesignerInnen | Nur InformatikerInnen |
 {: class="table table-condensed table-bordered" style="width:auto"}
 

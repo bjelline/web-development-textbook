@@ -2,7 +2,8 @@
 title: Basic Javascript
 order: 20
 ---
-Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:
+Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
+[live im browser](/images/farbfeld.html).
 
 <htmlcode caption="Vollständige Webseite mit Javascript">
 <head>
@@ -31,6 +32,11 @@ Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird.
 Einbindung von Javascript
 --------------------------
 
+* externe Javascript-Datei
+* mit &lt;script>-Tag
+* Javascript in einer URL
+* onevent-Attribute
+
 ### Externe Javascript-Datei
 
 Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem `script`-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: 
@@ -43,7 +49,9 @@ Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditio
 Wird der `script`-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen `<script>` und `</script>` enthalten. Achtung: die Schreibweise ohne Ende-Tag: `<script src="jquery">` ist nicht erlaubt!
 
 ### Der &lt;script>-Tag 
-Javascript-Programme können im HTML-Code mit dem `script`-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:
+Javascript-Programme können im HTML-Code mit dem `script`-Tag eingebettet
+werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
+[live im Browser](/images/countdown.html)
 
 <htmlcode>
   <h1>Selbstzerstörung</h1>
@@ -79,11 +87,13 @@ Ohne Javascript ist es ein ganz normaler Link zu google.
 
 Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler `false` zurückgibt wird das Event unterbrochen.
 
-##  Die onevent - Attribute
+###  Die onevent - Attribute ###
 
 Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.
 
 Ein paar typische Events mit ihren typischen HTML-Tags:
+
+§
 
 <htmlcode>
   <body onload="...">
@@ -91,11 +101,17 @@ Ein paar typische Events mit ihren typischen HTML-Tags:
 
 Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist
 
+§
+
+
 <htmlcode>
   <a href="..." onmouseover="...">
 </htmlcode>
 
 Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: onmouseout). (Achtung: funktioniert nicht auf Touch-Devices – so wie :hover)
+
+
+§
 
 
 <htmlcode>
@@ -105,11 +121,17 @@ Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: on
 Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß `true` oder `false` zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll. 
 
 
+§
+
+
 <htmlcode>
   <form onsubmit="...">
 </htmlcode>
 
 Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden. Falls der Javascript-Code false zurückgibt werden die Daten aber nicht versandt! 
+
+§
+
 
 
 <htmlcode>
@@ -118,12 +140,31 @@ Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wi
 
 Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascript-Code false zurückgibt wird der Link aber nicht aktiviert!
 
+§
 
 <htmlcode>
   <input onchange="...">
 </htmlcode>
 
 Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde
+
+§
+
+<htmlcode>
+  <div ontouchstart="..." ontouchend="..." ontouchmove="....">
+</htmlcode>
+
+Nur auf geräten mit Touchscreen.
+
+
+§
+
+<htmlcode>
+  <body onoffline="..." ononline="...">
+</htmlcode>
+
+Das Programm wird ausgeführt wenn das Gerät die Verbindung zum Internet
+verliert, bzw. wieder erhält.
 
 
 Syntax von Javascript
@@ -133,22 +174,26 @@ Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C
 
 Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Funktionen existieren können, die zu diesem Objekt gehören.
 
+§
+
 Zum Beispiel das Objekt `document` ist bei Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):
 
 <javascript>
-  // document.location          
-  // diese Eigenschaft speichert die aktuelle URL
-  document.location = "http://io9.com";  
- // wenn man einen neuen Wert in location speichert surft der Browser hin
+// document.location          
+// diese Eigenschaft speichert die aktuelle URL
+// wenn man einen neuen Wert in location speichert surft der Browser hin
+document.location = "http://io9.com";  
 
-  document.alert("hi");  // die Methode alert zeigt ein Popup-Fenster an
-
-  document.alert("meine URL ist " + document.location);
+document.write("hi");  // die Methode write (über)schreibt die webseite
 </javascript>
              
-Es gibt in Javascript aber auch „normale“ Variablen und Funktionen, nicht nur Objekte, Eigenschaften und Methoden. Folgendes Beispiel verwendet die Methode `getElementById` des `document`-Objekts um ein bestimmtes `div` in der Webseite auszuwählen. 
+§
+
+Folgendes Beispiel verwendet die Methode `getElementById` des `document`-Objekts um ein bestimmtes `div` in der Webseite auszuwählen. 
 
 ![Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/](/images/image254.png)
+
+### Variablen
 
 In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. 
 
@@ -156,6 +201,8 @@ Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie 
 
 
 ![Abbildung 58: Javascript Console in Firebug](/images/image264.png)
+
+### Datentypen
 
 Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – der Interpreter trennt Variablen nicht nach verschiedenen Datentypen:
 
@@ -185,14 +232,18 @@ Für das Erzeugen des Arrays gibt es zwei Schreibweisen
   // typeof(b) == "object"
 </javascript>
 
+§
+
 Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,...). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.
+[Beispiel live im Browser](/images/jsarray.html)
 
 <javascript>
   var i,t;
   i = 0;
   t = "Das Array:\n";
   while( i < b.length ) {
-      t += "Index = " + i + ", Wert = " + b[i] + "\n";
+      t += "Index " + i    + "\n";
+      t += "Wert  " + b[i] + "\n";
       i++;
   }   
   alert(t);
@@ -212,13 +263,17 @@ Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise
       this.beschriftung = b;
       this.verkauft     = v;
   }
-  c = new Shirt("rot", "int pi == 3", true);
+  d = new Shirt("rot", "int pi == 3", true);
 
   alert("Das Shirt ist " + c.farbe ); // gibt “Das Shirt ist rot”
+  alert("Das Shirt ist " + d.farbe ); // gibt “Das Shirt ist rot”
 
   // typeof c === "object"
   // c.constructor === Shirt
+  // d.constructor === Object
 </javascript>
+
+### Zugriff auf Eigenschaften
 
 Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen finden werden) ist, dass Eigenschaften eines Objekts nicht nur über die Punkt-Schreibweise, sondern auch über eckige Klammern – also wie ein Array – angesprochen werden können:
 
@@ -234,13 +289,16 @@ In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Varia
   alert("Die Beschriftung lautet " + c[e] );
 </javascript>
 
+### Schleife über Eigenschaften
+
 Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:
 
 <javascript>
   var i,t;
   t = "Das Objekt:\n";
   for( i in c ) {
-      t += "Eigenschaft = " + i + ", Wert = " + c[i] + "\n";
+      t += "Eigenschaft = " + i    + ", ";
+      t += "Wert        = " + c[i] + "\n";
   }   
   alert(t);
 </javascript>

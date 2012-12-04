@@ -42,35 +42,37 @@ Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:
   node.replaceChild()
 </javascript>
 
+### Simples Beispiel
 
-Ein simples Beispiel: ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:
+Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:
 
 <javascript>
-  d = document.getElementById("person_25“);
-  d.setAttribute("style", "display:none");
+d = document.getElementById("person_25“);
+d.setAttribute("style", "display:none");
 </javascript>
 
 Diese beiden Zeilen könnten auch zu einer kombiniert werden:
 
 <javascript>
-  document.getElementById("person_25“).setAttribute("style", "display:none");
+document.getElementById("person_25").setAttribute("style", "display:none");
 </javascript>
 
 Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.
+
+### Selektieren
 
 Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode `document.querySelectorAll()`:
 
 <javascript>
   inputs = document.querySelectorAll("input");
-
   i=0;
-
-  while(i &lt; inputs.length) {
-
+  while(i < inputs.length) {
       console.log("input mit name " + inputs[i].name );
       i++;
   }
 </javascript>
+
+### Text
 
 Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen.
 
@@ -111,12 +113,15 @@ Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für d
   node.removeAttribute()
 </javascript>
 
+### Einfügen
 
 Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft `innerHTML`:
 
 <javascript>
-  document.querySelector("body").innerHTML = "<p>Alles <b>ganz</b> neu</p>“;
+document.querySelector("body").innerHTML = "<p>Alles <b>neu</b></p>“;
 </javascript>
+
+### Duplizieren
 
 Mit `cloneNode` kann man einen ganzen Teil-Baum duplizieren, und wo anders wieder einfügen. So kann man z.B. in einem Pizza-Bestell-Formular die Eingabeelement für eine Pizza in einer div zusammenfassen:
 
@@ -128,17 +133,12 @@ Mit `cloneNode` kann man einen ganzen Teil-Baum duplizieren, und wo anders wiede
         <option>Vegetarian</option>
         <option>Quattro Staggione</option>
       </select>
-      <br />
-      <label>add Garlic  <select name="addgarlic[]">
-          <option>no</option><option>yes</option>
-      </select></label>
-      <label>add Cheese <select name="addcheese[]">
-          <option>no</option><option>yes</option>
-      </select></label>
-      <label>anything else?<input type="text" name="comment[]"  /></label>
+      ...
     </p>
   </div>
 </htmlcode>
+
+§
 
 Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:
 
@@ -147,6 +147,8 @@ Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:
   var new_pizza = first_pizza.cloneNode(true);
   first_pizza.insertBefore(new_pizza, null);
 </javascript>
+
+[Beispiel live im Browser](/images/moreformjs.html)
 
 Einfügen von Event Handlern
 -----------------------------
@@ -173,14 +175,19 @@ Im HTML-Code fügen wir dafür einen span-Tag ein:
   </div>
 </htmlcode>
 
-Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die funktion removeMe. Mit addEventListener können wir dann die Funktion als zuständig für das click-event am span.removthis definieren.
+§
+
+Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen
+wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die
+funktion removeMe. Mit addEventListener können wir dann die Funktion als
+zuständig für das click-event am spam `.removthis` definieren.
 
 <javascript>
-  function removeMe(e){
-     var me = e.target;
-     var my_pizza = me.parentNode.parentNode;
-     my_pizza.parentNode.removeChild( my_pizza ); 
-  }
-  document.querySelector(".removethis").addEventListener("click", removeMe, false); 
+function removeMe(e){
+  var me = e.target;
+  var my_pizza = me.parentNode.parentNode;
+  my_pizza.parentNode.removeChild( my_pizza ); 
+}
+document.querySelector(".removethis").addEventListener("click", removeMe, false); 
 </javascript>
 

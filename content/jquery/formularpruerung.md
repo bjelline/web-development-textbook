@@ -2,45 +2,52 @@
 title: Formulardaten Prüfen mit jQuery
 order: 50
 ---
-In Kapitel 4.5.6 (Seite 85) haben Sie gelernt wie Sie mit Javascript die Daten eines Webformulars prüfen können bevor das Formular abgesendet wird. Mit jQuery können wir dieses Programm noch verfeinern: Jeweils beim betroffenen Eingabefeld wird direkt eine Fehlermeldung angezeigt:
+Im Kapitel über Formulare haben Sie gelernt, 
+wie Sie mit Javascript die Daten eines Webformulars prüfen können 
+bevor das Formular abgesendet wird. 
 
-<htmlcode>
-  <script src="jquery-1.2.3.min.js"></script>
-  <script>
+Das Submit-Event des Formulars wird nun in der jQuery Schreibweise
+behandelt, der boolsche Rückgabewert bleibt in der Bedeutung gleich:
+`return false` verhindert das Absenden des Formulars.
 
-    $(document).ready(function(){
-          $("form").submit(function(){
-              var ok = true;
-             var $i = null;
-              
-              $("span.error").remove();
+<javascript>
+$("form").submit(function(){
+  // ...
+  return ok;
+});
+</javascript>
 
-              $i = $("input[name=liefername]");
-              if($i.val() == "") {
-                  $i.after('<span class="error">den Empfänger angeben</span>');
-                   ok = false;
-              } 
+Der Wert eines Eingabefeldes kann mit der jQuery Methode `val()` ausgelesen
+werden:
 
-              $i = $("input[name=adresse]");
-              if($i.val() == "") {
-                  $i.after('<span class="error">Lieferadresse angeben</span>');
-                  ok = false;
-              }
+<javascript>
+$("input[name=schokolade]").val()    // ein Wert
+</javascript>
 
-              return ok;
-          });
-    });
 
-  </script>
-  </head>
-  <body>
-  <form action = "bestell.php">
+Das (fertige Programm)[/images/form-jquery.html]
+zeigt die Fehlermeldungen jeweils beim betroffenen Eingabefeld an:
 
-  <label>Empfänger: <input type="text" name="liefername"> </label>
-  <label>Adresse: <input type="text" name="adresse"> </label>
-  <label>Telefon/Handy: <input type="text" name="tel"> </label>
+<javascript>
+$("form").submit(function(){
+  var ok = true;
+  $("span.error").remove();
 
-  <input name="" type="submit">
-  </form>
-</htmlcode>
+  gesamt_zahl = parseInt( $("input[name=schokolade]").val() )
+              + parseInt( $("input[name=schweinsbraten]").val() )
+              + parseInt( $("input[name=kaffee]").val() );
+
+  if(gesamt_zahl == 0) {
+      $('form').before('<span class="error">Mindestes-Bestellmenge 1!</span>');
+       ok = false;
+  }
+
+  $i = $("input[name=adresse]");
+  if($i.val() == "") {
+      $i.after('<span class="error">Lieferadresse angeben</span>');
+      ok = false;
+  }
+  return ok;
+});
+</javascript>
 

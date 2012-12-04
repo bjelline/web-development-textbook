@@ -116,7 +116,7 @@ Mediaqueries
 Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine "Verzweigung" in CSS.
 
 <css caption="CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel">
-  @media screen and (max-device-width: 480px) {
+  @media screen and (max-width: 480px) {
     .column {
       float: none;
     }
