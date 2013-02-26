@@ -18,6 +18,8 @@ Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines
 5. Der Webserver schickt über die TCP-Verbindung einen **HTTP-Response** an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource. 
 6. Der Browser nimmt das Dokument in Empfang, **stellt es dar**, und beendet die TCP-Verbindung.
 
+§
+
 ![zwei http requests](/images/http-sequence-diagram.svg)
 
 Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.
@@ -127,8 +129,9 @@ sie hier häufig antreffen sind:
 HTTP abhören
 --------------
 Wie können Sie HTTP beobachten?  Entweder mit einem allgemeinen
-**Netzwerk-Sniffer** wie Ethereal/Wireshark9 oder mit der 
-Firefox-Extension **Live HTTP Headers**. 
+**Netzwerk-Sniffer** wie [Wireshark](http://www.wireshark.org/) oder mit der 
+Firefox-Extension [Live HTTP Headers](https://addons.mozilla.org/en-US/firefox/addon/live-http-headers/)
+oder [Firebug](https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search). 
 
 ![Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)](/images/image334.png)
 
@@ -138,8 +141,6 @@ Seite laden oder Formulardaten senden mit GET
 ----------------------------------------------
 Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten. 
 
-Request = Client an Server
-
       GET /rezensionen/list.php3?no=20 HTTP/1.1
       Host: www.biblio.at
       User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
@@ -147,10 +148,6 @@ Request = Client an Server
       Accept-Language: de-at, de;q=0.66, en-us;q=0.33
       Accept-Encoding: gzip, deflate, compress;q=0.9
       Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
-
-
-Response = Server an Client
-
 
       HTTP/1.0 200 OK
       Date: Sat, 27 Apr 2002 05:52:57 GMT
@@ -166,10 +163,13 @@ Response = Server an Client
 
 Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post. 
 
+§
+
 Die Header, die mit Accept beginnen, können (laut Standard) dem Aushandeln von Sprache, Datentyp, Encoding dienen; werden aber von Servern und Clients nur teilweise beachtet.
 
 
       Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1 
+
 bedeutet laut Standard, daß der Client das Dokument lieber als HTML als als Plain Text erhalten würde. Im realen Web wird aber unter einer URL immer nur ein Dokumententyp angeboten. Wenn man eine PDF-Version der gleichen Information anbietet, dann geschieht dies unter einer anderen URL.
 
 Accept-Language würde dem Aushandeln der Sprache dienen. Dazu müssten die UserInnen aber im Browser die Sprach-Präferenz konfigurieren:
@@ -185,9 +185,6 @@ Da aber kaum jemand diese Konfiguration vornimmt wird die Sprach-Aushandlung kau
 Senden von Formulardaten mit Post
 ----------------------------------
 Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.
-
-Request = Client an Server
-
 
       POST /rezensionen/list.php3 HTTP/1.1
       Host: www.biblio.at
@@ -207,11 +204,6 @@ Umleitung an neue URL
 Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht. 
 
 (Wie auf Seite Fehler! Textmarke nicht definiert. beschrieben, können Sie diese Umleitung von PHP aus mit dem header-Befehl auslösen)
-Client an Server
-
-
-
-Server an Client
 
       GET / HTTP/1.1
       Host: www.rezensionen.at
@@ -220,8 +212,6 @@ Server an Client
       Accept-Language: de-at, de;q=0.66, en-us;q=0.33
       Accept-Encoding: gzip, deflate, compress;q=0.9
       Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
-
-
 
       HTTP/1.0 301 Moved Permanently
       Date: Sat, 27 Apr 2002 05:52:26 GMT
@@ -258,12 +248,6 @@ Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den
 
 Auf Ebene des HTTP-Protokolls betrachtet funktioniert diese Authentisierung wie folgt: bei der ersten Anfrage des Clients schickt der Server einen Status-Code 401 (nicht autorisiert). 
 
-Client an Server
-
-
-
-Server an Client
-
       GET /pr/ HTTP/1.1
       Host: www.sbg.ac.at
       User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
@@ -271,7 +255,6 @@ Server an Client
       Accept-Language: de-at, de;q=0.66, en-us;q=0.33
       Accept-Encoding: gzip, deflate, compress;q=0.9
       Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
-
 
       HTTP/1.0 401 Unauthorized
       Date: Sat, 27 Apr 2002 06:05:08 GMT
@@ -282,9 +265,12 @@ Server an Client
       <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
       <HTML><HEAD>
       <TITLE>401 Authorization Required</TITLE>
-      Daraufhin zeigt der Browser das Passwort-Eingabefenster an. Nach Eingabe von Username und Passwort schickt der Browser die gleiche Anfrage erneut, diesmal aber mit der zusätzlichen Header-Zeile Authorization. In dieser Zeile werden Username und Passwort (leicht verschlüsselt) mitgeschickt. 
-      Wenn Username und Passwort stimmen, schickt der Server eine positive Antwort und das Dokument. 
-      Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Authorization-Zeile mitschicken. 
+
+Daraufhin zeigt der Browser das Passwort-Eingabefenster an. Nach Eingabe von Username und Passwort schickt der Browser die gleiche Anfrage erneut, diesmal aber mit der zusätzlichen Header-Zeile Authorization. In dieser Zeile werden Username und Passwort (leicht verschlüsselt) mitgeschickt. 
+
+Wenn Username und Passwort stimmen, schickt der Server eine positive Antwort und das Dokument. 
+Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Authorization-Zeile mitschicken. 
+
       GET /pr/ HTTP/1.1
       Host: www.sbg.ac.at
       User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
@@ -303,6 +289,7 @@ Server an Client
       <html lang="de">
       <head>
       <title>Universit&auml;t Salzburg - B&uuml;ro f&uuml;r Public Relations</title>
+
 HTTPS
 ------
 HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen. 
@@ -326,7 +313,7 @@ Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine �
 
 Ist ein Proxy konfiguriert dann baut der Browser die HTTP-Verbindung nicht direkt zum Zielrechner auf, sondern zum Proxy, und verändert die Form der ersten Zeile der HTTP-Anfrage: die vollständige URL wird angegebe:
 
-GET http://www.sbg.ac.at/pr/ HTTP/1.1
+    GET http://www.sbg.ac.at/pr/ HTTP/1.1
 
 Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden. 
 
