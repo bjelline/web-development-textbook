@@ -1,0 +1,3 @@
+[submodule "output"]
+	path = output
+	url = git@github.com:web-development/web-development.github.com.git
