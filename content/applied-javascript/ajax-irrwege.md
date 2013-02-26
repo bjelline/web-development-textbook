@@ -52,7 +52,6 @@ Grundfunktion geben, sondern nur die vorhandene Funktion erweitern.
 
 
 
-
 ## REST – Representational State Transfer
 
 Der Begriff “REST” wurde von Roy Fielding 2000 in seiner Dissertation definiert .

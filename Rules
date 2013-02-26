@@ -16,6 +16,7 @@ require "json"
 
 class Nanoc3::Filter
   class Peek < Nanoc3::Filter
+    identifier :peek
     def run(content, params={})
       puts "#{content.length} bytes of content."
       content
@@ -23,6 +24,7 @@ class Nanoc3::Filter
   end
 
   class NoSlides < Nanoc3::Filter
+    identifier :noslides
     def run(content, params={})
       @output = content.dup.gsub(/^.*§.*$/,'');
       @output
@@ -30,6 +32,7 @@ class Nanoc3::Filter
   end
 
   class Slides < Nanoc3::Filter
+    identifier :slides
     def run(content, params={})
       @string = content.dup
 
@@ -66,6 +69,7 @@ class Nanoc3::Filter
     end
   end
   class CodeBlocks < Nanoc3::Filter
+    identifier :code_blocks
     LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
                   "css" => "css", "plain" => "plain", "erb" => "ruby; html-script: true", "htmlcode" => "html",
                   "markup" => "xml", "xml" => "xml", "shell" => "plain", "yaml" => "yaml" }
@@ -140,10 +144,10 @@ class Nanoc3::Filter
   end
 end
 
-Nanoc3::Filter.register 'CodeBlocks',    :code_blocks
-Nanoc3::Filter.register 'Slides',        :slides
-Nanoc3::Filter.register 'NoSlides',      :noslides
-Nanoc3::Filter.register 'Peek',          :peek
+Nanoc3::Filter.register '::Nanoc3::Filter::CodeBlocks',    :code_blocks
+Nanoc3::Filter.register '::Nanoc3::Filter::Slides',        :slides
+Nanoc3::Filter.register '::Nanoc3::Filter::NoSlides',      :noslides
+Nanoc3::Filter.register '::Nanoc3::Filter::Peek',          :peek
 
 preprocess do
   @chapterOrder = [
@@ -154,16 +158,17 @@ preprocess do
     "formulare", 
     "javascript-dom", 
     "jquery", 
-    "php-vorbereitung", 
     "http", 
     "git", 
+    "php-vorbereitung", 
     "wordpress",
     "php",
     "php-mysql",
+    "xml",
+    "svg",
     "session",
     "php-mysql-2",
     "security",
-    "svg",
     "javascript",
     "applied-javascript",
   ]

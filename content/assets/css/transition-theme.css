@@ -16,7 +16,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  padding: 0 48px;
+  padding: 20px 48px;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .slide {
   position: relative;
