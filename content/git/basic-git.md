@@ -7,11 +7,11 @@ Diese Abbildung zeigt die wichtigsten Fachbegriffe von git:
 
 ![Abbildung 141: Fachbegriffe und wichtigste Aktionen mit git](/images/image356.png)
 
-Als working copy werden die Dateien und Ordner bezeichnet, die auf meinem lokalen Rechner akutell im Filsystem gerade sichtbar sind. Mit diesen kann ich also „ganz normal“ arbeiten: editieren, im Browser betrachten, etc.
+Als **working copy** werden die Dateien und Ordner bezeichnet, die auf meinem lokalen Rechner aktuell im Filsystem sichtbar sind. Mit diesen kann ich also „ganz normal“ arbeiten: editieren, im Browser betrachten, etc.
 
-Im lokalen Repository (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.
+Im **lokalen Repository** (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.
 
-Wenn ein Webprojekt schon für die Arbiet mit git aufgesetzt ist sieht der Arbeitsalltag z.B. so aus:
+Wenn ein Webprojekt schon für die Arbeit mit git aufgesetzt ist, sieht der Arbeitsalltag z.B. so aus:
 
 Meine working copy ist direkt im Webspace meines lokalen Webserver gespeichert.  Ich nehme Änderungen an einer Datei „form.html“ und einer dazu gehörigen Datei „bestellung.php“ vor, teste über den lokalen Webserver ob alles  funktioniert. Wenn ich einen Zustand erreicht habe, der funktioniert dann ist es Zeit für einen Commit:
 

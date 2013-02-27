@@ -9,10 +9,30 @@ Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die n
 
 Diese Methode funktioniert aber nicht mehr, sobald zwei Personen gleichzeitig unabhängig voneinander Änderungen durchführen.
 
-Die professionelle Lösung ist ein Versionskontrollsystem. Die englische Wikipedia enthält einen Überblick über verschiedene Systeme (siehe Abbildung 136).
+Die professionelle Lösung ist ein Versionskontrollsystem. 
+Diese System hilft bei der Verwaltung von Datei-Versionen. Alle Änderungen werden gespeichert, nichts kann verloren gehen.
 
+Mit einem Versionskontrollsystem ist ein freieres Arbeite
+möglich: Es wird einfacher  Veränderungen auszuprobieren -
+in der Sicherheit, dass man sie rückgängig zu machen kann,
+bzw. an der anderen Version unabhängig weiter arbeiten kann.
+
+§
+
+Die englische Wikipedia enthält einen Überblick über verschiedene Systeme:
 
 ![Abbildung 140: Überblick über Versionskontrollsysteme aus der Wikipedia13](/images/image355.png)
 
-Aktueller Stand der Technik ist die Verwendung eines verteilten Versionskontrollsystems wie git oder Mercurial, ältere Projekte verwenden noch Subversion (SVN). Bei MMT wird im Fachbereich Web hauptsächlich git, im Fachbereich game teilweise auch SVN verwendet.
+Dabei sind drei historische Entwicklungsschritte erkennbar:
+
+* Nur Lokal: das System ist auf die Verwaltung vom Daten im lokalen Filesystem ausgelegt. 
+* Client-Server: Daten werden in einem zentralen Repository gespeichert.
+* Verteilt: Jeder Arbeitsplatz hat ein eigenes Repository, kann auch "offline" arbeiten.
+
+Open Source Systeme sind:
+
+* Nur Lokal: rcs
+* Client-Server: cvs, svn.
+* Verteilt: git, mercurial
+
 
