@@ -11,6 +11,22 @@ Als **working copy** werden die Dateien und Ordner bezeichnet, die auf meinem lo
 
 Im **lokalen Repository** (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.
 
+Wenn ich eine Veränderung an einer Datei vorgenommen habe, kann ich sie
+mit dem Befehl **add** in den Zustand **staged** versetzten.  Ich sammle Schritt
+für Schritt die Dateien zusammen, die ich gemeinsam **committen** will.
+
+Mit dem Befehl **commit** werden die gestageden Dateien im lokalen Repository
+abgespeichert, und erhalten dort einen eindeutigen Hash und eine Meldund (die
+ich dazu eingebe).
+
+Mit dem Befehl **push** kann ich die commits aus meinem lokalen Repository
+in ein anderes, remote Repository übertragen.  Meist hat man nur ein remote
+Repository - als **ein** zentrales Repository.
+
+
+Arbeitsablauf
+-----------
+
 Wenn ein Webprojekt schon für die Arbeit mit git aufgesetzt ist, sieht der Arbeitsalltag z.B. so aus:
 
 Meine working copy ist direkt im Webspace meines lokalen Webserver gespeichert.  Ich nehme Änderungen an einer Datei „form.html“ und einer dazu gehörigen Datei „bestellung.php“ vor, teste über den lokalen Webserver ob alles  funktioniert. Wenn ich einen Zustand erreicht habe, der funktioniert dann ist es Zeit für einen Commit:
@@ -29,5 +45,5 @@ Damit habe ich meine Änderungen im lokalen Repository gespeichert. Nun kann ich
     git push origin master
 
 
-Das erste Argument „origin“ ist die Abkürzung für das remote Repository, das zweite Argument ist der Branch der gepushed werden soll.  Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.
+Das erste Argument „origin“ ist der Name des remote Repositories, das zweite Argument ist der Branch der gepushed werden soll.  Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.
 

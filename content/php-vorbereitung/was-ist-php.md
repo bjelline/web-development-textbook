@@ -25,14 +25,14 @@ Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser
 Ein sehr einfaches Beispielprogramm in PHP gibt „Hallo Welt“ aus und zeigt (mit dem Befehl phpinfo) viele Informationen über den Webserver und die PHP Installation an:
 
 <php>
-    <html>
-    <body>
-          <?php
-              echo "Hallo Welt";
-              phpinfo();
-          ?>
-    </body>
-    </html>
+<html>
+<body>
+  <?php
+    echo "Hallo Welt";
+    phpinfo();
+  ?>
+</body>
+</html>
 </php>
 
 Um dieses Programm zu testen, brauchen Sie einen Browser und einen Webserver. 

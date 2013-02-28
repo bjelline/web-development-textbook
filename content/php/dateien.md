@@ -25,12 +25,13 @@ Ordner auflisten
 Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion `glob`. (Achtung: die Funktionen `opendir`, `readdir`, `closedir` gibt es auch, die sind aber komplizierter zu verwenden) 
 
 <php>
-      <?php
-         $alle = glob("*");
-         foreach( $alle as $file ) {  // forach-Schleife über Werte, Schlüssel ignorieren!
-             echo "<br>Datei $file gefunden.\n";
-         } 
-      ?> 
+<?php
+   $alle = glob("*");
+   foreach( $alle as $file ) {  // forach-Schleife über Werte
+                                // Schlüssel wird ignorieren!
+       echo "<br>Datei $file gefunden.\n";
+   } 
+?> 
 </php>
 
 Im Output des Programmes werden nicht nur Dateien angezeigt, sondern auch Ordner. Mit den Funktionen `is_dir()` und `is_file()` könnte man herausfinden ob ein Ordner oder eine Datei vorliegt.
@@ -38,21 +39,21 @@ Im Output des Programmes werden nicht nur Dateien angezeigt, sondern auch Ordner
 Die Funktion glob kann — ähnlich wie das DOS-Kommand dir oder das UNIX-Kommando ls —mit verschiedenen Mustern suchen: 
 
 <php>
-      <?php
-         $alle = glob("*.jpg");
-         foreach( $alle as $file ) {
-             echo "<br>Bild $file gefunden.\n";
-         } 
-      ?>
+<?php
+   $alle = glob("*.jpg");
+   foreach( $alle as $file ) {
+       echo "<br>Bild $file gefunden.\n";
+   } 
+?>
 </php>
 
 Der Rückgabewert von glob ist ein Array. Mit `array_merge` kann man mehrere Arrays zusammenfügen zu einem langen Array und mit asort die Werte alphabethisch sortieren:
 
 <php>
-         $jpg = glob("bilder/*.jpg");
-         $gif = glob("bilder/*.gif");
-         $alle_bilder = array_merge($jpg, $gif);
-         asort( $alle_bilder )
+$jpg = glob("bilder/*.jpg");
+$gif = glob("bilder/*.gif");
+$alle_bilder = array_merge($jpg, $gif);
+asort( $alle_bilder )
 </php>
 
 Datei lesen
@@ -60,26 +61,26 @@ Datei lesen
 Um eine Datei von PHP aus zu benutzen, muss man sie mit der Funktion `fopen` öffnen. Man erhält einen „handle“ mit dem man sich im Weiteren auf diese Datei bezeihen kann. 
 
 <php>
-      $handle = fopen("counter.txt", "r");    // r steht für read = lesen
+$handle = fopen("counter.txt", "r");    // r steht für read = lesen
 </php>
 
 Achtung: die Pfadangabe zur Datei ist in UNIX-Schreibweise mit Slash zu schreiben, nicht in Windows-Schreibweise mit Backslash, also: 
 
 <php>
-      # $handle = fopen ("unterordner\counter.txt", "r") # FALSCH
-        $handle = fopen ("unterordner/counter.txt", "r")
+# $handle = fopen ("unterordner\counter.txt", "r") # FALSCH
+  $handle = fopen ("unterordner/counter.txt", "r")
 </php>
 
 Da die Datei zum Lesen geöffnet wurde, kann man nun mit `fgets` eine Zeile aus der Datei lesen. „Eine Zeile“ bedeutet hier: bis ein Zeilenumbruch in der Datei gefunden wird. 
 
 <php>
-      $zahl = fgets($handle);
+$zahl = fgets($handle);
 </php>
 
 Bei längeren Dateien wird `fgets` meist in einer Schleife verwendet, um alle Zeilen aus der Datei zu lesen. Nach Gebrauch muss man die Datei wieder schließen:
 
 <php>
-      fclose($handle);
+fclose($handle);
 </php>
 
 Datei (über-)schreiben
@@ -87,19 +88,19 @@ Datei (über-)schreiben
 Beim Schreiben wird als zweites Argument von fopen der Buchstabe „w“ übergeben:
 
 <php>
-      $handle = fopen("counter.txt", 'w');
-      fwrite($handle, "$zahl\n");
-      fclose($handle);
+$handle = fopen("counter.txt", 'w');
+fwrite($handle, "$zahl\n");
+fclose($handle);
 </php>
 
 Leider ist das Leben aber nicht so einfach:  sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?  Um diese Fragen zu beantworten gibt es Funktionen `is_readable`,  `is_writable` und die Rückgabewerte der verschiedenen schon gezeigten File-Funktionen. So liefert fwrite entweder die Anzahl der geschriebenen Bytes oder FALSE als Status-Code zurück:
 
 <php>
-      $status = fwrite($handle, $zahl);
-      if ( $status === FALSE ) {
-          echo "Datei nicht schreibbar: Platte voll? Zugriff verboten?";
-          exit;
-      }
+$status = fwrite($handle, $zahl);
+if ( $status === FALSE ) {
+  echo "Datei nicht schreibbar: Platte voll? Zugriff verboten?";
+  exit;
+}
 </php>
 
 Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Wenn Ihr PHP-Programm eine Datei löscht, dann ist diese Datei sofort und unwiederbringlich weg.

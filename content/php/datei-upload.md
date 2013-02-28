@@ -2,21 +2,38 @@
 title: Datei Upload
 order: 60
 ---
-POST ermöglicht das Senden beliebig langer Daten, und damit das Hochladen von ganzen Dateien. Dabei muss auch noch das enctype Attribut des Form-Tags gesetzt werden:
+
+
+Im "Frontend" gab es in den letzten Jahren einige Verbesserungen beim
+Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
+durch "Drag-and-Drop" auf den Browser
+
+![New im Frontend: Drag and Drop in den Browser](/images/drag-and-drop-upload.png)
+
+Dazu ist aber eine Javascript-API notwendig, die wir erst
+später kennen lernen.
+
+§
+
+Die einfachste Version des Upload-Formulares verwendet eine input-Tag
+vom typ `file`:
+
 
 <php>
-      <form action="upload.php" method="post" enctype="multipart/form-data">
-Neues Bild zum hochladen in den Ordner 
-
-      <a href='upload/'>upload</a>: <input type="file" name="bild">
-      <input type="submit" value="hinaufladen">
-      </form>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Neues Bild zum hochladen in den Ordner <a href='pix/'>upload</a>: 
+  <input type="file" name="bild">
+  <input type="submit" value="hinaufladen">
+</form>
 </php>
+
+§
 
 Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.
 
-
 ![Abbildung 136: Webformular mit Datei-Upload](/images/image345.png)
+
+§
 
 Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)
 
@@ -37,31 +54,37 @@ $_FILES['bild']['tmp_name']
 $_FILES['bild']['error']
 : Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.
 
+§
+
+TODO: Sicherheitsprobleme beschreiben
+
 <php>
-      <?php
-      $uploaddir = dirname( $_SERVER["SCRIPT_FILENAME"] ) . "/upload/";
+<?php
+$uploaddir = dirname( $_SERVER["SCRIPT_FILENAME"] ) . "/pix/";
 
-      $filename = basename($_FILES['bild']['name']);
-      $ext = substr($filename, -4);
+$filename = basename($_FILES['bild']['name']);
+$ext = substr($filename, -4);
 
-      if( $ext != '.jpg' ) {
-         die("ich darf nur jpg-Dateien hochladen, nicht " . substr($filename, -3) );
-      }
+if( $ext != '.jpg' ) {
+   die("ich darf nur jpg-Dateien hochladen, nicht " . substr($filename, -3) );
+}
 
-      $uploadfile = $uploaddir . $filename;
+$uploadfile = $uploaddir . $filename;
 
-      if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
-          echo "Datei erfolgreich hochgeladen nach <a href='upload/'>upload/</a>\n";
-      } else {
-          echo "Problem beim Speichern der Datei.\n";
-      }
+if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
+  echo "Datei erfolgreich hochgeladen nach <a href='upload/'>upload/</a>\n";
+} else {
+  echo "Problem beim Speichern der Datei.\n";
+}
 
-      echo '<pre>debugging info:';
-      print_r($_FILES);
-      print '</pre>';
+echo '<pre>debugging info:';
+print_r($_FILES);
+print '</pre>';
 
-      ?>
+?>
 </php>
 
-Achtung: Sie müssen den Ordner upload erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver (= ein anderer Account) hineinschreiben darf!
+Achtung: Sie müssen den Ordner `pix` erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver hineinschreiben darf!
+
+
 

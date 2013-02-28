@@ -11,20 +11,26 @@ Die visuelle Darstellung des Blogs wird durch ein „Theme“ festgelegt. Viele 
 
 ![Abbildung 113: Das offizielle Verzeichnis von Wordpress-Themes http://wordpress.org/extend/themes/](/images/wordpress-theme-dir.png)
 
+Achtung: wenn Sie nach Themes googlen werden Sie auch viele Themes mit eingebautem SPAM finden! Deswegen
+ist es besser das offizielle Verzeichnis zu verwenden, oder das Theme genau zu
+utnersuchen.
 
-Achtung: wenn Sie nach Themes googlen werden Sie auch viele Themes mit eingebautem SPAM finden!
+§
 
 Themes werden meist als zip-Dateien zum Download angeboten. Um ein Theme zu installieren muss man:
 
 1.  Die zip-Datei herunterladen, 
 2.  Die zip-Datei auspacken (Dabei entsteht ein Ordner mit vielen Dateien) 
 3.  den Ordner in wp-content/themes hochladen (dabei die Ordnerstruktur erhalten!)
-4.  im Bachend von Wordpress unter Darstellung ⇒ Theme das neue Theme aktivieren (siehe Abbildung 110).
+4.  im Backend von Wordpress unter Darstellung ⇒ Theme das neue Theme aktivieren (siehe Abbildung 110).
  
 ![Abbildung 114: Auswahl des Themes (Navigationspunkt "Darstellungs")](/images/wordpress-themes.png)
 
+§
 
-Technisch betrachtet ist ein Theme ist ein Ordner voll PHP und CSS-Dateien in einem Unter-Order von wp-content/themes.  Das Theme kann viele Dateien enthalten, die beiden wichtigsten sind style.css und screenshot.png. Als Kommentar im Stylesheet style.css sind Informationen über das Theme und die AutorInnen gespeichert. Im Backend von Wordpress (Abbildung 110) wird diese Information gemeinsam mit der Datei screenshot.png bei der Auswahl der Themes angezeigt.
+Technisch betrachtet ist ein Theme ist ein Ordner voll PHP und CSS-Dateien in einem Unter-Order von `wp-content/themes`.  Das Theme kann viele Dateien enthalten, die beiden wichtigsten sind style.css und screenshot.png. 
+
+Als Kommentar im Stylesheet style.css sind Informationen über das Theme und die AutorInnen gespeichert. Im Backend von Wordpress (Abbildung 110) wird diese Information gemeinsam mit der Datei screenshot.png bei der Auswahl der Themes angezeigt.
 
 In Abbildung 111 wird der Ordner des Themes sandbox gezeigt. 
 
@@ -35,14 +41,15 @@ In Abbildung 111 wird der Ordner des Themes sandbox gezeigt.
 Sidebars und Widgets
 ---------------------
 
-Falls die „Sidebar“ im Theme mit Widgets gestaltet ist erscheint ein entsprechender Navigationspunkt Darstellung ⇒ Widgets im Backend. 
+Die "Sidebar" wird auf jeder erzeugten HTML-Seite dargestellt - egal ob
+Homepage, Beitrag oder Seite.  Welche Sidebars es gibt und wo sie angezeigt werden ist im Theme
+definiert.
 
-Widgets sind die einzelnen Teile die zu Sidebars zusammen gestellt werden können.  Das folgende Theme bietet z.B. eine fixe Navigation für die Seiten (rechts oben) und drei Sidebars auf der rechten Seite.  In die Sidebars können jeweils mehrere Widgets eingefügt werden.  Hier findet sich in der oberen Sidebar nur ein Text-Widget, in der linken Sidebar nur das Such-Widget. In der rechten Sidebar befinden sich zwei Widgets: Aktuelle Artikel und Kategorien.
+"Widgets" sind die einzelnen Teile die zu Sidebars zusammen gestellt werden können.  Das folgende Theme bietet z.B. eine fixe Navigation für die Seiten (rechts oben) und drei Sidebars auf der rechten Seite.  In die Sidebars können jeweils mehrere Widgets eingefügt werden.  Hier findet sich in der oberen Sidebar nur ein Text-Widget, in der linken Sidebar nur das Such-Widget. In der rechten Sidebar befinden sich zwei Widgets: Aktuelle Artikel und Kategorien.
 
 
 ![Abbildung 116: Theme mit Page-Navigation (schwarzer Block oben rechts) und drei Sidebars (rot strichlierte Kästen)](/images/wordpress-sidebars.png)
 
-Diese Navigationselemente werden auf allen Seiten des Blogs angezeigt – egal ob Homepage oder Monats-Archiv oder Seite eines einzelnen Artikels. 
 
 
 Widgets
@@ -53,16 +60,21 @@ Viele der angebotenen Widgets sind erst sinnvoll wenn der Blog viele Einträge h
                   
 ![Abbildung 117: Empfehlung für einen neuen Blog: Drei Widgets: Text, Suche, Letzte Artikel](/images/wordpress-widgets.png)
 
+§
 
 Das Zusammenstellen der Sidebars aus den einzelnen Widgets erfolgt im Backend unter Darstellung ⇒ Widgets per „drag and drop“:
 
 
 ![Abbildung 118: Das Widget „Kategorien“ wird per „drag and drop“ zur Sidebar 3 hinzugefügt](/images/wordpress-widget-drag.png)
 
+§
+
 Viele Widgets haben noch Konfigurationsmöglichkeiten. Diese werden erst sichtbar, wenn man das Dreieck rechts anklickt, siehe Abbildung 115.
 
 
 ![Abbildung 119: Verändern oder Löschen eines Widgets](/images/wordpress-widget-delete.png)
+
+§
 
 Hier ein Überblick über die Funktion der angebotenen Widgets:
 
@@ -106,8 +118,8 @@ RSS Links
 :    zeigt Links zu den RSS-Feeds des Blogs an. Diese Information ist auch im HTML-Header zu finden und wird deswegen von manchen Browsern (Firefox, MSIE8) automatisch angezeigt.
 
 <htmlcode caption="verweis auf den RSS-Feed im HEAD eines HTML-Dokuments">
-    <link rel="alternate" type="application/rss+xml" 
-          href="http://wordpress.local/?feed=rss2" 
-          title="Programmier-Portfolio Posts RSS feed">
+<link rel="alternate" type="application/rss+xml" 
+      href="http://wordpress.local/?feed=rss2" 
+      title="Programmier-Portfolio Posts RSS feed">
 </htmlcode>
 

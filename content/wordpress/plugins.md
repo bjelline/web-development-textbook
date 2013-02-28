@@ -2,11 +2,11 @@
 title: Plugins verwenden
 order: 110
 ---
-Plugins können die Funktionsweise von Wordpress erweitern – sowohl was die Anzeige betrifft als auch im Backend. Es gibt ein „offizielles“ Plugin-Verzeichnis unter der Adresse  http://wordpress.org/extend/plugins/
+Plugins können die Funktionsweise von Wordpress erweitern – sowohl was die Anzeige betrifft als auch im Backend. Es gibt ein „offizielles“ Plugin-Verzeichnis von Wordpress unter der Adresse  [wordpress.org/extend/plugins](http://wordpress.org/extend/plugins/)
 
-Ein Plugin ist ein Ordner mit PHP-Dateien im Ordner wp-content/plugins,. Die Installation erfolgt wie bei einem Theme. 
+Ein Plugin ist ein Ordner mit PHP-Dateien im Ordner `wp-content/plugins`,. Die Installation erfolgt wie bei einem Theme. 
 
-Als letzter Installations-Schritt wird das Plugin unter Plugins aktiviert.
+Als letzter Installations-Schritt wird das Plugin im Backend unter dem Menüpunkt Plugins aktiviert.
 
 ![Abbildung 120: Wordpress Backend: Plugins aktivieren und deaktivieren](/images/wordpress-plugins.png)
 
