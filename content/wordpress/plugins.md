@@ -11,6 +11,7 @@ Als letzter Installations-Schritt wird das Plugin im Backend unter dem Menüpunk
 ![Abbildung 120: Wordpress Backend: Plugins aktivieren und deaktivieren](/images/wordpress-plugins.png)
 
 Im Folgenden werden einige wenige Plugins vorgestellt – es gibt noch viel mehr!
+Die beliebtestens findet man im [Periodic Table of Wordpress Plugins](http://plugintable.com/).
 
 Zugriffs-Statistik
 -------------------
