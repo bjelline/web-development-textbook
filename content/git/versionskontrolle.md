@@ -21,7 +21,7 @@ bzw. an der anderen Version unabhängig weiter arbeiten kann.
 
 Die englische Wikipedia enthält einen Überblick über verschiedene Systeme:
 
-![Abbildung 140: Überblick über Versionskontrollsysteme aus der Wikipedia13](/images/image355.png)
+![Überblick über Versionskontrollsysteme aus der Wikipedia13](/images/image355.png)
 
 Dabei sind drei historische Entwicklungsschritte erkennbar:
 
@@ -35,4 +35,9 @@ Open Source Systeme sind:
 * Client-Server: cvs, svn.
 * Verteilt: git, mercurial
 
+§
 
+Laut einer Umfrage von `github` hat sich im Jahr 2012 git gegenüber subversion
+durchgesetzt:
+
+![Überblick über Versionskontrollsysteme aus der Wikipedia13](/images/git-and-subversion.png)

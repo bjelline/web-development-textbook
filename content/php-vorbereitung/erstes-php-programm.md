@@ -66,19 +66,18 @@ anpassen!
 In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen 
 aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: 
 
-(PHP 4 >= 4.2.0, PHP 5)
+    (PHP 4 >= 4.2.0, PHP 5)
+
 Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. 
 
 §
 
-Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) 
-gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert 
-programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!
-
-Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: 
+Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen: 
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
-können Sie das nicht änder!
+können Sie das nicht ändern!
 Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.
+Und Sie sollten auf Ihrem Entwicklungsrechner die gleiche PHP Version
+verwenden die am Webspace installiert ist.
 
 Dokumentation
 --------------
@@ -88,7 +87,7 @@ Die Dokumentation zu PHP finden Sie auf http://php.net.
 
 §
 
-Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation ‚vergessen’ wurden, oder Anwendungsbeispiele:
+Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation "vergessen" wurden, oder Anwendungsbeispiele:
 
 ![Abbildung 130: Kommentare von UserInnen in der Doku auf php. Net](/images/image332.png)
 
