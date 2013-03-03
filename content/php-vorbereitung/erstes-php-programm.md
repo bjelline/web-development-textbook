@@ -15,9 +15,11 @@ folgendem Beispiel ist beides falsch:
 
 ![Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung](/images/image327.png)
 
-Tipp:  wenn die URL mit **file:///** beginnt, öffnet der Browser die Datei
+Wenn die URL mit **file:///** beginnt, öffnet der Browser die Datei
 direkt vom Filesystem, es ist keine Webserver involviert.  Dann kann PHP nicht
 funktionieren!
+
+![Vergleich von file: und http:](/images/php-no-webserver.svg)
 
 §
 

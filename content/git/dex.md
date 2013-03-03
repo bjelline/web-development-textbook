@@ -16,3 +16,4 @@ title: GIT
 * [Das git community book](http://book.git-scm.com/)
 * [Deutsche Referenz zu git](http://weinimo.de/Git-Hilfen/)
 * [A Visual Git Reference](http://marklodato.github.com/visual-git-guide/index-en.html)
+* [Linus Torvalds on git](https://www.youtube.com/watch?v=4XpnKHJAok8)
