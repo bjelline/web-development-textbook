@@ -164,13 +164,13 @@ preprocess do
     "wordpress",
     "php",
     "php-mysql",
-    "xml",
-    "svg",
     "session",
     "php-mysql-2",
-    "security",
+    "xml",
+    "svg",
     "javascript",
     "applied-javascript",
+    "security",
   ]
 
   @chapters = {}
@@ -224,6 +224,7 @@ compile '/assets/*' do
 end
 
 compile '/images/*' do
+  # don’t filter or layout
 end
 
 filters = {

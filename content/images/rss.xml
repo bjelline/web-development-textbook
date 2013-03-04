@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rss PUBLIC "-//Luro//DTD RSS 2.00//EN" "http://www.luro.de/dtd/rss200.dtd">
+<rss version="2.0">
+
+<channel>
+  <title>MultiMediaTechnology - Bachelor und Master in Web- und Game-Development</title>
+  <link>http://multimediatechnology.at</link>
+  <description>Das technische Medienstudium an der FH Salzburg</description>
+  <lastBuildDate>Fri, 01 Mar 2013 13:48:25 +0000</lastBuildDate>
+  <language>de-DE</language>
+  <generator>http://wordpress.org/?v=3.5.1</generator>
+  <item>
+    <title>Barcamp &#8211; The Next Web</title>
+    <link>http://multimediatechnology.at/2013/02/25/barcamp-the-next-web-2/</link>
+    <comments>http://multimediatechnology.at/2013/02/25/barcamp-the-next-web-2/#comments</comments>
+    <pubDate>Mon, 25 Feb 2013 09:39:24 +0000</pubDate>
+    <category><![CDATA[Ankündigung]]></category>
+    <category><![CDATA[Web]]></category>
+    <category><![CDATA[Web & Communities]]></category>
+    <guid isPermaLink="false">http://multimediatechnology.at/?p=2831</guid>
+    <description><![CDATA[<p><a href="http://multimediatechnology.at/wp-content/uploads/logo_barcamp.png"></a></p>
+<p>Was gibt&#8217;s Neues in Sachen Web Development? Was sind die Trends im Web Design? Von 8. bis 10. März 2013 treffen sich Fachleute aus Lehre, Wirtschaft und NGOs zu einem intensiven Austausch am <a href="http://webdevsalzburg.multimediatechnology.at/barcamp-8-10-marz-2013/" target="_blank">Barcamp &#8211; The next Web</a> an der &#8230;</p>]]></description>
+  </item>
+  <item>
+    <title>Algorithms for the Social Web</title>
+    <link>http://multimediatechnology.at/2013/02/13/algorithms-for-the-social-web/</link>
+    <comments>http://multimediatechnology.at/2013/02/13/algorithms-for-the-social-web/#comments</comments>
+    <pubDate>Wed, 13 Feb 2013 12:33:29 +0000</pubDate>
+    <category><![CDATA[Web & Communities]]></category>
+    <guid isPermaLink="false">http://multimediatechnology.at/?p=2820</guid>
+    <description><![CDATA[<p>Kauft man bei Amazon ein Buch, bekommt man Empfehlungen serviert, welche Bücher noch interessant sein könnten. Für diese Empfehlungen wird das eigene Kaufverhalten mit den Einkäufen anderer User verglichen. Für diese <a href="http://de.wikipedia.org/wiki/Empfehlungsdienst">Recommender Systems </a>sind aufwendige Berechnungen auf sehr großen Datenbeständen &#8230;</p>]]></description>
+  </item>
+</channel>
+</rss>
