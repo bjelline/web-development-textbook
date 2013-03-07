@@ -12,9 +12,9 @@ Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick
 |+----|+--------|+--------|+-----------|
 |Home |`index.php`|         |Zeigt Gesamtzahl der Personen und Werke an.| 
 |Personen|`personen.php`|   |Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php|
-|Details zu einer Person|`person.php`|pid (Schlüssel der Person)| Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username|
+|Details zu einer Person|`person.php`|id (Schlüssel der Person)| Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username|
 |Werke| `werke.php`|        |Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php| 
-|Details zu einem Werk| `werk.php`|wid (Schlüssel des Werks)| Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen|
+|Details zu einem Werk| `werk.php`|id (Schlüssel des Werks)| Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen|
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die Dateien functions.php (mit der Datenbank-Verbindung) header.php und footer.php inkluidert.
@@ -40,13 +40,13 @@ In der Datei personen.php wird zu jeder Person ein passender Link zu person.php 
 <php>
 <li>
   <b><?= $person->firstname ?> <?= $person->surname?></b>
-  <a href="person.php?pid=<?= $person->id ?>">mehr</a>
+  <a href="person.php?id=<?= $person->id ?>">mehr</a>
 </li>
 </php>
 
-Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingibt!
+Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere id „von Hand“ eingibt!
 
-`http://meinedomain.at/person.php?pid=666`
+`http://meinedomain.at/person.php?id=666`
 
 Der Zugriffsschutz ist also ein eigenes Thema, das auch in `person.php` wieder behandelt werden muss.
 

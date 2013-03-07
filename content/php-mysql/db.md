@@ -27,62 +27,63 @@ Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Sch
 Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 
     mysql> show tables;
+    +------------------------------------------+
+    | Tables_in_portfolio_playground           |
+    +------------------------------------------+
+    | agegroups                                | 
+    | agegroups_studycourses_departments_users | 
+    | assets                                   | 
+    | departments                              | 
+    | projects                                 | 
+    | projects_roles_users                     | 
+    | projects_tags                            | 
+    | roles                                    | 
+    | studycourses                             | 
+    | tags                                     | 
+    | urls                                     | 
+    | users                                    | 
+    +------------------------------------------+
+    12 rows in set (0.00 sec)
 
-    +-----------------------------+
-    | Tables_in_portfolio_sandbox |
-    +-----------------------------+
-    | macht                       | 
-    | media                       | 
-    | media_werk                  | 
-    | person                      | 
-    | rollen                      | 
-    | student                     | 
-    ...
-    | werk                        | 
-    +-----------------------------+
-    16 rows in set (0.00 sec)
 
 Describe zeigt den Aufbau einer bestimmten Tabelle:
 
-    mysql> describe person;
+    mysql> describe users;
+    +-----------------+--------------+------+-----+---------+----------------+
+    | Field           | Type         | Null | Key | Default | Extra          |
+    +-----------------+--------------+------+-----+---------+----------------+
+    | id              | int(11)      | NO   | PRI | NULL    | auto_increment | 
+    | firstname       | varchar(255) | YES  |     | NULL    |                | 
+    | surname         | varchar(255) | YES  |     | NULL    |                | 
+    | title           | varchar(255) | YES  |     | NULL    |                | 
+    | email           | varchar(255) | YES  | UNI | NULL    |                | 
+    | isfemale        | tinyint(1)   | YES  |     | NULL    |                | 
+    | profile_visible | tinyint(1)   | YES  |     | NULL    |                | 
+    | type            | varchar(255) | YES  | MUL | NULL    |                | 
+    | is_admin        | int(11)      | YES  |     | 0       |                | 
+    | description     | text         | YES  |     | NULL    |                | 
+    | slug            | varchar(255) | YES  | UNI | NULL    |                | 
+    | avatar          | varchar(255) | YES  |     | NULL    |                | 
+    +-----------------+--------------+------+-----+---------+----------------+
+    12 rows in set (0.00 sec)
 
-    +------------+--------------+------+-----+---------+----------------+
-    | Field      | Type         | Null | Key | Default | Extra          |
-    +------------+--------------+------+-----+---------+----------------+
-    | pid        | bigint(20)   |      | PRI | NULL    | auto_increment |
-    | uid        | varchar(8)   | YES  | MUL | NULL    |                |
-    | vorname    | varchar(40)  |      |     |         |                |
-    | nachname   | varchar(50)  |      |     |         |                |
-    | profil     | text         |      |     |         |                |
-    | mail       | varchar(40)  | YES  | MUL | NULL    |                |
-    | web        | varchar(200) | YES  |     | NULL    |                |
-    | blog       | varchar(200) | YES  |     | NULL    |                |
-    | feed       | varchar(200) | YES  |     | NULL    |                |
-    | title      | varchar(10)  | YES  |     | NULL    |                |
-    | isfemale   | tinyint(4)   |      |     | 0       |                |
-    | bildpfad   | varchar(250) | YES  | MUL | NULL    |                |
-    | ifshow     | tinyint(4)   |      |     | 0       |                |
-    | facebookid | bigint(20)   | YES  |     | NULL    |                |
-    +------------+--------------+------+-----+---------+----------------+
-    14 rows in set (0.00 sec)
 
 Select und Join funktionieren wie erwartet:
 
-    mysql> select pid,vorname from person limit 1,8;
-
-    +-----+-------------+
-    | pid | vorname     |
-    +-----+-------------+
-    |   2 | Paul        |
-    |   3 | Edvard Paul |
-    |   4 | Sandra      |
-    |   5 | Philipp     |
-    |   6 | Antal       |
-    |   7 | Sebastian   |
-    |   8 | Johannes    |
-    |   9 | Ivan        |
-    +-----+-------------+
-    10 rows in set (0.00 sec)
+    mysql> select id,firstname from users limit 1,8;
+    +----+-----------+
+    | id | firstname |
+    +----+-----------+
+    |  2 | Lea       | 
+    |  3 | Stefan    | 
+    |  4 | Karin     | 
+    |  5 | Katharina | 
+    |  6 | Julia     | 
+    |  7 | Gianni    | 
+    |  8 | Josef     | 
+    |  9 | Michael   | 
+    +----+-----------+
+    8 rows in set (0.01 sec)
 
 Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der [Dokumentation](http://dev.mysql.com/) entnehmen.
 

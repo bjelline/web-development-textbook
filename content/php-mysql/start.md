@@ -35,7 +35,7 @@ Achtung: zum Erzeugen des Database Handles brauchen wir noch eine zweite Datei m
 
 <php caption="Zugangsdaten für die Datenbank">
     <?php
-    $DB_NAME = "portfolio_sandbox"; 
+    $DB_NAME = "portfolio_playground"; 
     $DB_USER = "mmtuser"; 
     $DB_PASS = "geheim!";
     $DSN     = "mysql:dbname=$DB_NAME;host=localhost";

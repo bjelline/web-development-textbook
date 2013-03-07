@@ -62,13 +62,13 @@ $anz_personen = $ergebnis['anzahl'];
 
 Einen bestimmten Datensatz lesen
 ---------------------------------
-Wenn Sie die Datei `person.php` mit einem Parameter aufrufen person.php?pid=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem `$_GET` – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.
+Wenn Sie die Datei `person.php` mit einem Parameter aufrufen person.php?id=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem `$_GET` – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.
 
 In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit `profile_visible=0` gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil `profile_visible=0` ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.
 
 <php caption="Beispiel aus home.php">
-$pid = $_GET['pid'];  // SICHERHEITSPROBEM - behandeln wir später noch!
-$stm = $dbh->query ( "SELECT * FROM users WHERE profile_visible AND id=$pid" );
+$id = $_GET['id'];  // SICHERHEITSPROBEM - behandeln wir später noch!
+$stm = $dbh->query ( "SELECT * FROM users WHERE profile_visible AND id=$id" );
 $person = $stm->fetch(PDO::FETCH_OBJ);
 if( $person === FALSE ) {
   die("<p>Konnte keine passenden Daten aus der Datenbank lesen.</p>");
@@ -103,13 +103,13 @@ In der Datei personen.php wird zu jeder Person ein passender Link zu person.php 
 <php>
 <li>
   <b><?= $person->firstname ?> <?= $person->surname?></b>
-  <a href="person.php?pid=<?= $person->id ?>">mehr</a>
+  <a href="person.php?id=<?= $person->id ?>">mehr</a>
 </li>
 </php>
 
-Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingibt!
+Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere id „von Hand“ eingibt!
 
-`http://meinedomain.at/person.php?pid=666`
+`http://meinedomain.at/person.php?id=666`
 
 Der Zugriffsschutz ist also ein eigenes Thema, das auch in `person.php` wieder behandelt werden muss.
 
@@ -147,7 +147,7 @@ if ( $suchwort ) : ?>
   <?php foreach ($personen as $person) : ?>
     <li>
       <b><?=$person->firstname ?>   <?= $person->surname ?></b>
-      <a href="person.php?pid=<?= $person->id ?>">mehr</a>
+      <a href="person.php?id=<?= $person->id ?>">mehr</a>
     </li>
   <?php endforeach ; ?>
   </ol>
