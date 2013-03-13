@@ -90,11 +90,11 @@ if( $person->isfemale ) {
 include "header.php";
 ?>
 <p> 
-  <?= $anrede ?>
-  <?= $person->firstname ?>
-  <?= $person->surname ?>
+  <?php echo $anrede ?>
+  <?php echo $person->firstname ?>
+  <?php echo $person->surname ?>
   hat insgesamt x Werke in dieser Datenbank.
-  <?= $ersie ?> hat den Usernamen <?= $person->uid ?>.
+  <?php echo $ersie ?> hat den Usernamen <?php echo $person->uid ?>.
 </p>
 </php>
 
@@ -102,8 +102,8 @@ In der Datei personen.php wird zu jeder Person ein passender Link zu person.php 
 
 <php>
 <li>
-  <b><?= $person->firstname ?> <?= $person->surname?></b>
-  <a href="person.php?id=<?= $person->id ?>">mehr</a>
+  <b><?php echo $person->firstname ?> <?php echo $person->surname?></b>
+  <a href="person.php?id=<?php echo $person->id ?>">mehr</a>
 </li>
 </php>
 
@@ -142,12 +142,12 @@ if( $suchwort ) {
 ....
 if ( $suchwort ) : ?>
 
-  <p>Suche nach '<?= $suchwort ?>' hat <?= $found ?> Ergebnisse geliefert:</p>
+  <p>Suche nach '<?php echo $suchwort ?>' hat <?php echo $found ?> Ergebnisse geliefert:</p>
   <ol>
   <?php foreach ($personen as $person) : ?>
     <li>
-      <b><?=$person->firstname ?>   <?= $person->surname ?></b>
-      <a href="person.php?id=<?= $person->id ?>">mehr</a>
+      <b><?php echo$person->firstname ?>   <?php echo $person->surname ?></b>
+      <a href="person.php?id=<?php echo $person->id ?>">mehr</a>
     </li>
   <?php endforeach ; ?>
   </ol>
