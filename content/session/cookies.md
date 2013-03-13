@@ -58,3 +58,11 @@ alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
 
 Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!
 
+### Libraries für Cookies in Javascript
+
+Um das Lesen, Setzen und Löschen von Cookies in Javascript
+zu vereinfachen git es zwei gute Libraries:
+
+* die Funktionen von [Quirksmode](http://www.quirksmode.org/js/cookies.html)
+* ein jQuery Plugin [jquery-cookies](https://github.com/carhartl/jquery-cookie)
+

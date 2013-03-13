@@ -7,4 +7,6 @@ gem "adsf"
 gem "mime-types"
 gem "curb"
 gem "json"
-gem "fssm"
+# gem "fssm"
+gem "listen"
+gem 'rb-fsevent', '~> 0.9'
