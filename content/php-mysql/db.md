@@ -9,22 +9,40 @@ Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe 
 
 MySQL Installation, Wiederholung, Dokumentation
 ------------------------------------------------
-MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. Die MySQL-Shell wird wie folgt gestartet:
+MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. 
 
-    > mysql –u username –p datenbankname
+### MySQL-Shell
+
+Die MySQL-Shell[*](http://dev.mysql.com/doc/refman/5.6/en/mysql.html) wird wie folgt gestartet:
+
+    mysql -p -u USERNAME DATENBANKNAME
+
+Die Option `-p` sorgt dafür, dass ich nach Passwort gefragt werde (und es nicht
+als Argument angeben muss).  Mit der Option `-u` gebe ich den Usernamen mit an.
+Zuletzt (und ohne Option) wird der Name der Datenbank als Argument übergeben.
+
+Konkret sieht das dann so aus:
+
+    > mysql -p –u root portfolio_playground
     Welcome to the MySQL monitor. Commands end with ; or \g.
-
     Your MySQL connection id is 2 to server version: 5.0.27-community-nt
-
-
     Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-
     mysql>
 
-Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: 
+### SQL Importieren
 
-    > mysql –u username –p datenbankname < portfolio.sandbox.sql
-Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
+Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen,
+dabei verwenden wir die Eingabeumlenkung der Shell (siehe [Linux openbook:Eingabeumlenkung](http://openbook.galileocomputing.de/ubuntu_1104/linux_07_008.htm#mjc7a653a8681ed7268edaff751d10f51f))
+
+    > mysql -p –u USERNAME –p DATENBANAME < DATEINAME
+
+oder konkret:
+
+    > mysql -p –u root –p portfolio_playground < portfolio_playground.sql
+
+### Tabellen anzeigen
+
+`show tables`[*](http://dev.mysql.com/doc/refman/5.6/en/show-tables.html) zeigt alle Tabellen in der aktuellen Datenbank:
 
     mysql> show tables;
     +------------------------------------------+
@@ -45,10 +63,11 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
     +------------------------------------------+
     12 rows in set (0.00 sec)
 
+### Eine Tabelle beschreiben
 
-Describe zeigt den Aufbau einer bestimmten Tabelle:
+`explain`[*](http://dev.mysql.com/doc/refman/5.6/en/explain.html) zeigt den Aufbau einer bestimmten Tabelle:
 
-    mysql> describe users;
+    mysql> explain users;
     +-----------------+--------------+------+-----+---------+----------------+
     | Field           | Type         | Null | Key | Default | Extra          |
     +-----------------+--------------+------+-----+---------+----------------+
@@ -67,8 +86,9 @@ Describe zeigt den Aufbau einer bestimmten Tabelle:
     +-----------------+--------------+------+-----+---------+----------------+
     12 rows in set (0.00 sec)
 
+### Abfrage
 
-Select und Join funktionieren wie erwartet:
+`select` und `join` funktionieren wie erwartet:
 
     mysql> select id,firstname from users limit 1,8;
     +----+-----------+
@@ -85,28 +105,33 @@ Select und Join funktionieren wie erwartet:
     +----+-----------+
     8 rows in set (0.01 sec)
 
-Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der [Dokumentation](http://dev.mysql.com/) entnehmen.
+### Dokumentation
 
-![Dokumentation von MySQL auf http://dev.mysql.com/](/images/image357.png)
+Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der [Dokumentation](http://dev.mysql.com/doc/refman/5.6/en/index.html) entnehmen.
 
-## phpMyAdmin
+![Dokumentation von MySQL auf http://dev.mysql.com/](/images/mysql-doku.png)
 
-Ein häufig verwendetes Tool ist der phpMyAdmin, der ein Interface am Web zur Verfügung stellt. 
+phpMyAdmin
+---------
 
-TODO: Bilder einfügen
+PhpMyAdmin ist ein häufig verwendetes Tool zur Verwaltung von MySQL Datenbanken.
+Es ist in PHP geschreiben, kann also im Webspace installiert und über
+den Browser verwendet werden.  
 
-![phpMyAdmin](/images/image358.png)
+![phpMyAdmin](/images/phpmyadmin.png)
 
-Über phpMyAdmin kann man viele SQL-Abfragen durch Point+Klick formulieren. Das lehrreiche daran: phpMyAdmin zeigt immer das SQL-Statement mit an — auf diese Art kann man einfach SQL lernen. Besonders praktisch ist das beim Anlegen und Verändern von Tabellen. 
-Erster Schritt: Name der Tabelle:
+### Create Table in phpMyAdmin
 
-![Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle](/images/image359.png)
+Über phpMyAdmin kann man viele SQL-Befehle durch Point+Klick formulieren,
+hier zum Beispiel ein `create table` Statement:
 
-Zweiter Schritt: Spalten definieren:
+![Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle](/images/phpmyadmin-create-table.png)
 
-![Abbildung 143: Tabelle anlegen mit phpMyAdmin - die Spalten](/images/image360.png)
 
-Dritter Schritt: Tabelle wird angelegt und dazugehörendes SQL-Statement angezeigt:
+### SELECT in phpMyAdmin
 
-![Abbildung 143: Tabelle anlegen mit phpMyAdmin - der SQL Befehl](/images/image360.png)
+Bei Manchen Operationen zeigt phpMyAdmin das verwendete SQL-Statement an — das kann ganz lehrreich sein.
+
+![Abbildung 143: Suchen mit  phpMyAdmin - Eingabemaske](/images/phpmyadmin-search.png)
+![Abbildung 143: Suchen mit  phpMyAdmin - SQL](/images/phpmyadmin-search-sql.png)
 
