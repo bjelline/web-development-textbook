@@ -3,26 +3,65 @@ title: Session und Login
 order: 20
 ---
 
-Ohne "state" ist jeder HTTP Request ein isoliertes Ereignis.
+HTTP ist "statelesse" - jeder HTTP Request ist ein isoliertes Ereignis, der
+Server kann nicht erkennen ob Requests zusammen gehören.
+
+![HTTP als "stateless protocol"](/images/stateless-http.svg)
+
+§
+
 Mit der Einführung von Cookies, und damit von state, können
-wir nun erkennen, dass mehere Requests zusammen gehören,
-von derselben Person ausgelöst wurden. Wir nennen diese Folge
-von Requests dann eine "Session".
+wir nun erkennen, dass mehrere Requests zusammen gehören,
+von derselben Person ausgelöst wurden. 
+
+![HTTP mit cookies wird "stateful"](/images/stateful-http-with-cookies.svg)
+
+Wir nennen diese Folge von Requests dann eine "Session".
 
 Session
 --------
 PHP hilft beim Erkennen und Verwenden von Sessions:
 
-Mit dem Befehle  `session_start()` wird 
+Mit dem Befehle  `session_start()` [PHP
+Doku](http://www.php.net/manual/de/function.session-start.php)  wird 
 
-* …beim ersten Aufruf automatisch ein Cookie gesetzt. Wenn danach im Array `$_SESSION` Daten gespeichert werden, sorgt PHP dafür dass die Daten am Server permanent gespeichert werden und damit beim nächsten Programmaufruf wieder zur Verfügung stehen.
-* …bei jedem weiteren Aufruf die Session an Hand des Cookies wieder identifiziert, und die Daten wieder ins `$_SESSION`-Array geladen.
-Für unsere Applikation werden wir das verwenden, um den Usernamen des angemeldeten Users zu speichern. `session_start()` wird in `functions.php` ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:
+* …beim ersten Aufruf 
+  * automatisch ein Cookie gesetzt. 
+  * Wenn im Array `$_SESSION` Daten gespeichert werden, sorgt PHP dafür, dass die Daten am Server permanent gespeichert werden.
+* …bei jedem weiteren Aufruf 
+  * die Session an Hand des Cookies wieder identifiziert.
+  * und die Daten wieder ins `$_SESSION`-Array geladen.
+
+Für unsere Applikation werden wir das `$_SESSION`-Array verwenden, um den Usernamen des angemeldeten Users zu speichern. 
+
+### Struktur der Applikation mit Login
+
+
+Die folgende Tabelle zeigt alle nochmal alle Seiten der Applikation im Überblick. 
+Diesmal ist auch die Methode angegeben, da login.php verschiedene Aufgaben hat,
+je nachdem ob es mit GET oder POST aufgerufen wird.
+
+|Titel|Methode|Dateiname  |Parameter|Beschreibung|
+|+----|+------|+----------|+--------|+-----------|
+|Home |GET    |`index.php`|         |Zeigt Gesamtzahl der Personen und Werke an.| 
+|Login Formular|GET    |`login.php`|         |Zeigt das Formular für den Login an        | 
+|Login|POST   |`login.php`|username, passwort|Prüft die Daten, setzt Username in der Session, dann Redirect zu index.php| 
+|Logout|POST   |`logout.php`| | Löschte Session und Session-Cookie, dann
+Redirect zu index.php | 
+|Personen|GET |`personen.php`|   |Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php|
+|Details zu einer Person|GET|`person.php`|id (Schlüssel der Person)| Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username|
+|Werke|GET    | `werke.php`|        |Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php| 
+|Details zu einem Werk|GET| `werk.php`|id (Schlüssel des Werks)| Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen|
+{: class="table table-condensed table-bordered" style="width:auto"}
+
+### session_start
+
+`session_start()` wird in `functions.php` ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:
 
 
 ![Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit](/images/image364.png)
 
-§
+### Login
 
 Das Login-Formular (Dateiname `login.php`) sieht ganz einfach aus und sendet die Daten mit POST wieder an `login.php`:
 
@@ -39,6 +78,8 @@ if ( strlen($username) > 0  and check_login( $username, $passwort ) ) {
 </php>
 
 Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array `$_SESSION` der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.
+
+### Logout
 
 Das Logout erfolgt ebenfalls mit der Methode POST:
 
@@ -69,11 +110,11 @@ session_destroy();
 header("Location: index.php")
 </php>
 
-§
+### Redirect / Weiterleitung
 
-Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung mit `Location:` sinnvoll. 
+Das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung mit `Location:` sinnvoll. 
 
-Achtung: die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:
+Die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:
 
 <php>
 <?php
@@ -92,21 +133,17 @@ Achtung: die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist
     include "header.php";
 </php>
 
-§
-
-Hier noch mal die Dateien:
-
-
-|Titel | Dateiname |  Method/Parameter       | Beschreibung          |
-|+-----|+----------|+------------------------|+----------------------|
-|Login | login.php | GET                     |  Zeigt Login-Formular |
-|Login | login.php | POST username, passwort |  Prüft Login + setzt Session. → Leitet weiter an index.php |
-|Logout| logout.php|POST                     |  Löscht die Session. Leitet weiter an index.php |
-{: class="table table-condensed table-bordered" style="width:auto"}
-
-
 Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.
 
 
 ![Abbildung 148: Login mit einer Weiterleitung](/images/image366.png)
 
+
+### Neue PHP Befehle
+
+* `$_SESSION()` [PHP Doku](http://php.net/manual/en/reserved.variables.session.php)
+* `$_COOKIE()` [PHP Doku](http://php.net/manual/en/reserved.variables.cookies.php)
+* `header()` [PHP Doku](http://www.php.net/manual/de/function.header.php)  
+* `session_name()` [PHP Doku](http://www.php.net/manual/de/function.session-name.php)
+* `session_start()` [PHP Doku](http://www.php.net/manual/de/function.session-start.php)  
+* `setcookie()` [PHP Doku](http://www.php.net/manual/de/function.setcookie.php)
