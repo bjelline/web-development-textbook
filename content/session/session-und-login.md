@@ -12,7 +12,7 @@ Server kann nicht erkennen ob Requests zusammen gehören.
 
 Mit der Einführung von Cookies, und damit von state, können
 wir nun erkennen, dass mehrere Requests zusammen gehören,
-von derselben Person ausgelöst wurden. 
+vom selben Browser ausgelöst wurden. 
 
 ![HTTP mit cookies wird "stateful"](/images/stateful-http-with-cookies.svg)
 
@@ -22,8 +22,7 @@ Session
 --------
 PHP hilft beim Erkennen und Verwenden von Sessions:
 
-Mit dem Befehle  `session_start()` [PHP
-Doku](http://www.php.net/manual/de/function.session-start.php)  wird 
+Mit dem Befehle  `session_start()`[*](http://www.php.net/manual/de/function.session-start.php)  wird 
 
 * …beim ersten Aufruf 
   * automatisch ein Cookie gesetzt. 
@@ -46,8 +45,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.
 |Home |GET    |`index.php`|         |Zeigt Gesamtzahl der Personen und Werke an.| 
 |Login Formular|GET    |`login.php`|         |Zeigt das Formular für den Login an        | 
 |Login|POST   |`login.php`|username, passwort|Prüft die Daten, setzt Username in der Session, dann Redirect zu index.php| 
-|Logout|POST   |`logout.php`| | Löschte Session und Session-Cookie, dann
-Redirect zu index.php | 
+|Logout|POST   |`logout.php`| | Löschte Session und Session-Cookie, dann Redirect zu index.php | 
 |Personen|GET |`personen.php`|   |Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php|
 |Details zu einer Person|GET|`person.php`|id (Schlüssel der Person)| Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username|
 |Werke|GET    | `werke.php`|        |Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php| 

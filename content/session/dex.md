@@ -1,7 +1,9 @@
 ---
 title: Login, Sessions und Datenbank verändern
 ---
-Mit Sessions wird ein Login ermöglicht. Der Zugriff von PHP auf die Datenbank MySQL wird erweitert: Löschen von Daten, Einfügen von Daten, Bearbeiten von Daten.
+
+Mit Cookies wird HTTP stateful, damit werden
+Sessions und ein Login ermöglicht.
 
 Was Sie alle wissen sollten
 
@@ -10,4 +12,5 @@ Was Sie alle wissen sollten
 
 Was Sie können sollten
 
+* Cookies von PHP und Javascript aus setzen und auslesen
 * Die Sessions von PHP in Ihrem PHP-Programm benutzen
