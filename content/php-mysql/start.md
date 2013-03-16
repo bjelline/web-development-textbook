@@ -3,7 +3,10 @@ title: PHP und MySQL/MariaDB
 order: 10
 ---
 
-Mit der Verwendung einer Datenbank wird der Ablauf noch einmal komplexer:
+Mit der Verwendung einer Datenbank wird der Aufruf einer
+Webseite noch einmal komplexer:  der Webserver ruft
+das PHP Programm auf, das PHP-Programm schickt eine
+Anfrage an die Datenbank.
 
 ![Webseite wird von PHP erzeugt, mit DB-Abfrage](/images/php-db.svg)
 
@@ -13,7 +16,10 @@ oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.
 
 MySQL von PHP aus
 ------------------
-Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. Hier werden die „PHP Database Objects“ (PDO) vorgestellt.
+
+Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. 
+Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
+[PDO Dokumentation](http://php.net/manual/de/book.pdo.php).
 
 ### Verbindungsaufbau
 
