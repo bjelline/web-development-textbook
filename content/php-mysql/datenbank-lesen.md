@@ -4,18 +4,73 @@ order: 20
 ---
 
 Für die Applikation müssen wir nun auf verschiedene
-Arten Daten aus der Datenbank lesen:
+Arten Daten aus der Datenbank lesen.
 
-Viele Datensätze aus der Datenbank lesen
-------------------------------------------
-In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:
 
-<php caption="personen.php">
-$query = $dbh->query("SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10");
-$personen = $query->fetchAll(PDO::FETCH_OBJ);
+Einzelne Daten aus der Datenbank lesen
+---------------------------------------
+Für die Datei `index.php` müssen wir die Anzahl der Profile und Projekte anzeigen.
+Mit der SQL-Funktion `COUNT()` können 
+wir die Anzahl der gefundenen Datensätze bestimmen[*](http://dev.mysql.com/doc/refman/5.6/en/counting-rows.html):
+
+<php caption="Beispiel aus index.php">
+$sth = $dbh->query("SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible=1");
+$result = $sth->fetch();
+$anz_personen = $result->anzahl;
 </php>
 
-Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):
+Hier verwenden wir die Methode `fetch()` des Statement-Handles
+um nur einen Datensatz zu lesen.
+
+§
+
+Man könnte all diese Befehle direkt aneinander-ketten (englisch: "to chain"):
+
+<php caption="Beispiel aus index.php">
+$anz_personen = $dbh->query("SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible=1")->fetch()->anzahl;
+</php>
+
+Damit spart man sich zwei der drei Variablen, macht aber
+die Fehlersuche etwas schwieriger.  
+
+
+Viele Datensätze lesen
+------------------
+
+Für die Datei `personen.php` benötigen wir ein Möglichkeit viele
+Daten aus der Datenbank zu lesen. Das geschieht mit einem einfachen `SELECT`:
+
+<php caption="Abfrage der Datenbank mit SELECT">
+$sth =$dbh->query(
+  "SELECT * FROM person WHERE profile_visible=1 ORDER BY surname LIMIT 1,500"
+);
+$personen = $sth->fetchAll();
+</php>
+
+Die SQL-Anfrage wird hier als String an die `query()`-Methode des Datenbankhandler
+übergeben.  Der Rückgabewert von query ist ein Statement-Handle `$sth` (ähnlich
+dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
+Datenbank zu PHP übertragen. 
+
+§
+
+Im Beispiel wird eine Besonderheit von SQL in MySQL verwendet: 
+`LIMIT anfangsposition, anzahl`
+wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
+Anfangsposition[*](http://dev.mysql.com/doc/refman/5.6/en/select.html#idp72285024).
+
+§
+
+In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
+`profile_visible=0` gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
+nur sichtbare Profil angezeigt werden. 
+
+§
+
+Das eigentliche Lesen der Daten aus der Datenbank geschieht erst nach dem
+`query()` mit der Methode `fetchAll()`[*](http://www.php.net/manual/en/pdostatement.fetchall.php). 
+Der Rückgabewert von `fetchAll()` ist ein Array mit Objekten. 
+Hier der Output von `print_r($personen)`:
 
 <php caption="Output von print_r($personen)">
 Array
@@ -24,66 +79,124 @@ Array
       (
           [id] => 422
           [firstname] => Hubert jun.
-          [surname] => Hoelzl
-          [email] => hhoelzl.mmt-b2008@fh-salzburg.ac.at
+          [surname] => H.
+          [email] => mail422@nowhere.not
           [isfemale] => 0
           [profile_visible] => 1
-          [created_at] => 2011-06-01 09:54:16
-          [updated_at] => 2011-06-01 17:14:58
-          [avatar] => 
-          [fullname] => Hubert jun. Hoelzl
       )
   [1] => stdClass Object
       (
           [id] => 313
           [firstname] => Marcel
-          [surname] => Uekermann
-          [email] => muekermann.mma-b2007@fh-salzburg.ac.at
+          [surname] => U
+          [email] => mail313@nowhere.not
           [isfemale] => 0
           [profile_visible] => 1
-          [created_at] => 2011-06-01 09:54:12
-          [updated_at] => 2011-06-01 09:54:12
-          [avatar] => 
-          [fullname] => Marcel Uekermann
       )
   ...
 )
 </php>
 
-Einzelne Daten aus der Datenbank lesen
----------------------------------------
-In der Datei `home.php` finden Sie zwei Beispiele für das Lesen einzelner Daten. Mit der SQL-Funktion COUNT() wir die Anzahl der Werke in der Datenbank bestimmt. 
+§
 
-<php caption="Beispiel aus home.php">
-$ergebnis = $dbh->query( 
- "SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible" )->fetch();
-$anz_personen = $ergebnis['anzahl'];
+Später werden die Personen dann angezeigt:
+
+<php caption="Anzeige der Personen">
+foreach($personen as $person) {
+  echo "<li>$person->firstname $person->surname</li>\n";
+}
 </php>
+
+Das Array `$personen` wird hier mit einer `foreach`-Schleife[*](http://php.net/manual/de/control-structures.foreach.php) abgearbeitet.
+
+§
+
+Falls man den Index auch anzeigen will, kann man die ausführlichere Version
+der `foreach` Schleife verwenden:
+
+<php caption="Foreach-Schleife mit index">
+foreach($personen as $i => $person) {
+  echo "<li>Person Nr. $i) $person->firstname $person->surname</li>\n";
+}
+</php>
+
+Achtung: `$i`  ist hier der Index im Array das `fetchAll()` erzeugt
+hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
+mit `$person->id` erhalten!
+
+§
+
+Bei der Ausgabe soll für jede Person ein passender Link zu `person.php` angezeigt werden:
+
+<php caption="Link mit ID als Parameter erzeugen">
+<li>
+  <b><?php echo $person->firstname ?> <?php echo $person->surname?></b>
+  <a href="person.php?id=<?php echo $person->id ?>">mehr</a>
+</li>
+</php>
+
+Der Output sieht dann zum Beispiel so aus:
+
+<htmlcode caption="Output des letzten PHP-Programmes">
+<li>
+  <b>Michael A</b>
+  <a href="person.php?id=577">mehr</a>
+</li>
+<li>
+  <b>Benjamin A</b>
+  <a href="person.php?id=579">mehr</a>
+</li>
+</htmlcode>
+
+Auf diese Weise haben wir den Parameter `id` an den nächsten Teil
+der Applikation weiter gegeben.
+
+§
+
+Wir haben in personen.php nur sichtbare Profile angezeigt,
+und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor, 
+dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!
+
+`http://meinedomain.at/person.php?id=666`
+
+Der Zugriffsschutz ist also ein eigenes Thema, das auch in `person.php` wieder
+behandelt werden muss.
+
 
 Einen bestimmten Datensatz lesen
 ---------------------------------
-Wenn Sie die Datei `person.php` mit einem Parameter aufrufen person.php?id=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem `$_GET` – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.
+Wenn Sie die Datei `person.php` mit einem Parameter aufrufen `person.php?id=586`
+soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der
+Parameter aus dem `$_GET` – Array ausgelesen und sicher gestellt, dass es sich
+wirklich um eine Zahl handelt.
 
-In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit `profile_visible=0` gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil `profile_visible=0` ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.
 
-<php caption="Beispiel aus home.php">
+Das Ergebnis der Abfrage kann also
+sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel
+gar keine gespeichert ist, oder weil `profile_visible=0` ist. In diesem Fall
+gibt fetch kein Objekt sondern der Wert `FALSE` zurück.
+
+<php caption="Beispiel aus index.php">
 $id = $_GET['id'];  // SICHERHEITSPROBEM - behandeln wir später noch!
-$stm = $dbh->query ( "SELECT * FROM users WHERE profile_visible AND id=$id" );
-$person = $stm->fetch(PDO::FETCH_OBJ);
+$stm = $dbh->query("SELECT * FROM users WHERE profile_visible=1 AND id=$id");
+$person = $stm->fetch();
 if( $person === FALSE ) {
   die("<p>Konnte keine passenden Daten aus der Datenbank lesen.</p>");
 }
 </php>
 
-Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert: der Username wird zwar angezeigt, aber nicht die Anzahl der Werke der Person. 
+§
+
+Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert:
+Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.
 
 <php>
 if( $person->isfemale ) {
     $anrede = "Frau";
-    $ersie = "Sie";
+    $ersie  = "Sie";
 } else {
     $anrede = "Herr";
-    $ersie = "Er";
+    $ersie  = "Er";
 }
 
 // ====================== Ausgabe ===================
@@ -94,65 +207,64 @@ include "header.php";
   <?php echo $person->firstname ?>
   <?php echo $person->surname ?>
   hat insgesamt x Werke in dieser Datenbank.
-  <?php echo $ersie ?> hat den Usernamen <?php echo $person->uid ?>.
+  <?php echo $ersie ?> hat die E-Mail Adresse <?php echo $person->email ?>.
 </p>
 </php>
 
-In der Datei personen.php wird zu jeder Person ein passender Link zu person.php angezeigt:
-
-<php>
-<li>
-  <b><?php echo $person->firstname ?> <?php echo $person->surname?></b>
-  <a href="person.php?id=<?php echo $person->id ?>">mehr</a>
-</li>
-</php>
-
-Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere id „von Hand“ eingibt!
-
-`http://meinedomain.at/person.php?id=666`
-
-Der Zugriffsschutz ist also ein eigenes Thema, das auch in `person.php` wieder behandelt werden muss.
-
 Datensätze suchen
 -------------------
-In der Datei `psuche.php` wird ein Formular zur Suche nach Vornamen angezeigt:
 
-<php>
+In der Datei `psuche.php` wird ein Formular zur Suche nach Namen angezeigt:
+
+<htmlcode caption="Such-Formular in psuche.php">
 <form action="psuche.php" method="get">
-  Suche nach einer Person mit dem Vornamen <input name="suchwort"> 
+  Suche nach einer Person mit dem Namen <input name="suchwort"> 
   <input type="submit">
 </form>
-</php>
+</htmlcode>
 
 Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:
 
-<php>
-... WHERE ifshow=1 AND vorname LIKE '$suchwort'
+<sql>
+... 
+WHERE profile_visible=1 
+  AND (surname LIKE '%$suchwort%' OR firstname LIKE '%$suchwort%')
+</sql>
+
+Wir werden uns später noch genauer mit der Sicherheitsproblematik von
+SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren
+wir die Problematik einfach, und implementieren diese Seite
+ganz ähnlich wie `personen.php`.
+
+
+Zufällige Datensätze auswählen
+---------------------
+
+Auf der Homepage index.php sollen wir 10 zufällig ausgewählte Werke
+anzeigen.  Wie geht das?
+
+<php caption="Abfrage von zufälligen Datensätzen in MySQL">
+$query =$dbh->query(
+  "SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10"
+);
+$personen = $query->fetchAll(PDO::FETCH_OBJ);
 </php>
 
-Wir werden uns später noch genauer mit der Sicherheitsproblematik von SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren wir die Problematik und schreiben einfach:
+Diese Verwendung von `RAND()` in der `ORDER` clause ist  eine Besondernheit von 
+MySQL[*](dev.mysql.com/doc/refman/5.6/en/mathematical-functions.html#function_rand#idp61451584), 
+die auch nur für beschänkte Datenmengen gut funktioniert. In anderen relationalen Datenbanken und bei
+größeren Tabellen gibt es dafür andere Lösungen.  
 
-<php>
-if( $suchwort ) {
-  $personen = $dbh->query (
-    "SELECT * FROM users WHERE profile_visible=1 AND firstname LIKE '$suchwort' "
-    )->fetchAll(PDO::FETCH_OBJ);
-  $found = count($personen);
-}
-....
-if ( $suchwort ) : ?>
 
-  <p>Suche nach '<?php echo $suchwort ?>' hat <?php echo $found ?> Ergebnisse geliefert:</p>
-  <ol>
-  <?php foreach ($personen as $person) : ?>
-    <li>
-      <b><?php echo$person->firstname ?>   <?php echo $person->surname ?></b>
-      <a href="person.php?id=<?php echo $person->id ?>">mehr</a>
-    </li>
-  <?php endforeach ; ?>
-  </ol>
-<? endif ?>
-</php>
+### Neue Befehle in diesem Kapitel:
 
-Achtung: hier verwenden wir die count-Funktion von PHP um die Datensätze zu zählen. Wenn wir alle Datensätze brauchen ist das auch legitim. Wenn wir nur die Anzahl der Datensätze bräuchten würden wir ein `COUNT` in SQL verwenden, das wäre viel effizienter.
+PHP
 
+  * [fetchAll()](http://www.php.net/manual/en/pdostatement.fetchall.php)
+  * [foreach](http://php.net/manual/de/control-structures.foreach.php)
+
+MySQL
+
+  * [LIMIT anfangsposition, anzahl](http://dev.mysql.com/doc/refman/5.6/en/select.html#idp72285024)
+  * [COUNT(*)](http://dev.mysql.com/doc/refman/5.6/en/counting-rows.html)
+  * [ORDER BY RAND()](dev.mysql.com/doc/refman/5.6/en/mathematical-functions.html#function_rand#idp61451584)

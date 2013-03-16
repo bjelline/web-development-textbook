@@ -25,30 +25,72 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 
 So funktioniert der Verbindung-Aufbau (und -Abbau) zur mysql-Datenbank:
 
-<php caption="Verbindungs-Aufbau und Abbau">
-    <?
-     include "config.php";
-     $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
-     $dbh->exec('SET CHARACTER SET utf8');
-    ?> 
+<php caption="new PDO für den Verbindungs-Aufbau">
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 </php> 
 
-Das „Database-Handle“ `$dbh` wird nun im Weiteren für Abfragen verwendet. 
+Der Rückgabewert ist ein sogenanntes "Datenbank-Handle".
+Das zweite und dritte Argument sind einfach Strings mit
+dem Usernamen und Passwort für die Datenbank.
 
-### Datenbank-Zugangsdaten und .gitignore
+Das erste Argument wird in der [Dokumentation](http://www.php.net/manual/en/pdo.construct.php) 
+als "Data Source Name" bezeichnet und enthält mehrere Informationen, die in
+einen String gepackt werden.
 
-Achtung: zum Erzeugen des Database Handles brauchen wir noch eine zweite Datei mit den eigentlichen Zugangsdaten. Diese Datei heisst im unserem Beispiel `config.php`:
+Ein Beispiel für einen MySQL DSN ist `"mysql:dbname=portfolio_playground;host=localhost"`.
+Ein DSN beginnt immer mit dem Namen der Datebank, hier also `mysql`.  Welche
+weiteren Teile der DSN anthält kann man in der [Dokumentation des jeweiligen PDO Datenbank Treibers](http://www.php.net/manual/en/ref.pdo-mysql.connection.php) nachlesen.
+
+Für den MySQL Treiber sind das der Name der Datenbank `dbname` und der `host`,
+eventuell der `port`.  Alternativ kann man die Verbindung statt über Host und
+Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
+`unix_socket` an.
+
+§
+
+Hier eine konkrete Implementierung des Verbindungs-Aufbaus:
+
+<php caption="Verbindungs-Aufbau">
+include "config.php";
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+</php> 
+
+Hier werden die Argumente für `new PDO` in der Datei `config.php` gesetzt,
+die zuvor inkludiert wird.  Warum?
+
+### Datenbank-Zugangsdaten 
+
+So sieht die Datei `config.php` aus:
 
 <php caption="Zugangsdaten für die Datenbank">
-    <?php
-    $DB_NAME = "portfolio_playground"; 
-    $DB_USER = "mmtuser"; 
-    $DB_PASS = "geheim!";
-    $DSN     = "mysql:dbname=$DB_NAME;host=localhost";
-    ?>
+$DB_NAME = "portfolio_playground"; 
+$DB_USER = "mmtuser"; 
+$DB_PASS = "geheim!";
+$DSN     = "mysql:dbname=$DB_NAME;host=localhost";
 </php>
 
-Warum zwei Dateien?  Weil dieses zweite Datei niemals, niemals, niemals in git commited werden darf!  Um das zu verhindern, wird die Datei in `.gitignore` eingetragen. Was das bewirkt zeigt der Vorher / Nachher-Vergleich am besten:
+Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
+niemals, niemals, niemals in git speichern wollen!  Das hat zwei
+Gründe: 
+
+1) Einerseits wollen wir den Code im Repository vielleicht
+veröffentlichen und die Zugangsdaten weiter geheimhalten.  
+
+2) Andererseits wird unsere Web-Applikation wahrscheinlich auf mehreren Web-Servern
+installiert (mindestens auf einem Entwicklungs-Rechner und einem Produktions-Server).
+Auf den verschiedenen Maschinen werden wir verschiedene Datenbanken benutzen 
+und brauchen dafür verschiedene Zugangsdaten. 
+
+### .gitignore
+
+Um zu verhindern, dass die Datei `config.php` in git committed werden kann,
+wird der Dateiname in die Datei `.gitignore` eingetragen. 
+`.gitignore` ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.
+
+§
+
+Was der Eintrag in  `.gitignore` bewirkt
+zeigt der Vorher / Nachher-Vergleich am besten:
 
     D:\Webprojekte\wp2>git status
 
@@ -61,13 +103,21 @@ Warum zwei Dateien?  Weil dieses zweite Datei niemals, niemals, niemals in git c
     #       config.php
     nothing added to commit but untracked files present (use "git add" to track)
 
-Hier erkennt git die datei `config.php` als neue, interessante Datei. Nun tragen wir den Dateinamen `config.php` in die Datei `.gitignore` im Haupt-Ordner der Working Copy ein:
+Hier erkennt git die datei `config.php` als neue Datei, die wir in Zukunft vielleicht mit `git add` hinzufügen wollen. 
+
+§
+
+Nun tragen wir den Dateinamen `config.php` in die Datei `.gitignore` im Haupt-Ordner der Working Copy ein.
+Ein Check ob es funktioniert hat:
 
     D:\Webprojekte\wp2>cat .gitignore
     *.bak
     config.php
 
-Damit ist git angewiesen, alle Dateien mit der Endung `.bak` und alle Dateien mit dem Namen `config.php` (egal in welchem Ordner) zu ignorieren. 
+Damit ist git angewiesen, alle Dateien mit der Endung `.bak` und alle Dateien mit dem Namen 
+`config.php` (egal in welchem Ordner) zu ignorieren. 
+
+§
 
     D:\Webprojekte\wp2>git status
 
@@ -82,79 +132,60 @@ Damit ist git angewiesen, alle Dateien mit der Endung `.bak` und alle Dateien mi
     #
     no changes added to commit (use "git add" and/or "git commit -a")
 
-Wie man sieht zeigt `git status` nun die Datei `config.php` nicht mehr an. Dafür hat git bemerkt dass die Datei `.gitignore` geändert wurde. Die sollte man ganz normal commiten.
+Wie man sieht zeigt `git status` nun die Datei `config.php` nicht mehr an. 
+Dafür hat git bemerkt dass die Datei `.gitignore` geändert wurde. 
+Die sollte man ganz normal committen.
+
+### Empfohlene Optionen für den Verbindungsaufbau
+
+In folgenden Code werden noch zwei Optionen nach dem Verbindungsaufbau gesetzt:
+
+<php caption="Optionen für den Verbindungs-Aufbau">
+include "config.php";
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+$dbh->exec('SET CHARACTER SET utf8') ;
+</php>
+
+Mit der Methode `setAttribute` wird hier festgelegt,
+dass die gelesenen Datensätze aus der Datenbank in PHP als
+Objekt dargestellt werden. (Die Alternative wäre ein assoziatives Array.)
+
+Mit dem Befehl `SET CHARACTER SET utf8` wird UTF-8 als
+Zeichensatz für die gelesenen Text-Daten festgelegt.  Das
+macht natürlich nur Sinn, wenn die Daten in der Datenbank
+wirklich als UTF-8 gespeichert sind!
+
+Für die Applikation die in den nächsten 2 Kapitel beschreiben wird
+werden diese Optionen vorausgesetzt.
 
 ### Anweisung an die Datenbank
 
 Manche SQL-Queries liefern keine Daten retour.
-Solche Queries kann man mit der Methode `exec` absetzen:
+Solche Queries kann man mit der Methode `exec`[*](http://www.php.net/manual/en/pdo.exec.php) absetzen:
 
 <php caption="Anweisungen an die Datenbank mit exec">
-$dbh = new PDO(…);
-dbh->exec("DELETE FROM users");
+$anzahl = $dbh->exec("DELETE FROM users");
 </php>
 
-Hier werden alle Datensätze aus der Tabelle `users` gelöscht,
-es gibt keine Rückmeldung an PHP.
+Hier werden alle Datensätze aus der Tabelle `users` gelöscht.
+Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.
 
-### Abfrage mit Select
+### Abfrage der Datenbank
 
-Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). Man braucht also eine Schleife um alle Datensätze abzuarbeiten. Innerhalb der Schleife erhält man den einzelnen Datensatz als Array. 
+Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). 
 
-<php caption="Abfrage der Datenbank mit SELECT">
-    $query =$dbh->query(
-         "SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10"
-    );
-    $personen = $query->fetchAll(PDO::FETCH_OBJ);
-    foreach($personen as $person) {
 
-          echo "$person->vorname $person->mail</br>\n";
-    }
+Mit der Methode `query`[*](http://www.php.net/manual/en/pdo.query.php)  schickt man die Anfrage an die Datenbank,
+erhält aber noch nicht die Daten retour, sondern nur ein neues "Handle":
+
+<php caption="Query an die Datenbank senden">
+$sth =$dbh->query( $sql );
 </php>
 
-Die SQL-Anfrage wird hier als String an die query-methode des Datenbankhandler übergeben.  Der Rückgabewert von query ist ein Query-Handle `$query` (ähnlich dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der Datenbank zu PHP übertragen. Das passiert erst in der nächsten Zeile mit der Methode `fetchAll`. Der Rückgabewert von fetchAll ist in diesem Fall ein Array mit Objekten. Dieses Array wird anschließend mit einer foreach-Schleife abgearbeitet. 
+Das Argument ist ein String mit dem SQL, der Rückgabewert
+ist ein "Statement-Handle". Dieses Objekt bietet verschiedene
+Methoden an, mit denen man dann wirklich die Daten aus der DB holen kann.
 
-## Effizient Arbeiten mit der Datenbank
-
-Ein ganz wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern und Berechnen der Daten möglichst in der Datenbank erledigen und möglichst wenige Daten zu PHP übermitteln. Folgender Ansatz wäre also ganz schlecht, besonders wenn viele Daten in der Datenbank sind:
-
-<php caption="Ineffiziente Abfrage der Datenbank">
-$query =$dbh->query("SELECT * FROM person");
-$personen = $query->fetchAll(PDO::FETCH_OBJ);
-foreach($personen as $person ) {
-  if($person->ifshow) {
-    echo "$person->vorname $person->mail</br>\n";
-  }
-}
-</php>
-
-§
-
-Besser wäre, den Filter bereits im SELECT einzubauen:
-
-<php caption="Effiziente Abfrage der Datenbank">
-$query =$dbh->query("SELECT * FROM person WHERE ifshow");
-$personen = $query->fetchAll(PDO::FETCH_OBJ);
-foreach($personen as $person ) {
-  echo "$person->vorname $person->mail</br>\n";
-}
-</php>
-
-§
-
-Die gleichen Überlegungen gelten auch, wenn Datensätze "Seitenweise" angezeigt
-werden sollen: hier verwendet man bereits in der Datenbank `LIMIT` um nur
-die beötigten Datensätze zu laden.
-
-§
-
-Die Verwendung der richtigen Datentypen in der Datenbank erleichtert die Abfragen:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“
-
-<sql>
-  select titel,pub_datum from werk 
-  where datediff( curdate( ) , pub_datum ) <= 100; 
-</sql>
-
-Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.
-
-
+Doch bevor wir hier ins Detail gehen werden wir uns
+im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.

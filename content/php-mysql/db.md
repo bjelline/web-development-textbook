@@ -3,13 +3,29 @@ title: Datenbank
 order: 5
 ---
 
-MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. MariaDB ist eine leichtgewichtiger Alternative zu MySQL. Falls Sie noch keine relationale Datenbank auf Ihrem Entwicklungsrechner installiert haben empfehle ich MariaDB.
+MySQL[*](http://www.mysql.com/) ist die relationale Datenbank, die bei
+gemietetem Webspace am öftesten angeboten wird. MySQL ist Open Source.
 
-Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.
+MariaDB[*](https://mariadb.org/) ist ein "Fork" von MySQL, die Entwicklung hat
+sich im Jahr 2009 verzweigt. 
+
+![MySQL und MariaDB Logos](/images/mysql-und-mariadb-logo.png)
+
+Falls Sie noch keine relationale Datenbank auf Ihrem Entwicklungsrechner
+installiert haben empfehle ich MariaDB.
+
+Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe
+Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von
+MySQL/MariaDB und die für Web-Applikationen wichtigen Aspekte.
 
 MySQL Installation, Wiederholung, Dokumentation
 ------------------------------------------------
 MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. 
+
+MariaDB wird auf der Homepage des Projekts [zum Download
+angeboten](https://downloads.mariadb.org/).
+
+Alle Code-Beispiel funktionieren für MySQL und MariaDB genau gleich.
 
 ### MySQL-Shell
 
@@ -17,17 +33,23 @@ Die MySQL-Shell[*](http://dev.mysql.com/doc/refman/5.6/en/mysql.html) wird wie f
 
     mysql -p -u USERNAME DATENBANKNAME
 
-Die Option `-p` sorgt dafür, dass ich nach Passwort gefragt werde (und es nicht
-als Argument angeben muss).  Mit der Option `-u` gebe ich den Usernamen mit an.
+Die Option `-p` sorgt dafür, dass ich nach einem Passwort gefragt werde (die
+alternative wäre das Passwort als Argument anzugeben)
+Mit der Option `-u` gebe ich den Usernamen mit an.
 Zuletzt (und ohne Option) wird der Name der Datenbank als Argument übergeben.
 
 Konkret sieht das dann so aus:
 
     > mysql -p –u root portfolio_playground
-    Welcome to the MySQL monitor. Commands end with ; or \g.
-    Your MySQL connection id is 2 to server version: 5.0.27-community-nt
-    Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-    mysql>
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MariaDB connection id is 192
+    Server version: 5.5.28-MariaDB Source distribution
+
+    Copyright (c) 2000, 2012, Oracle, Monty Program Ab and others.
+
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+    MariaDB [portfolio_playground]>
 
 ### SQL Importieren
 
