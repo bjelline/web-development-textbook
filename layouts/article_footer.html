@@ -1,7 +1,7 @@
 <div class="pagination">
   <ul>
     <% if @item[:previous_item] %>
-      <li><a href="<%= @item[:previous_item].path %>">← <span class="article"><%= @item[:previous_item][:title] %></a></li>
+      <li><a href="<%= @item[:previous_item].path %>">← <%= @item[:previous_item][:title] %></a></li>
     <% end %>
     <% if @item[:next_item] %>
       <li><a href="<%= @item[:next_item].path %>"><%= @item[:next_item][:title] %> →</a></li>
