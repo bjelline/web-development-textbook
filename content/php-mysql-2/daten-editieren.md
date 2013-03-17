@@ -6,7 +6,7 @@ order: 40
 Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.
 
-![Abbildung 150: Formular zum Bearbeiten einer Person](/images/person_edit.png)
+![Formular zum Bearbeiten einer Person](/images/person_edit.png)
 
 Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement,
 da die ID aus dem GET-Parameter gelesen wurde:
@@ -134,7 +134,7 @@ EOM;
 
 Damit funktioniert nun die Darstellung des Datensatzes richtig:
 
-![Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen](/images/image369.png)
+![Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen](/images/html-escaped1.png)
 
  Darstellen von HTML
 ---------------------
@@ -196,14 +196,14 @@ Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code
 z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 „wirkt nicht“:
 
-![Eingegebener HTML+Javascript-Code wird escaped und dargestellt](/images/image370.png)
+![Eingegebener HTML+Javascript-Code wird escaped und dargestellt](/images/html-escaped.png)
 
 ### Eingabe von HTML
 
 Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE
 erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:
 
-![Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden](/images/image371.png)
+![Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden](/images/tinymce.png)
 
 Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:
