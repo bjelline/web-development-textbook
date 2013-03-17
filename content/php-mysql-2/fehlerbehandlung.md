@@ -16,10 +16,7 @@ PHP 5 hat ein Exceptionmodell ähnlich dem anderer Programmiersprachen. Eine Exc
 geworfen (`throw`) und abgefangen (`catch`) werden. Um das Fangen potentieller Exceptions zu 
 ermöglichen, wird der jeweilige Code mit einem `try`-Block umschlossen. 
 
-Jeder `try`-Block muss mindestens einen zugehörigen `catch` Block besitzen. 
-Mehrere `catch`-Blöcke können verwendet werden, um verschiedene Klassen von Exceptions abzufangen. 
-Die normale Programmausführung (wenn keine Exception innerhalb des `try`-Blockes geworfen wird 
-oder keine zur Klasse der geworfenen Exception passendes `catch` vorhanden ist) 
+Die normale Programmausführung (wenn keine Exception innerhalb des `try`-Blockes geworfen wird) 
 wird nach dem letzten `catch`-Block fortgesetzt. 
 Exceptions können innerhalb eines `catch`-Blockes geworfen (oder weitergeworfen) werden.
 
@@ -27,26 +24,28 @@ Wenn eine Exception geworfen wird, wird der Programmcode der auslösenden Anweis
 und PHP versucht, den ersten passenden `catch`-Block zu finden. Falls eine Exception gar
 nicht abgefangen wird, wird ein fataler Fehler mit einer "Uncaught Exception ..."-Nachricht ausgegeben
 
-<php caption="Beispiel für Exception-Handling in PHP: Division durch Null">
-  <?php
-  function inverse($x) {
-      if ($x == 0) {
-         throw new Exception('Division durch Null.');
-      }
-      return 1 / $x;
-  }
+§
 
-  try {
-      echo inverse(5) . "\n";
-      echo inverse(0) . "\n";
-  } catch (Exception $e) {
-      echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
-  }
+<php caption="Beispiel für Exception-Handling in PHP">
+<?php
+function compute($x) {
+    if ($x == 0) {
+       throw new Exception('Illegal Input: 0.');
+    }
+    return 1 / $x;
+}
 
-  // output:
-  // 0.2
-  // Exception abgefangen: Division durch Null
-  ?>
+try {
+    echo compute(5) . "\n";
+    echo compute(0) . "\n";
+} catch (Exception $e) {
+    echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
+}
+
+// output:
+// 0.2
+// Exception abgefangen: Illegal Input: 0
+?>
 </php>
 
 
@@ -57,37 +56,40 @@ Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftrete
 oder bei einzelnen Abfragen.
 
 <php caption="Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung">
-   $get_pid   = $_GET['pid'];
-   try{
-      include "config.php";
+$get_id = $_GET['id'];
+try{
+  include "config.php";
 
-      if( ! $DB_NAME ) throw (new Exception( "Datenbank-Verbindung ist nicht konfiguriert. Bitte die Datei config.php anlegen!" ));
+  if( ! $DB_NAME ) 
+    throw(new Exception( "DB nicht konfiguriert. config.php anlegen!" ));
 
-      $dbh = new PDO("mysql:dbname=$DB_NAME", $DB_USER, $DB_PASS);
-      $dbh->exec('SET CHARACTER SET utf8') ;
+  $dbh = new PDO("mysql:dbname=$DB_NAME", $DB_USER, $DB_PASS);
+  $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+  $dbh->exec('SET CHARACTER SET utf8') ;
 
-      $sth  = $dbh->prepare( "SELECT * FROM `users` WHERE id=?" );
-      $sth->setFetchMode(PDO::FETCH_OBJ);
-      $sth->execute(array($get_pid));
-      $p = $sth->fetch();
+  $sth  = $dbh->prepare( "SELECT * FROM users WHERE id=?" );
+  $sth->execute(array($get_id));
+  $p = $sth->fetch();
 
-      // wirklich nicht in der Datenbank
-      if( $p === false )          throw (new Exception( "Konnte Person Nr. $get_pid in der Datenbank nicht finden." ));
+  // wirklich nicht in der Datenbank
+  if( $p === false )          
+    throw (new Exception( "Kein Person Nr. $get_id in der DB." ));
 
-      // Profil verborgen
-      if( !$p->profile_visible  ) throw (new Exception( "Konnte Person Nr. $get_pid in der Datenbank nicht finden." ));
+  // Profil verborgen
+  if( !$p->profile_visible  ) 
+    throw (new Exception( "Kein Person Nr. $get_id in der DB." ));
 
-      $sth  = $dbh->prepare( " .... " );
-      $sth->execute(array($get_pid));
-      $projects = $sth->fetchAll(PDO::FETCH_OBJ);
+  $sth  = $dbh->prepare( " .... " );
+  $sth->execute(array($get_id));
+  $projects = $sth->fetchAll();
 
-    } catch( Exception $e ) {
-      include "header.php";
-      echo "<h1>Error</h1>" ;
-      echo "<p>" . $e->getMessage() . "</p>";
-      include "footer.php";
-      exit;
-    }
+} catch( Exception $e ) {
+  include "header.php";
+  echo "<h1>Error</h1>" ;
+  echo "<p>" . $e->getMessage() . "</p>";
+  include "footer.php";
+  exit;
+}
 
 /* hier folgt die normale Ausgabe der Seite */
 </php>
@@ -105,26 +107,29 @@ Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
 
 <sql caption="Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst">
 START TRANSACTION;
-INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
 COMMIT;
 </sql>
 
 <sql caption="Beispiel für eine Transaktion in MySQL und zurück-gerollt wird">
 START TRANSACTION;
-INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
 ROLLBACK;
 -- nichts ist passiert!
 </sql>
 
+§
 
-Die Datenbankschnittstelle `PDO` bietet für den Umgang mit Transaktionen die 
-Methoden `beginTransaction`, `commit` und `rollback` an.
-
-Und einen besonderen Service: Wenn die Datenbank-Verbindung
-geschlossen wird obwohl noch eine Transaktion offen ist, dann löst PDO selbst
-das Rollback aus.
+Die Datenbankschnittstelle `PDO` bietet für den Umgang mit Transaktionen die
+Methoden `beginTransaction`, `commit` und `rollback` an.  Wenn die
+Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
+offen ist, dann löst PDO selbst das Rollback aus.
 
 <php caption="Beispiel für Transaktion mit Fehlerbehandlung">
 try {
@@ -145,6 +150,7 @@ bleibt gleich.
 
 ## Exceptions in Javascript
 
-Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
-gar nicht lohnt näher darauf einzugehen. Siehe [Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1](http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html)
+Die Verwendung und Schreibweise ist in Javascript so ähnlich, dass es sich
+gar nicht lohnt näher darauf einzugehen. Siehe 
+[Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1](http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html)
 

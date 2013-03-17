@@ -10,3 +10,7 @@ Was Sie können sollten
 
 * Mit prepared Statements Daten in der Datenbank löschen, einfügen und verändern.
 
+
+Vertiefung:
+
+* [OWASP Dokumentation zu SQL Injection](https://www.owasp.org/index.php/SQL_Injection)
