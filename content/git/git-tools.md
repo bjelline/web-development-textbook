@@ -9,7 +9,7 @@ sourcetree
 ------
 
 Das Programm sourcetree ist gratis (aber nicht open source)
-und nur für Mac OS verfügbar: [Homepage](http://www.sourcetreeapp.com/)
+und für Mac OS und Windows verfügbar: [Homepage](http://www.sourcetreeapp.com/)
 
 ![](/images/git-source-tree.png)
 
