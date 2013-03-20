@@ -59,7 +59,7 @@ Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- od
 if (get_magic_quotes_gpc() ) {
   echo "mit magic quotes";
 } else {
-  echo "ohne magic quotes");
+  echo "ohne magic quotes";
 }
 echo("<pre>");
 print_r($_POST);
