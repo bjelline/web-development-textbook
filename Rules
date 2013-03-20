@@ -168,6 +168,7 @@ preprocess do
     "php-mysql-2",
     "xml",
     "svg",
+    "php-mysql-3",
     "javascript",
     "applied-javascript",
     "security",

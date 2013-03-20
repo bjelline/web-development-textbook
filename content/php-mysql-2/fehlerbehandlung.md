@@ -51,6 +51,14 @@ try {
 
 ## Verwendung von Exceptions für die Datenbank
 
+PDO wirft normalerweise keine Exceptions. Ihre Verwendung muss erst mit dem
+Attribut `ERRMODE` aktiviert werden:
+
+<php>
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+</php>
+
+
 In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
 Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftreten,
 oder bei einzelnen Abfragen.
@@ -65,11 +73,9 @@ try{
   }
 
   $dbh = new PDO("mysql:dbname=$DB_NAME", $DB_USER, $DB_PASS);
-  $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-  # ich will exceptions!
+  /* das folgende Attribut aktiviert die Exceptions */
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+  $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
   $dbh->exec('SET CHARACTER SET utf8') ;
 
   $sth  = $dbh->prepare( "SELECT * FROM users WHERE id=?" );
@@ -106,56 +112,7 @@ bevor die Ausgabe beginnt.  Im `catch`-Block wird eine Webseite
 erzeugt, die gar nichts mit der "normalen" Ausgabe der Seite zu
 tun hat.
 
-
-## Transaktionen und Rollback
-
-Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
-(siehe das [MySQL Referenz Handbuch](http://dev.mysql.com/doc/refman/5.1/de/commit.html))
-
-<sql caption="Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst">
-START TRANSACTION;
-INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) 
-  VALUES (42, 50000, NOW());
-COMMIT;
-</sql>
-
-<sql caption="Beispiel für eine Transaktion in MySQL und zurück-gerollt wird">
-START TRANSACTION;
-INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) 
-  VALUES (42, 50000, NOW());
-ROLLBACK;
--- nichts ist passiert!
-</sql>
-
-§
-
-Die Datenbankschnittstelle `PDO` bietet für den Umgang mit Transaktionen die
-Methoden `beginTransaction`, `commit` und `rollback` an.  Wenn die
-Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
-offen ist, dann löst PDO selbst das Rollback aus.
-
-<php caption="Beispiel für Transaktion mit Fehlerbehandlung">
-try {
-  $dbh->beginTransaction();
-  $dbh->exec("INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker')");
-  $dbh->exec("INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())");
-  $dbh->commit();
-  
-} catch (Exception $e) {
-  $dbh->rollBack();
-  echo "Error: " . $e->getMessage();
-}
-</php>
-
-Bei einem realen Beispiel würde man nicht die `exec` Methode verwenden,
-sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
-bleibt gleich.
-
-## Exceptions in Javascript
+## Exkurs: Exceptions in Javascript
 
 Die Verwendung und Schreibweise ist in Javascript so ähnlich, dass es sich
 gar nicht lohnt näher darauf einzugehen. Siehe 
