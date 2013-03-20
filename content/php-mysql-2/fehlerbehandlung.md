@@ -66,6 +66,10 @@ try{
 
   $dbh = new PDO("mysql:dbname=$DB_NAME", $DB_USER, $DB_PASS);
   $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+  # ich will exceptions!
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
   $dbh->exec('SET CHARACTER SET utf8') ;
 
   $sth  = $dbh->prepare( "SELECT * FROM users WHERE id=?" );
