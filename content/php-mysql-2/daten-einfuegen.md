@@ -103,7 +103,7 @@ So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
 deutsche Fehlermeldungen ausgeben.
 
-![Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung](/images/image367.png)
+![Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung](/images/2fehlermeldungen.png)
 
 §
 
