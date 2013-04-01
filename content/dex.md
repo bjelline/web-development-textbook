@@ -13,12 +13,12 @@ unter der CC-NC-SA Lizenz auf github publiziert.
 
 ### Aufbau
 
-Teil 1 (die ersten 7 Kapitel) entsprichen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken  
-und einen Grundkurs in UNIX-Kommandozeile auf.
+Das Buch ist in Kapitel eingeteilt, die meist einer Woche der Lehrveranstaltung
+entsprechen.  Die ersten 7 Kapitel entsprichen dem Wintersemester. Der Rest
+der Kapitel werden im Sommersemester behandelt, und
+bauen zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken auf.
 
-### Lernergebnisse
+### (Lern)ergebnisse 
 
 Das Ergebnis von Teil 1 dieses Kurses sollte sein:
 

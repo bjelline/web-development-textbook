@@ -265,6 +265,25 @@ echo 'Bei einfachen Anführungszeichen ist ein $ einfach ein $';
 
 §
 
+Eine weitere Methode einen String zu definieren - neben einfachen
+und doppelten Anführungszeichen - ist das "heredoc" Schreibweise[&rarr;](http://www.php.net/manual/de/language.types.string.php#language.types.string.syntax.heredoc)
+
+<php caption="Beispiel für heredoc">
+echo <<<EOT
+My name is $lastname, $firstname $lastname. 
+I am printing some $foo->foo.
+Now, I am printing some {$foo->bar[1]}.
+I can't mess up this string
+by mentioning 19" racks!
+EOT;
+</php>
+
+Da der String durch "EOT" beendet wird, kann
+man beide Arten von Anführungszeichen gefahrlos verwenden.
+Variableninterpolation funktioniert.
+
+§
+
 Variablen in PHP müssen nicht deklariert oder initialisiert werden. 
 PHP unterscheidet zwischen den Datentypen boolean, integer, 
 float, string, array, object, resource und NULL. 

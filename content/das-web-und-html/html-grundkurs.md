@@ -61,9 +61,11 @@ Folgende Character Entities müssen Sie verwenden:
 
 |Gewünschtes Zeichen | Character Entity|
 |:--------:|:-------:|
-| <                 | &amp;lt;  |
-| >                 | &amp;gt;  |
-| &                 | &amp;amp; |
+| &lt;                 | &amp;lt;  |
+| &gt;                 | &amp;gt;  |
+| &amp;                 | &amp;amp; |
+| "                 | &amp;quot;  |
+| '                 | &amp;apos;  |
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 

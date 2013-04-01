@@ -242,7 +242,7 @@ Besonders praktisch ist das, wenn ich Teile meiner Applikation später
 AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, aber einfach die XML-
 oder JSON-Repräsentation abfragen.
 
-$
+§
 
 Ob die Repräsentation als Teil der URL, als URL-Parameter oder nur als
 http-Header spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur die Abfrage
@@ -262,7 +262,7 @@ Host: ich.multimediatechnology.at
 Accept: application/xml
 </plain>
 
-$
+§
 
 Eine beliebte Vereinfachung ist die Verwendung von Endungen in der URL:
 

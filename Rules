@@ -31,6 +31,46 @@ class Nanoc3::Filter
     end
   end
 
+  class SlideBreaks < Nanoc3::Filter
+    identifier :slide_breaks
+    def run(content, params={})
+      @string = content.dup
+
+      @pending = ""
+      @output = "<a name='slide-1'></a>"
+      i = 2
+
+      until @string.empty?
+        match = scan_until /^(<h[123].*?>|<hr>+|^(<p>)*§(<.p>)*)$/m
+
+        break if !match
+
+        @output << match.pre_match
+
+        @output << "\n<a class='slide_break' name='slide-#{i}' href='slide.html#slide-#{i}'>▻</a>\n\n"
+        i += 1
+        if match[0] =~ /§/ then
+          # discard match
+        else 
+          @output << match[0]
+        end
+      end # untile @string.empty?
+
+      @output << @string
+      @output << ""
+
+      @output
+    end
+
+    def scan_until(regex)
+      match = @string.match(regex)
+      return unless match
+      @string = match.post_match
+      match
+    end
+  end
+
+
   class Slides < Nanoc3::Filter
     identifier :slides
     def run(content, params={})
@@ -68,11 +108,14 @@ class Nanoc3::Filter
       match
     end
   end
+
+
+
   class CodeBlocks < Nanoc3::Filter
     identifier :code_blocks
     LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
                   "css" => "css", "plain" => "plain", "erb" => "ruby; html-script: true", "htmlcode" => "html",
-                  "markup" => "xml", "xml" => "xml", "shell" => "plain", "yaml" => "yaml" }
+                  "markup" => "xml", "xml" => "xml", "shell" => "plain", "yaml" => "yaml", "dtd"=> "html" }
 
     def run(content, params={})
       @string = content.dup
@@ -147,6 +190,7 @@ end
 Nanoc3::Filter.register '::Nanoc3::Filter::CodeBlocks',    :code_blocks
 Nanoc3::Filter.register '::Nanoc3::Filter::Slides',        :slides
 Nanoc3::Filter.register '::Nanoc3::Filter::NoSlides',      :noslides
+Nanoc3::Filter.register '::Nanoc3::Filter::SlideBreaks',  :slide_breaks
 Nanoc3::Filter.register '::Nanoc3::Filter::Peek',          :peek
 
 preprocess do
@@ -167,9 +211,9 @@ preprocess do
     "session",
     "php-mysql-2",
     "xml",
-    "svg",
     "php-mysql-3",
     "javascript",
+    "svg",
     "applied-javascript",
     "security",
   ]
@@ -245,9 +289,10 @@ route "/dex" do
 end
 
 compile '*' do
-  filter :noslides
+  # filter :noslides
   filter :code_blocks
   filter filters[item[:extension].to_sym] || item[:extension].to_sym
+  filter :slide_breaks
   if item[:homepage]
     layout 'home'
   elsif item.identifier.match /\/dex\/$/

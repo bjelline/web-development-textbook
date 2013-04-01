@@ -1,6 +1,6 @@
 ---
-title: RSS - Really Simple Syndication
-order: 10
+title: Beispiel RSS
+order: 100
 ---
 
 RSS ist ein Format um die Daten eines Blogs maschienenlesbar anzubieten.
