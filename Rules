@@ -292,12 +292,12 @@ compile '*' do
   # filter :noslides
   filter :code_blocks
   filter filters[item[:extension].to_sym] || item[:extension].to_sym
-  filter :slide_breaks
   if item[:homepage]
     layout 'home'
   elsif item.identifier.match /\/dex\/$/
     layout 'dex'
   else
+    filter :slide_breaks
     layout 'default'
   end
 end

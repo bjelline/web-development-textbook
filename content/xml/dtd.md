@@ -7,9 +7,14 @@ Eine Dokumenttypdefinition (DTD) wird für SGML und XML verwendet, um
 die Grammatik festzulegen.  Ein XML Dokument das einer DTD entspricht
 heisst "gültig" (englisch: "valid").
 
+Die DTD definiert den strukturellen Aufbau des Dokuments: welche Tags es gibt, wie diese verschachtelt werden können,
+welche Attribute sie haben.  In frühen Versionen von HTML, wie z.B. HTML 3.2,
+wurde diese DTD auch wirklich in der [HTML Spezifikation](http://www.w3.org/TR/REC-html32-19970114#dtd) angegeben.
+
+
 ## Beispiel
 
-DTS haben wieder eine ganz eigene Schreibweise - hier ein
+DTD haben wieder eine ganz eigene Schreibweise - hier ein
 paar Beispiele für Regeln aus einer DTD:
 
 <dtd caption="Beispiele">

@@ -61,7 +61,7 @@ Drei XML-Sprachen die im Web verwendet werden:
 Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
 World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
 zweidimensionaler Vektorgrafiken. Sie wird von den meisten Browsern
-nativ untersützt [caniuse svg](http://caniuse.com/#feat=svg-html5).  SVG ist eine XML-Sprache. 
+nativ untersützt [&rarr; can i use svg](http://caniuse.com/#feat=svg-html5).  SVG ist eine XML-Sprache. 
 
 <br clear="left">
 
@@ -106,7 +106,7 @@ wie die Homepage des Blogs im RSS Format an.
 ### MathML
 
 MathML ist eine Markup Language zur Darstellung von Mathematischen Formeln.
-Es wird derzeit (2013) von Firefox und Safari unterstützt (siehe [caniuse mathml](http://caniuse.com/#feat=mathml)).
+Es wird derzeit (2013) von Firefox und Safari unterstützt (siehe [&rarr; can i use MathML](http://caniuse.com/#feat=mathml)).
 
 
 <markup caption="MathML Code-Beispiel">

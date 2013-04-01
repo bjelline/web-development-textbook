@@ -259,7 +259,7 @@ body.deck-container {
   display: block;
   margin: 0 auto;
 }
-.slide p, .slide blockquote, .slide iframe, .slide img, .slide ul, .slide ol, .slide pre, .slide video {
+.slide p, .slide blockquote, .slide iframe, .slide img, .slide ul, .slide ol, .slide pre, .slide video, .slide table {
   margin-bottom: 1em;
 }
 .slide pre {

@@ -7,6 +7,7 @@ index: true
 
 * Wie SGML, XML, HTML verbunden sind
 * Dass man mit DTD oder Schema XML definieren kann
+* Was der Unterschied zwischen wohlgeformten und validem XML ist
 * Wie man mit Namespaces verschiedene XML Applikationen gemeinsam benutzen kann
 * dass RSS, MathML, SVG Beispiele für XML sind
 
