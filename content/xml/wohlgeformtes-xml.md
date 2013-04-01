@@ -15,6 +15,9 @@ Die Schreibweise ist von HTML inspiriert, ist aber etwas strenger.
 Hier werden oft Tags aus XHTML als Beispiele verwendet, weil Sie
 diese schon kennen.
 
+Hier werden nicht alle Details der XML-Syntax vorgestellt,
+sondern nur die wichtigsten Regeln.
+
 ## XML Deklaration und Enconding
 
 XML ist als Unicode codiert, sowohl `UTF-8` als auch `UTF-16`
