@@ -105,7 +105,7 @@ Hat ein Tag auch reinen Text als Inhalt, dann kann man
 zwar noch einschränken welche Kinder-Elemente er enthält, man kann
 aber keine Reihenfolge oder Anzahl mehr festlegen.
 
-Die Regel beginnt dann immer mit `(#PDDATA |` und endet mit `)*`:
+Die Regel beginnt dann immer mit `(#PCDATA |` und endet mit `)*`:
 
 <xml>
 <!ELEMENT p ( #PCDATA | a | ul | dl | b | i )*>
