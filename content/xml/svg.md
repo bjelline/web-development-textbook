@@ -221,6 +221,10 @@ lokales Koordinatensystem definieren.
 </g>
 </xml>
 
-<div class="alert"><strong>ToDo</strong> hier fehlt noch Text zu den verschiedenen Transformationen und der Transformations-Matrix.</div>
+## Mehr
 
-
+* [RFC zu SVG](http://www.w3.org/TR/SVG11/)
+* [Japhael Javascript Library](http://raphaeljs.com/)
+* [Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL](http://css-tricks.com/using-svg/)
+* [Tutorial: CSS Animationen auf SVG anwenden](http://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations/)
+* [Tutorial: SMIL Animationen in SVG verwenden](https://developer.mozilla.org/en-US/docs/SVG/SVG_animation_with_SMIL)
