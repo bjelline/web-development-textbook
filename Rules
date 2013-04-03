@@ -303,7 +303,7 @@ end
 
 route '*' do
   #p [item.identifier, item[:extension], item.binary?]
-  if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png'
+  if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png' || item[:extension] == 'html' || item[:extension] == 'xml'
     # /foo/ -> /foo.ext
     #p item.identifier.chop + '.' + item[:extension]
     item.identifier.chop + '.' + item[:extension]
@@ -335,7 +335,7 @@ compile '*', :rep => :slide do
 end
 
 route '*', :rep => :slide do
-  if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png'
+  if item.binary? || item[:extension] == 'css' || item[:extension] == 'js' || item[:extension] == 'png' || item[:extension] == 'xml' || item[:extension] == 'html'
     nil
   elsif item[:homepage]
     nil
