@@ -213,7 +213,6 @@ preprocess do
     "xml",
     "php-mysql-3",
     "javascript",
-    "svg",
     "applied-javascript",
     "security",
   ]
