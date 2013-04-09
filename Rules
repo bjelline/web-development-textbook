@@ -211,6 +211,7 @@ preprocess do
     "session",
     "php-mysql-2",
     "xml",
+    "json",
     "php-mysql-3",
     "javascript",
     "applied-javascript",
