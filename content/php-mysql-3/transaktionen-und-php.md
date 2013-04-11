@@ -3,6 +3,7 @@ title: Transaktionen und PHP
 order: 50
 ---
 
+
 Die Datenbankschnittstelle `PDO` bietet für den Umgang mit Transaktionen die
 Methoden `beginTransaction`, `commit` und `rollback` an.  Wenn die
 Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
@@ -24,4 +25,12 @@ try {
 Bei einem realen Beispiel würde man nicht die `exec` Methode verwenden,
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
 bleibt gleich.
+
+## Warnhinweis
+
+Viele SQL Anweisungen könnenin MySQL nicht in einer längeren Transaktion
+verwendet werden, sie bilden immer eine eigene Transaktion: `ALTER`, `CREATE`, `DROP`, `RENAME`.
+
+[&rarr;](http://dev.mysql.com/doc/refman/5.1/de/innodb-implicit-command-or-rollback.html)
+
 

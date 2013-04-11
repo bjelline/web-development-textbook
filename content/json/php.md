@@ -69,7 +69,7 @@ Im zweiten Argument von `json_decode` kann man angeben ob
 '''alle''' Objekte als Assoziative Arrays decodiert werden sollen:
 
 <php>
-$string = {"foo":10,"bar":30,"baz":30,"0":"a"}
+$string = '{"foo":10,"bar":30,"baz":30,"0":"a"}';
 $o = json_decode( $string, true );
 print_r( $o );
 // Array
@@ -87,6 +87,6 @@ echo "Wert von 0: " . $o[0];
 
 ## Referenz
 
-  * [JSON in der PHP Doku](http://www.php.net/manual/en/book.json.php)
+  * [JSON in der PHP Doku](http://www.php.net/manual/de/book.json.php)
 
 
