@@ -3,6 +3,14 @@ title: Funktionen und Closures
 order: 15
 ---
 
+Javascript baut nicht nur auf die Traditionen der
+objektorientierten Programmierung auf, sondern auch
+auf die der Funktionalen Programmierung[&rarr;](http://de.wikipedia.org/wiki/Funktionale_Programmierung).
+
+In diesem Kapitel lernen wir die Besonderheiten
+von Funktionen in Javascript kennen, darunter
+auch Closures [&rarr;](http://de.wikipedia.org/wiki/Closure).
+
 ## Funktionen und Sichtbarkeit von Variablen
 
 In einer Funktion in Javascript sind lokale und globale

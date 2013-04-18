@@ -20,7 +20,7 @@ drittes Argument wird ein Objekt übergeben:
   var hochschule = {
     name: "FH Salzburg",
     typ: "Fachhochschule",
-    seit: 1995
+    seit: 1996
   };
 
   function Studiengang(name, seit, hs) {

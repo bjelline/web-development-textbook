@@ -4157,6 +4157,11 @@ pre {
   float:left; 
 }
 
+.example.twopane pre li,
+.example.twopane pre {
+  font-size: 12px !important;
+}
+
 pre.left {  
   border-right: 1px #ddd dashed ; 
   border-top-right-radius: 0px;
@@ -4173,3 +4178,5 @@ a[name] {
 }
 a[name]:before {
 }
+
+

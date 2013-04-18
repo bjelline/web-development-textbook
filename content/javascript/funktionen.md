@@ -3,9 +3,6 @@ title: Funktionen und this
 order: 10
 ---
 
-
-## Funktionen definieren und aufrufen 
-
 Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
 
 <javascript caption="Funktionen definieren">
@@ -38,7 +35,7 @@ Teile von Objekten oder Arrays definieren:
   var objekt = {
     prop1 : "string",
     prop2 : 42,
-    method1 : function () {  console.log( "method 1" ) }
+    method_1 : function () {  console.log( "method 1" ) }
   }
 </javascript>
 
@@ -122,7 +119,7 @@ Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist `this` au
 Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen `f()`,
 dann nimmt Javascript ein implizites Objekt an:
 
-<javascript caption="this in einer normalen Funktion (explizite schreibweise)">
+<javascript caption="this in einer normalen Funktion (explizite Schreibweise)">
   window.f = function() {
     console.log("this = " + this);
   }
@@ -142,6 +139,9 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:
   objekt.f("hallo ", 10);
   objekt.f.call(objekt, "hallo ", 10);
   objekt.f.apply(objekt, [  "hallo ", 10 ]  );
+  
+  objekt.f.call(anderes_objekt, "hallo ", 10);
+  objekt.f.apply(anderes_objekt, [  "hallo ", 10 ]  );
 </javascript>
 
 §
@@ -149,7 +149,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:
 Bei Event-Handlern wird `this` anders gesetzt:
 
 <javascript caption="this im Event Handler">
-  document.getElementById("the_button").addEventListener("click", f);
+  function f() {
+    console.log("this = " + this);
+  }
+
+  document.getElementById("button").addEventListener("click", f);
 
   // bei klick auf den Button
   // output in der Console:
@@ -170,7 +174,7 @@ und zwar als Argument:
     console.log("ev = " + ev);
   }
  
-  document.getElementById("the_button").addEventListener("click", f);
+  document.getElementById("button").addEventListener("click", f);
 
   // bei klick auf den Button
   // output in der Console:

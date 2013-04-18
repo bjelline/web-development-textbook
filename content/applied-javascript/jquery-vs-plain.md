@@ -23,16 +23,9 @@ Um die jQuery Objekte besser von anderen Javascript Variablen
 unterscheiden zu können werden wir ihre Variablennamen immer mit
 einem Dollar beginnen.
 
+§
+
 <javascript caption="von jQuery zu DOM und umgekehrt: Eine Node">
-// von jQuery nach Javascript
-
-// Eine Node mit ID auswählen 
-$q = $("#idname");
-
-// DOM-Node extrahieren:
-node = $q.get(0);
-node = $q[0];
-__|__
 // von Javascript zu jQuery
 
 // Eine Node nach ID auswählen 
@@ -41,6 +34,15 @@ node = document.getElementById("id");
 // jQuery Objekt konstruieren
 $q = $(node);
 
+__|__
+// von jQuery nach Javascript
+
+// Eine Node mit ID auswählen 
+$q = $("#idname");
+
+// DOM-Node extrahieren:
+node = $q.get(0);
+node = $q[0];
 </javascript>
 
 §
@@ -49,21 +51,7 @@ Wenn mehrere Nodes gefunden werden muss das in jQuery nicht
 besonders behandelt werden, in reinem Javascript schon:
 
 <javascript caption="von jQuery zu DOM und umgekehrt: mehrere Nodes">
-// Nodes mit CSS-Selektor auswählen
-$q = $(".class");
-
-
-// wie viele sind es?
-if( $q.length > 1 ) {
-  console.log("mehrere");
-}
-
-// extrahieren
-var i=0, arr=Array();
-while( i < $q.length ) {
-  arr[i] = $q.get(i);
-}
-__|__
+// plain Javascript
 // Nodes mit CSS-Selektor auswählen
 arr = document
         .querySelectorAll(".class");
@@ -78,6 +66,22 @@ $q = $(arr);
 
 
 
+__|__
+// jQuery
+// Nodes mit CSS-Selektor auswählen
+$q = $(".class");
+
+
+// wie viele sind es?
+if( $q.length > 1 ) {
+  console.log("mehrere");
+}
+
+// extrahieren
+var i=0, arr=Array();
+while( i < $q.length ) {
+  arr[i] = $q.get(i);
+}
 </javascript>
 
 ## Selektieren
@@ -95,7 +99,7 @@ node = document.querySelector("h2");
 
 
 // Alle Nodes auswählen
-arr = document.querySelectorAll("h2");
+arr= document.querySelectorAll("h2");
 __|__
 // jQuery 
 
@@ -186,7 +190,7 @@ $('input')
 // Node nach Attribut auswählen:
 // Input-Tag mit ID und Attribut 
 // 'name' das auf '_no' endet
-$('input[id][name$='_no'])
+$('input[id][name$=_no]')
 
 </javascript>
 
@@ -223,7 +227,7 @@ Wie fügt man eine Node in die DOM ein?
 // plain Javascript
 
 // Text einfügen
-t = document.createTextNode("Hello"); 
+t= document.createTextNode("Hello"); 
 node.appendChild(t);
 
 // Tag einfügen
@@ -272,27 +276,27 @@ Wie kopiert oder verschiebt man eine vorhandene Node?
 var d2 = document
   .getElementById('dolly')
   .cloneNode();
-document.getElementById('ziel')
+document.getElementById('da')
   .appendChild(d2);
 
 // kirk ans ziel verschieben
 var beam = document
   .getElementById('kirk')
   .removeChild();
-document.getElementById('ziel')
+document.getElementById('da')
   .appendChild(beam);
 __|__
 // jQuery
 
 // dolly kopieren und einfügen
-$('#dolly').clone().appendTo('#ziel');
+$('#dolly').clone().appendTo('#da');
 
 
 
 
 
 // kirk ans ziel verschieben
-$('#ziel').append($('kirk').remove());
+$('#da').append($('kirk').remove());
 
 
 
