@@ -26,11 +26,3 @@ Bei einem realen Beispiel würde man nicht die `exec` Methode verwenden,
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
 bleibt gleich.
 
-## Warnhinweis
-
-Viele SQL Anweisungen könnenin MySQL nicht in einer längeren Transaktion
-verwendet werden, sie bilden immer eine eigene Transaktion: `ALTER`, `CREATE`, `DROP`, `RENAME`.
-
-[&rarr;](http://dev.mysql.com/doc/refman/5.1/de/innodb-implicit-command-or-rollback.html)
-
-

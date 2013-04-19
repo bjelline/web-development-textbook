@@ -76,29 +76,34 @@ in dem weitere Methoden und Attribute für alle Objekte die mit diesem Konstrukt
 gespeichert werden.
 
 <javascript caption="Methoden und Attribute definieren mit dem Prototyp">
-  // Konstruktor
-  function Studiengang(name, seit, hs) {
-    this.name = name;
-    this.seit = seit;
-    this.hs = hs;
-  }
-  // Zwei Attribute am prototyp des Konstruktors
-  Studiengang.prototype.min = 2;
-  Studiengang.prototype.max = 42;
-  // Eine Methode am prototyp des Konstruktors
-  Studiengang.prototype.toString = function () {
-    return "Studiengang " + this.name + " (seit " + this.seit + " @ " + this.hs.name + ")";
-  }
+// Konstruktor
+function Studiengang(name, seit, hs) {
+  this.name = name;
+  this.seit = seit;
+  this.hs = hs;
+}
+// Zwei Attribute am prototyp des Konstruktors
+Studiengang.prototype.min = 2;
+Studiengang.prototype.max = 42;
+// Eine Methode am prototyp des Konstruktors
+Studiengang.prototype.toString = function () {
+  return "Studiengang " + this.name + 
+    " (seit " + this.seit + 
+    " @ " + this.hs.name + ")";
+}
 
-  mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hochschule );
-  mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hochschule );
+mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hochschule );
+mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hochschule );
 
-  mmtb.toString();  // findet toString Methode des Prototypen und ruft sie auf
+mmtb.toString();  // findet toString Methode des 
+            // Prototypen und ruft sie auf
 
-  mmtb.min    // findet min Attribut des Prototypen, gibt Wert 2 
-  mmtb.min=5  // speichert Wert 2 im Objekt selbst
-  mmtb.min    // gibt jetzt Wert 5
-  mmtm.min    // findet min Attribut des Prototypen, gibt Wert 2 
+mmtb.min    // findet min Attribut des Prototypen
+            // gibt Wert 2 
+mmtb.min=5  // speichert Wert 5 im Objekt selbst
+mmtb.min    // gibt jetzt Wert 5
+mmtm.min    // findet min Attribut des Prototypen, 
+            // gibt Wert 2 
 </javascript>
 
 Wird ein Attribut oder eine Methode an einem Objekt gesucht, und

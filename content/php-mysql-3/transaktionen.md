@@ -102,3 +102,10 @@ Werte sind (laut  SQL Standard und MySQL mit InnoDB):
 
 **Serializable** Die höchste Isolationsebene garantiert, dass die Wirkung parallel ablaufender Transaktionen exakt dieselbe ist wie sie die entsprechenden Transaktionen zeigen würden, liefen sie nacheinander in Folge ab
 
+## Warnhinweis
+
+Viele SQL Anweisungen könnenin MySQL nicht in einer längeren Transaktion
+verwendet werden, sie bilden immer eine eigene Transaktion: `ALTER`, `CREATE`, `DROP`, `RENAME`.
+
+[&rarr;](http://dev.mysql.com/doc/refman/5.1/de/innodb-implicit-command-or-rollback.html)
+
