@@ -37,8 +37,9 @@ Das Ergebnis von Teil 2 sollte sein:
 
 * Ich kann Webapplikationen bestehend aus **Frontend (Javascript) und Backend (PHP)** erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.
 * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.
-* Ich kann die **Qualität** einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.
-* Ich kenne die **REST-Prinzip**, ich kenne **Sicherheit**sprobleme und Lösungsansätze, ich kann **AJAX** einsetzen.
+* Ich kenne die **Schnittstelle** von Programmiersprache **zur Datenbank**, kann SQL Injections vermeiden, effiziente Abfragen durchführen, und Transaktionen verwenden.
+* Ich kann die **Qualität** einer Webseite beurteilen. Ich kann mehrere Qualitäts-Kriterien benennen und kann sie bei einem spezifischen Projekt gegeneinander abwägen.
+* Ich kenne die **REST-Prinzip**, ich kenne **Sicherheit**sprobleme und Lösungsansätze, kann **AJAX** einsetzen, kenne die wichtigen **Performance** Probleme von Webseiten und weiss wie ich sie messe und vermeide.
 * In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.
 
 

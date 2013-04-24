@@ -4179,4 +4179,11 @@ a[name] {
 a[name]:before {
 }
 
-
+.beschriftung {
+  font-family: Biolinum, sans-serif;
+}
+.slide .beschriftung {
+  font-family: "Gill Sans","Gill Sans MT", Calibri,sans-serif;
+}
+  
+}

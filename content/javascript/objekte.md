@@ -126,7 +126,8 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
     this.status = "sleeping";
   }
   Pet.prototype.log = function() {
-    console.log("i am " + this.status.get() + ". " + this.word + "!");
+    console.log("i am " + this.status.get() + 
+      ". " + this.word + "!");
   }
 
   // ----- Mammal ---------
@@ -147,9 +148,11 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
   }
 
   d = new Dog("beagle");
-  d.word    // ist direkt im Objekt gespeichert
-  d.legs    // ist im Prototyp von Dog gespeichert (einem Mammal-Objekt)
-  d.status  // ist im Prototyp von mammal gespeichert (einem Pet-Objekt)
+  d.word    // direkt im Objekt gespeichert
+  d.legs    // im Prototyp von Dog gespeichert 
+            // (einem Mammal-Objekt)
+  d.status  // im Prototyp von mammal gespeichert 
+            // (einem Pet-Objekt)
 </javascript>
 
 Diese Vererbungs-Kette über die Prototypen nenn man auf english "prototype chain". 

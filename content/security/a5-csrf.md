@@ -14,14 +14,14 @@ Ein hypothetisches Beispiel: Die verwundbare Web-Applikation ("Site C") sei
 eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:
 
 <htmlcode caption="Verwundbarer Web-Applikation">
-   <form action="spende.php" method="...">
-      <input name="betrag">
-      <select name="kontonummer">
-        <option value="23456789">Greenpeace</option>
-        <option value="34567890">Amnesty International</option>
-      </select>
-      <input type="submit">
-   <form>
+<form action="spende.php" method="...">
+  <input name="betrag">
+  <select name="kontonummer">
+    <option value="23456789">Greenpeace</option>
+    <option value="34567890">Amnesty International</option>
+  </select>
+  <input type="submit">
+<form>
 </htmlcode>
 
 §
@@ -30,15 +30,15 @@ Je nachdem ob `GET` oder `POST`  verwendet wird, sieht der Code
 der Attacke verschieden aus. 
 
 <htmlcode caption="Attacke auf das Formular">
-  <!-- Attacke auf GET -->
-  <img src="http://spendenportal.ch/spende.php?betrag=1000&kontonummer=6666666" alt="i can has cheezburger">
+<!-- Attacke auf GET -->
+<img src="http://spendenportal.ch/spende.php?betrag=1000&kontonummer=6666666" alt="i can has cheezburger">
 
-  <!-- Attacke auf POST -->
-  <form action="http://spendenportal.ch/spende.php" method="POST">
-    <input name="betrag"      value="1000" type="hidden">
-    <input name="kontonummer" value="6666" type="hidden">
-    <input type="submit" value="Like this on Facebook">
-  </form>
+<!-- Attacke auf POST -->
+<form action="http://spendenportal.ch/spende.php" method="POST">
+  <input name="betrag"      value="1000" type="hidden">
+  <input name="kontonummer" value="6666" type="hidden">
+  <input type="submit" value="Like this on Facebook">
+</form>
 </htmlcode>
 
 
@@ -61,16 +61,16 @@ gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.
 Chris Shiflett schlägt folgenden PHP-Code zur Erzeugung des Tokens vor:
 
 <php caption="Erzeugung des Tokens">
-  if (!isset($_SESSION['token'])) {
-    $token = md5(uniqid(rand(), TRUE));
-    $_SESSION['token']      = $token;
-    $_SESSION['token_time'] = time();
-  }
+if (!isset($_SESSION['token'])) {
+  $token = md5(uniqid(rand(), TRUE));
+  $_SESSION['token']      = $token;
+  $_SESSION['token_time'] = time();
+}
+...
+<form action="spende.php" method="post">
+  <input type="hidden" name="token" value="<?php echo $token; ?>">
+  <input name="betrag">
   ...
-  <form action="spende.php" method="post">
-    <input type="hidden" name="token" value="<?php echo $token; ?>">
-    <input name="betrag">
-    ...
 </php>
 
 §
@@ -79,12 +79,12 @@ Wenn ein Request verarbeitet wird, wird überprüft ob das Token vorhanden
 ist und noch gültig ist:
 
 <php caption="Check des Tokens">
-  if (!isset($_SESSION['token']))            throw TokenException;
-  if ($_POST['token'] != $_SESSION['token']) throw TokenException;
+if (!isset($_SESSION['token']))            throw TokenException;
+if ($_POST['token'] != $_SESSION['token']) throw TokenException;
 
-  $token_age = time() - $_SESSION['token_time'];
-   
-  if ($token_age > 300)                      throw TokenException;
+$token_age = time() - $_SESSION['token_time'];
+ 
+if ($token_age > 300)                      throw TokenException;
 </php>
 
 ## Quellen

@@ -9,7 +9,7 @@ wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
 die zu einem HTML-Dokument gehören.
 
 Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
-verwerndet werden: Asynchrone Requests.
+verwendet werden: Asynchrone Requests.
 
 
 ## Was ist AJAX?
@@ -72,7 +72,7 @@ erfolgen.
 
 Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
 wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
-![Sequenz Diagramm](http://de.wikipedia.org/wiki/Sequenzdiagramm), die Zeit
+[Sequenz Diagramm](http://de.wikipedia.org/wiki/Sequenzdiagramm), die Zeit
 läuft von oben nach unten.
 
 Zuerst wird die Webseite mit dem Formular geladen: der Browser schickt die
@@ -92,7 +92,7 @@ Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
 Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
 die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.
 
-![AJAX Ablauf](/images/ajax.png)
+![AJAX Ablauf](/images/ajax-sequence-diagram.svg)
 
 
 
@@ -107,16 +107,83 @@ Objekt Unterschiede zwischen den Browsern. Um diese Unannehmlichkeiten zu
 vermeiden, sollte man fertige Libraries verwenden, die die Browser-Unterschiede 
 verbergen.
 
-## Simples jQuery Beispiel
+## Simples Javascript Beispiel
 
 Im ersten AJAX Beispiel wird der Output eines PHP-Counters in eine HTML-Seite 
-eingebunden. Das gibt noch keine besonderen Effekte für die LeserIn, sondern macht 
-nur den Einbau des Counters in eine bestehende Webseite einfacher.
+eingebunden. 
+
+<htmlcode caption="Counter einbinden mit Javascript">
+<html>
+<head>
+  <title>AJAX counter</title>
+  <style>
+      p#counter_zeile { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Webseite</h1>
+
+  <p>mit total viel Inhalt</p>
+
+  <p id="counter_zeile">Counter: <span id="counter_zahl">?</span></p>
+
+  <script>
+    window.addEventListener('load', loadCounterWithAjax);
+
+    function loadCounterWithAjax() {
+      document.getElementById('counter_zeile').style.display = "block";
+      var ajax_request = new XMLHttpRequest();
+      ajax_request.addEventListener('load', handleCounterData);
+      ajax_request.open("GET", "counter_ajax.php");
+      ajax_request.send();
+      console.log("Request wurde gesendet");
+    }
+
+    function handleCounterData() {
+      console.log("Response wurde empfangen");
+      document.getElementById('counter_zahl').innerHTML = 
+        this.responseText;
+    }
+  </script>
+</body>
+</html>
+</htmlcode>
+
+Für den Fall das Javascript nicht funktioniert wird die ganze Counter-Zeile nicht
+angezeigt (display:none als style).  Falls Javascript funktioniert wird die
+Zeile eingeblendet.
+
+Das `XMLHttpRequest` Objekt liefert verschiedene Events, hier wird nur für das `load` Event
+eine Funktion als Listener angebracht.  Mit der `open` methode wird der HTTP-Request
+konfiguriert, aber erst mit `send` wirklich abgeschickt.  Da er Request asynchron erfolgt
+geht der Javascript-Interpreter sofort von Zeile 23 in Zeile 24 weiter, und wartet
+nicht auf den HTTP-Response.
+
+Erst sehr viel später, wenn der HTTP-Response vorliegt, wird die Funktion
+`handleCounterData` aufgerufen. Die Funktion erhält das `XMLHttpRequest` Objekt
+in der Variable `this`.
+
+## Simples jQuery Beispiel
+
+jQuery bietet einige Vereinfachungen gegenüber Javascript:
+die Funktion `load` erledigt nicht nur den AJAX Request, sondern
+auch das Einfügen des Rückgabewerts in eine DOM Node:
 
 <htmlcode caption="Counter einbinden mit Javascript">
   <html>
   <head>
     <title>AJAX counter</title>
+    <style>
+        p#counter_zeile { display: none; }
+    </style>
+  </head>
+  <body>
+    <h1>Webseite</h1>
+
+    <p>total viel Inhalt</p>
+
+    <p id="counter_zeile">Counter: <span id="counter_zahl">?</span></p>
+
     <script src="jquery.js"></script>
     <script> 
     $(document).ready(function(){ 
@@ -124,16 +191,6 @@ nur den Einbau des Counters in eine bestehende Webseite einfacher.
         $("#counter_zahl").load("counter_ajax.php");
     });
     </script>
-    <style>
-        p#counter_zeile { display: none; }
-    </style>
-  </head>
-  <body>
-    <h1>Das ist eine statische Webseite</h1>
-
-    <p>hier ist total viel Inhalt</p>
-
-    <p id="counter_zeile">Counter: <span id="counter_zahl">?</span></p>
   </body>
   </html>
 </htmlcode>
@@ -143,13 +200,10 @@ Die ganze Arbeit macht hier jQuery in der Zeile
 `$("#counter_zahl").load("counter_ajax.php");`
 
 Das Element mit der ID counter_zahl wird ausgewählt. Mit dem Load-Befehl wird eine 
-http-Anfrage an die angegebene URL abgesetzt. Wenn der Output des PHP-Programm 
-beim Browser ankommt, wird er in das ausgewählte Element eingefügt. Der Output 
-sollte also reiner Text oder HTML sein.
+AJAX-Anfrage an die angegebene URL abgesetzt. Wenn der HTTP-Response
+beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element eingefügt. 
+(Die gelieferten Daten sollten also reiner Text oder ein HTML-Fragment sein.)
 
-Die load-Methode von jQuery ist besonders einfach zu verwenden: was passiert wenn 
-Die Daten vom Server inlangen muss man nicht mehr programmieren, das erledigt 
-jQuery schon.
 
 ## jQuery Beispiel mit Callback-Funktion
 
@@ -284,36 +338,4 @@ Hier der vollständige Javascript Code:
   }
 </javascript>
 
-
-## Hinter den Kulissen von jQuery
-
-jQuery bietet vereinfachte Methoden für den Umgang mit AJAX-Request an.
-Was steckt dahinter?  Bei den meisten Browsern (ausser Internet Explorer)
-ist es das `XMLHttpRequest`-Objekt.
-
-Das Objekt kann einen HTTP Request vorbereiten (`open`) und abschicken
-(`send`).  Am Objekt kann man eine Funktion definieren (`onreadystatechange`)
-die aufgerufen wird wenn der HTTP-Response einlangt.
-
-<javascript caption="Verwendung des XMLHttpRequest">
-my_ajax = new XMLHttpRequest();
-my_ajax.onreadystatechange = function() {
-  console.log("readyState "      + this.readyState);
-  console.log("HTTP status code" + this.status);
-  console.log("responseText "    + this.responseText);
-  console.log("responseXML "     + this.responseXML);
-
-  if( this.readyState == 4 ) {
-    console.log(this.responseText);
-    console.log(this.responseXML);
-  }
-};
-my_ajax.open("GET","getweather.php",true);
-my_ajax.send(null);
-</javascript>
-
-Ein `readyState` von `4` bedeutet: alle Daten des Response wurden erfolgreich
-empfangen.  Das `XMLHttpRequest`-Objekt kann einen XML-Response gleich
-verarbeiteten und als XML-DOM zurückliefern (`responseXML`), oder die
-puren Daten als `responseText`.
 

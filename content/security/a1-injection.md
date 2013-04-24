@@ -11,8 +11,8 @@ Wir haben im Kapitel [PHP MYSQL 2 &rarr; Löschen](/php-mysql-2/daten-loeschen/)
 Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur Verfügung:
 
 <php caption="Prepared Statements verhindern SQL Injection">
-  $query = $dbh->prepare("SELECT * FROM users WHERE id=?");
-  $query->execute(array( $_GET['pid'] ) );
+$query = $dbh->prepare("SELECT * FROM users WHERE id=?");
+$query->execute(array( $_GET['pid'] ) );
 </php>
 
 Mit dem `prepare` wird das SQL-Statement bereits vor-kompiliert. Die Daten,
@@ -25,9 +25,9 @@ Eine zweite Schreibweise für prepared Statement ist noch besser lesbar: dabei
 werden statt der Fragezeichen benannte Platzhalter verwendet:
 
 <php caption="Prepared Statements mit benanntem ">
-    $stm = $dbh->prepare ( "SELECT * FROM USERS WHERE USERNAME LIKE :name" );
-    $stm->bindParam(":name", $_POST['name'] );
-    $stm->execute();
+$stm = $dbh->prepare ( "SELECT * FROM USERS WHERE USERNAME LIKE :name" );
+$stm->bindParam(":name", $_POST['name'] );
+$stm->execute();
 </php>
 
 ## OWASP Empfehlungen

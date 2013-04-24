@@ -117,16 +117,14 @@ und so weiter. Das erfüllt schon das REST-Prinzip.
 
 §
 
-In Kapitel [SECURITY - Unsichere direkte Objektreferenz](/security/a4-referenz/)
-haben wir erfahren, wie man mit der RewriteEngine von Apache und der
-Verwendung von Slugs die Preisgabe von IDs vemeiden kann:
+In Wordpress haben Sie schon gesehen, dann man die URLs
+im Webserver umschreiben kann, mit der RewriteEngine von Apache.
 
 * http://ich.multimediatechnology.at/projekt-1/
 * http://ich.multimediatechnology.at/projekt-1/personen
 * http://ich.multimediatechnology.at/projekt-1/person/max_mustermann 
 * http://ich.multimediatechnology.at/projekt-1/person/nina_nocheinbeispiel
 * http://ich.multimediatechnology.at/projekt-1/person/klaus_maria_nachname
-
 
 Im Konkreten Beispiel müsste man in die Datei .htaccess im Ordner projekt-1 schreiben:
 
@@ -168,14 +166,14 @@ Wie sollen diese Methoden verwendet werden? Jede Methode hat eine Bedeutung:
   werden. z.B. könnte ein POST auf `/dings/` eine neue Ressource mit der 
   URL `/dings/17` erzeugen
 * **PUT** Diese Methode dient zum Speichern einer Ressource unter der  angegebenen URL. 
-  Diese Methode steht bei normalen Web-Formularen aber nicht zur Verfügung. Deswegen 
+  Diese Methode steht bei Web-Formularen aber nicht zur Verfügung. Deswegen 
   wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet. 
 * **DELETE** Diese Methode dient zum Löschen einer Ressource. Auch diese Methode 
-  steht bei normalen Web-Formularen nicht zur Verfügung.  
+  steht bei Web-Formularen nicht zur Verfügung.  
 
 #### Umsetzung
 
-Bei der Programmeirung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
+Bei der Programmierung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
 einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden. 
 
@@ -279,11 +277,11 @@ bei der Verwendung von Frameworks umsetzten.
 
 Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
 man am einfachsten an einem Gegenbeispiel: Wenn ich im 
-[Katalog der FH-Bibliotek](http://alephino.fh-salzburg.ac.at/) 
+[Katalog der FH-Bibliotek](http://opac.obvsg.at/fsa) 
 nach Büchern suche (hier mit dem Suchwort „Web“) 
 erhalte ich zum Beispiel folgende URL:
 
-`http://alephino.fh-salzburg.ac.at/alipac/GYOJPQZTMURYQVHVWMND-00021/find-simple?C1=%28&V1=web&C2=%29&F1=ALL&A1=N&x=0&y=0`
+`http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&find_code=WRD&request=Web&adjacent=N&x=0&y=0&filter_code_1=WSP&filter_request_1=&filter_code_2=WEF&filter_request_2=&filter_code_5=WYR&filter_request_5=&filter_code_6=WYR&filter_request_6=&filter_code_7=WDA&filter_request_7=&filter_code_8=WZW&filter_request_8=`
 
 §
 
