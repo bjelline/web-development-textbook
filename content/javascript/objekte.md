@@ -17,20 +17,20 @@ In folgendem Beispiel hat der Konstruktor `Studiengang` drei Argumente. Als
 drittes Argument wird ein Objekt übergeben:
 
 <javascript caption="Objekt mit Objekt">
-  var hochschule = {
-    name: "FH Salzburg",
-    typ: "Fachhochschule",
-    seit: 1996
-  };
+var hs = {
+  name: "FH Salzburg",
+  typ: "Fachhochschule",
+  seit: 1996
+};
 
-  function Studiengang(name, seit, hs) {
-    this.name = name;
-    this.seit = seit;
-    this.hs = hs;
-  }
+function Studiengang(name, seit, hs) {
+  this.name = name;
+  this.seit = seit;
+  this.hs = hs;
+}
 
-  mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hochschule );
-  mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hochschule );
+mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs );
+mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs );
 </javascript>
 
 §
@@ -49,7 +49,7 @@ keine verwendet wurde auf die Funktion `Object()`.
 <javascript caption="Fortsetzung: Konstruktor-Funktionen">
 // folgende Ausdrücke sind true:
 mmtb.constructor === Studiengang;
-hochschule.constructor === Object;
+hs.constructor === Object;
 </javascript>
 
 ![Abbildung: Objekt mit Konstruktor](/images/objekt-mit-objekt-und-constructor.png)
@@ -58,7 +58,7 @@ Dieser Konstruktor wird auch verwendet, um die Fragen `instanceof` zu beantworte
 
 <javascript caption="Fortsetzung: Operator instanceof">
 mmtb instanceof Studiengang;
-hochschule instanceof Object;
+hs instanceof Object;
 mmtb instanceof Object;
 </javascript>
 
@@ -92,8 +92,8 @@ Studiengang.prototype.toString = function () {
     " @ " + this.hs.name + ")";
 }
 
-mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hochschule );
-mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hochschule );
+mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs );
+mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs );
 
 mmtb.toString();  // findet toString Methode des 
             // Prototypen und ruft sie auf
@@ -105,6 +105,8 @@ mmtb.min    // gibt jetzt Wert 5
 mmtm.min    // findet min Attribut des Prototypen, 
             // gibt Wert 2 
 </javascript>
+
+[Demo in der Console](/images/js-vererbung.html)
 
 Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
 kann direkt am Objekt nicht gefunden werden, dann durchsucht
@@ -135,6 +137,7 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
     this.legs = 4;
   }
   Mammal.prototype = new Pet();
+  Mammal.prototype.constructor = Mammal;
 
   // ----- Dog --------
   function Dog( b ) {
@@ -142,6 +145,7 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
     this.word = "wau! ";
   }
   Dog.prototype = new Mammal();
+  Dog.prototype.constructor = Dog;
 
   Dog.prototype.sit = function() {
     this.status.set("sitting");
@@ -154,6 +158,8 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
   d.status  // im Prototyp von mammal gespeichert 
             // (einem Pet-Objekt)
 </javascript>
+
+[Demo in der Console](/images/js-vererbung.html)
 
 Diese Vererbungs-Kette über die Prototypen nenn man auf english "prototype chain". 
 
@@ -171,9 +177,43 @@ das kann zu unerwarteten Effekten führen:
   d1 = new Dog("Beagle");
   d2 = new Dog("Schnauzer");
   
-  d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
+  d1.status === d2.status // es gibt nur ein Status-Objekt 
+                          // für alle Mammals!
+  d1.hasOwnProperty('status'); // false
+
+  d1.status = new Status('playing');
+
+  d1.status === d2.status      // false
+  d1.hasOwnProperty('status'); // true
 </javascript>
 
+
+## Das Wunder des dreibeinigen Hundes
+
+Der Schnauzer hat einen schrecklichen Unfall, und verliert ein Bein:
+
+<javascript caption="Vererbung von Attributen">
+d1 = new Dog("Beagle");
+d2 = new Dog("Schnauzer");
+d2.legs = 3;
+
+console.log(d1.legs); // 4 Beine von Mammal
+console.log(d2.legs); // 3 Beine 
+
+d1.hasOwnProperty('legs') // ... false
+d2.hasOwnProperty('legs') // ... true
+</javascript>
+
+Doch nun geschieht ein Wunder: wenn wir mit `delete` das
+Attribut `legs` aus `d2` entfernen hat er wieder 3 Bein - weil
+das im prototypen so gespeichert ist.
+
+<javascript caption="Vererbung von Attributen">
+delete(d2.legs);
+
+console.log(d2.legs);     // 4 Beine 
+d2.hasOwnProperty('legs') // ... false
+</javascript>
 
 
 
