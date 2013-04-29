@@ -175,15 +175,15 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 Also zum Beispiel:
 
 <javascript caption="Event Listener">
-  function onMouseDown(e) {
-    console.log("Mouse down. this is " + this.id + " event is " + e);
-  }
+function onMouseDown(e) {
+  console.log("Mouse down. this is " + this.id + " event is " + e);
+}
 
-  element.addEventListener( 'mousedown', onMouseDown, false );
+element.addEventListener( 'mousedown', onMouseDown, false );
 </javascript>
 
 Wenn die Funktion onMouseDown aufgerufen wird enthält
-this das angeklickte element, und e enthält ein Event-Objekt mit
+`this` das angeklickte Element, und `e` enthält ein Event-Objekt mit
 weiteren Details.
 
 ### Problemstellung: vom DOM-Element zum Javascript-Objekt
@@ -192,7 +192,7 @@ In unserem Javascript-Programm wird ein Kreis nicht alleine durch
 die SVG-Node `<circle>` repräsentiert, sondern durch ein Javascript-Objekt
 das mit dem Konstruktor `Circle` erzeugt wurde.
 
-Wie kann die Listener-Funktion Zugriff zu diesem Objekt erhalten?
+Wie kann die Listener-Funktion Zugriff zu diesem Javascript-Objekt erhalten?
 
 Ein Versuch wäre, das Javascript-Objekt im SVG-Element zu speichern.
 zum Beispiel in einem Data-Attribut. In HTML5 darf man ja zu jedem
@@ -200,9 +200,9 @@ Tag / Element beliebige neue Attribute dazu erfinden, solange der
 Name des Attributs mit "data-" beginnt.
 
 <htmlcode caption="data-Attribute in HTML5">
-  <h1 data-geheim="wichtig daten">Normaler Überschrift</h1>
-  ....
-  <circle data-weight="10kg">
+<h1 data-geheim="wichtig daten">Normaler Überschrift</h1>
+....
+<circle data-weight="10kg">
 </htmlcode>
 
 §
@@ -210,13 +210,14 @@ Name des Attributs mit "data-" beginnt.
 Ein Data-Attribut könnte man mit Javascript setzen. Hier ein Versuch:
 
 <javascript caption="Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht">
-  c = document.getElementById("circle_1");
-  // Versuch ein Objekt zu speichern
-  c.setAttribute("data-myobject", { color: 'red', no: 42 } ); 
+// Versuch ein Objekt zu speichern
+c = document.getElementById("circle_1");
+c.setAttribute("data-myobject", { color: 'red', no: 42 } ); 
 
-  o = c.getAttribute("data-editorobject");    // auslesen der Daten
-  typeof o        // ergibt "string"
-  console.log(o)  // ergibt "[object Object]"
+// auslesen der Daten
+o = c.getAttribute("data-editorobject");    
+typeof o        // ergibt "string"
+console.log(o)  // ergibt "[object Object]"
 </javascript>
 
 Beim Speichern in der DOM wurde also mein Objekt in einen String umgewandelt,
@@ -261,18 +262,21 @@ und das nun in Event-Listener umsetzen will kommt man zu folgender Struktur
 <javascript caption="Struktur der Event-Listener für Drag-and-Drop">
 function addDragability( jsobj, element ) {
   function onMove(e) {
-    // die Differenz zwischen aktueller Maus-Position und der 
-    // Start-Position berechnen. Das ergibt einen Translations-Vektor. 
-    // Diesen Vektor zur Startposition des Objekts addieren, 
-    // aktuelle Position des Objekts setzen
+    // die Differenz zwischen aktueller Maus-Position 
+    // und der Start-Position berechnen. Das ergibt 
+    // einen Translations-Vektor. 
+    // Diesen Vektor zur Startposition des Objekts 
+    // addieren, aktuelle Position des Objekts setzen
   }
   function onMouseDown(e) {
-    // Drag-und-Drop beginnt: den richtigen eventlistener für mousemove setzen
-    // Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt 
-    // müssen gespeichert werden.
+    // Drag-und-Drop beginnt: den richtigen Eventlistener 
+    // für mousemove setzen
+    // Die Position der Maus und des Objekt zu diesem 
+    // Start-Zeitpunkt müssen gespeichert werden.
   }
   function onMouseUp(e) {
-    // Drag-and-Drop beenden: nicht mehr gebrauchte event-listener entfernen
+    // Drag-and-Drop beenden: nicht mehr gebrauchte 
+    // event-listener entfernen
   }
 
   console.log( jsobj + " und damit " + element + " sind nun draggable");

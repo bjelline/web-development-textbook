@@ -11,6 +11,7 @@
 #   because “*” matches zero or more characters.
 
 require "cgi"
+require "uri"
 require "curb"
 require "json"
 
@@ -111,6 +112,51 @@ class Nanoc3::Filter
 
 
 
+  class PatternTester < Nanoc3::Filter
+    identifier :pattern_tester
+
+    def run(content, params={})
+      @string = content.dup
+
+      @output = ""
+      @pending = ""
+
+      until @string.empty?
+        match = scan_until /(<patterntester(?: name="(.*?)")?(?: pattern="(.*?)")?>|\z)/m
+
+        @pending << match.pre_match
+        flush
+        replace_with_link match[2], match[3]
+      end
+      flush
+
+      @output
+    end
+
+    def scan_until(regex)
+      match = @string.match(regex)
+      return unless match
+      @string = match.post_match
+      match
+    end
+
+    def replace_with_link(name, pattern)
+      match = scan_until %r{</patterntester>}
+      if match and match.pre_match then
+        data = match.pre_match;
+        data_params = data.split(/\n/).map{|d| "list[]=#{d}" }.join("&")
+        out = "<a href='/images/match.html?pattern=#{URI.escape pattern}&listname=#{URI.escape name}&#{URI.escape data_params}'>RegEx Tester: /#{CGI.escapeHTML(pattern).gsub(/\|/, "&#124;")}/</a>"
+        @output << out
+      end
+    end
+
+    def flush
+      @output << @pending
+      @pending = ""
+    end
+  end
+
+
   class CodeBlocks < Nanoc3::Filter
     identifier :code_blocks
     LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
@@ -187,6 +233,7 @@ class Nanoc3::Filter
   end
 end
 
+Nanoc3::Filter.register '::Nanoc3::Filter::PatternTester', :pattern_tester
 Nanoc3::Filter.register '::Nanoc3::Filter::CodeBlocks',    :code_blocks
 Nanoc3::Filter.register '::Nanoc3::Filter::Slides',        :slides
 Nanoc3::Filter.register '::Nanoc3::Filter::NoSlides',      :noslides
@@ -226,7 +273,7 @@ preprocess do
 
   @items.each do |item|
     item[:chapter] = item[:filename].split('/')[1] 
-    item[:chapter_title] = item[:chapter].gsub(/-/, " ").upcase
+    item[:chapter_title] = item[:chapter].gsub(/-/, " ")   # .upcase
     item[:github] = "bjelline"
   end
 
@@ -248,7 +295,7 @@ preprocess do
       @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
       @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
     end
-    @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").upcase
+    @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").split(' ').map {|w| w.capitalize }.join(' ')
     @chapters[ folder ][ :folder ] = folder
   end
   
@@ -290,6 +337,7 @@ end
 
 compile '*' do
   # filter :noslides
+  filter :pattern_tester
   filter :code_blocks
   filter filters[item[:extension].to_sym] || item[:extension].to_sym
   if item[:homepage]
@@ -324,6 +372,7 @@ compile '/images/*', :rep => :slide  do
 end
 
 compile '*', :rep => :slide do
+  filter :pattern_tester
   filter :code_blocks
   filter :kramdown
   #filter filters[item[:extension].to_sym] || item[:extension].to_sym

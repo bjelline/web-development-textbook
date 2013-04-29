@@ -352,7 +352,7 @@ a:hover {
   clear: both;
 }
 p {
-  margin: 0 0 9px;
+  margin: 0 0 21px;
   font-size: 13px;
   line-height: 18px;
 }
@@ -4144,7 +4144,7 @@ article {
 
 body, p, li, dt, dd {  
   font-size: 18px; 
-  line-height: 1.5 ; 
+  line-height: 1.2 ; 
 } 
 
 pre {
