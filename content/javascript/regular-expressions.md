@@ -216,10 +216,10 @@ usa
 ## Abkürzungen für häufig benutze Zeichenklassen
 
 <javascript>
-/\d/      # eine Ziffer, entspricht /[0-9]/
-/\D/      # keine Ziffer, entspricht /[^0-9]/
-/\w/      # Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
-/\W/      # kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
+/\d/       eine Ziffer, entspricht /[0-9]/
+/\D/       keine Ziffer, entspricht /[^0-9]/
+/\w/       Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
+/\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
 </javascript>
 
 
@@ -236,9 +236,219 @@ usa
 
 ## Irgend ein Zeichen
 
-Der Punkt `.` steht für ein beliebiges Zeichen.  Achtung, Verwechslungsgefahr:
+Der Punkt `.` steht für **ein** beliebiges Zeichen.  Achtung, Verwechslungsgefahr:
 bei Pfadangaben hat das Fragezeichen `?` diese Funktion!
 
+<javascript>
+/^...$/       genau drei Zeichen
+</javascript>
+
+
+<patterntester name="Studiengang" pattern="^...$">
+NA
+MMT
+mmt
+   
+___
+MMT-B
+</patterntester>
+
+## Ein echter Punkt
+
+Da der Punkt `.` eine besondere Bedeutung in einer Regular Expression
+hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
+Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash `\`. 
+
+<javascript>
+/\./     ein echter punkt
+</javascript>
+
+
+<patterntester name="Kapitel-Nummern" pattern="^\d\.\d$">
+1
+1.1
+1.2
+1.3
+2
+2.1
+2.2
+35
+35.1
+</patterntester>
+
+## Stern-Operator: beliebig viele
+
+Der Stern-Operator dient der Vervielfältigung: das davor stehende Zeichen
+kann beliebig oft Wiederholt werden, also null-mal, ein-mal oder mehr-mals vorkommen:
+
+<javascript>
+/i*/  
+</javascript>
+
+Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.
+Wenn man sich den Operator als Schleif vorstellt kann 
+bei jeder "Wiederholung" ein anderes Zeichen aus der Klasse oder eine
+andere Alternative gewählt werden:
+
+<javascript>
+/(do|re|mi)*/
+/\d*/
+</javascript>
+
+
+<patterntester name="Ziffern" pattern="^\d*$">
+1
+12
+123
+
+1a
+a1
+</patterntester>
+
+
+
+## Plus-Operator: mindestens einmal, oder mehrmals
+
+Der Plus-Operator ähnelt dem Stern-Operator, allerdings
+muss das Zeichen mindestens einmal vorkommen.
+
+<javascript>
+/\d+/  
+</javascript>
+
+<patterntester name="Ziffern" pattern="^\d+$">
+1
+12
+123
+
+1a
+a1
+</patterntester>
+
+
+## Fragezeichen-Operator: einmal oder keinmal
+
+Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.
+
+<javascript>
+/\d?/  
+</javascript>
+
+<patterntester name="Ziffern" pattern="^\d?$">
+1
+12
+123
+
+1a
+a1
+</patterntester>
+
+## Operatoren sind gierig
+
+Die Operatoren `*` und `+` versuchen immer
+möglichst lange Strings zu erfassen.
+
+<javascript>
+/o.*o/    möglichst viele Zeichen zwischen o und o
+</javascript>
+
+Diese Eigenschaft sieht man sehr gut in folgendem Beispiel:
+
+<patterntester name="BlaBla" pattern="_.*_">
+zeugs und _bla_ und zeugs
+_bla_ und zeugs
+zeugs und _bla_
+_bla_ und _bla_ und noch mehr _bla_
+</patterntester>
+
+§
+
+Wie kann man das gierige Verhalten der Operatoren umgehen?
+
+Die "altmodisch" Methode ist eine Komplement-Klasse:
+
+<javascript>
+/o[^o]*o/    
+</javascript>
+
+Hier wird ein erstes o gematched, dann kommen (null bis viele) zeichen
+die kein o sind, und dann ein zweites o.  Damit ist der Pattern beendet,
+auch wenn es später im String noch weitere o's geben würde.
+
+<patterntester name="BlaBla" pattern="_[^_]*_">
+zeugs und _bla_ und zeugs
+_bla_ und zeugs
+zeugs und _bla_
+_bla_ und _bla_ und noch mehr _bla_
+</patterntester>
+
+§
+
+In modernen RegEx Engines gibt es nicht-gierige Varianten der
+Operatoren: ein Fragezeichen wird nachgestellt
+
+<javascript>
+/o(.*?)o/    
+/o(.+?)o/    
+</javascript>
+
+
+<patterntester name="BlaBla" pattern="_.*?_">
+zeugs und _bla_ und zeugs
+_bla_ und zeugs
+zeugs und _bla_
+_bla_ und _bla_ und noch mehr _bla_
+</patterntester>
+
+
+## Warnhinweis: Was RegEx nicht kann
+
+Mit dem letzten Beispiel könnte man nun in Versuchung kommen
+verschachtelte Ausdrücke wie HTML, XML, mathematische Ausdrücke, Programmiersprachen
+mit Hilfe von RegEx zu parsen.
+
+Das funktioniert aber nicht.  Das müssten Sie an dieser Stelle
+einfach mal glauben - den Beweis überlassen wir der "Theoretischen Informatik".
+
+Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
+verwenden Sie dafür einen der vielen fertigen Parser.
+
+Wenn Sie aus einem längeren HTML-Dokument "unverschachtelte" Teile wie
+z.B. `<img>` Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
+Aber nichts komplizierteres.
+
+## Ersetzen mit Regular Expression in Javascript
+
+Ein häufiger Anwendungsfall von RegEx ist "Suchen und Ersetzen"
+
+<javascript>
+s = "Voldemort hat keine Nase";
+s.replace(/Voldemort/, 
+          "Er, dessen Name nicht genannt werden darf,");
+</javascript>
+
+Es erfolgt nur eine einzige Ersetzung. Mit dem Modifikator `g` am
+Ende der RegEx kann man alle Ersetzungen durchführen:
+
+<javascript>
+s = "Voldemort hat keine Nase. Voldemort ist verschwunden.";
+s.replace(/Voldemort/g, 
+          "Er, dessen Name nicht genannt werden darf,");
+</javascript>
+
+Achtung, auch hier kommt man bald an die Grenzen
+von Regular Expressions: 
+
+<javascript>
+s = "Harry greift Voldemort an. Voldemorts Zauberstab bricht.";
+s.replace(/Voldemort/g, 
+          "Er, dessen Name nicht genannt werden darf,");
+</javascript>
+
+Dass ihr jeweils ein anderer Fall notwendig wäre
+kann eine Regular Expression nicht erkennen.  Dafür gibt es
+eine eigene Wissenschaft: die Computer-Linguistik, die arbeitet
+an dem Problem, hat es aber noch nicht gelöst.
 
 ## RegEx in PHP
 
@@ -256,8 +466,13 @@ preg_match( "/regex/i", "string in dem ich suche")
 </php>
 
 
-## Verteifung
+## Vertiefung
 
 * [Video: Lea Verou Demystifying Regular Expressions](http://www.youtube.com/watch?v=EkluES9Rvak)
 * [Regular Expressions Guide auf MDN](https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions)
 * [Wikipedia: Regular Expression](http://de.wikipedia.org/wiki/Regular_Expression)
+
+## Merchandize
+
+* [XKCD T-Shirt](http://store-xkcd-com.myshopify.com/products/i-know-regular-expressions)
+* [to be or not to be T-Shirt](http://www.spreadshirt.de/to-be-or-not-to-be-that-is-the-question-t-shirts-C4408A14434558/)

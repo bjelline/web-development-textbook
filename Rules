@@ -145,7 +145,7 @@ class Nanoc3::Filter
       if match and match.pre_match then
         data = match.pre_match;
         data_params = data.split(/\n/).map{|d| "list[]=#{d}" }.join("&")
-        out = "<a href='/images/match.html?pattern=#{URI.escape pattern}&listname=#{URI.escape name}&#{URI.escape data_params}'>RegEx Tester: /#{CGI.escapeHTML(pattern).gsub(/\|/, "&#124;")}/</a>"
+        out = "<a href='/images/match.html?pattern=#{URI.escape(pattern).gsub(/\+/, '%2B')}&listname=#{URI.escape name}&#{URI.escape data_params}'>RegEx Tester: /#{CGI.escapeHTML(pattern).gsub(/\|/, "&#124;")}/</a>"
         @output << out
       end
     end

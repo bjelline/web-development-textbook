@@ -37,6 +37,7 @@
 
       #test div {
         font: 12px "Courier New" ;
+        min-height: 18px;
         padding: 2px 3px;
         margin: 0px;
       }
@@ -118,15 +119,36 @@
           "fr_FR",
           "fr_CH"
         ],
+        Mail : [
+          "a@b.c",
+          "l33t_usr+42@strange.domain.name",
+          "ha%@sag.i.net",
+          "a.b.c@d",
+          "@d"
+        ],
+        FHMail : [
+          "mmuster.mmt-b2013@fh-salzburg.ac.at",
+          "xsample.mmt-m2013@fh-salzburg.ac.at",
+          "xsample.mmt-m1792@fh-salzburg.ac.at",
+          "brigitte.jellinek@fh-salzburg.ac.at",
+          "akünstler.mma-b2011@fh-salzburg.ac.at"
+        ],
         Postleitzahlen : [
           "5020",
           "A-5020",
-          "50202",
+          "90210",
           "irgendwas mit 8"
         ],
         Link : [
           "<a href='dies'>Dies</a>",
           "<a href='dies'>Dies</a> und <a href='das'>Das</a>"
+        ],
+        Image : [
+          "<img src='bla.gif'>",
+          '<img src="bla.gif">',
+          "<img src=\"bla.gif'>",
+          '<img           src="bla.gif"     >',
+          '<img title="error" src="bla.gif">'
         ]
       };
 
@@ -149,6 +171,7 @@
         list     = url.param('list');
         if ( listname && list ) {
           lists[listname] = list;
+          lists[listname].push('');
         }
        
         for(k in lists) {
@@ -222,6 +245,7 @@
                 $o.append( $s1 );
                 $o.append( $s2 );
                 $o.append( $s3 );
+
               }
             } else {
               //console.log("nr " + i + ") " + $o.text() + " = no");
