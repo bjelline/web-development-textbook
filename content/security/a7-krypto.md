@@ -22,10 +22,12 @@ Beispiele:
 * [Twitter Authentication](https://dev.twitter.com/docs/auth/oauth/single-user-with-examples)
 * [Google Authentication](https://developers.google.com/accounts/docs/OAuth2)
 
-Eine Alternative die nicht mit einem Social Network verknüpft ist, 
-ist BrowserId von Mozilla. Dabei dient die E-Mail Adresse zur Identifikation.
+Alternativen die nicht mit einem Social Network verknüpft sind, 
+sind OpenID und Persona (früher: BrowserId) von Mozilla. 
+Dabei dient eine URL bzw. eine E-Mail Adresse zur Identifikation.
 
-* [BrowserId](https://browserid.org/)
+* [OpenID](http://openid.net/get-an-openid/)
+* [Persona](https://login.persona.org/)
 
 ## Passwörter Speichern
 

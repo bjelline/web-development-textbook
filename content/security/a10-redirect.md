@@ -7,11 +7,13 @@ Die OWASP beschreibt dieses Problem allgemein so:
 
 > Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.
 
+§
+
 Konkret beschreibt sie zwei Angriffs-Szenarien (hier auf PHP umformuliert)
 
 **Szenario 1:**
 
-Die Anwendung enthält eine Seite namens "redirect.php", die einen einzigen Parameter "url" verwendet. 
+Die Anwendung enthält eine Seite namens `redirect.php`, die einen einzigen Parameter `url` verwendet. 
 Ein Angreifer setzt eine URL als Parameterwert ein, die BenutzerInnen auf eine Website führt, 
 die Schadcode installiert oder Phishing ermöglicht. 
 
@@ -34,22 +36,25 @@ Wie in Kapitel [PHP erzeugt nicht nur HTML](/http/php-erzeugt/) gezeigt,
 werden Weiterleitungen in PHP mit der Funktion `header` implmenentiert:
 
 <php caption="Weiterleitung in PHP">
-    <?php
-    // hier passieren wichtige Dinge ...
-    header("Location: status.php");
-    exit; /* fertig, nichts weiter ausgeben! */
-    ?>
+<?php
+// hier passieren wichtige Dinge ...
+header("Location: status.php");
+exit; /* fertig, nichts weiter ausgeben! */
+?>
 </php>
+
+§
 
 Auf keinen Fall sollte ein Parameter direkt in der Konstruktion der URL verwendet werden:
 
 <php caption="Ungeprüfte Weiterleitung in PHP - so nicht programmieren!">
-    <?php
-    // hier passieren wichtige Dinge ...
-    header("Location: " + $_GET['url'] ); // so nicht programmieren!
-    ?>
+<?php
+// hier passieren wichtige Dinge ...
+header("Location: " + $_GET['url'] ); // so nicht programmieren!
+?>
 </php>
 
+§
 
 Die sicherste Variante ist die verwendung einer Whitelist. Hier
 wird sicher gestellt dass nur and die vorgegebenen URLs weitergeleitet wird:

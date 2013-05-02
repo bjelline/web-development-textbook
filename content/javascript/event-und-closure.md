@@ -215,7 +215,7 @@ c = document.getElementById("circle_1");
 c.setAttribute("data-myobject", { color: 'red', no: 42 } ); 
 
 // auslesen der Daten
-o = c.getAttribute("data-editorobject");    
+o = c.getAttribute("data-myobject");    
 typeof o        // ergibt "string"
 console.log(o)  // ergibt "[object Object]"
 </javascript>

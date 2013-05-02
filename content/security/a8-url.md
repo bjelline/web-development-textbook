@@ -17,11 +17,11 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 Gängige Fehleinschätzungen dieser Art sind:
 
 * Wenn ich keinen Link zu dieser Seite hin setzte, dann findet die Seite eh niemand.
-** Das ist falsch! 
+* Das ist falsch! 
 * Wenn ich die Daten in ein hidden-field im Formular schreibe, können sie nicht verändert werden
-** Das ist falsch! 
+* Das ist falsch! 
 * Wenn die Daten des Formulars per POST übertragen werden, können sie nicht manipuliert werden
-** Das ist falsch!
+* Das ist falsch!
 
 ## Jede PHP-Datei ist ein Einstiegspunkt
 
