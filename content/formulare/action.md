@@ -65,12 +65,12 @@ Die URL wird zusammengestellt aus:
 * `?` (einem Fragezeichen )
 * für alle Eingabefelder, getrennt durch `&` (kaufmännisches Und):
     * Name des Eingabefeldes
-    * = (Gleich Zeichen)
+    * `=` (Gleich Zeichen)
     * Eingegebener / angeklickter Wert
 
 Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute,
 Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt
-Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein %
+Leerzeichen wird ein `+` oder `%20` gesetzt, bei allen anderen Zeichen wird ein `%`
 gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396).
 Diese Codierung nennt man URL-Encoding. (siehe
 [HTML 4.01 Specification](http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1).)
@@ -79,7 +79,8 @@ Diese Codierung nennt man URL-Encoding. (siehe
 URL als Programm-Schnittstelle
 -------------------------------
 
-Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:
+Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren,
+werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:
 
 <htmlcode>
 http://www.google.com/search?q=Schokolade
@@ -103,7 +104,21 @@ dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs
 konstruieren und aufrufen. Die **URL** (und nicht das Formular) ist also eine
 **öffentliche Schnittstelle** zu Ihrem Programm!
 
-## pricing attack
+
+Nun könnte man meinen: "Wenn ich die URL geheim halte ist es doch keine öffentliche Schnittstelle".
+Das ist aber ein Trugschluss: auch eine "geheime" URL, die ich nie bewusst öffentlich mache
+wird öffentlich werden.  URLs sind im Browser-Cache gespeichert, werden im Browser vorgeschlagen
+wenn ich eine URL eintippe, sind in Logfile von Proxies gespeichert.  Selbst URLs die ich blos
+im Skype-Chat weitergegen habe, sind dritten bekannt, wie [diese Untersuchung von Heise zeigt](http://www.heise.de/security/meldung/Vorsicht-beim-Skypen-Microsoft-liest-mit-1857620.html)
+
+Das "geheimhalten" einer URL ist also keine geeignete Sicherheitsmaßnahme!
+Wenn ich eine Webseite vor Zugriffen schützen will brauche ich dazu Passwörter
+und https, siehe [Authentisieren nach RFC 2617](/http/http/#slide-18)
+und [HTTPS](/http/http/slide.html#slide-19), beide im Kapitel HTTP, und 
+das [Kapitel Session](/session/).
+
+
+## Pricing Attack
 
 Ein lehrreiches Beispiel aus der Frühzeit des Web: es gab einst Webshops, die den Preis der Waren als verstecktes Eingabefeld im Formular speicherten:
 
