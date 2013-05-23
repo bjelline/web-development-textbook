@@ -13,10 +13,10 @@ und für Mac OS und Windows verfügbar: [Homepage](http://www.sourcetreeapp.com/
 
 ![](/images/git-source-tree.png)
 
-phpstrom
+PHPStorm
 ------
 
-PHPstrom und WebStrom sind IDEs für Web Projekte.
+PHPstorm und WebStorm sind IDEs für Web Projekte.
 Die Interaktion mit einem Versionskontrollsystem ist eingebaut.
 [Homepage](http://www.jetbrains.com/phpstorm/)
 ![](/images/git-phpstrom-722.png)
