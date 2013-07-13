@@ -14,3 +14,9 @@ index: true
 * Ich kann mittels CSS zwei oder drei Spalten nebeneinander positionieren.
 * Ich kann mittels CSS eine Liste von Links als Navigations-Menü darstellen.
 * Ich kann ein statisches Layout mit mediaqueries so erweitern, dass die Webseite bei wesentlich kleineren oder größeren Ausgabegeräten noch sinnvoll dargestellt werden kann.
+
+
+## Vertiefung
+
+* Marcotte(2011): [Responsive Design](http://www.amazon.com/Responsive-Design-Brief-People-Websites/dp/098444257X/)
+* Responsive News(2013): [Tables](http://responsivenews.co.uk/post/52382349921/tables) - Wie macht man Tabellen responsive?  eine harte Nuss

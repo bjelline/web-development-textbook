@@ -1,5 +1,5 @@
 ---
-title: Konfiguration
+title: Konfiguration Webserver
 order: 20
 ---
 
@@ -44,7 +44,7 @@ Die Apache-Konfigurationsanweisung dazu lautet
 
     DirectoryIndex index.html
 
-Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wir die Datei `default.htm` verwendet!
+Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wird die Datei `default.htm` verwendet!
 
 ## Directory Index Datei existiert nicht
 
@@ -80,19 +80,18 @@ Die Apache Konfigurationsanweisung lautet:
 
 ## relativer Link dazu
 
-Beachten Sie: für das Formulieren von relativen URLs sind nur die URLs relevant,
-nicht die Position der Dokumente im Dateisystem! Der Ordnername `public_html` 
-wird also nie in einer URL vorkommen.
+Beachten Sie: für das Formulieren von relativen URLs sind wirklich nur die URLs relevant,
+nicht die Position der Dokumente im Dateisystem! Der Ordnername `public_html` wird also nie in einer URL vorkommen.
 
 Der Link von einem User-Webspace zum nächsten funktioniert also so:
 
     http://multimediatechnology.at/~fhs303030/test.html   
-                               +    ../~fhs111111/test   =
+                              +    ../~fhs111111/test   =
     http://multimediatechnology.at/~fhs111111/test
 
 Oder relative zum Webserver:
 
     http://multimediatechnology.at/~fhs303030/test.html   
-                                 +    /~fhs111111/test   =
+                              +   /~fhs111111/test   =
     http://multimediatechnology.at/~fhs111111/test
 
