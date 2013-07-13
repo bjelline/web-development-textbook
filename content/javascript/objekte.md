@@ -205,7 +205,7 @@ d2.hasOwnProperty('legs') // ... true
 </javascript>
 
 Doch nun geschieht ein Wunder: wenn wir mit `delete` das
-Attribut `legs` aus `d2` entfernen hat er wieder 3 Bein - weil
+Attribut `legs` aus `d2` entfernen hat er wieder 4 Beine - weil
 das im prototypen so gespeichert ist.
 
 <javascript caption="Vererbung von Attributen">
