@@ -150,6 +150,23 @@ Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:
 
 [Beispiel live im Browser](/images/moreformjs.html)
 
+
+Manipulieren der Klassen
+-------------------------
+
+
+
+<javascript>
+document.querySelector('#foo').classList.add('bar');
+document.querySelector('#foo').classList.remove('bar');
+document.querySelector('#foo').classList.toggle('bar');
+if( document.querySelector('#foo').classList.contains('bar') ) {
+  // 
+}
+</javascript>
+
+
+
 Einfügen von Event Handlern
 -----------------------------
 Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:

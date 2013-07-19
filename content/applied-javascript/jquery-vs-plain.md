@@ -194,7 +194,7 @@ $('input[id][name$=_no]')
 
 </javascript>
 
-Bei der Manipulation von CSS ist zu beachent: die Schreibweise
+Bei der Manipulation von CSS ist zu beachten: die Schreibweise
 von CSS-Eigenschaften mit einem Minus-Zeichen lässt sich nicht
 nach Javascript übertragen.  In Javscript wird deswegen aus 
 `background-color` die Eigenschaft `backgroundColor`.
@@ -217,6 +217,31 @@ __|__
  $('h2')
   .css({backgroundColor: 'yellow',
     color: 'red'});
+</javascript>
+
+§
+
+Statt den Style direkt zu manipulieren sollte man
+Klassen setzen:
+
+<javascript caption="Klassen setzen">
+// Klassen setzen
+
+
+$('#foo').addClass('bar');
+$('#foo').removeClass('bar');
+$('#foo').toggle('bar');
+// Klassen abfragen
+$('#foo').hasClass('bar');
+__|__
+// Klassen setzen
+var cl = d.querySelector('#foo')
+           .classList;
+cl.add('bar');
+cl.remove('bar');
+cl.toggle('bar');
+// Klassen abfragen
+cl.contains('bar');
 </javascript>
 
 ## HTML einfügen
@@ -317,4 +342,18 @@ __|__
 $n.on("click", f);
 </javascript>
 
+## Wann brauche ich jQuery? Wann brauche ich ein Framework?
 
+Als jQuery im Jahre 2006 erschien brachte es große Fortschritte
+gegenüber "reinem Javascript".  In den Jahren seither hat jQuery
+die Weiterentwicklung von Javascript beeinflusst: so wurde 
+querySelector und querySelectorAll erst nach jQuery in den 
+Javascript Standard aufgenommen, und landet z.B. in Firefox 3.5 im Juni 2009.
+
+Die "reine Javascript" Lösung bringt meine performance Vorteile,
+besonders auf mobilen Endgeräten, wo das Laden der Liberary und
+der Speicherverbrauch durch die Libraray größere Auswirkungen
+haben als am Desktop.
+
+Siehe auch
+* Vortrag von Estelle Weyl: "You don't need a Framework for that!", [YouTube](http://www.youtube.com/watch?v=FbpUt3XLGlE), [Slides](http://estelle.github.io/fluentconf/#slide1)
