@@ -11,7 +11,7 @@ Validator
 <!-- XE "Validator" -->  
 Um Fehler im HTML-Code zu finden reicht ein Webbrowser nicht aus. Wie oben beschrieben 
 sind Webbrowser sehr tolerant, was kaputten Code  <!-- XE "Code" -->   betrifft.
-FÜr eine strenge Prüfung  <!-- XE "Prüfung:von HTML Code" -->   
+Für eine strenge Prüfung  <!-- XE "Prüfung:von HTML Code" -->   
 des HTML-Codes kann man den Validator des W3C verwenden:
 
 [http://validator.w3.org/](http://validator.w3.org/)
@@ -28,7 +28,9 @@ Folge-Fehler fallen damit auch weg.
 
 Die Fehlermeldung in Abbildung 12 geht auf einen Tippfehler zurück: der schließende Tag 
 wurde falsch geschreiben. 
+
 §
+
 Wenn der Code dem HTML-Standard entspricht erscheint eine 
 Erfolgsmeldung:
  
@@ -41,15 +43,12 @@ Upload
 ------
 
 <!-- XE "Upload" -->  
-Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH steht Ihnen 
-zwei Webserver zur Verfügung: www.users.fh-salzburg.ac.at und 
-multimediatechnology.at. Zweiteren werden wir in dieser Lehrveranstlatung verwenden.
+Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH Salzburg steht Ihnen 
+dafür der  Webserver multimediatechnology.at zur Verfügung. 
 Um die Daten vom eigenen Computer auf den Webserver zu laden gibt es verschiedene 
-Methoden, die wichtigsten sind FTP  <!-- XE "FTP" -->  , WebDAV  <!-- XE "WebDAV" -->  , SFTP  XE 
-"SFTP"  . 
+Methoden, die wichtigsten sind FTP,  <!-- XE "FTP" -->   WebDAV,  <!-- XE "WebDAV" -->  SFTP.
 
-Bei jeder Upload-
-Methode brauchen Sie folgende Informationen: den Namen des Servers, Usernamen, 
+Bei jeder Upload-Methode brauchen Sie folgende Informationen: den Namen des Servers, Usernamen, 
 Passwort, in welchen Ordner Sie die Daten speichern, unter welcher URL die Daten im Web 
 sichtbar sind.
 
@@ -95,13 +94,21 @@ Ordner am Webserver hinaufladen.  Dann funktionieren die relativen Links nicht m
 
 §
 
+Bevor Sie mit WebStorm ihre Site hochladen können müssen Sie unter
+Tools → Deployment → Configuration die richtige Konfiguration eintragen:
+
+![Bearbeiten der Deployment-Konfiguration in WebStrom](/images/webstorm-deployment.png)
+
+§
+
 Bevor Sie FTP im Dreamweaver Site-Fenster benutzen können müssen Sie 
 (Unter SITE → SITES VERWALTEN → BEARBEITEN → ERWEITERT → REMOTE-INFORMATIONEN) die richtige 
 Konfiguration eintragen.
 
 ![Abbildung 16: Bearbeiten der FTP-Information in Dreamweaver](/images/dreamweaver-upload-config.png)
 
-§ 
+§
+
 Das Dateien-Fenster kann in Dreamweaver auf zwei Arten dargestellt werden:
 
 ![Abbildung 17: Dateien-Fenster in Dreamweaver: Umschalten zwischen 2 Ansichten + Upload](/images/image064.png)

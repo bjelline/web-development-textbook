@@ -1,7 +1,7 @@
 ---
 title: HTTP
+intro: Das Protokoll des Web wird vorgestellt.
 ---
-Das Protokoll wird vorgestellt.
 
 ### Was Sie alle wissen sollten
 * Das Computer am Internet über IP-Adressen oder Domain Names addressierbar sind

@@ -11,11 +11,14 @@
                           </div>
 			<% end %>
 
-			<%= yield %>
-
                         <h3>In diesem Kapitel</h3>
 
+                        <p><%= @item[:intro] %></p>
+
                         <%= render 'chapter_contents' %>
+
+
+			<%= yield %>
 
                         <%= render 'article_footer' %>
 

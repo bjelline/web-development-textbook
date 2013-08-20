@@ -92,10 +92,10 @@ Kleine Unterschiede im vorhandenen Platz kann man durch Zentrierung des Inhalts 
 §
 
 <css caption="fixen Breite und automatischer Seitenabstand ergeben eine Zentierung des Inhalts">
-  div#wrap {
-    width: 76em;
-    margin: 0 auto;
-  }
+div#wrap {
+  width: 76em;
+  margin: 0 auto;
+}
 </css>
 
 Responsive Design
@@ -116,13 +116,13 @@ Mediaqueries
 Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine "Verzweigung" in CSS.
 
 <css caption="CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel">
-  @media screen and (max-width: 480px) {
-    .column {
-      float: none;
-    }
-    /* weitere Regeln für kleine Screens */
+@media screen and (max-width: 480px) {
+  .column {
+    float: none;
   }
-  /* allgemein gültige Regeln */
+  /* weitere Regeln für kleine Screens */
+}
+/* allgemein gültige Regeln */
 </css>
 
 Bilder
@@ -193,7 +193,7 @@ Skalieren
 Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei
 verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und
 verkleinert (heute default), oder nur der Text wird verändern, die Bilder aber bleiben gleich. 
-Hier das entsprechnde Menü in Firefox. 
+Hier das entsprechende Menü in Firefox. 
 
 ![Abbildung 32: Zoom Menü in Firefox](/images/zoom.png)
 

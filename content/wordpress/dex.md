@@ -1,5 +1,6 @@
 ---
 title: Wordpress
+intro: Sie lernen Wordpress als einfaches CMS oder Blogging-System kennen.
 ---
 
 Der Fokus dieses Buches liegt darauf der Software-Entwicklung für das World Wide Web.  Das ist die Kernkompetenz die Sie erwerben sollen.

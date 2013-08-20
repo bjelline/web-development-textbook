@@ -1,6 +1,7 @@
 --- 
 title: XML
 index: true
+intro: Sie lernen wohlgefomtes und valides XML kennen.
 ---
 
 ### Was Sie wissen sollten

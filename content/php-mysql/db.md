@@ -152,7 +152,7 @@ hier zum Beispiel ein `create table` Statement:
 
 ### SELECT in phpMyAdmin
 
-Bei Manchen Operationen zeigt phpMyAdmin das verwendete SQL-Statement an — das kann ganz lehrreich sein.
+Bei manchen Operationen zeigt phpMyAdmin das verwendete SQL-Statement an — das kann sehr lehrreich sein.
 
 ![Abbildung 143: Suchen mit  phpMyAdmin - Eingabemaske](/images/phpmyadmin-search.png)
 ![Abbildung 143: Suchen mit  phpMyAdmin - SQL](/images/phpmyadmin-search-sql.png)

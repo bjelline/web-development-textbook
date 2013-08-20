@@ -1,10 +1,9 @@
 --- 
 title: Javascript im Browser
 index: true
+intro: In diesem Kapitel werden wir die Verwendung von Javascript im Browser näher betrachten. 
 ---
 
-In diesem Kapitel werden wir die Verwendung von Javascript
-im Browser näher betrachten. 
 
 ### Was Sie wissen sollten
 * Was die Unterschiede von jQuery und plain Javascript sind

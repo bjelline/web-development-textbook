@@ -55,7 +55,7 @@ Eingabefeldern - normalerweise unverschlüsselt.
 |mit Default-Wert|`<input type="text" name="vorname" value="Lara">`|<input type="text" name="vorname" value="Lara">|
 |muss eingegeben werden|`<input type="email" name="nachname" required>`|<input type="email" name="nachname" required>
 |mit Placeholder|`<input placeholder="ich@some.net">`|<input type="email" name="mail" placeholder="ich@some.net">
-|mit Eingabeprüfung|`<input pattern=".*@fh-salzburg\.ac\.at">`|<input pattern=".*@fh-salzburg\.ac\.at">
+|mit Eingabeprüfung (siehe [html5pattern](http://html5pattern.com/)) |`<input pattern=".*@fh-salzburg\.ac\.at">`|<input pattern=".*@fh-salzburg\.ac\.at">
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 
@@ -220,4 +220,7 @@ speziellem enctype an den Webserver geschickt werden.
 
 ![screenshot](/images/fieldset.png)
 
+## Links
 
+
+* [html5pattern](http://html5pattern.com/) - bewährte Pattern für die Eingabeprüfung

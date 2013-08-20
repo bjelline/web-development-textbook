@@ -1,5 +1,6 @@
 ---
 title: GIT
+intro: Sie lernen mit dem Versionskontrollsystem git Ihre Dateien zu verwalten.
 ---
 
 ### Was Sie alle wissen sollten

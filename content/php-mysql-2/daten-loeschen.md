@@ -41,8 +41,20 @@ das SQL etwas "injiziert" wird.
 ### SQL Injection verhindern
 Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei `id` um eine ganze Zahl handelt, darf sie
-verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht
-verstehen müssen) überprüft:
+verwendet werde. Das kann man auf verschiedene Arten prüfen, 
+z.B. mit der Funktion `filter_var`: 
+
+<php caption="Eingabeprüfung mit filter_var">
+if( ! $id = filter_var( $_GET['id'], FILTER_VALIDATE_INT ) ) {
+  echo("Hack detected: Police will arrive shortly.");
+  echo("variable id is false!");
+  exit;
+}
+</php>
+
+§
+
+Oft sieht man auch Eingabeprüfungen mit Regular Expressions - die müssen Sie noch nicht verstehen:
 
 <php caption="Eingabeprüfung mit Regular Expression">
 if( ! preg_match( '/^\d+$/', $id ) ) {

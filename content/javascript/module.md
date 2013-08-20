@@ -8,8 +8,8 @@ organisieren?  Wo doch die Sprache keine Unterstütztung
 für Namespaces oder Kapselung bietet?
 
 Eine Lösung für diese Fragestellung ist der Modul-Pattern,
-hier beschrieben nach 
-[Stefanov(2010): Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do), Kapitel 5.
+hier beschrieben nach [Stefanov(2010): Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do), Kapitel 5.
+Siehe auch [Osmani(2012): Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
 
 ## Viele Skripte, ein Namensraum
 

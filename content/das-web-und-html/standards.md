@@ -45,10 +45,11 @@ Webbrowser
 Ein Webbrowser, oder kurz Browser  <!-- XE "Browser" -->  , ist ein Programm, das bei Eingabe 
 einer URL über HTTP eine HTML-Webseite laden und anzeigen kann, es ist also der Client 
 zum World Wide Web. 
-Es gibt sehr viele verschiedene Webbrowser. Abbildung 4 zeigt drei davon: den Browser 
+Es gibt sehr viele verschiedene Webbrowser. Die folgende Abbildung zeigt vier davon: den Browser 
 „Mosaic“ <!-- XE "Mosaic" -->    <!-- XE "Browser:Mosaic" -->  , der im Jahre 1993 als zweiter Webbrowser 
 mit grafischer Oberflächen stark zur Verbreitung des World Wide Web beigetragen hat,  und 
-die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->   und Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" -->  in den Versionen, die im Jahre 2004 verwendet wurden. 
+die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->,   Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" -->  
+und Chrome (in Versionen aus verschiedenen Jahren).
  
 ![Abbildung 4: Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)](/images/browsers.png)
 
@@ -68,7 +69,7 @@ im Web surfen.
 §
 
 In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutzung 
-zugenommen: Smartphones und Tablets. Abbildung 6 zeigt Browser auf verschiedenen 
+zugenommen: Smartphones und Tablets. Die nächste Abbildung zeigt Browser auf verschiedenen 
 mobilen Geräten:
  
 ![Abbildung 6: Browser auf mobilen Geräten: Handys und iPad, 2010](/images/image031.png)
@@ -79,7 +80,7 @@ Webseite
 Die Dokumente, die im Webbrowser dargestellt werden nennt man Webseiten. Eine Webseite  <!-- XE "Webseite" -->    <!-- XE "Seite" -->   ist – technisch gesehen – ein Dokument im HTML-Format. 
 
 Eine Webseite kann – im Gegensatz zu einer Seite in einem Buch – beliebig lang sein. Ist 
-die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scrollbalken  <!-- XE "Scrollen" -->  mit dem man den Rest der Seite erreichen kann, wie in Abbildung 7 gezeigt.
+die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scrollbalken  <!-- XE "Scrollen" -->  mit dem man den Rest der Seite erreichen kann, wie in der nächsten Abbildung gezeigt.
 
 Website
 -------
@@ -118,7 +119,13 @@ Parameter enthalten:
 
     http://www.google.com/search?q=schokolade&ie=utf-8&oe=utf-8
 
-Mit den Frage-Zeichen, dem kaufmännischen Und und dem Ist-Gleich-Zeichen werden hier Parameter  <!-- XE "Parameter" -->   an die URL angefügt.  
+Mit den Fragezeichen, dem kaufmännischen Und und dem Ist-Gleich-Zeichen werden hier Parameter  <!-- XE "Parameter" -->   an die URL angefügt.  
+
+| Parameter | Wert |
+|:----------|:-----|
+| q         | schokolade |
+| ie         | utf-8 |
+| oe         | utf-8 |
 
 §
 
@@ -133,14 +140,15 @@ Die Backus-Naur-Form sollten Sie auf jeden Fall lesen können. Ein kurzes
 Beispiel:
 
 <plain caption="Beispiel für BNF mit vier Ableitungsregeln">
+studiengang = "MMA" | "MMT"
 jahrgang  = studiengang "-" boderm jahr
 boderm    = "B" |  "M"
 jahr      = ziffer ziffer ziffer ziffer
 ziffer    = "0" |  "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 </plain>
 
-Eine letzte Ableitungsregel liest man so: eine ziffer ist entweder eine 0 oder
-eine 1 oder ... oder eine 9.  Ein jahr ist vier ziffern hintereinander.
+Eine letzte Ableitungsregel liest man so: eine `ziffer` ist entweder eine `0` oder
+eine `1` oder ... oder eine `9`.  Ein `jahr` ist vier ziffern hintereinander.
 
 §
 
@@ -452,7 +460,7 @@ HTTP so aus (hier 9 Schritte am Beispiel der URL `http://multimediatechnology.at
 5.	Der Webserver nimmt die Anfrage entgegen und analysiert sie. Meistens interpretiert er sie als Aufforderung, eine bestimmte Datei von der Platte zu lesen. In diesem Fall aber wird ein PHP Programm gestartet, dass Daten aus einer MySQL Datenbank abfragt und als HTML aufbereitet.
 6.	Der Webserver schickt einen HTTP-Response an den Browser, diese enthält einen Statuscode, z. B. `200 OK`, einige Zusatzinformationen und dann die eigentlichen Daten des Dokuments (den erzeugten HTML-Code)
 7.	Der Browser nimmt das Dokument in Empfang und stellt es dar
-8.	Der Browser scrollt das Dokument bis zur Textmarke "master"
+8.	Der Browser scrollt das Dokument bis zur Textmarke `master`
 9.	Der Browser beendet die TCP-Verbindung
 
 §

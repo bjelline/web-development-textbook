@@ -1,5 +1,6 @@
 ---
 title: Login, Sessions und Datenbank verändern
+intro: Sie lernen wie Sie ein Login für eine Web-Applikation programmieren können.
 ---
 
 Mit Cookies wird HTTP stateful, damit werden

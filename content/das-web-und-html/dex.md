@@ -2,10 +2,9 @@
 title: Das Web - eine Einführung
 index: true
 order: 0
+intro: Das erste Kapitel bietet einen theoretischen und praktischen Einstieg in das World Wide Web.  
 ---
 
-Das erste Kapitel bietet einen theoretischen und praktischen Einstieg
-in das World Wide Web.  
 
 ### Was Sie wissen sollten
 

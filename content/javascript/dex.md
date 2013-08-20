@@ -1,11 +1,9 @@
 --- 
 title: Javascript die Sprache
 index: true
+intro: Im ersten Teil des Buches, in den Kapiteln [Formular und Javascript](/formulare/javascript/), [Javascript DOM](/javascript-dom/) und [jQuery](/jQuery/) wurde Javascript bereits vorgestellt.  Nun wollen wir uns genauer mit Javascript als Programmiersprache beschäftigen.
 ---
 
-Im ersten Teil des Buches, in den Kapiteln [Formular und Javascript](/formulare/javascript/),
-[Javascript DOM](/javascript-dom/) und [jQuery](/jQuery/) wurde Javascript bereits vorgestellt.
-Nun wollen wir uns genauer mit Javascript als Programmiersprache beschäftigen.
 
 ### Was Sie wissen sollten
 * Was eine Closure ist

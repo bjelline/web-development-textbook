@@ -10,8 +10,7 @@ Dieses Beispiel zeigt weitere wichtige Beispiele für Properties:
 
 <css>
 h1,h2 { 
-  font-family: "Trebuchet MS",
-        Verdana, Arial, sans-serif;
+  font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
   font-size: 18px;
   letter-spacing: 0.4em
   font-style: italic;
@@ -70,7 +69,7 @@ Die Ausdehnung von margin, padding und border kann man besonders gut mit der Fir
 
 Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt. 
 
-Achtung: Im traditionelle Box model bezieht sich die Breite (width) bezieht auf
+Achtung: Im traditionelle Box model bezieht sich die Breite (width) auf
 den Inhalt, padding, border und margin muss man erst dazu zählen, um den
 Gesamt-Platzbedarf zu errechnen. Mit der Deklaration `box-sizing: border-box` 
 kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.  

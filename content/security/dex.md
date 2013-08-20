@@ -1,5 +1,6 @@
 ---
 title: Web Security
+intro: Sie erhalten einen Einblick in die Sicherheits-Probleme von Web-Applikationen.
 ---
 Die Sicherheit von Web Applikationen ist ein komplexes Thema.
 Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die [OWASP Top 10 von 2010](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)

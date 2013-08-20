@@ -1,6 +1,7 @@
 --- 
 title: Javascript und das Document Object Model (DOM)
 index: true
+intro: Mit Javascript lernen Sie die wichtigste Programmiersprache des Web kennen.
 ---
 
 

@@ -1,9 +1,9 @@
 --- 
 title: jQuery - Einführung
 index: true
+intro: Mit der einfachen Schreibweise von jQuery lernen Sie schneller und einfacher Javascript-Programm zu erstellen.
 ---
 
-Am Ende dieses Kapitels können Sie sagen:
 
 # Was Sie wissen sollten
 * Ich kann die Fachbegriffe „unobstrusive Javascript“ / „graceful degradation“ / „progressive enhancement“ erklären

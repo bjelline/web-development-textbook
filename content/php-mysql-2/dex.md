@@ -1,5 +1,6 @@
 ---
 title: Schreiben in die Datenbank
+intro: Als zweiten Schritt in der Arbeit mit der Datenbank lernen Sie nun Datein zu schreiben, zu ändern und zu löschen.
 ---
 Was Sie wissen sollten
 

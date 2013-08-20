@@ -26,8 +26,8 @@ Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:
 1. Code im Editor eintippen
 2. Abspeichern
 3. Zum Browser wechseln
-4. Neu Laden
-5. zurück zu 1.
+4. Neu Laden, das Ergebnis betrachten
+5. meistens: nicht zufrieden mit dem Ergebnis sein, zurück zu 1.
 
 Es gibt verschiedene Online-Tools um HTMl auszuprobieren:
 
@@ -41,12 +41,12 @@ ISO 8859-1 (Latin-1)  oder im Format utf-8. Mit Latin-1 ist man auf das
 lateineische Alphabet mit westeuropäischen Sonderzeichen beschränkt - man kann
 im selben Dokument nicht auch grieschische, hebräische, arabische, japanische
 Zeichen darstellen.  Mit utf-8 hat man den gesamten Zeichensatz der Menschheit
-zur Verfügung. Mein Empfehlung lautet: immer utf-8 Verwenden.
+zur Verfügung. Mein Empfehlung lautet: immer utf-8 verwenden.
 
  
 ![Abbildung 8: Auswahl des Charactersets „Unicode“  ](/images/image037.jpg)
 
-Abbildung 8 zeigt wie diese Charactersets in Windows- und Mac-Programmen
+Diese Abbildung zeigt wie die Charactersets in Windows- und Mac-Programmen
 dargestellt werden. Links im Bild, in Notepad, wird ISO 8859-1 als ANIS
 bezeichnet. Rechts im Bild, im Mac-Programm Textwrangler, ist die Bezeichnung
 klarer. 
@@ -82,9 +82,9 @@ verwenden:
 HTML-Tags
 ---------
 
-Die gewünschte Formatierung des Textes wird mit HTML-Tag  <!-- XE "Tag" -->  s angegeben
+Die gewünschte Formatierung des Textes wird mit HTML-Tags  <!-- XE "Tag" -->  angegeben
 
-1.  Tags sind zwischen spitzen Klammern eingeschlossen. 
+1.  Tags sind zwischen spitzen Klammern eingeschlossen (kleiner-gleich und größer-gleich Zeichen).
 2.  Zu (fast) jedem "Anfangs-Tag" gibt es einen "End-Tag", der sich nur durch
 den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. `<p>`hier der Absatz`</p>`. 
 3.  Nur in XHTML müssen "alleinstehende" Tags mit einem Schrägstrich am Ende
@@ -117,7 +117,7 @@ Zeilenumbruch
 ------------
 
 Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag 
- `<br>` verwenden um einen Zeilenumbruch  auf der Webseite zu erzeugen 
+ `<br>` verwenden um einen Zeilenumbruch  auf der Webseite zu erzwingen
 – dies ist aber nur selten sinnvoll, da der Browser einen automatischen Zeilenumbruch 
 durchführt, um den Text im vorhandenen Platz optimal darzustellen.
 
@@ -137,6 +137,7 @@ Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben:
 
 <htmlcode>
 <img alt="Das ist neu!" src="neu.gif">
+
 
 
 __|__
@@ -171,8 +172,7 @@ Kompatibilität
 --------------
 
 Jeder Browser (egal ob Chrome, Firefox, Safari, Microsoft Internet Explorer, Opera,...) kann 
-jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Dreamweaver, Frontpage, 
-GoLive,... ) kann jedes HTML-Dokument bearbeitet werden. 
+jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Notepade, vim, Dreamweaver, WebStrom, Eclipse,... ) kann jedes HTML-Dokument bearbeitet werden. 
 
 So soll das Web funktionieren.   (Die schweren Fälle, wo es manchmal doch nicht
 funktioniert, verschieben wir auf etwas später.)
@@ -183,19 +183,19 @@ Neue Tags, die z. B. ein
 Browser nicht erkennt, sind zu ignorieren – es gibt 
 **keine Fehlermeldungen**!
 
-Wenn das W3C in HTML Version 21 beispielsweise den neuen Tag &lt;jump&gt; (hüpfenden Text) 
+Wenn das W3C in HTML Version 21 beispielsweise den neuen Tag `<jump>` (hüpfenden Text) 
 einführen würde, können Sie diesen Tag auf Ihrer Webseite verwenden. Der Text würde 
 jedoch nur in den neuesten Versionen der Browser (die schon die Version 21 kennen) 
 hüpfend dargestellt. In älteren Browsern wird der Tag &lt;jump&gt; ignoriert:
 
 <htmlcode caption="Neuer Tag in neuem Browser, Interpretation in altem Browser">
-    <p>Dies ist meine erste 
-    <jump>supercoole</jump> 
-    Webseite!!!! </p>
+<p>Dies ist meine erste 
+<jump>supercoole</jump> 
+Webseite!!!! </p>
 __|__
-    <p>Dies ist meine erste 
-    supercoole 
-    Webseite!!!!</p>
+<p>Dies ist meine erste 
+supercoole 
+Webseite!!!!</p>
 </htmlcode>
 
 §
@@ -207,23 +207,23 @@ auch mit älteren Browsern der gesamte Inhalt lesbar ist.
 
 
 <htmlcode caption="In älteren Browser geht die Information verloren">
-    <p>Zu den hüpfenden Terminen 
-    sind noch Plätze im Kurs frei: 
-    </p> 
-    <ul> 
-    <li><jump>Montag</jump></li> 
-    <li>Dienstag</li> 
-    <ul>
+<p>Zu den hüpfenden Terminen 
+sind noch Plätze im Kurs frei: 
+</p> 
+<ul> 
+<li><jump>Montag</jump></li> 
+<li>Dienstag</li> 
+<ul>
 </htmlcode>
 
 
 <htmlcode caption="In allen Browser wird die Information dargestellt">
-    <p>Zu den markierten Terminen sind 
-    noch Plätze im Kurs frei</p> 
-    <ul> 
-    <li><jump>Montag *</jump></li> 
-    <li>Dienstag</li> 
-    </ul>
+<p>Zu den markierten Terminen sind 
+noch Plätze im Kurs frei</p> 
+<ul> 
+<li><jump>Montag *</jump></li> 
+<li>Dienstag</li> 
+</ul>
 </htmlcode>
 
 Diese Herangehensweise an Neuerungen nennt man „graceful degradation“ 
@@ -246,10 +246,10 @@ Der em-Tag ist nicht-blockbildend und wird im zweiten Absatz auf zwei Zeilen umg
 ### Blockbildende Tags für Text
 
 <htmlcode caption="Normaler Fließ-Text">
-    <p>Text text text, text text. Text 
-    text text, text text. Text text 
-    text, text text. Text und text text, 
-    text text. </p>
+<p>Text text text, text text. Text 
+text text, text text. Text text 
+text, text text. Text und text text, 
+text text. </p>
 </htmlcode>
 
 In folgendem Beispiel wird schon ein bisschen CSS verwendet, hier
@@ -257,20 +257,20 @@ mit Hilfe des Attributes `style`. CSS ist für die Darstellung von
 HTML zuständig, hier verwenden wir es um den Text im Absatz zu zentrieren.
 
 <htmlcode caption="Zentrierter Text">
-    <p style="text-align:center;">Text 
-    text text, text text. Text text 
-    text, text text. Text text text, 
-    text text. Text und text text, text 
-    text. </p>
+<p style="text-align:center;">Text 
+text text, text text. Text text 
+text, text text. Text text text, 
+text text. Text und text text, text 
+text. </p>
 </htmlcode>
 
 Überschriften werden für die Strukturierung des Textes verwendet,
 mehr als 3 Ebenen braucht man selten:
 
 <htmlcode caption="Überschriften">
-    <h1>Überschriftstext</h1>
-    <h2>Überschriftstext</h2>
-    <h3>Überschriftstext</h3>
+<h1>Überschriftstext</h1>
+<h2>Überschriftstext</h2>
+<h3>Überschriftstext</h3>
 </htmlcode>
 
 Neu in HTML5 ist der `nav` Tag zur Auszeichnung von
@@ -278,26 +278,26 @@ Navigations-Menüs. Achtung: dieser Tag hat erst mal
 keine sichtbare Wirkung. 
 
 <htmlcode caption="Bereich mit Navigations-Menü, Links">
-    <nav>  
-       <a href="index.html">Home</a> 
-       .... 
-    </nav>
+<nav>  
+   <a href="index.html">Home</a> 
+   .... 
+</nav>
 </htmlcode>
 
 Auch die folgenden drei Tags haben keine sichtbare Wirkung,
 sondern dienen erst mal nur zu Strukturierung des Dokuments.
 
 <htmlcode caption="Weitere Tags zur Strukturierung der Seite">
-    <header> .... </header>
-    <footer> .... </footer>
-    <aside> .... </aside>
+<header> .... </header>
+<footer> .... </footer>
+<aside> .... </aside>
 </htmlcode>
 
 Für umfangreiche Zitate gibt es einen blockbildenden Tag:
 
 <htmlcode caption="Block-Zitat (eingerückt)">
-    <blockquote>Alle meine Entchen<br> 
-    schwimmen auf dem See</blockquote>
+<blockquote>Alle meine Entchen<br> 
+schwimmen auf dem See</blockquote>
 </htmlcode>
 
 ### Nicht-Blockbildende Tags für Text 
@@ -336,7 +336,7 @@ Bilder
 ------
 
 Bilder werden in separaten Dateien gespeichert, in der HTML-Datei erfolgt nur ein Verweis 
-auf die Bild  <!-- XE "Bild" -->  datei. Als Attribut src  <!-- XE "src" -->   im img-Tag können Sie eine 
+auf die Datei des Bildes.  <!-- XE "Bild" --> Als Attribut src  <!-- XE "src" -->   im img-Tag können Sie eine 
 absolute oder relative URL angeben:
 
 <htmlcode caption="Bilder">
@@ -351,7 +351,7 @@ absolute oder relative URL angeben:
 </htmlcode>
 
 Für Blinde, Suchmaschinen, Browser die keine Bilder darstellen können, u.s.w. gibt man für 
-jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem AddOn 
+jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem Firefox AddOn 
 „Web Developer“ kann man testen wie die Seite mit ALT statt Bildern aussieht. 
 Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberichts.
  
@@ -372,7 +372,7 @@ jpg
 Besonders geeignet für Bilder mit Farbverläufen, z. B. Photos.   <!-- XE "jpg" -->  
 
 png
-: Nachfolge-Format für gif, mit Alpha-Transparenz.  <!-- XE "png" -->  
+: Palette von 255 oder von x Farben, mit Alpha-Transparenz.  <!-- XE "png" -->  
 
 svg
 : Vektor-Format, das Bild kann beliebig groß oder klein dargestellt werden.  

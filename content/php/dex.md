@@ -1,5 +1,6 @@
 ---
 title: PHP Basics
+intro: Sie lernen die Syntax und Datenstrukturen von PHP kennen.
 ---
 Was Sie wissen sollten
 

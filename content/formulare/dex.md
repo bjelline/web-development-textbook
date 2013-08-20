@@ -1,6 +1,7 @@
 --- 
 title: Formulare
 index: true
+intro: Mit Formularen gestalten Sie ihre Webseite interaktiver.
 ---
 
 ### Was Sie wissen sollten

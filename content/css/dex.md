@@ -1,6 +1,7 @@
 --- 
 title: CSS - Einstieg
 index: true
+intro: Sie lernen mit Cascading Stylesheets (CSS) einfache Formatierungen in der Webseite vorzunehmen.
 ---
 
 ### Was Sie wissen sollten

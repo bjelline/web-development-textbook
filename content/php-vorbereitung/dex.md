@@ -1,5 +1,6 @@
 ---
 title: Vorbereitungen für PHP
+intro: Sie machen erste, vorsichtige Schritte in PHP.
 ---
 ### Was Sie wissen sollten
 * Dass PHP eine Skriptsprache ist, die am Webserver interpretiert wird. 

@@ -1,6 +1,7 @@
 ﻿--- 
 title: Apache Konfiguration
 index: true
+intro: In diesem Kapitel lernen Sie den Webserver Apache näher kennen.
 ---
 
 ### Was Sie alle wissen sollten

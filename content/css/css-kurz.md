@@ -7,20 +7,20 @@ order: 10
 Von Anfang an sollte eine HTML-Datei keine Information darüber enthalten, wie der Text dargestellt werden soll - keine Schriftart oder Schriftgröße. HTML sollte nur strukturelle Information enthalten („das ist eine Überschrift“ aber nicht „Helvetica 24pt“). Die Formatierungs-Information sollte in sogenannten „Stylesheets“ gespeichert werden, das Format für die Stylesheets war aber noch nicht definiert. Im Jahre 1993 sah eine typische Webseite so aus
 
 <htmlcode caption="typische Webseite von 1993 - HTML-Code stellt nur die Struktur dar">
-  <html><body>
-  <h1>Das Studium</h1>
-  <p>Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
-  </body></html>
+<html><body>
+<h1>Das Studium</h1>
+<p>Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
+</body></html>
 </htmlcode>
 
 Da es keine Stylesheets gab „erfand“ Netscape ab 1994 zusätzliche HTML-Tags, die die Darstellung der Webseite festlegen. Andere Browser übernahmen diese Tags von Netscape. 
 
 <htmlcode caption="typische Webseite von 1995 - Neue HTML-Tags für visuelle Darstellung">
-  <html><body>
-  <h1><font face="Arial" color="blue">Das Studium</font></h1>
-  <p><font size="+1">S</font>tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...</p>
-  <p><font size="+1">P</font>rojekte und Praxissemster stellen schon während des Studiums die Verbindung...</p>
-  </body></html>
+<html><body>
+<h1><font face="Arial" color="blue">Das Studium</font></h1>
+<p><font size="+1">S</font>tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...</p>
+<p><font size="+1">P</font>rojekte und Praxissemster stellen schon während des Studiums die Verbindung...</p>
+</body></html>
 </htmlcode>
 
 Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code komplizierter und unübersichtlicher. Erst ab ab 1995 wurde endlich an den Standards für Stylesheets gearbeitet, seit den frühen 2000ern ist die Unterstützung in den gängigen Browsern vorhanden. So sieht nun eine HTML-Seite mit separatem Stylesheet aus:
@@ -28,23 +28,20 @@ Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code kompliziert
 Die html-Datei
 
 <htmlcode caption="typische Webseite von 2001 - HTML-Tags für Struktur, Verweis auf CSS">
-  <link rel="stylesheet"
-        type="text/css"
-        href="fh.css">
-  </head><body>
+  <link rel="stylesheet" type="text/css" href="fh.css">
+</head><body>
   <h1>Das Studium</h1>
   <p>Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
-  </body></html>
+</body></html>
 </htmlcode>
 
 <css caption="Die Datei fh.css">
 h1 { 
-    font-family: Arial;
-    color: blue; 
+  font-family: Arial;
+  color: blue; 
 }
 p:first-letter {
-
-    font-size: large;
+  font-size: large;
 }
 </css>
 
@@ -65,23 +62,24 @@ Aber Achtung: CSS ist nicht die Lösung jedes Problems:
 Beispiel
 --------
 
-Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:
+Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In folgendem Code werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:
 
-    <style type="text/css">
-    p {
-        font-family: Calibri, Helvetica, Arial, sans-serif; 
-        font-size: 13px;
-    }
-    h1,h2 {
-        font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
-    }
-    h1 { font-size: 24px; }
-    h2 { font-size: 20px; }
-    body { background-color: green; }
-    </style>
-Listing 1:  Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen
+<htmlcode caption="Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen">
+<style type="text/css">
+  p {
+    font-family: Calibri, Helvetica, Arial, sans-serif; 
+    font-size: 13px;
+  }
+  h1,h2 {
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+  }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  body { background-color: green; }
+</style>
+</htmlcode>
 
-An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völig anders als die von HTML. 
+An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völlig anders als die von HTML. 
 
 Interpretation
 -----------

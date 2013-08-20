@@ -1,6 +1,7 @@
 --- 
 title: JSON
 index: true
+intro: Mit der JavaScript Object Notation (JSON) lernen Sie ein wichtiges Austauschformat kennen.
 ---
 
 ### Was Sie wissen sollten

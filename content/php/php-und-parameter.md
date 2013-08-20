@@ -39,31 +39,33 @@ Dabei wird aber die Eingabe nicht geprüft. Eine bessere Version des Programmes 
 
 <php>
 <?php
-  $anzahl  = $_GET['anzahl'];
-  $adresse = $_GET['adresse'];
-  $ok = true;        // zeigt ob alle Eingaben ok sind
-  $fehler = array(); // sammelt alle Fehlermeldungen
-  if( (int) $anzahl != $anzahl or $anzahl < 1) {
-      $ok = false;
-      $fehler[] = "Bitte geben Sie die Anzahl der Flugzeuge ein!";
+$fehler = array(); // sammelt alle Fehlermeldungen
+
+if ( ! isset($_GET['anzahl'])  or 
+     ! $anzahl = filter_var( $_GET['anzahl'], FILTER_VALIDATE_INT )  ) {
+  $fehler[] = "Bitte geben Sie die Anzahl der Flugzeuge ein - als Zahl!";
+}
+
+if ( ! isset($_GET['adresse']) or 
+     ! $adresse = filter_var( $_GET['adresse'], FILTER_SANITIZE_STRING ) ) {
+  $fehler[] = "Bitte geben Sie die Lieferadresse an!";
+} elseif ( strlen( $adresse ) < 5 ) {
+  $fehler[] = "Die Lieferadresse ist zu kurz - mindestens 5 Buchstaben!";
+}
+
+if ( $fehler ) {
+  echo("<p>Ihre Bestellung kann derzeit nicht bearbeitet werden:</p>");
+  echo("<ol>");
+  foreach( $fehler as $fehler_text ) {
+    echo("<li>$fehler_text</li>");
   }
-  if( strlen( $adresse ) < 5 ) {
-      $ok = false;
-      $fehler[] = "Bitte geben Sie die vollständige Lieferadresse an!";
-  }
-  if ( ! $ok ) {
-      echo("<p>Ihre Bestellung kann derzeit nicht bearbeitet werden:</p>");
-      echo("<ol>");
-      foreach( $fehler as $fehler_text ) {
-          echo("<li>$fehler_text</li>");
-      }
-      echo("</ol>");
-      echo("<p>Bitte gehen Sie zurück und bessern Sie die Bestellung aus.");
-  }
-  else {
-      echo("<p>Ihre Bestellung über $anzahl Flugzeuge ist eingelangt</p>");
-      echo("<p>Die Flugzeuge werden binnen 1 Monat an $adresse geliefert</p>");
-  }
+  echo("</ol>");
+  echo("<p>Bitte gehen Sie zurück und bessern Sie die Bestellung aus.");
+} else {
+  echo("<p>Ihre Bestellung über $anzahl Flugzeuge ist eingelangt</p>");
+  echo("<p>Die Flugzeuge werden binnen 1 Monat an $adresse geliefert</p>");
+}
 ?>
 </php>
+
 

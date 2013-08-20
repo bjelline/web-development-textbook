@@ -1,6 +1,7 @@
 --- 
 title: URLs
 index: true
+intro: Sie lernen die Adressen des World Wide Webs kennen.
 ---
 
 ### Was Sie wissen sollten
