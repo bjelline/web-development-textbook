@@ -1,20 +1,21 @@
 # Das Buch 'Web Development'
 
 A german language Textbook on Web Development. Developed on github, published at
-http://web-development.github.com
-
+http://web-development.github.io
 
 
 ## How to Read the book
 
 Point your browser at
-http://web-development.github.com
+http://web-development.github.io
 
 ## How to contribute small changes
 
-fork this repository.
+Look at the source repository at
 
-on the github site, browse to the folder content... you'll find
+https://github.com/web-development/web-development-textbook
+
+You can fork it on github, and browse to the folder **content**... you'll find
 all the texts there.  Use githubs editing capability to fix
 typos, add clarifications.
 
@@ -22,7 +23,8 @@ Send me a pull request when you're done.
 
 ## How to contribute large changes
 
-fork this repository.
+Same as before: fork the repository 
+https://github.com/web-development/web-development-textbook
 
 install nanoc on your computer.
 
