@@ -569,7 +569,13 @@ pre {
 }
 pre.prettyprint {
   margin-bottom: 18px;
+  font-size: 14px;
 }
+
+pre.prettyprint li {
+  font-size: 14px;
+}
+
 pre code {
   padding: 0;
   color: inherit;

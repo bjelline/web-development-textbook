@@ -499,3 +499,9 @@ finden.  Dazu noch ein Literaturhinweis:
 Moderne Webseiten werden mit CSS-Layouts gestaltet.
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen. 
 
+
+Weitere Quellen
+--------------
+
+* [http://www.youtube.com/watch?v=MijmeoH9LT4](Characters, Symbols and the Unicode Miracle) YouTube Video von Computerphile
+* [https://de.wikipedia.org/wiki/UTF-8](utf-8) in der deutschen Wikipedia

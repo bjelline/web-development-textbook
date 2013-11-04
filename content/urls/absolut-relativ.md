@@ -28,11 +28,15 @@ In der Beispiel-Datei
 Bei den relativen URLs muss man die URL des enthaltenden Dokuments 
 und die relative URLs "zusammen—addieren", um zu einer absoluten URL zu kommen.
 
+Wenn die relative URL mit einem Schrägstrich (Slash) beginnt
+ersetzt sie den gesamten "Pfad" in der UL des enthaltenden Dokuments:
+
     http://web-development.github.com/images/urls.html   
                                +     /images/you_are_here.jpg  = 
     http://web-development.github.com/images/you_are_here.jpg  
 
-und
+Wenn die relative URL nicht mit einem Schrägstrich beginnt
+wird sie zum Pfad des aktuellen Ordners dazugerechnet:
 
     http://web-development.github.com/images/urls.html   
                                        +     you_are_here.jpg  = 
@@ -70,12 +74,17 @@ Zwei Punkte als Ordnernamen bedeuten dabei: „raus aus dem aktuellen Ordner“:
                                                      +     ../ = 
     http://multimediatechnology.at/web-communities/
 
-Dieser Schreibweise erlaubt auch sehr umständliche Formulierungen:
+Dieser Schreibweise erlaubt auch sehr umständliche Formulierungen
+(mit Redundanz):
 
     http://multimediatechnology.at/2011/06/19/ruby
                    +     ../../2008/05/../04/17/rattenscharfes-computergame = 
     http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame
 
 ## Alles nur im Client 
-All diese Berechnungen finden im Webbrowser statt, und sind völlig unabhängig davon, wie der Webserver die URL interpretiert. So könnte z.B die letzten URL „in Wirklichkeit“ gar nicht auf Ordner mit Namen 2008, 04, 17 verweisen, sondern eine Datenbanksuche nach „2008-04-17“ nach sich ziehen – das ist Sache des Servers.
+
+All diese Berechnungen finden im Webbrowser statt, und sind völlig unabhängig davon, 
+wie der Webserver die URL interpretiert. So könnte z.B die letzten URL 
+„in Wirklichkeit“ gar nicht auf Ordner mit Namen 2008, 04, 17 verweisen, 
+sondern eine Datenbanksuche nach „2008-04-17“ nach sich ziehen – das ist Sache des Servers.
 

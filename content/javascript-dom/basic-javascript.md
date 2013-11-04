@@ -7,12 +7,6 @@ Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
 
 <htmlcode caption="Vollständige Webseite mit Javascript">
 <head>
-<script>
-function setcolor( c ) {
-        b = document.getElementById('farbfeld');
-        b.style.backgroundColor = c
-}
-</script>
 <body id="farbfeld">
 <h1>Farbwahl</h1>
 <form>
@@ -20,10 +14,16 @@ function setcolor( c ) {
     <input type="button" value="Grün" onclick="setcolor('#0F0')" />
     <input type="button" value="Blau" onclick="setcolor('blue')" />
 </form>
+<script>
+function setcolor( c ) {
+        b = document.getElementById('farbfeld');
+        b.style.backgroundColor = c
+}
+</script>
 </body>
 </htmlcode>
 
-In dieser Webseite ist an vier Stellen Javascript zu finden. Im `script` Tag im Head, und dreimal in einem Attribut des `input`-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. 
+In dieser Webseite ist an vier Stellen Javascript zu finden. Im `script` Tag am Ende des body, und dreimal in einem Attribut des `input`-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. 
 
 Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen brauchen ein Grundverständnis von Javascript.
 
@@ -39,7 +39,7 @@ Einbindung von Javascript
 
 ### Externe Javascript-Datei
 
-Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem `script`-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: 
+Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem `script`-Tag wird die externe Javascript-Datei eingebunden: 
 
 
 <htmlcode>
@@ -154,7 +154,7 @@ Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde
   <div ontouchstart="..." ontouchend="..." ontouchmove="....">
 </htmlcode>
 
-Nur auf geräten mit Touchscreen.
+Nur auf Geräten mit Touchscreen.
 
 
 §

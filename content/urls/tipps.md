@@ -25,5 +25,5 @@ Tipp: ich **vermeide Umlaute** in Ordner- und Dateinamen meiner Web-Projekte und
 
 Hintergrund: Nicht nur der Code meiner Webseiten ist für das Funktionieren der Seiten wichtig, sondern auch die Dateinamen und Ordnernamen, bzw. die Ordnerstruktur. Liegt eine Datei im falschen Ordner wird sie nicht mehr gefunden.
 
-Tipp: ich überlege mir die **Ordnerstruktur** meines Webspaces sorgfältig. Wenn ich auf mehreren Rechnern entwickle, dann baue ich auf jedem dieser Rechner die Ordnerstruktur wieder auf.  Ich nutze Dreamweaver für den Upload und Download, weil er die Ordnerstruktur „mitdenkt“.
+Tipp: ich überlege mir die **Ordnerstruktur** meines Webspaces sorgfältig. Wenn ich auf mehreren Rechnern entwickle, dann baue ich auf jedem dieser Rechner die Ordnerstruktur wieder auf.  Ich nutze ein Programm für den Upload und Download das die Ordnerstruktur „mitdenkt“.
 
