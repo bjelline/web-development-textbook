@@ -5,41 +5,44 @@ order: 30
 
 Lesen aus dem DOM 
 -------------------
-Die wichstigsten Befehle zur Manipulation des DOM finden Sie in selfhtml unter „document“ und „node“. Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. Die Attribute des HTML-Tags sind über getAttribute / setAttribute / … zugänglich und manipulierbar.
+Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objecten vom Typ „node“. 
+Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. 
+Die Attribute des HTML-Tags sind über `getAttribute` / `setAttribute` zugänglich und manipulierbar.
 
 Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:
 
 <javascript>
-  document.getElementById() 
-  document.getElementsByTagName() 
-  document.createElement()
-  document.querySelectorAll()   (liefert Array)
-  document.querySelector()      (liefert 1 Node)
+document.getElementById() 
+document.getElementsByTagName() 
+document.querySelectorAll()   /* liefert Array   */
+document.querySelector()      /* liefert 1 Node  */
 
-  node.parentNode   (liefert 1 Node)
-  node.childNodes   (liefert Array von Nodes)
-  node.firstChild
-  node.lastChild
-  node.previousSibling
-  node.nextSibling
-  node.data
-  node.attributes
-  node.innerHTML
+document.createElement()
+
+node.parentNode   /* liefert 1 Node          */
+node.childNodes   /* liefert Array von Nodes */
+node.firstChild
+node.lastChild
+node.previousSibling
+node.nextSibling
+node.data
+node.attributes
+node.innerHTML
 
 
-  node.getElementById() 
-  node.getElementsByTagName() 
-  node.getElementsByClassName() 
+node.getElementById()            
+node.getElementsByTagName() 
+node.getElementsByClassName() 
 
-  node.appendChild()
-  node.cloneNode()
-  node.getAttribute()
-  node.setAttribute()
-  node.hasChildNodes()
-  node.insertBefore()
-  node.removeAttribute()
-  node.removeChild()
-  node.replaceChild()
+node.appendChild()
+node.cloneNode()
+node.getAttribute()
+node.setAttribute()
+node.hasChildNodes()
+node.insertBefore()
+node.removeAttribute()
+node.removeChild()
+node.replaceChild()
 </javascript>
 
 ### Simples Beispiel
@@ -47,7 +50,7 @@ Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:
 Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:
 
 <javascript>
-d = document.getElementById("person_25“);
+d = document.getElementById("person_25");
 d.setAttribute("style", "display:none");
 </javascript>
 
@@ -64,12 +67,12 @@ Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieb
 Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode `document.querySelectorAll()`:
 
 <javascript>
-  inputs = document.querySelectorAll("input");
-  i=0;
-  while(i < inputs.length) {
-      console.log("input mit name " + inputs[i].name );
-      i++;
-  }
+inputs = document.querySelectorAll("input");
+i=0;
+while(i < inputs.length) {
+  console.log("input mit name " + inputs[i].name );
+  i++;
+}
 </javascript>
 
 ### Text
@@ -77,40 +80,49 @@ Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Meth
 Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen.
 
 <htmlcode>
-  <span id="v_25" class="vorname">Benjamin</span>
+<span id="v_25" class="vorname">Benjamin</span>
 </htmlcode>
 
 Das erste und einzige Kind des Span ist ein Text-Node:
 
 <javascript>
-  vn = document.getElementById("v_25").firstChild.data;
+vn = document.getElementById("v_25").firstChild.data;
 </javascript>
 
 oder – etwas kürzer – über die Eigenschaft textContent:
 
 <javascript>
-  vn = document.getElementById("v_25").textContent;
+vn = document.getElementById("v_25").textContent;
 </javascript>
 
-`textContent` funktioniert auch bei Nodes die noch weitere verschachtelte Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.
+`textContent` funktioniert auch bei Nodes die noch weitere verschachtelte 
+Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.
 
 Manipulation des DOM 
 ----------------------
 Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:
 
 <javascript>
-  document.createElement()
+node = document.createElement("h1");  
+                // erzeugt eine Node, Tag-Name angeben
+node.innerHTML = "bla <strong>bla</strong bla";                
+                // Zugriff auf den "Inhalt" der node als String, 
+                // ist of schneller als DOM manipulation! 
+node.appendChild(newchild);     
+                // fügt die newchild als Kind an 
+newnode = node.cloneNode()    
+                // gibt eine Kopie der Node zurück, 
+                // die Kopie ist noch nicht im DOM Baum eingefügt! 
+node.insertBefore(newchild, oldchild)    
+                // fügt newchild als Kind von node ein, vor dem oldchild 
+oldchild = node.removeChild(child)    
+                // löscht child als Kind von node, 
+                // gibt es als "frei schwebende" node zurück 
+node.replaceChild(newchild, oldchild)  
+                // ersetzt kind oldchild durch kind newchild 
 
-  node.innerHTML
-
-  node.appendChild()
-  node.cloneNode()
-  node.insertBefore()
-  node.removeChild()
-  node.replaceChild()
-
-  node.setAttribute()
-  node.removeAttribute()
+node.setAttribute('value', 42)  // setzt ein attribut 
+node.removeAttribute('value')   // löscht ein attribute 
 </javascript>
 
 ### Einfügen
@@ -208,3 +220,7 @@ function removeMe(e){
 document.querySelector(".removethis").addEventListener("click", removeMe, false); 
 </javascript>
 
+### Referenz
+
+* [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) im Mozilla Developer Network 
+* [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) im Mozilla Developer Network 
