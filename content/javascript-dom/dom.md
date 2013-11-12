@@ -228,7 +228,9 @@ wie ein Aufruf der Methode, dann würde man schreiben: `setcolor()`.
 
 Hier gibt es keine einfache Möglichkeit ein Argument für die Farbe mit zu geben!
 
-Eine Lösung dafür: was in der Methode `setcolor` zur Verfügung steht
+§
+
+Eine Lösung für dieses Problem: was in der Methode `setcolor` zur Verfügung steht
 ist `this`: die Node die angeklickt wurde, in unserem Fall der jeweilige Button.
 Wir müssen also einen Weg finden die Farbe direkt aus dem Button auzulesen.
 So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:
