@@ -7,7 +7,7 @@ intro: Mit der einfachen Schreibweise von jQuery lernen Sie schneller und einfac
 
 # Was Sie wissen sollten
 * Ich kann die Fachbegriffe „unobstrusive Javascript“ / „graceful degradation“ / „progressive enhancement“ erklären
-* Ich weiss, dass Javascript-Funktionen in Variablen gespeichert werden können, was der Unterschied ist zwischen `f = c();` und `f = c;` ist· 
+* Ich weiss, dass Javascript-Funktionen in Variablen gespeichert werden können, was der Unterschied zwischen `f = c();` und `f = c;` ist· 
 * Ich weiss, dass Javascript-Funktionen ohne Namen definiert werden können, wie man so eine anonyme Funktion definiert und verwendet.
 
 # Was Sie können sollten

@@ -18,7 +18,7 @@ Die Idee ist dabei immer die Gleich: man baut die Webseite zuerst ohne Javascrip
 
 Von dieser Herangehensweise profitieren nicht nur Blinde, Menschen mit veralteten Browsern oder exotischen Ausgabegeräte. Auch für Suchmaschinen wie Google oder andere Programme die die Information aus den Webseiten weiter verarbeiten ist dieses Prinzip hilfreich.
 
-Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie in Abbildung 61 gezeigt kann Javascript mit einem Klick deaktiviert werden.
+Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie hier gezeigt kann Javascript mit einem Klick deaktiviert werden.
 
 
 ![Abbildung 61: Javascript deaktivieren mit QuickJava in Firefox](/images/image269.png)
@@ -39,7 +39,7 @@ Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery
 
 <htmlcode>
   <script type = "text/javscript" 
-            src  = "http://code.jquery.com/jquery-latest.js"></script>
+            src  = "//codeorigin.jquery.com/jquery-latest.min.js"></script>
   <script>
   $(document).ready(function(){ 
         // Javascript code here 
@@ -51,6 +51,8 @@ Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery
   </body>
 </htmlcode>
 
-Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern der das [NetDNA](http://www.netdna.com/) CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.
+## jquery vom CDN
+
+Die URLs https://codeorigin.jquery.com/jquery-latest.min.js und http://codeorigin.jquery.com/jquery-latest.min.js kann man für alle Webseiten die online sind verwenden: hinter codeorigin.jquery.com steht nicht nur ein Server, sondern der das [MaxCDN](http://www.maxcdn.com/) CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.
 
 

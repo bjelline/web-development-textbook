@@ -10,3 +10,4 @@ gem "json"
 # gem "fssm"
 gem "listen"
 gem 'rb-fsevent', '~> 0.9'
+gem 'guard-nanoc'

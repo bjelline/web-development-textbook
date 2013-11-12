@@ -10,14 +10,14 @@ Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
 <body id="farbfeld">
 <h1>Farbwahl</h1>
 <form>
-    <input type="button" value="Rot"  onclick="setcolor('red')" />
-    <input type="button" value="Grün" onclick="setcolor('#0F0')" />
-    <input type="button" value="Blau" onclick="setcolor('blue')" />
+  <input type="button" value="Rot"  onclick="setcolor('red')">
+  <input type="button" value="Grün" onclick="setcolor('#0F0')">
+  <input type="button" value="Blau" onclick="setcolor('blue')">
 </form>
 <script>
 function setcolor( c ) {
-        b = document.getElementById('farbfeld');
-        b.style.backgroundColor = c
+  b = document.getElementById('farbfeld');
+  b.style.backgroundColor = c
 }
 </script>
 </body>

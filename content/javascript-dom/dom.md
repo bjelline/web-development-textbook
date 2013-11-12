@@ -181,13 +181,82 @@ if( document.querySelector('#foo').classList.contains('bar') ) {
 
 Einfügen von Event Handlern
 -----------------------------
-Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:
+Wir haben im Kapitel [Hintergründe](/javascript-dom/hintergrund/ schon gesehen, 
+wie Event-Handler direkt im HTML definiert werden können:
 
 <htmlcode>
-  <input value="0" name="in"  onchange="hier Javascript">
+<form>
+  <input type="button" value="Rot"  onclick="setcolor('red')">
+  <input type="button" value="Grün" onclick="setcolor('#0F0')">
+  <input type="button" value="Blau" onclick="setcolor('blue')">
+</form>
+<script>
+  function setcolor( c ) {
+    b = document.getElementById('farbfeld');
+    b.style.backgroundColor = c
+  }
+</script>
 </htmlcode>
 
-Mit der Methode addEventListener kann das auch von Javascript aus erfolgen. Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.
+Mit der Methode `addEventListener` kann das auch von Javascript aus erfolgen. 
+
+### Farb-Beispiel
+
+Hier ein erster Entwurf: Um die Buttons einzeln anzusprechen,
+müssen wir eine id hinzufügen:
+
+<htmlcode>
+<form>
+  <input type="button" value="Rot"  id="r">
+  <input type="button" value="Grün" id="g">
+  <input type="button" value="Blau" id="b">
+</form>
+<script>
+  function setcolor( ev ) {
+    b = document.getElementById('farbfeld');
+    b.style.backgroundColor = 'red';
+  }
+  document.getElementById('r').addEventListener('click', setcolor);
+  document.getElementById('g').addEventListener('click', setcolor);
+  document.getElementById('b').addEventListener('click', setcolor);
+</script>
+</htmlcode>
+
+Wir haben aber ein Problem: der Methode `addEventListern` wird als
+zweites Argument die Methode `setcolor` übergeben.  Das ist nicht dasselbe
+wie ein Aufruf der Methode, dann würde man schreiben: `setcolor()`.
+
+Hier gibt es keine einfache Möglichkeit ein Argument für die Farbe mit zu geben!
+
+Eine Lösung dafür: was in der Methode `setcolor` zur Verfügung steht
+ist `this`: die Node die angeklickt wurde, in unserem Fall der jeweilige Button.
+Wir müssen also einen Weg finden die Farbe direkt aus dem Button auzulesen.
+So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:
+
+
+<htmlcode>
+<form>
+  <input type="button" value="Rot"  style="background-color:red"  id="r">
+  <input type="button" value="Grün" style="background-color:#0F0" id="g">
+  <input type="button" value="Blau" style="background-color:blue" id="b">
+</form>
+<script>
+  function setcolor( ev ) {
+    b = document.getElementById('farbfeld');
+    b.style.backgroundColor = this.style.backgroundColor;
+  }
+  document.getElementById('r').addEventListener('click', setcolor);
+  document.getElementById('g').addEventListener('click', setcolor);
+  document.getElementById('b').addEventListener('click', setcolor);
+</script>
+</htmlcode>
+
+Programm [live im browser](/images/farbfeld-dom.html)
+
+
+### Pizza-Beispiel
+
+Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.
 
 
 ![Abbildung 59: Pizza löschen mit Klick auf das x in der rechten oberen Ecke](/images/image265.png)

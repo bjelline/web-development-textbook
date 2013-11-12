@@ -90,6 +90,8 @@ Im Request:
 Das ist die Selbstoffenbarung des Clients: welcher Browser, welche Version. Die meisten 
 Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe. 
 
+(Siehe [History of the browser user-agent string](http://webaim.org/blog/user-agent-string-history/).)
+
 ### Referer
 
 Im Request: `Referer: http://my.app.at/form.html` Welche Seite hat der Client
