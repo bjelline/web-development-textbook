@@ -16,6 +16,8 @@ var my_context = my_canvas.getContext("2d");
 
 Wir verwenden erst einmal die 2-dimensionale Zeichenfläche des Canvas. Wenn Sie mehr von Computergrafik verstehen können Sie auch die 3d-Version, genannt „webgl“ verwenden. 
 
+Eine gute Möglichkeit Canvas auszuprobieren ist [dieses jsfiddle](http://jsfiddle.net/bjelline/Gu83s/).
+
 §
 
 Achsenparallelle Rechtecke zeichnet man mit fillRect:
