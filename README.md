@@ -3,6 +3,10 @@
 A german language Textbook on Web Development. Developed on github, published at
 http://web-development.github.io
 
+## Similar Projects
+
+https://github.com/getify/You-Dont-Know-JS - only Javascript, in English
+
 
 ## How to Read the book
 
