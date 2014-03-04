@@ -161,7 +161,7 @@ class Nanoc3::Filter
     identifier :code_blocks
     LANGUAGES = { "ruby" => "ruby", "sql" => "sql", "javascript" => "javascript", "php" => "php",
                   "css" => "css", "plain" => "plain", "erb" => "ruby; html-script: true", "htmlcode" => "html",
-                  "markup" => "xml", "xml" => "xml", "shell" => "plain", "yaml" => "yaml", "dtd"=> "html", "apache" => "ruby" }
+                  "markup" => "xml", "xml" => "xml", "shell" => "shell", "yaml" => "yaml", "dtd"=> "html", "apache" => "ruby" }
 
     def run(content, params={})
       @string = content.dup
@@ -249,8 +249,9 @@ preprocess do
     "formulare", 
     "javascript-dom", 
     "jquery", 
-    "http", 
+    "kommandozeile", 
     "git", 
+    "http", 
     "php-vorbereitung", 
     "wordpress",
     "php",
