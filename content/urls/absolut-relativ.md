@@ -44,7 +44,7 @@ wird sie zum Pfad des aktuellen Ordners dazugerechnet:
 
 ## Relative URLs an anderer Stelle
 
-Wird das Dokument an eine andere Stelle verschoen, und änderst sich
+Wird das Dokument an eine andere Stelle verschoben, und ändert sich
 damit die Ausgangs-URL, dann ist das Ergebnis anders (und würde nicht
 funktionieren):
 

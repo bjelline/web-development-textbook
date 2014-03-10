@@ -4,22 +4,6 @@ order: 30
 ---
 In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.
 
-Zugriffsrechte
----------------
-Achtung: Auf einem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! Dies wird relevant, sobald ein PHP-Programm eine andere Datei  lesen oder (über-)schreiben soll.
-
-Beim Upload der Dateien auf den Webserver mit einem FTP oder SFTP Programm sollten Sie auch die Möglichkeit haben, die Zugriffsrechte anzusehen bzw. zu verändern. Abbildung 133 zeigt links die Darstellung der Zugriffsrechte in der Shell, rechts das Verändern der Zugriffsrechte mit Dreamweaver.
-
-![Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen](/images/zugriffsrechte-dreamweaver.png)
-
-Eine kurze Wiederholung der UNIX-Zugriffsrechte: Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). Im Terminal werden diese Rechte als Buchstaben angezeigt: r steht für Lesen, w für Schreiben, x für Ausführen.
-
-![Abbildung: Darstellung der UNIX Zugriffsrechte in der Kommandozeile](/images/zugriffsrechte-kommandozeile.png)
-
-Das PHP-Programm läuft nicht unter Ihrem Account, sondern unter dem Account des Webservers. D.h. für das PHP-Programm gelten die Zugriffsrechte „für Alle“. 
-
-Mit den PHP-Funktionen is_readable() und is_writable() können Sie testen, ob das Programm Lese- bzw. Schreibrechte auf eine bestimmte Datei hat.
-
 Ordner auflisten
 -----------------
 Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion `glob`. (Achtung: die Funktionen `opendir`, `readdir`, `closedir` gibt es auch, die sind aber komplizierter zu verwenden) 
@@ -93,7 +77,10 @@ fwrite($handle, "$zahl\n");
 fclose($handle);
 </php>
 
-Leider ist das Leben aber nicht so einfach:  sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?  Um diese Fragen zu beantworten gibt es Funktionen `is_readable`,  `is_writable` und die Rückgabewerte der verschiedenen schon gezeigten File-Funktionen. So liefert fwrite entweder die Anzahl der geschriebenen Bytes oder FALSE als Status-Code zurück:
+Leider ist das Leben aber nicht so einfach:  sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?   (Verschärft auf dem Webserver mit [UNIX Zugriffsrechten!](/kommandozeile/zugriffsrechte/). Achtung: Auf einem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! Dies wird relevant, sobald ein PHP-Programm eine andere Datei lesen oder (über-)schreiben soll.
+
+
+Um diese Fragen zu beantworten gibt es Funktionen `is_readable`,  `is_writable` und die Rückgabewerte der verschiedenen schon gezeigten File-Funktionen. So liefert fwrite entweder die Anzahl der geschriebenen Bytes oder FALSE als Status-Code zurück:
 
 <php>
 $status = fwrite($handle, $zahl);

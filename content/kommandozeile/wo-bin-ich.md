@@ -35,6 +35,48 @@ des Betriebssystems.  Um z.B. im Finder auf Mac OS X heraus zu finden
 welcher Ordner aktuell angezeigt wird genügt ein Blick auf die Titelzeile, 
 wo der Pfad angezeigt wird.  In der Abbildung unten ist das **/Users/bjelline**.
 
+### Pfade
+
+Im Kapitel über [Absolute und relative URLs](/urls/absolut-relativ/) haben
+Sie schon gesehen wie absolute und relative URLs interpretiert werden.
+Pfadangaben im Dateisystem sind sogar etwas einfacher.
+
+Unter Mac OS X und UNIX werden die Teile eines Pfades mit einem "Slash" / getrennt.
+Das Dateisystem hat einen "Hauptordner" in dem alle weiteren Ordner
+und Dateien zu finden sind, er wird "root" (also "die Wurzel") genannt.  
+Eine Absolute Pfadangabe beginnt mit einem Slash und bezieht sich auf diesen Hauptordner.
+
+    /Users/bjelline
+
+ist also eine Datei oder ein Ordner namens **bjelline**, der sich in einem Ordner **Users** befindet,
+der ich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  
+
+
+Unter Windows ist das Trennzeichen ein Backslash **\**. 
+Es kann es mehrere Laufwerke geben, die jeweils einen eigenen Root-Ordner
+enthalten.  Ein absoluter Pfad beginnt mit der Laufwerksangabe:
+
+    c:\Users\bjelline
+
+ist eine ist also eine Datei oder ein Ordner namens **bjelline**, der sich in einem Ordner **Users** befindet,
+der ich im Root-Ordner des Laufwerks **C** befindet.  Ein relativer Pfad beginnt 
+nicht mit einem Laufwerk.
+
+
+### Die Oberfläche lügt!
+
+Sowohl der Windows Explorer als auch der Mac OS X Finder stellen das Dateisystem
+nicht wahrheitsgemäß dar.  Sie übersetzen einige Namen:  
+
+    Mac OS X:
+    echter Pfad:            /Users/bjelline/Music/
+    Darstellung im Finder:  /Users/bjelline/Musik/
+    echter Pfad:            /Users/bjelline/Sites/
+    Darstellung im Finder:  /Users/bjelline/Websites/
+
+
+Für die Programmierung ist immer der wirklich Pfad, wie auf der Kommandozeile angzeigt, relevant.
+
 ### Dateien und Ordner auflisten
 
 Der Finder (bzw. Windows Explorer) beantwortet auch die Frage welche Dateien
