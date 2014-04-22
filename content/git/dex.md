@@ -18,3 +18,4 @@ intro: Sie lernen mit dem Versionskontrollsystem git Ihre Dateien zu verwalten.
 * [Deutsche Referenz zu git](http://weinimo.de/Git-Hilfen/)
 * [A Visual Git Reference](http://marklodato.github.com/visual-git-guide/index-en.html)
 * [Linus Torvalds on git](https://www.youtube.com/watch?v=4XpnKHJAok8)
+* [Visualizing Git Concepts with D3](http://onlywei.github.io/explain-git-with-d3/)

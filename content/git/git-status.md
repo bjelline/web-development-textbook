@@ -11,8 +11,11 @@ Clean
 Bevor man mit der Arbeit beginnt ist die working copy clean:
 
       D:\Webprojekte\wp2>git status
-# On branch master
-nothing to commit (working directory clean)
+      On branch master
+      Initial commit
+      nothing to commit (create/copy files and use "git add" to track)
+
+
 
 Changed but not updated
 ------

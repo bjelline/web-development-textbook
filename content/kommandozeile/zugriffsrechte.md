@@ -9,9 +9,10 @@ Punkten von den Filesystemen von Windows (und Mac OS X), die
 sie vielleicht besser kennen.
 
 
-### Dateien und Ordner auflisten
+### Informationen über Zugriffsrechte anzeigen
 
-Die Option **-l** und **-a** zum Befehl **ls** führt dazu, dass mehr Informationen angezeigt werden,
+Wie bereits gezeigt führen die Option **-l** und **-a** beim Befehl **ls** dazu, 
+dass mehr Informationen angezeigt werden,
 insbesondere auch die Zugriffsrechte:
 
 <shell caption="Dateien und Ordner auflisten inklusive geheimer Dateien">
@@ -46,16 +47,20 @@ einer grafischen Oberfläche (hier am Beispiel von Dreamweaver).
 
 ![Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen](/images/zugriffsrechte-dreamweaver.png)
 
-Eine kurze Wiederholung der UNIX-Zugriffsrechte: Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). Im Terminal werden diese Rechte als Buchstaben angezeigt: r steht für Lesen, w für Schreiben, x für Ausführen.
+Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). 
+
+Die drei Rechte werden als 3 Bits gespeichert und mit den Zeichen `r`, `w`, `x` und `-` dargestellt:
+`r` steht immer an erster Stelle, und steht für Lesen, `w` steht immer an zweiter 
+Stelle und steht für Schreiben, `x` an dritter Stelle steht für Ausführen. 
+Ein `-` in der jeweiligen Position zeigt an, dass ein Recht nicht vergeben ist.
 
 ![Abbildung: Darstellung der UNIX Zugriffsrechte in der Kommandozeile](/images/zugriffsrechte-kommandozeile.png)
 
 Für jedes Objekt im Filesystem (egal ob Datei, Ordner, Link, ..) gilt: 
-Das Objekt ist einem Account zugeordnet  ("owner" genannt)  und einer
+Das Objekt ist einem Account zugeordnet  ("Eigentümer" oder "owner" genannt)  und einer
 Gruppe.  In der Abbildung haben die Userin "bjelline" als Besitzerin und
 die Gruppe "apache" besondere Zugriffsrechte.  
 
-Die Zugriffsrechte werden als 3 Bits gespeichert und mit den Zeichen "r", "w", "x" und "-" dargestellt:
 
 * "r" oder "-" steht für das "read"-Recht: darf ich diese Datei lesen?
 * "w" oder "-" steht für das "write"-Recht: darf ich diese Datei ändern? löschen? eine Datei in diesem Ordner anlegen?

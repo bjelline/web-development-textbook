@@ -35,6 +35,8 @@ des Betriebssystems.  Um z.B. im Finder auf Mac OS X heraus zu finden
 welcher Ordner aktuell angezeigt wird genügt ein Blick auf die Titelzeile, 
 wo der Pfad angezeigt wird.  In der Abbildung unten ist das **/Users/bjelline**.
 
+![Abbildung: Finder zeigt Arbeitsverzeichnis](/images/shell-pwd.png)
+
 ### Pfade
 
 Im Kapitel über [Absolute und relative URLs](/urls/absolut-relativ/) haben
@@ -46,20 +48,23 @@ Das Dateisystem hat einen "Hauptordner" in dem alle weiteren Ordner
 und Dateien zu finden sind, er wird "root" (also "die Wurzel") genannt.  
 Eine Absolute Pfadangabe beginnt mit einem Slash und bezieht sich auf diesen Hauptordner.
 
+Der Pfad
+
     /Users/bjelline
 
 ist also eine Datei oder ein Ordner namens **bjelline**, der sich in einem Ordner **Users** befindet,
-der ich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  
+der sich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  
 
 
-Unter Windows ist das Trennzeichen ein Backslash **\**. 
-Es kann es mehrere Laufwerke geben, die jeweils einen eigenen Root-Ordner
+Unter Windows ist das Trennzeichen ein Backslash **\\**. 
+Es kann mehrere **Laufwerke** geben, die mit Buchstaben
+bezeichnet werden (z.B. **c:**) und die jeweils einen eigenen Root-Ordner
 enthalten.  Ein absoluter Pfad beginnt mit der Laufwerksangabe:
 
     c:\Users\bjelline
 
 ist eine ist also eine Datei oder ein Ordner namens **bjelline**, der sich in einem Ordner **Users** befindet,
-der ich im Root-Ordner des Laufwerks **C** befindet.  Ein relativer Pfad beginnt 
+der sich im Root-Ordner des Laufwerks **C** befindet.  Ein relativer Pfad beginnt 
 nicht mit einem Laufwerk.
 
 
@@ -75,12 +80,12 @@ nicht wahrheitsgemäß dar.  Sie übersetzen einige Namen:
     Darstellung im Finder:  /Users/bjelline/Websites/
 
 
-Für die Programmierung ist immer der wirklich Pfad, wie auf der Kommandozeile angzeigt, relevant.
+Für die Programmierung ist immer der wirklich Pfad relevant, der auf der Kommandozeile angezeigt wird.
 
 ### Dateien und Ordner auflisten
 
 Der Finder (bzw. Windows Explorer) beantwortet auch die Frage welche Dateien
-und Ordner sich im akutellen Ordner befinden.  Auf der Kommandozeile fragen
+und Ordner sich im aktuellen Ordner befinden.  Auf der Kommandozeile fragen
 Sie diese Information mit dem Befehl **ls** ab:
 
 <shell caption="Dateien und Ordner auflisten">
@@ -119,6 +124,13 @@ behandelt.
 
 ![Abbildung: Dateien und Ordner auflisten mit ls](/images/shell-ls-l.png)
  
+Mit der Option **-a** zum Befehl **ls** werden auch "versteckte Dateien" angezeigt.
+Das sind unter UNIX Dateien und Ordner deren Namen mit einem Punkt beginnen.
+Zwei gibt es immer: **.** verweist auf den aktuellen Ordner selbst, **..** verweist
+auf den übergeordneten Ordner.  In folgendem Beispiel werden auch noch drei
+weitere Dateien angezeigt:
+
+
 <shell caption="Dateien und Ordner auflisten inklusive geheimer Dateien">
 bash-3.2$ ls -la
 total 12
