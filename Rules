@@ -249,6 +249,7 @@ preprocess do
     "formulare", 
     "javascript-dom", 
     "jquery", 
+    "---",
     "kommandozeile", 
     "git", 
     "http", 
@@ -258,13 +259,14 @@ preprocess do
     "php-mysql",
     "session",
     "php-mysql-2",
-    "xml",
-    "json",
-    "php-mysql-3",
-    "apache", 
+    "---",
     "javascript",
     "applied-javascript",
     "security",
+    "xml",
+    "json",
+    "apache", 
+    "php-mysql-3",
   ]
 
   @chapters = {}
@@ -290,15 +292,24 @@ preprocess do
 
   @orderedItems = []
 
+  last_folder = 0
   @chapterOrder.each do |folder|
-    myitems = @groupedItems[ folder ]
-    @chapters[ folder ] = {}
-    if ! @groupedItems[folder].nil? then
-      @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
-      @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
+    if folder == "---" then 
+      @chapters[ last_folder ][ :separator ] = true
+    else 
+      myitems = @groupedItems[ folder ]
+      @chapters[ folder ] = {}
+      if ! @groupedItems[folder].nil? then
+        @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
+        @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
+      end
+      @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").split(' ').map {|w| w.capitalize }.join(' ')
+      @chapters[ folder ][ :folder ] = folder
+      if last_folder != 0 and @chapters[ last_folder ] then
+        @chapters[ last_folder ][ :separator ] = false
+      end
     end
-    @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").split(' ').map {|w| w.capitalize }.join(' ')
-    @chapters[ folder ][ :folder ] = folder
+    last_folder=folder
   end
   
   @items.each do |item|

@@ -8,7 +8,7 @@
         <ul class="nav nav-list">
         <% if ! @site.config[:chapters].nil? then %>
           <% @site.config[:chapters].each do |folder, chapter| %>
-            <li <% if folder == @item[:chapter] %>class="active"<% end %>><a href="/<%= folder %>/"><%= chapter[:title] %></a>
+          <li class="<% if folder == @item[:chapter] %>active<% end %> <%= if @site.config[:chapters][folder][:separator] then 'separator' end %>"><a href="/<%= folder %>/"><%= chapter[:title] %></a>
               <ul class="sub">
                 <% if @site.config[:chapters][folder] %>
                   <% if @site.config[:chapters][folder][:items] %>

@@ -106,7 +106,7 @@ mmtm.min    // findet min Attribut des Prototypen,
             // gibt Wert 2 
 </javascript>
 
-[Demo in der Console](/images/js-vererbung.html)
+[Demo mit Visualisierung](/images/js-vererbung-vis.html)
 
 Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
 kann direkt am Objekt nicht gefunden werden, dann durchsucht

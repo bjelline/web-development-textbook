@@ -1,3 +1,7 @@
+li.separator{
+  margin-bottom: 24px;
+}
+  
 body { 
   -moz-font-feature-settings:"liga=1, dlig=1"; 
   -moz-font-feature-settings:"liga", "dlig"; /* EDIT: new syntax for FF 15+ */ 
