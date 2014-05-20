@@ -106,7 +106,7 @@ mmtm.min    // findet min Attribut des Prototypen,
             // gibt Wert 2 
 </javascript>
 
-[Demo mit Visualisierung](/images/js-vererbung-vis.html)
+[Demo mit Visualisierung](/images/js-prototype-vis.html)
 
 Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
 kann direkt am Objekt nicht gefunden werden, dann durchsucht
@@ -159,7 +159,7 @@ Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Protot
             // (einem Pet-Objekt)
 </javascript>
 
-[Demo in der Console](/images/js-vererbung.html)
+[Demo mit Visualisierung](/images/js-vererbung-vis.html)
 
 Diese Vererbungs-Kette über die Prototypen nenn man auf english "prototype chain". 
 
