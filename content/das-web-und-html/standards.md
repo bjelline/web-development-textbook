@@ -68,11 +68,15 @@ im Web surfen.
 
 §
 
-In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutzung 
-zugenommen: Smartphones und Tablets. Die nächste Abbildung zeigt Browser auf verschiedenen 
-mobilen Geräten:
+In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutung 
+zugenommen: Smartphones und Tablets. 
+
+![Abbildung 6a: Aufstieg und Fall des PCs, zitiert aus asymco.com/2012](/images/rise-and-fall-pc.png)
+
+Auf diesen neuen Geräten gibt es auch Webbrowser - teilweise spezialisierte Software (Android Browser), teilweise
+adaptionen der klassischen Desktop Browser (Firefox).
  
-![Abbildung 6: Browser auf mobilen Geräten: Handys und iPad, 2010](/images/image031.png)
+![Abbildung 6b: Browser auf mobilen Geräten: Handys und iPad, 2010](/images/image031.png)
 
 Webseite
 --------
@@ -474,3 +478,7 @@ durchführen/beantworten zu können. Ein Protokoll mit dieser Eigenschafft nennt
 
 Das war ein sehr einfachs Beispiel, wie das Protokoll ablaufen kann. Einen tieferne Einblick in HTTP erhalten Sie im Kapitel [http](/http/).
 
+Quellen und weiter Lektüre
+---------
+
+* [Aufstieg und Fall des PCs](http://www.asymco.com/2012/01/17/the-rise-and-fall-of-personal-computing/)  (Abbildung 6a)
