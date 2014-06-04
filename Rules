@@ -265,8 +265,10 @@ preprocess do
     "security",
     "xml",
     "json",
-    "apache", 
     "php-mysql-3",
+    "qualitaet",
+    "---",
+    "apache", 
   ]
 
   @chapters = {}
@@ -277,7 +279,7 @@ preprocess do
 
   @items.each do |item|
     item[:chapter] = item[:filename].split('/')[1] 
-    item[:chapter_title] = item[:chapter].gsub(/-/, " ")   # .upcase
+    item[:chapter_title] = item[:chapter].gsub(/-/, " ").gsub(/Qualitaet/, 'Qualität')   # .upcase
     item[:github] = "bjelline"
   end
 
@@ -303,7 +305,7 @@ preprocess do
         @chapters[ folder ][ :items ] = @groupedItems[folder].sort_by {|i| i.attributes[:order] || 0 }
         @orderedItems = @orderedItems + @chapters[ folder ][ :items ]
       end
-      @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").split(' ').map {|w| w.capitalize }.join(' ')
+      @chapters[ folder ][ :title ] = folder.gsub(/-/, " ").gsub(/Qualitaet/,"Qualität").split(' ').map {|w| w.capitalize }.join(' ')
       @chapters[ folder ][ :folder ] = folder
       if last_folder != 0 and @chapters[ last_folder ] then
         @chapters[ last_folder ][ :separator ] = false
