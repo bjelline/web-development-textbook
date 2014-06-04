@@ -39,7 +39,7 @@ Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery
 
 <htmlcode>
   <script type = "text/javscript" 
-            src  = "//codeorigin.jquery.com/jquery-latest.min.js"></script>
+            src  = "//code.jquery.com/jquery-latest.min.js"></script>
   <script>
   $(document).ready(function(){ 
         // Javascript code here 
@@ -53,6 +53,4 @@ Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery
 
 ## jquery vom CDN
 
-Die URLs https://codeorigin.jquery.com/jquery-latest.min.js und http://codeorigin.jquery.com/jquery-latest.min.js kann man für alle Webseiten die online sind verwenden: hinter codeorigin.jquery.com steht nicht nur ein Server, sondern der das [MaxCDN](http://www.maxcdn.com/) CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.
-
-
+Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern das [NetDNA](http://www.netdna.com/) CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.
