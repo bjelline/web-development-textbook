@@ -6,9 +6,13 @@ intro: Sie lernen mit dem Versionskontrollsystem git Ihre Dateien zu verwalten.
 ### Was Sie alle wissen sollten
 * Dass git ein Beispiel für ein Versionskontrollsystems (Version control system) ist. 
 * Dass mercurial und SVN andere VCSs sind die heute eingesetzt werden. 
+* Wie "public key cryptography" grob funktioniert
+* Dass Sie Ihren private key geheim halten müssen
 
 ### Was Sie alle können sollten
 * Als Einzelperson mit einem git repository arbeiten, d.h.:
+* ein private/public key pair erzeugen
+* ihren ssh client so configurieren, dass er ihren private key verwendet
 * Ein git repository clonen
 * Neue Dateien stagen, committen und pushen.
 * Den Status des git repositories auf verschiedene Arten abfragen

@@ -17,5 +17,6 @@ intro: Mit der einfachen Schreibweise von jQuery lernen Sie schneller und einfac
 
 ## Vertiefung
 
+* Rebecca Murphey, Bocoupers (2012)[jQuery Fundamentals](http://jqfundamentals.com/) 
 * Responsive News(2012)[Cutting The Mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard) - wie die BBC progressive enhancement verwendet
 * Archibald(2013)[Progressive Enhancement is Still Important](http://jakearchibald.com/2013/progressive-enhancement-still-important/)
