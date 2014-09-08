@@ -16,3 +16,11 @@ intro: Sie lernen mit Cascading Stylesheets (CSS) einfache Formatierungen in der
 * Ich kann mit Hilfe von Firebug oder durch Lesen des Codes herausfinden welche CSS-Regeln zu einer bestimmten Darstellung in einer (fremden) Webseite führen
 * Ich kann die Korrektheit des CSS-Codes mit dem CSS-Validator des World Wide Web Consortium überprüfen. 
 * Ich kann Fehler in einem CSS-Dokument ausbessern bis es valide ist.
+
+### Vertiefung
+
+Das war ein erster Schritt in CSS. Wenn Sie im Webdesign arbeiten ist CSS ein Thema, dass Sie immer
+begleiten wird. Eine gute Quelle um von aktuellen Fragestellungen und Themen zu erfahren
+ist der Newsletter css-weekly:
+
+* [Webseite des Newsletters CSS Weekly](http://css-weekly.com/)
