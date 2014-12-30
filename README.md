@@ -15,7 +15,7 @@ http://web-development.github.io
 
 ## Thinking of contributing? 
 
-Join our online chat at [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/web-development/web-development-textbook)
+Join our online chat at [![Gitter](https://badges.gitter.im/web-development/web-development-textbook.svg)](https://gitter.im/web-development/web-development-textbook)
 
 ## How to contribute small changes
 
