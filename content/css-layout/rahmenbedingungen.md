@@ -125,16 +125,16 @@ Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaque
 
 Bilder
 -------
-Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist im Jahr 2011 anders.
+Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.
 
 ### Pixel
-Als Bildformate für `<img>` Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:
+Als Bildformate für `<img>` Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:
 
 
 ![Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt](/images/image117.png)
 
-
-Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern. 
+Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
+dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.
 
 
 ![Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt](/images/image119.png)
@@ -203,10 +203,12 @@ neue Herausforderung: soll man - wegen der Pixeldichte - riesige Bilder ausliefe
 Oder - weil es doch ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?
 
-Eine aktuelle Diskussion dazu findet man in
-[Rupert(2012): Mo’ Pixels Mo’ Problems. In: A List Apart.](http://www.alistapart.com/articles/mo-pixels-mo-problems/)
+Dafür wurden die neuen attribute "srcset" und "sizes" entwickelt, diese
+werden aber derzeit noch nicht von allen Browsern unterstützt [caniuse srcset](http://caniuse.com/#feat=svg-img).
 
-
+Mit Hilfe der Javascript Library [picturefill](http://scottjehl.github.io/picturefill/) kann man 
+diese feature trotzdem schon verwenden, und so verschiedene Bilder für verschiedene Bildschirmauflösungen
+ausliefern.
 
 Vertiefung
 ----------
