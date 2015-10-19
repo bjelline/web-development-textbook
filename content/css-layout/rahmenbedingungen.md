@@ -204,7 +204,7 @@ Oder - weil es doch ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?
 
 Dafür wurden die neuen attribute "srcset" und "sizes" entwickelt, diese
-werden aber derzeit noch nicht von allen Browsern unterstützt [caniuse srcset](http://caniuse.com/#feat=svg-img).
+werden aber derzeit noch nicht von allen Browsern unterstützt [caniuse srcset](http://caniuse.com/#feat=srcset).
 
 Mit Hilfe der Javascript Library [picturefill](http://scottjehl.github.io/picturefill/) kann man 
 diese feature trotzdem schon verwenden, und so verschiedene Bilder für verschiedene Bildschirmauflösungen
