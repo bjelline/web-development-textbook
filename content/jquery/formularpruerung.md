@@ -25,7 +25,7 @@ $("input[name=schokolade]").val()    // ein Wert
 </javascript>
 
 
-Das (fertige Programm)[/images/form-jquery.html]
+Das [/images/form-jquery.html](fertige Programm)
 zeigt die Fehlermeldungen jeweils beim betroffenen Eingabefeld an:
 
 <javascript>

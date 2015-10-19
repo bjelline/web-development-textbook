@@ -159,7 +159,7 @@ Auswahl stehen fasst man sie in einer "Zeichen-Klasse" (en: "character class") z
 
 Achtung!  Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!
 
-<patterntester name="hallos" pattern="hall[oia]">
+<patterntester name="hallos" pattern="hall\[oia\]">
 halli
 hallo
 halla
@@ -179,7 +179,7 @@ stehen.
 </javascript>
 
 
-<patterntester name="buchstaben" pattern="[a-z]">
+<patterntester name="buchstaben" pattern="\[a-z\]">
 a
 b
 c
@@ -202,7 +202,7 @@ Klammer erwähnt werden:
 </javascript>
 
 
-<patterntester name="U-Bahnen" pattern="u[^1234]">
+<patterntester name="U-Bahnen" pattern="u\[^1234\]">
 u1
 u2
 u3
@@ -375,7 +375,7 @@ Hier wird ein erstes o gematched, dann kommen (null bis viele) zeichen
 die kein o sind, und dann ein zweites o.  Damit ist der Pattern beendet,
 auch wenn es später im String noch weitere o's geben würde.
 
-<patterntester name="BlaBla" pattern="_[^_]*_">
+<patterntester name="BlaBla" pattern="_\[^_\]*_">
 zeugs und _bla_ und zeugs
 _bla_ und zeugs
 zeugs und _bla_

@@ -11,19 +11,16 @@ Zuerst stellt sich die Frage: woher weiß ich, wie hoch die Auflösung am Comput
 Die Antwort lautet: ich weiß es nicht, und es gibt keine zuverlässige Methode, mit der man diese Information in jedem Fall herausfinden kann. Es gibt eine Meßmethode mit Hilfe der Programmiersprache Javascript, mit der man die Größe des Browserfensters messen kann – das Ergebnis der Messung ist natürlich dadurch verfälscht, dass Browser ohne Javascript ganz aus der Messung herausfallen. Diese Beschränkung sollten Sie bei den folgenden Überlegungen immer beachten. 
 
 Wir werden `Media Queries` kennen lernen - das ist eine Methode um in CSS auf
-die Größe des Browserfensters zu reagieren - aber auch diese Methode ist nicht absolut
-zuverlässig, auch wenn sie derzeit (2012) schon von allen aktuellen Browsern
-unterstützt wird. Microsoft Internet Explorer unterstütz Media Queries erst ab
-Version 9.0. Siehe [can i use](http://caniuse.com/css-mediaqueries).
+die Größe des Browserfensters zu reagieren.
 
 Alle Messmethoden die uns zur Verfügung stehen sind unvollständig.
 
 §
 
-Abbildung 25 zeigt einige derzeit (2012) mögliche Bildschirm-Auflösungen. 
+Abbildung 25 zeigt einige derzeit (2015) mögliche Bildschirm-Auflösungen. 
 
  
-![Abbildung 25: einige mögliche Bildschirmauflösungen und Seitenverhältnisse 2011,](/images/image092.png)
+![Abbildung 25: einige mögliche Bildschirmauflösungen und Seitenverhältnisse 2011,](/images/Vector_Video_Standards2.svg)
 
 basierend auf http://en.wikipedia.org/wiki/Image:Vector_Video_Standards2.svg
 
@@ -48,14 +45,15 @@ Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabeger�
 |Altes 19” LCD Display|2008|1280 × 1024|19 in|86 ppi|
 |15” Macbook Pro|2007|1440 × 900|15.4 in|110 ppi|
 |Sony PSP 7th gen|09/2005|480 × 272|4.3 in |128 ppi|
-|Apple IPhone3|06/2009|480 × 320|3.5 in |163 ppi|
-|ASUS Zenbook|06/2012|1920 × 1080|13.3 in |165 ppi|
+|Apple iPhone3|06/2009|480 × 320|3.5 in |163 ppi|
 |15” Macbook Pro 'Retina'|06/2012|2880 × 1800|15.4 in |220 ppi|
-|Apple IPhone4|06/2010|960 × 640|3.5 in|326 ppi |
-|Apple IPad 3rd gen|03/2011|2048×1536|12 in|264 ppi |
+|Apple iPhone4|06/2010|960 × 640|3.5 in|326 ppi |
+|Apple iPad 3rd gen|03/2011|2048×1536|12 in|264 ppi |
+|Apple iIPhone6||1920x1080|5.5 in |401 ppi|
 |Amazon Kindle Paperwhite|12/2012|768×1024|6 in |212 ppi |
+|ASUS Zenbook UX305|04/2015|3200 x 1800|13.3 in |577 ppi|
 |Google Nexus One |1/2010|800 × 480|3.7 in |254 ppi |
-|Android Galaxy Nexus|11/2011|1280 × 720|4.65 in |316 ppi |
+|Samsung Galaxy S6 Edge|1/2015|1440 x 2560|5.1 in |577 ppi |
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 

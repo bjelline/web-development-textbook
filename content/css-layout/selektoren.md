@@ -26,7 +26,7 @@ Mit CSS3 kommen u.a. folgende Selektoren dazu:
 
 |Name|Muster  / Beispiel|Beschreibung|
 |+---|+------|+-----------|
-|Attribute Selector: Begins with|E[attr^="string"] a[href^="mailto:"]|Stimmt mit jedem Element überein, bei dem der Wert des Attributs mit dem geforderten String beginnt.|
+|Attribute Selector: Begins with|E\[attr^="stringl"\] a\[href^="mailto:"\]|Stimmt mit jedem Element überein, bei dem der Wert des Attributs mit dem geforderten String beginnt.|
 |The Target pseudo-class|:target|Stimmt mit dem Element überein, dessen ID mit dem Anker in der URL übereinstimmt. Z.B. bei URL http://at.at/index.html#kontakt stimmt  :target mit &lt;div id="kontakt"&gt; überein|
 |The UI element states pseudo-classes|:enabled :disabled :checked|Diese Selektoren beziehen sich auf mögliche Zustände von Eingabefeldern – die werden aber erst im nächsten Kapitel erklärt. |
 |Root pseudo-class|:root|Stimmt mit der Wurzel des DOM überein, immer <html>|
