@@ -114,7 +114,7 @@ Diese Datei können Sie mit einem Generator am Web erzeugen oder mit dem Program
   Adding password for user Clemens
 </apache>
 
-Diese Methode funktioniert auch auf den Webserver www.users.fh-salzburg.ac.at und  multimediatechnology.at. Wenn Sie einen eigenen Apache Server betreiben, können Sie diese Authentisierungmethode mit verschiedenen Backends verwenden (LDAP, Datenbank, ...) - dafür gibt es verschiedene Apache Module25. 
+Diese Methode funktioniert auch auf dem Webserver users.multimediatechnology.at. Wenn Sie einen eigenen Apache Server betreiben, können Sie diese Authentisierungmethode mit verschiedenen Backends verwenden (LDAP, Datenbank, ...) - dafür gibt es verschiedene Apache Module. 
 
 Mit der HTTP-Authentisierung ist das HTTP-Protokoll (genau wie bei der Verwendung von Cookies) nicht mehr stateless. http-Auth hat gegenüber Cookies den Vorteil, dass die Eingabe von Username und Passwort über ein Browser-Fenster erfolgt und nicht implementiert werden muß. 
 
