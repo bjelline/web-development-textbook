@@ -17,3 +17,7 @@ intro: In diesem abschließenden Kapitel blicken wir zurück und disskutieren ve
 * Ich kann für ein konkretes Projekt die verschiedenen Qualitätsansprüche gegeneinander Abwägen
 * Ich kann mit einem Kunden verschiedenen Qualitätsansprüche aushandeln
 
+
+### Referenz
+
+* [Marcy Sutton on A Web for Everybody](http://vimeo.com/118697675)

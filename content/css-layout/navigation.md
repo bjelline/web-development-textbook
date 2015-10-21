@@ -8,7 +8,7 @@ Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-C
 Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:
 
 <htmlcode>
-<div class="navi">
+<nav>
   <h3 class="unsichtbar">Seitenauswahl</h3>
   <ul>
     <li><a href="index.html">home</a></li>
@@ -16,10 +16,10 @@ Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:
     <li><a href="dies.html">dies</a></li>
     <li><a href="das.html">das</a></li>
   </ul>
-</div>
+</nav>
 </htmlcode>
 
-Ohne CSS wird die Liste ganz normal dargestellt. 
+Ohne CSS wird die Liste ganz normal dargestellt [Demo](/images/navi-demo.html).
 
 §
 
@@ -29,20 +29,24 @@ Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit
 <css>
 .unsichtbar {display:none;}
 
-div.navi li {
+nav li {
    list-style-type:none;
    margin-bottom:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em;
 }
 
-div.navi li a:link {
+nav li a:link {
    text-decoration: none;
    font-weight: bold;
-   color: black;
+   display: block;
+   background: #6C6;
+   width: 6em;
+   padding: 0.2em;
 }
 </css>
+
+Der eigentliche Link wird zu einem blockbildenden Element gemacht.
+Damit ist dann das ganze Rechteck anklickbar, nicht nur der Text selbst.
+[Demo](/images/navi-demo-1.html)
 
 Horizontales Menü
 ------------------
@@ -51,21 +55,24 @@ Mit Hilfe von `float` kann man das Menü auch horizontal darstellen, dazu muß n
 ein `float` eingefügt und der `margin` anders gesetzt werden:
 
 <css>
-div.navi li {
-   float:left;
+nav li {
    list-style-type:none;
    margin-right:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em; 
 }
 
-div.navi li a:link {
+nav li a:link {
    text-decoration: none;
    font-weight: bold;
-   color: black;
+   display: block;
+   background: #6C6;
+   width: 6em;
+   padding: 0.2em;
+
+   float:left;
 }
 </css>
+
+[Demo](/images/navi-demo-2.html)
 
 PHP für Navigationsmenü 
 -----------------------------------------
@@ -79,7 +86,7 @@ PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester i
 Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:
 
 <htmlcode>
-<div id="navi">
+<nav>
    <h3 class="unsichtbar">Seitenauswahl</h3>
    <ul>
       <li><a href="index.php">home</a></li>
@@ -87,7 +94,7 @@ Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sie
       <li><a href="dies.php">dies</a></li>
       <li><a href="das.php">das</a></li>
    </ul>
-</div>
+</nav>
 </htmlcode>
 
 §

@@ -29,3 +29,6 @@ intro: Das erste Kapitel bietet einen theoretischen und praktischen Einstieg in 
 * Hefner, Katie and Lyon, Matthew(2008): ARPA Kadabra oder Die Anfänge des Internet. 3.Auflage. dpunkt Verlag. ISBN-10: 3898645517.
 * Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee (1999). RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1. 
 
+### Vertiefung
+
+* [HTML 5 Newsletter](http://html5weekly.com/)
