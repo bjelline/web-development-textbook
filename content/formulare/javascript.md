@@ -323,40 +323,23 @@ Entsprechend kann man eine Funktion schreiben:
 <htmlcode>
 <script>
   function formularok() {
-    var ok, fehler;
-    ok = true;
-    fehler = "";
-    
-    if ( document.getElementById('liefername').value == "" ) {
-        fehler += "Sie müssen den Empfänger angeben\n";
-        ok = false;
-    }
-    if ( document.getElementById('adresse')..value == "" ) {
-        fehler += "Sie müssen eine Lieferadresse angeben\n";
-        ok = false;
-    }		
-    
-    // weitere Überprüfungen
-
-    
-    if ( ok ) {
-      return true;
+    // ... Berechnung der Gesamtsumme ...
+ 
+    if ( total < 100 ) {
+        alert("Die Gesamt-Bestellung muss mindestens 100€ betragen\n");
+        return false;
     } else {
-      alert("Das Formular ist nicht ok:\n"  + fehler );
-      return false;
-    }
+        return true;
+    } 
  }
 </script>
 </head>
 
 <body>
   <form name     = "pizzaformular" 
-        action   = "http://webwelt.horus.at/html/form/echo.cgi"
+        action   = "https://users.multimediatechnology.at/~bjelline/echo.php"
         onsubmit = "wert=formularok(); return wert;">
-  Empfänger: <input type="text" name="liefername" id="liefername"> <br>
-  Adresse: <input type="text" name="adresse" id="adresse"> in 5020 Salzburg<br>
-  Telefon/Handy: <input type="text" name="tel" id="tel"> in 5020 Salzburg<br>
-
+  .... viele eingabefelder ...
   <input name="" type="submit" />
   </form>
 </body>
