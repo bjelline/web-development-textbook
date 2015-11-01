@@ -322,22 +322,21 @@ Entsprechend kann man eine Funktion schreiben:
 
 <htmlcode>
 <script>
-  function formularok() {
-    // ... Berechnung der Gesamtsumme ...
- 
-    if ( total < 100 ) {
-        alert("Die Gesamt-Bestellung muss mindestens 100€ betragen\n");
-        return false;
-    } else {
-        return true;
-    } 
- }
+function formularok() {
+  // ... Berechnung der Gesamtsumme ...
+
+  if ( total < 100 ) {
+    alert("Die Gesamt-Bestellung muss mindestens 100€ betragen\n");
+    return false;
+  }
+  return true;
+}
 </script>
 </head>
 
 <body>
   <form name     = "pizzaformular" 
-        action   = "https://users.multimediatechnology.at/~bjelline/echo.php"
+        action   = "bestellung.php"
         onsubmit = "wert=formularok(); return wert;">
   .... viele eingabefelder ...
   <input name="" type="submit" />
