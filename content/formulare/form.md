@@ -123,7 +123,7 @@ Achtung: beim erstellen des Menüs muss man jede möglich Antwort bedenken!
 Die Mehrfach-Auswahl erfolgt mit dem Drücken der Steuerungs-Taste:
 
 <htmlcode caption="Liste - ermöglicht Mehrfach-Auswahl">
-<select name="html" size="4" multiple="multiple">
+<select name="html" size="4" multiple>
   <option>im Code</option>
   <option>Dreamweaver</option>
   <option>GoLive</option>
