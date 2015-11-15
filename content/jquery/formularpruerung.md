@@ -34,18 +34,20 @@ $("form").submit(function(){
   $("span.error").remove();
 
   gesamt_zahl = parseInt( $("input[name=schokolade]").val() )
-              + parseInt( $("input[name=schweinsbraten]").val() )
-              + parseInt( $("input[name=kaffee]").val() );
+    + parseInt( $("input[name=schweinsbraten]").val() )
+    + parseInt( $("input[name=kaffee]").val() );
 
   if(gesamt_zahl == 0) {
-      $('form').before('<span class="error">Mindestes-Bestellmenge 1!</span>');
-       ok = false;
+    $('form').before(
+      '<span class="error">Mindestes-Bestellmenge 1!</span>'
+    );
+    ok = false;
   }
 
   $i = $("input[name=adresse]");
   if($i.val() == "") {
-      $i.after('<span class="error">Lieferadresse angeben</span>');
-      ok = false;
+    $i.after('<span class="error">Lieferadresse angeben</span>');
+    ok = false;
   }
   return ok;
 });

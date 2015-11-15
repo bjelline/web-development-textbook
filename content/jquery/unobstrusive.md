@@ -38,8 +38,7 @@ umständlicher, aber man kann alle Features der Mail benutzen.
 Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery wird nur an einer Stelle, im Head des Dokuments eingebaut. Das nennt man „unobstrusive Javascript“.
 
 <htmlcode>
-  <script type = "text/javscript" 
-            src  = "//code.jquery.com/jquery-latest.min.js"></script>
+  <script src="//code.jquery.com/jquery-latest.min.js"></script>
   <script>
   $(document).ready(function(){ 
         // Javascript code here 

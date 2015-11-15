@@ -104,23 +104,22 @@ Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für d
 
 <javascript>
 node = document.createElement("h1");  
-                // erzeugt eine Node, Tag-Name angeben
+       // erzeugt eine Node, Tag-Name angeben
 node.innerHTML = "bla <strong>bla</strong bla";                
-                // Zugriff auf den "Inhalt" der node als String, 
-                // ist of schneller als DOM manipulation! 
+       // Zugriff auf den "Inhalt" der node als String, 
+       // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
-                // fügt die newchild als Kind an 
+       // fügt die newchild als Kind an 
 newnode = node.cloneNode()    
-                // gibt eine Kopie der Node zurück, 
-                // die Kopie ist noch nicht im DOM Baum eingefügt! 
+       // gibt eine Kopie der Node zurück, 
+       // die Kopie ist noch nicht im DOM Baum eingefügt! 
 node.insertBefore(newchild, oldchild)    
-                // fügt newchild als Kind von node ein, vor dem oldchild 
+       // fügt newchild als Kind von node ein, vor dem oldchild 
 oldchild = node.removeChild(child)    
-                // löscht child als Kind von node, 
-                // gibt es als "frei schwebende" node zurück 
+       // löscht child als Kind von node, 
+       // gibt es als "frei schwebende" node zurück 
 node.replaceChild(newchild, oldchild)  
-                // ersetzt kind oldchild durch kind newchild 
-
+       // ersetzt kind oldchild durch kind newchild 
 node.setAttribute('value', 42)  // setzt ein attribut 
 node.removeAttribute('value')   // löscht ein attribute 
 </javascript>
@@ -130,7 +129,7 @@ node.removeAttribute('value')   // löscht ein attribute
 Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft `innerHTML`:
 
 <javascript>
-document.querySelector("body").innerHTML = "<p>Alles <b>neu</b></p>“;
+document.querySelector("body").innerHTML = "<p>All <b>new</b></p>";
 </javascript>
 
 ### Duplizieren
@@ -181,7 +180,7 @@ if( document.querySelector('#foo').classList.contains('bar') ) {
 
 Einfügen von Event Handlern
 -----------------------------
-Wir haben im Kapitel [Hintergründe](/javascript-dom/hintergrund/ schon gesehen, 
+Wir haben im Kapitel [Hintergründe](/javascript-dom/hintergrund/) schon gesehen, 
 wie Event-Handler direkt im HTML definiert werden können:
 
 <htmlcode>
@@ -238,9 +237,12 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:
 
 <htmlcode>
 <form>
-  <input type="button" value="Rot"  style="background-color:red"  id="r">
-  <input type="button" value="Grün" style="background-color:#0F0" id="g">
-  <input type="button" value="Blau" style="background-color:blue" id="b">
+  <input type="button" value="Rot"  
+         style="background-color:red"  id="r">
+  <input type="button" value="Grün" 
+         style="background-color:#0F0" id="g">
+  <input type="button" value="Blau" 
+         style="background-color:blue" id="b">
 </form>
 <script>
   function setcolor( ev ) {
@@ -288,7 +290,8 @@ function removeMe(e){
   var my_pizza = me.parentNode.parentNode;
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
-document.querySelector(".removethis").addEventListener("click", removeMe, false); 
+document.querySelector(".removethis")
+        .addEventListener("click", removeMe, false); 
 </javascript>
 
 ### Referenz

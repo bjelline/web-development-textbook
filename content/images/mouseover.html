@@ -23,16 +23,14 @@
   <body>
     <h1>Link mit Mousover</h1>
 
-    <p><a href="http://multimediatechnology.at">Studium MMT <span>Ein Studium an der FH
-        Salzburg</span></a></p>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <p><a href="http://multimediatechnology.at">Studium MMT <span style='display:none;'>Ein Studium an der FH Salzburg</span></a></p>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
     <script> 
       $(document).ready(function(){ 
-          $("a span").hide();
-          $("a").mouseover(function(){
+          $("a").on('mouseover', function(){
               $(this).find("span").show();
           });
-          $("a").mouseout(function(){
+          $("a").on('mouseout', function(){
               $(this).find("span").hide();
           });
       }); 

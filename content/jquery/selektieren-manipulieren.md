@@ -5,12 +5,12 @@ order: 30
 jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:
 
 <javascript>
-$("a")        /* alle A-Tags ... als jQuery objekte */
-$("h1")       /* alle Überschriften h1 ... als jQuery objekte */
-$("p.extra")  /* alle p-tags mit klasse extra ... als jQuery objekte  */
+$("a")        /* alle a-Tags ... als jQuery Objekte */
+$("h1")       /* alle Überschriften h1 ... als jQuery Objekte */
+$("p.extra")  /* alle p-tags mit klasse extra ... als jQuery Objekte  */
 </javascript>
     
-jQuery definiert noch ein paar zusätzliche Selektoren, die es in CSS (noch) nicht gibt:
+jQuery definiert noch ein paar zusätzliche Selektoren, die es in CSS so nicht gibt:
 
 <javascript>
 $("tr:even")                 /* Alle geraden Zeilen der Tabelle */
