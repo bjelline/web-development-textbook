@@ -12,8 +12,8 @@ Die Attribute des HTML-Tags sind über `getAttribute` / `setAttribute` zugängli
 Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:
 
 <javascript>
-document.getElementById() 
-document.getElementsByTagName() 
+document.getElementById()     /* liefert 1 Node  */
+document.getElementsByTagName() /*       Array   */
 document.querySelectorAll()   /* liefert Array   */
 document.querySelector()      /* liefert 1 Node  */
 
@@ -25,14 +25,14 @@ node.firstChild
 node.lastChild
 node.previousSibling
 node.nextSibling
-node.data
+node.textContent
 node.attributes
 node.innerHTML
 
-
 node.getElementById()            
 node.getElementsByTagName() 
-node.getElementsByClassName() 
+node.querySelectorAll() 
+node.querySelector() 
 
 node.appendChild()
 node.cloneNode()
@@ -105,7 +105,7 @@ Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für d
 <javascript>
 node = document.createElement("h1");  
        // erzeugt eine Node, Tag-Name angeben
-node.innerHTML = "bla <strong>bla</strong bla";                
+node.innerHTML = "bla <strong>bla</strong> bla";                
        // Zugriff auf den "Inhalt" der node als String, 
        // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
@@ -291,7 +291,7 @@ function removeMe(e){
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
 document.querySelector(".removethis")
-        .addEventListener("click", removeMe, false); 
+        .addEventListener("click", removeMe); 
 </javascript>
 
 ### Referenz

@@ -82,7 +82,7 @@ Nun kann die Funktion auch unter dem neuen Namen `f` aufgerufen werden:
 Wir haben diese Schreibweise schon bei addEventListener verwendet:
 
 <javascript>
-...addEventListener("click", create_gold, false);
+...addEventListener("click", create_gold);
 </javascript>
 
 auch hier wird die Funktion nur übergeben, aber noch nicht aufgerufen.

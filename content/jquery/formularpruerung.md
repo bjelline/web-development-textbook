@@ -39,7 +39,7 @@ $("form").submit(function(){
 
   if(gesamt_zahl == 0) {
     $('form').before(
-      '<span class="error">Mindestes-Bestellmenge 1!</span>'
+      '<span class="error">Mindest-Bestellmenge 1!</span>'
     );
     ok = false;
   }

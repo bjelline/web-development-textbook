@@ -17,16 +17,16 @@
     function dontRemoveMe(e) {
       console.log("don't remove the first one, we need it for cloning!");
     }
-    document.querySelector(".removethis").addEventListener("click", dontRemoveMe, false);
+    document.querySelector(".removethis").addEventListener("click", dontRemoveMe);
 
     function addPizza(){
       var f = document.querySelector("form");
       var p = document.querySelector("div.pizza");
       var new_pizza = p.cloneNode(true);
-      new_pizza.children[0].children[0].addEventListener("click", removeMe, false);
+      new_pizza.children[0].children[0].addEventListener("click", removeMe);
       f.insertBefore(new_pizza, p);
     }		
-    document.getElementById("more").addEventListener("click", addPizza, false);
+    document.getElementById("more").addEventListener("click", addPizza);
 
   }
 </script>

@@ -179,7 +179,7 @@ function onMouseDown(e) {
   console.log("Mouse down. this is " + this.id + " event is " + e);
 }
 
-element.addEventListener( 'mousedown', onMouseDown, false );
+element.addEventListener( 'mousedown', onMouseDown);
 </javascript>
 
 Wenn die Funktion onMouseDown aufgerufen wird enthält
@@ -241,7 +241,7 @@ function addDragability( jsobj, element ) {
     console.log("my event is " + e);
   }
 
-  element.addEventListener( 'mousedown', onMouseDown, false );
+  element.addEventListener( 'mousedown', onMouseDown);
 }
 
 addDragability( jsobj, element );
