@@ -71,7 +71,7 @@ nicht mit einem Laufwerk.
 ### Die Oberfläche lügt!
 
 Sowohl der Windows Explorer als auch der Mac OS X Finder stellen das Dateisystem
-nicht wahrheitsgemäß dar.  Sie übersetzen einige Namen:  
+nicht wahrheitsgemäß dar.  Sie "übersetzen" einige Namen:  
 
     Mac OS X:
     echter Pfad:            /Users/bjelline/Music/

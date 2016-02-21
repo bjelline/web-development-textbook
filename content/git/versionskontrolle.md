@@ -2,7 +2,7 @@
 title: Versionskontrolle
 order: 20
 ---
-Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die naive Lösung: wer das Dokument ändert speichert es unter einen neuen Verisonsnummer:
+Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die naive Lösung: wer das Dokument ändert speichert es unter einen neuen Versionsnummer:
 
 
 ![Abbildung 139: Dateien ohne Versionskontrollsystem - viele Kopien](/images/image354.png)

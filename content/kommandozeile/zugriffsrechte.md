@@ -45,7 +45,7 @@ UNIX Datei-Zugriffsrechte
 Die nächste Abbildung zeigt links die Darstellung der Zugriffsrechte in der Shell, rechts das Verändern der Zugriffsrechte mit 
 einer grafischen Oberfläche (hier am Beispiel von Dreamweaver).
 
-![Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen](/images/zugriffsrechte-dreamweaver.png)
+![Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen](/images/zugriffsrechte-phpstorm.png)
 
 Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). 
 

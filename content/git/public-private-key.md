@@ -16,7 +16,7 @@ Asymmetrische Kryptosysteme.
 Klassische Verschlüsselung kennt nur einen Schlüssel: er wird
 zum ver- und zum ent-schlüsseln verwendet.  Das ist eigentlich unpraktisch:
 wenn ich ein problem habe eine lange Botschaft ohne Abhören oder Manipulation von A nach B zu bringen,
-und sie deswegen verschlüssle, dann ist mir ja nicht geholften: jetzt muss ich erst
+und sie deswegen verschlüssle, dann ist mir ja nicht geholfen: jetzt muss ich erst
 den gezeimen Schlüssel sicher (ohne Abhören oder Manipulation) von A nach B bringen. Das Problem
 hat jetzt einen kleinern Umfang, aber das Grundproblem bleibt bestehen.
 
@@ -26,7 +26,7 @@ Schlüssel: einen öffentlichen und einen privaten:
 ![Ver- und Entschlüsseln](/images/public_key_crypto.svg)
 
 Diese Art der Verschlüsselung wird im Internet z.B. für die Verschlüsselung
-und Signierung von E-Mail mit [OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) verwendet,
+und Signierung von E-Mail mit [GPG](https://de.wikipedia.org/wiki/GNU_Privacy_Guard) verwendet,
 oder für die Authentifizierung beim Login mit [SSH](https://de.wikipedia.org/wiki/Ssh). 
 
 ## Authentisierung für SSH mit private und public key

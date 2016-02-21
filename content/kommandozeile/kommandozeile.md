@@ -8,9 +8,9 @@ Das ist aber nur die halbe Wahrheit. Unter der bunten Oberfläche verbirgt sich 
 um mit dem Computer zu interagieren. Dieses Interface hat sich seit den 70er Jahren nicht verändert, es funktioniert noch immer
 so wie mit dem Teletype:
 
-![Abbildung: Teletype](/images/teletype.png)
+![Abbildung: Teletype](/images/teletype.jpg)
 
-Wenn Sie professionell im Web Development arbeiten wollen werden Sie auch die
+Wenn Sie professionell im Web Development arbeiten wollen, werden Sie auch die
 Kommandozeile brauchen. Sie ist kein einfaches, aber ein mächtiges Werkzeug.
 
 Die GUIs (Graphical User Interfaces) die Sie bisher benutz haben sind besonders
@@ -29,6 +29,10 @@ zu finden.
 Das Thema Kommandozeile ist nicht abschließend zu behandeln: Sie werden Ihr gesamtes
 Leben als ProgrammiererIn damit verbringen neue Kommandos zu lernen; das hört nie auf.
 
-== Literatur ==
+## Literatur
 
-* In the beginning was the commandline
+* Stephenson, Neal. [In the beginning... was the command line](https://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line). New York, NY: Avon books, 1999.
+
+## Bild
+
+* [ASR-33 aus Wiki Commons](https://commons.wikimedia.org/wiki/File:ASR-33_at_CHM.agr.jpg)
