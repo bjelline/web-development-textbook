@@ -69,6 +69,8 @@ fclose($handle);
 
 Datei (über-)schreiben
 ------------------------
+Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Hat Ihr PHP-Programm eine Datei gelöscht, dann ist diese Datei unwiederbringlich weg.
+
 Beim Schreiben wird als zweites Argument von fopen der Buchstabe „w“ übergeben:
 
 <php>
@@ -77,8 +79,9 @@ fwrite($handle, "$zahl\n");
 fclose($handle);
 </php>
 
-Leider ist das Leben aber nicht so einfach:  sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?   (Verschärft auf dem Webserver mit [UNIX Zugriffsrechten!](/kommandozeile/zugriffsrechte/). Achtung: Auf einem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! Dies wird relevant, sobald ein PHP-Programm eine andere Datei lesen oder (über-)schreiben soll.
+Sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?   
 
+Verschärft wird das Problem auf dem Webserver mit [UNIX Zugriffsrechten!](/kommandozeile/zugriffsrechte/). Auf dem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! 
 
 Um diese Fragen zu beantworten gibt es Funktionen `is_readable`,  `is_writable` und die Rückgabewerte der verschiedenen schon gezeigten File-Funktionen. So liefert fwrite entweder die Anzahl der geschriebenen Bytes oder FALSE als Status-Code zurück:
 
@@ -90,9 +93,8 @@ if ( $status === FALSE ) {
 }
 </php>
 
-Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Wenn Ihr PHP-Programm eine Datei löscht, dann ist diese Datei sofort und unwiederbringlich weg.
 
 Gleichzeitiger schreibender Zugriff
 ------------------------------------
-Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir werden es aber erst mal ignorieren. 
+Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir können es jetzt noch nicht lösen.
 

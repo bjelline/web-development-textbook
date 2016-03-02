@@ -463,7 +463,8 @@ werden hier vorgestellt, die anderen werden erst später behandelt.
 |$_GET|Die Parameter die über die URL an das PHP-Programm übergeben wurden.|
 {: class="table table-condensed table-bordered" style="width:auto"}
 
-Weitere Besonderheiten von PHP
+Empfohlene Lektüre
 --------------
 
+* Kapitel [The Basics](http://www.phptherightway.com/pages/The-Basics.html) aus "PHP the Right Way"
 
