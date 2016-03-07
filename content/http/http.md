@@ -35,15 +35,13 @@ Header-Zeilen geben.  Der Body ist beim Request meist leer.
 
 Hier ein Beispiel für einen Request:
 
-```
-GET /~bjelline/u2/bestellung.html HTTP/1.1
-Host: users.fh-salzburg.ac.at
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-DNT: 1
-Cookie: _ga=GA1.3.1837452953.1440699405
-```
+    GET /~bjelline/u2/bestellung.html HTTP/1.1
+    Host: users.fh-salzburg.ac.at
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
+    Accept-Language: en-US,en;q=0.5
+    Accept-Encoding: gzip, deflate
+    DNT: 1
+    Cookie: _ga=GA1.3.1837452953.1440699405
 
 Die erste Zeile besteht aus: Methode, URL-Fragement und HTTP-Versionsnummer. 
 Die meist-verwendete Methode ist GET. Sie erinnern sich:
@@ -54,31 +52,29 @@ Server übertragen werden sollen. Das ist diese Methode.
 
 Hier ein Beispiel für eine Server-Antwort:
 
-```
-HTTP/1.1 200 OK
-Date: Sun, 06 Mar 2016 21:43:16 GMT
-Server: Apache/2.2.15 (Scientific Linux)
-Last-Modified: Sun, 06 Mar 2016 20:47:07 GMT
-Content-Length: 543
-Content-Type: text/html
+    HTTP/1.1 200 OK
+    Date: Sun, 06 Mar 2016 21:43:16 GMT
+    Server: Apache/2.2.15 (Scientific Linux)
+    Last-Modified: Sun, 06 Mar 2016 20:47:07 GMT
+    Content-Length: 543
+    Content-Type: text/html
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">        
-    <title>Bestellung eines Flugzeugs</title>
-  </head>
-  <body>
-    <h1>Wieviele Flugzeuge dürfens denn sein?</h1>
-    <form action="bestellung.php" method="POST">            
-    <p>Anzahl: <br><input name="anzahl"></p>            
-    <p>Adresse:<br> <textarea name="adresse"></textarea></p>            
-    <p>Preis: 1.000.000 €</p>            
-    <p><input type="submit" value="Bestellung absenden"></p>
-    </form>
-  </body>
-</html>
-```
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">        
+        <title>Bestellung eines Flugzeugs</title>
+      </head>
+      <body>
+        <h1>Wieviele Flugzeuge dürfens denn sein?</h1>
+        <form action="bestellung.php" method="POST">            
+        <p>Anzahl: <br><input name="anzahl"></p>            
+        <p>Adresse:<br> <textarea name="adresse"></textarea></p>            
+        <p>Preis: 1.000.000 €</p>            
+        <p><input type="submit" value="Bestellung absenden"></p>
+        </form>
+      </body>
+    </html>
 
 Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.
 
