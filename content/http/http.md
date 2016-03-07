@@ -35,13 +35,15 @@ Header-Zeilen geben.  Der Body ist beim Request meist leer.
 
 Hier ein Beispiel für einen Request:
 
-      GET /rezensionen/list.php3?no=20 HTTP/1.1
-      Host: www.biblio.at
-      User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
-      Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
-      Accept-Language: de-at, de;q=0.66, en-us;q=0.33
-      Accept-Encoding: gzip, deflate, compress;q=0.9
-      Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+```
+GET /~bjelline/u2/bestellung.html HTTP/1.1
+Host: users.fh-salzburg.ac.at
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Cookie: _ga=GA1.3.1837452953.1440699405
+```
 
 Die erste Zeile besteht aus: Methode, URL-Fragement und HTTP-Versionsnummer. 
 Die meist-verwendete Methode ist GET. Sie erinnern sich:
@@ -52,16 +54,31 @@ Server übertragen werden sollen. Das ist diese Methode.
 
 Hier ein Beispiel für eine Server-Antwort:
 
+```
+HTTP/1.1 200 OK
+Date: Sun, 06 Mar 2016 21:43:16 GMT
+Server: Apache/2.2.15 (Scientific Linux)
+Last-Modified: Sun, 06 Mar 2016 20:47:07 GMT
+Content-Length: 543
+Content-Type: text/html
 
-      HTTP/1.0 200 OK
-      Date: Sat, 27 Apr 2002 05:52:57 GMT
-      Server: Apache/1.3.9 (Unix) Debian/GNU
-      Content-Type: text/html
-
-      <!DOCTYPE html>
-      <html><head><title>Rezensionsdatenbank</title>
-      <link rel="stylesheet" href="rezensionen.css">
-      </head><body>nix</body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">        
+    <title>Bestellung eines Flugzeugs</title>
+  </head>
+  <body>
+    <h1>Wieviele Flugzeuge dürfens denn sein?</h1>
+    <form action="bestellung.php" method="POST">            
+    <p>Anzahl: <br><input name="anzahl"></p>            
+    <p>Adresse:<br> <textarea name="adresse"></textarea></p>            
+    <p>Preis: 1.000.000 €</p>            
+    <p><input type="submit" value="Bestellung absenden"></p>
+    </form>
+  </body>
+</html>
+```
 
 Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.
 
@@ -75,7 +92,11 @@ Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Se
 
 ### Host
 
-Im Request: `Host: www.biblio.at` Wichtig wenn der Server unter mehreren Domain Names (aber nur einer IP-Adresse) 
+Im Request: 
+
+    Host: users.fh-salzburg.ac.at
+
+Wichtig wenn der Server unter mehreren Domain Names (aber nur einer IP-Adresse) 
 erreichbar ist.  Das ist fast immer der Fall, dieser Header ist also fast immer
 notwendig.
 
@@ -84,7 +105,7 @@ notwendig.
 
 Im Request:
 
-      User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
       User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90)
 
 Das ist die Selbstoffenbarung des Clients: welcher Browser, welche Version. Die meisten 
@@ -96,14 +117,14 @@ Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die 
 
 Im Request: `Referer: http://my.app.at/form.html` Welche Seite hat der Client
 zuvor angezeigt? URL der vorigen Seite — falls von dort ein Link hierher verfolgt 
-wurde oder ein FORM gesendet wurde. Dieser Header kann im Browser deaktiviert werden!
+wurde oder ein FORM gesendet wurde. 
 
 ### Date, Server
 
 Im Response: 
 
-    Date: Sat, 27 Apr 2002 05:52:57 GMT
-    Server: Apache/1.3.9 (Unix) Debian/GNU
+    Date: Sun, 06 Mar 2016 21:43:16 GMT
+    Server: Apache/2.2.15 (Scientific Linux)
 
 zeigt Datum und Uhrzeit am Server, bzw. die verwendete
 Webserver-Software.  Wenn Sie Statistiken über den Marktanteil der verschiedenen
@@ -114,7 +135,6 @@ Server sehen, dann basieren diese auf dieser Angabe.
 Im Response: 
 
     Content-Type: text/html
-
 
 MIME-Type des im Body gelieferten Dokuments. Andere Werte die 
 sie hier häufig antreffen sind:
