@@ -10,7 +10,7 @@ Datei-Upload: in modernen Browsern kann man Dateien mit
 "Drag-and-Drop" in den Browser befördern, und erst in einem
 zweiten Schritt hochladen:
 
-![New im Frontend: Drag and Drop in den Browser](/images/drag-and-drop-upload.png)
+![Neu im Frontend: Drag and Drop in den Browser](/images/drag-and-drop-upload.gif)
 
 
 ### Drag-and-Drop entgegen nehmen
