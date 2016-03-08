@@ -2,5 +2,4 @@
 tmp/*
 tmp
 .DS_Store
-Gemfile.lock
 *.swp

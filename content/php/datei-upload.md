@@ -5,20 +5,8 @@ order: 60
 
 ## Frontend
 
-Im "Frontend" gab es in den letzten Jahren einige Verbesserungen beim
-Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
-durch "Drag-and-Drop" auf den Browser
-
-![New im Frontend: Drag and Drop in den Browser](/images/drag-and-drop-upload.png)
-
-Dazu ist aber eine Javascript-API notwendig, die wir erst
-später kennen lernen.
-
-§
-
 Die einfachste Version des Upload-Formulares verwendet eine input-Tag
-vom typ `file`:
-
+vom Typ `file`:
 
 <htmlcode caption="Formular für den Datei-Upload">
 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -32,7 +20,7 @@ vom typ `file`:
 
 Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.
 
-![Webformular mit Datei-Upload](/images/image345.png)
+![Webformular mit Datei-Upload](/images/file-input.png)
 
 ## Backend
 
@@ -53,6 +41,7 @@ man den Server hacken will!
 ### Maßnahmen
 
 Die Mindestanforderungen an ein Upload-Skript lauten also:
+
 * **niemals** hochgeladene Daten als Code interpretieren!
 * Vorsicht bei Daten, die im Webspace gespeichert werden!
 * Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!
@@ -89,7 +78,7 @@ $filename = basename($_FILES['bild']['name']);
 $ext = substr($filename, -4);
 
 if( $ext != '.jpg' ) {
-   die("ich darf nur jpg-Dateien hochladen, nicht " . substr($filename, -3) );
+   die("ich darf nur jpg-Dateien hochladen, nicht " . $ext );
 }
 
 $uploadfile = $uploaddir . $filename;

@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 gem "rake"
-gem "nanoc"
+gem "nanoc", '~>3.8.0'
 gem "kramdown"
+gem "nokogiri"
 gem "adsf"
 gem "mime-types"
 gem "curb"
