@@ -29,7 +29,7 @@ function ignore_all(e) {
     e.preventDefault();
 }
 
-function drop(e) {
+function handle_drop(e) {
     e.stopPropagation();
     e.preventDefault();
     handleFiles(e.dataTransfer.files);
