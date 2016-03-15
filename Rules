@@ -317,8 +317,8 @@ preprocess do
   @items.each do |item|
     i = item[:ordinal_index] = @orderedItems.index(item)
     if i
-      item[:next_item] = @orderedItems[ i+1 ]
-      item[:previous_item] = @orderedItems[ i-1 ]
+      item[:next_item]     = @orderedItems[ i+1 ].identifier if @orderedItems[ i+1 ]
+      item[:previous_item] = @orderedItems[ i-1 ].identifier if @orderedItems[ i-1 ]
     end
     item[:github_user] = @github_users[ item[:github] ]
   end

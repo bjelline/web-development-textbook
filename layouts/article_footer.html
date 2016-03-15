@@ -1,10 +1,14 @@
 <div class="pagination">
   <ul>
-    <% if @item[:previous_item] %>
-      <li><a href="<%= @item[:previous_item].path %>"><%= @item[:previous_item][:title] %></a></li>
-    <% end %>
-    <% if @item[:next_item] %>
-      <li><a href="<%= @item[:next_item].path %>"><%= @item[:next_item][:title] %></a></li>
+    <% if @item %>
+      <% if @item[:previous_item] %>
+      <% prev = @items[ @item[:previous_item] ] %>
+      <li><a href="<%= prev.path %>"><%= prev[:title] %></a></li>
+      <% end %>
+      <% if @item[:next_item] %>
+      <% next_item = @items[ @item[:next_item] ] %>
+      <li><a href="<%= next_item.path %>"><%= next_item[:title] %></a></li>
+      <% end %>
     <% end %>
   </ul>
 </div>
