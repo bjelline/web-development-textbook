@@ -244,15 +244,16 @@ Zufällige Datensätze auswählen
 Auf der Homepage index.php sollen wir 10 zufällig ausgewählte Werke
 anzeigen.  Wie geht das?
 
-<php caption="Abfrage von zufälligen Datensätzen in Postgres">
+<php caption="Abfrage von zufälligen Datensätzen in Postgres 9.4">
 $query =$dbh->query(
-  "SELECT * FROM person WHERE ifshow TABLESAMPLE SYSTEM 0.01;"
+  "SELECT * FROM projects WHERE NOT(draft) AND NOT(blocked) ORDER BY RANDOM() LIMIT 10"
 );
 $personen = $query->fetchAll(PDO::FETCH_OBJ);
 </php>
 
-Diese Verwendung von `TABLESAMPLE` ist  eine Besondernheit von 
-Postgres[*](http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM), 
+Ab Version 9.5 gibt es eine effizientere Methode mit
+`TABLESAMPLE` [*](http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM), 
+
 In anderen relationalen Datenbanken gibt es dafür andere Lösungen.  
 
 
