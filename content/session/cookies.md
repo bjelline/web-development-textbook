@@ -38,7 +38,8 @@ gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der
 gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:
 
 <javascript>
-Set-Cookie: style=gelb Set-Cookie: style=gelb; path=/admin/
+Set-Cookie: style=gelb 
+Set-Cookie: style=gelb; path=/admin/
 Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
 </javascript>
 
