@@ -61,6 +61,15 @@ Absturz bringen. Aber für die Fehlersuche kann es trotzdem sehr hilfreich sein.
 Normalerweise ist diese Option nicht auf einem Produktions-Server aktiviert,
 sondern nur auf Development oder Staging-Maschinen.
 
+Debugger
+-------
+
+xdebug ist ein debugger für PHP:
+
+* [xdbug homepage](https://xdebug.org/index.php)
+* [introduction to xdebug](http://devzone.zend.com/1120/introducing-xdebug/)
+
+
 Referenzen
 --------
 
