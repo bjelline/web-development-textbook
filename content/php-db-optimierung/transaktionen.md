@@ -3,11 +3,10 @@ title: Transaktionen
 order: 40
 ---
 
-Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
-(siehe das [MySQL Referenz Handbuch](http://dev.mysql.com/doc/refman/5.1/de/commit.html))
+Transaktionen auf Ebene von SQL, hier am Beispiel von Postgres gezeigt.
+
 
 ## ACID
-
 
 Bei der Ausführung von Transaktionen muss das Transaktionssystem die ACID-Eigenschaften garantieren:
 
@@ -32,8 +31,8 @@ Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bl
 
 ## commit
 
-<sql caption="Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst">
-START TRANSACTION;
+<sql caption="Beispiel für eine Transaktion in POSTGRES, die zwei Einfüge-Operationen zusammenfasst">
+BEGIN;
 INSERT INTO staff (id, first, last) 
   VALUES (42, 'Alyssa', 'Hacker');
 INSERT INTO salarychange (id, amount, changedate) 
@@ -43,8 +42,8 @@ COMMIT;
 
 ## rollback
 
-<sql caption="Beispiel für eine Transaktion in MySQL und zurück-gerollt wird">
-START TRANSACTION;
+<sql caption="Beispiel für eine Transaktion in Postgres, die zurück-gerollt wird">
+BEGIN;
 INSERT INTO staff (id, first, last) 
   VALUES (42, 'Alyssa', 'Hacker');
 INSERT INTO salarychange (id, amount, changedate) 
@@ -53,18 +52,6 @@ ROLLBACK;
 -- nichts ist passiert!
 </sql>
 
-## Variablen
-
-Im Zusammenhang mit Transaktionen macht es oft Sinn
-in SQL Variablen zu verwenden. Diese beginnen mit `@`,
-die Zuweisung erfolgt mit dem Operator `:=`, siehe [&rarr;](http://dev.mysql.com/doc/refman/5.6/en/user-variables.html)
-
-<sql>
-START TRANSACTION;
-SELECT @A:=SUM(salary) FROM people WHERE type=1;
-UPDATE report SET summary=@A WHERE type=1;
-COMMIT;
-</sql>
 
 
 ## Tipp: Nicht auf Input warten
@@ -72,7 +59,7 @@ COMMIT;
 Schlecht: 
 
 <sql>
-START TRANSACTION
+BEGIN;
 -- warte auf input ... beliebig lagen
 COMMIT;
 </sql>
@@ -90,11 +77,9 @@ die folgenden Anomalie auftreten:
 ## Weniger gute Transaktionen
 
 Mit `SET TRANSACTION ISOLATION LEVEL ...` kann eine weniger gut
-Version von Transaktionen in MySQL aktiviert werden.  Die möglichen
-Werte sind (laut  SQL Standard und MySQL mit InnoDB):
+Version von Transaktionen  aktiviert werden.  Die möglichen
+Werte sind (laut Postgres):
 
-
-**Read Uncommitted** Bei diesen Isolationslevel ignorieren Leseoperationen jegliche Sperre, daher können die Anomalien Dirty Read, Non-Repeatable Read und Phantom Read auftreten.
 
 **Read Committed** Dieses Isolationslevel setzt für die gesamte Transaktion Schreibsperren auf Objekten, die verändert werden sollen, setzt Lesesperren aber nur kurzzeitig beim tatsächlichen Lesen der Daten ein. Daher können Non-Repeatable Read und Phantom Read auftreten, wenn während wiederholten Leseoperationen auf dieselben Daten, zwischen der ersten und der zweiten Leseoperation, eine Schreiboperation einer anderen Transaktion die Daten verändert und committed.
 
@@ -102,10 +87,9 @@ Werte sind (laut  SQL Standard und MySQL mit InnoDB):
 
 **Serializable** Die höchste Isolationsebene garantiert, dass die Wirkung parallel ablaufender Transaktionen exakt dieselbe ist wie sie die entsprechenden Transaktionen zeigen würden, liefen sie nacheinander in Folge ab
 
-## Warnhinweis
 
-Viele SQL Anweisungen könnenin MySQL nicht in einer längeren Transaktion
-verwendet werden, sie bilden immer eine eigene Transaktion: `ALTER`, `CREATE`, `DROP`, `RENAME`.
+### Vertiefende Informationen
 
-[&rarr;](http://dev.mysql.com/doc/refman/5.1/de/innodb-implicit-command-or-rollback.html)
+  * [Transactions in Postgres](http://www.postgresql.org/docs/current/static/transaction-iso.html)
+ 
 
