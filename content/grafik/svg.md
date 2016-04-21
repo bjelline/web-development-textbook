@@ -1,6 +1,6 @@
 ---
 title: Beispiel SVG
-order: 110
+order: 20
 ---
 
 <svg width="200" height="200" style="float:left;">

@@ -350,10 +350,11 @@ die Weiterentwicklung von Javascript beeinflusst: so wurde
 querySelector und querySelectorAll erst nach jQuery in den 
 Javascript Standard aufgenommen, und landet z.B. in Firefox 3.5 im Juni 2009.
 
-Die "reine Javascript" Lösung bringt meine performance Vorteile,
+Die "reine Javascript" Lösung bringt bessere Performance,
 besonders auf mobilen Endgeräten, wo das Laden der Liberary und
 der Speicherverbrauch durch die Libraray größere Auswirkungen
 haben als am Desktop.
 
 Siehe auch
+
 * Vortrag von Estelle Weyl: "You don't need a Framework for that!", [YouTube](http://www.youtube.com/watch?v=FbpUt3XLGlE), [Slides](http://estelle.github.io/fluentconf/#slide1)
