@@ -28,9 +28,9 @@ und es bleibt `s it` übrig. Die Fehlermeldung von MySQL lautet:
 
 ### die falsche Lösung
 
-Für dieses Problem gibt es in PHP eine **einfache** und **falsche** Lösung:
+Für dieses Problem gab es in PHP bis Version 5.3.0 eine **einfache** und **falsche** Lösung:
 
-Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und
+Urspünglich veränderte PHP automatisch alle Daten die über GET, POST  und
 Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.
 Aus „That's it“ wird also automatisch „That\\'s it“ , das SQL-Statement
 funktioniert wieder:
@@ -39,15 +39,15 @@ funktioniert wieder:
 INSERT INTO werk (titel) VALUES ('That\'s it')
 </sql>
 
-Diese Automatik funktioniert aber leider nur für MySQL.
+Diese Automatik funktioniert aber leider nur für einige Datenbanken.
 Andere Datenbanken haben anderen Quoting-Konventionen, in
 anderen Kontexten muss man ganz anders Escapen.
 
 §
 
-Diese Automatik ist unter dem Namen `magic_quotes` bekannt und kann in der
-Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer
-ausschalten!
+Wenn Sie eine PHP Version größer als 5.4.0 verwenden brauchen
+Sie sich nicht mehr darum zu kümmern. Bei änternen Versionen 
+sollten Sie die `magic_quotes` abschalten:
 
 <code caption="In der Apache Konfiguration: magic quotes abschalten">
 php_flag magic_quotes_gpc off
@@ -66,7 +66,7 @@ print_r($_POST);
 echo("</pre>");
 </php>
 
-In Wirklichkeit kann man die magic Quotes nicht ganz abschalten, wie man in der
+In Wirklichkeit konnte man die magic Quotes bis Verison nicht ganz abschalten, wie man in der
 PHP Doku nachlesen kann[&rarr;](http://at.php.net/manual/de/security.magicquotes.disabling.php).
 Das Problem betrifft allerdings nur Array-Parameter.
 
@@ -111,10 +111,11 @@ Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein
 autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
 Schlüssels im neuen Datensatz mit 
 `lastInsertId`[*](http://php.net/manual/en/pdo.lastinsertid.php) 
-auslesen und weiter verwenden:
+auslesen und weiter verwenden. Nur in Postgres ist dazu der
+Name der Sequenz nötig, in MySQL reicht der Aufruf von lastInsterId ohne Argument.
 
 <php caption="Primärschlüssel des neuen Datensatzes auslesen">
-$id = $dbh->lastInsertId(); 
+$id = $dbh->lastInsertId('users_id_seq');
 header("Location: person.php?id=$id");
 </php>
 

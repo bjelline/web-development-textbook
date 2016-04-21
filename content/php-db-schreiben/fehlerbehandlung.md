@@ -98,8 +98,9 @@ try{
 
 } catch( Exception $e ) {
   include "header.php";
-  echo "<h1>Error</h1>" ;
-  echo "<p>" . $e->getMessage() . "</p>";
+  echo "<h1>Problem mit der Datenbank</h1>" ;
+  echo "<p>Bitte versuchen Sie es später wieder.</p>" ;
+  echo "<!--" . $e->getMessage() . "-->";
   include "footer.php";
   exit;
 }

@@ -111,4 +111,8 @@ verändert wie Wissen gesammelt werden kann.
  
 Dass ich am Web speichern kann wer meine FreundInnen sind, um dann mit diesen FreundInnen kurze "Status-meldungen" auszutausche - das wurde erst im 21.Jahrhundert erfunden. Wie geht es weiter?
 
+§
 
+Siehe auch
+
+* [Internet Growth](http://growthchart.weebly.com/) by Mark Schueler

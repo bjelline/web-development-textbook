@@ -28,6 +28,8 @@ und bei Textareas als Inhalt des Tags:
 <textarea name="description" rows="7">Webdesigner</textarea>
 </htmlcode>
 
+§
+
 Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder
 Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
 Beispiel in MySQL:
@@ -72,8 +74,8 @@ htmlspecialchars( $person->firstname );
 Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:
 
 <php caption="Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP">
-<input name="firstname" value="<?php echo htmlspecialchars( $person->firstname ) ?>">
-<textarea name="description" rows="7"><?php echo htmlspecialchars( $person->description ) ?></textarea>
+<input name="firstname" value="<?= htmlspecialchars( $person->firstname ); ?>">
+<textarea name="description" rows="7"><?php echo htmlspecialchars( $person->description ); ?></textarea>
 </php>
 
 ### Verarbeitung des POST-Request
@@ -205,6 +207,8 @@ erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:
 
 ![Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden](/images/tinymce.png)
 
+§
+
 Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:
 
@@ -220,6 +224,8 @@ gestellt:
 <php>
 $description = strip_tags( $_POST['description'], "<p><b>" );
 </php>
+
+§
 
 Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 
 der `description` verzichten:
