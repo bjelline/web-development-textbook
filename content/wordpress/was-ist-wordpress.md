@@ -3,7 +3,7 @@ title: Was ist Wordpress
 order: 20
 ---
 
-![Wordpress Homepage mit dem Standard Theme](/images/wordpress-default.jpg)
+[![Wordpress Homepage mit dem Standard Theme](/images/wordpress-default.jpg)](/images/wordpress-default.jpg)
 
 Wordpress ist PHP-Applikation die für das Schreiben eines Blogs gedacht war. Im Laufe
 der Jahre wurde es zu einem Content Management System ausgebaut, das auch für andere
