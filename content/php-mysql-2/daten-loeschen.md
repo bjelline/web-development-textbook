@@ -3,6 +3,8 @@ title: Löschen
 order: 30
 ---
 
+<script>document.location="/php-db-schreiben/daten-loeschen/";</script>
+
 Das Löschen könnte so einfach sein: Ein Programm mit namen `person_delete.php`,
 das als Parameter die `id` der Person erhält, die gelöscht werden soll:
 

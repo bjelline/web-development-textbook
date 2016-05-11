@@ -3,6 +3,8 @@ title: Daten Bearbeiten
 order: 40
 ---
 
+<script>document.location="/php-db-schreiben/daten-editieren/";</script>
+
 Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.
 

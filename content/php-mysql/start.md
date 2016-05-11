@@ -3,6 +3,8 @@ title: PHP und MySQL/MariaDB
 order: 10
 ---
 
+<script>document.location="/php-db-lesen/start/";</script>
+
 Mit der Verwendung einer Datenbank wird der Aufruf einer
 Webseite noch einmal komplexer:  der Webserver ruft
 das PHP Programm auf, das PHP-Programm schickt eine

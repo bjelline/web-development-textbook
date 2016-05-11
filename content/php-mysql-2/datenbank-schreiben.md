@@ -3,6 +3,8 @@ title: Web-Applikation mit Schreibrecht
 order: 20
 ---
 
+<script>document.location="/php-db-schreiben/datenbank-schreiben/";</script>
+
 In diesem Kapitel werden wir die Web-Applikation weiter entwickeln:
 Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.
 

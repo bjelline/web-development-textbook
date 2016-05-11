@@ -3,6 +3,8 @@ title: Transaktionen
 order: 40
 ---
 
+<script>document.location="/php-db-optimierung/transactionen/";</script>
+
 Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
 (siehe das [MySQL Referenz Handbuch](http://dev.mysql.com/doc/refman/5.1/de/commit.html))
 

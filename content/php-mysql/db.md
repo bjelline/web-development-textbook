@@ -3,6 +3,8 @@ title: Datenbank
 order: 5
 ---
 
+<script>document.location="/php-db-lesen/db/";</script>
+
 MySQL[*](http://www.mysql.com/) ist die relationale Datenbank, die bei
 gemietetem Webspace am öftesten angeboten wird. MySQL ist Open Source.
 

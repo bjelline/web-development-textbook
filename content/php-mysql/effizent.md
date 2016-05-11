@@ -3,6 +3,8 @@ title: Effizient Arbeiten mit der DB
 order: 30
 ---
 
+<script>document.location="/php-db-lesen/effizient/";</script>
+
 Ein wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern
 und Berechnen der Daten möglichst in der Datenbank erledigen und möglichst
 wenige Daten zu PHP übermitteln. 

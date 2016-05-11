@@ -3,6 +3,8 @@ title: Einfügen
 order: 35
 ---
 
+<script>document.location="/php-db-schreiben/daten-einfuegen/";</script>
+
 Hier das einfachste Programm, das ein neues Werk speichert:
 
 <php caption="Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!">

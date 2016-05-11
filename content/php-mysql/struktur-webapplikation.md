@@ -3,6 +3,8 @@ title: Struktur einer Web-Applikation
 order: 15
 ---
 
+<script>document.location="/php-db-lesen/struktur-webapplikation/";</script>
+
 An einem Beispiel lernen wir nun den typischen Aufbau einer einfachen Web-Applikation
 kennen. Die fertige Applikation soll Werke und Personen aus einem
 Gemeinschafts-Portfolio anzeigen:

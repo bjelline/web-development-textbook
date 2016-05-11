@@ -3,6 +3,7 @@ title: Transaktionen und PHP
 order: 50
 ---
 
+<script>document.location="/php-db-optimierung/transaktionen-und-php/";</script>
 
 Die Datenbankschnittstelle `PDO` bietet für den Umgang mit Transaktionen die
 Methoden `beginTransaction`, `commit` und `rollback` an.  Wenn die

@@ -3,6 +3,10 @@ title: Indexes
 order: 20
 ---
 
+
+<script>document.location="/php-db-optimierung/indexes/";</script>
+
+
 <sql caption="Eine Abfrage die sehr lange dauert">
 mysql> mysql> SELECT  `tracks`.* FROM `tracks`  WHERE (active = 1) ORDER BY likes DESC LIMIT 12 OFFSET 0;
 +-------+----------------+-------+--------+---------+

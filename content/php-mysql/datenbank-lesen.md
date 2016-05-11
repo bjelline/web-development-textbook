@@ -3,6 +3,8 @@ title: Lesen aus der Datenbank
 order: 20
 ---
 
+<script>document.location="/php-db-lesen/datenbank-lesen/";</script>
+
 Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.
 

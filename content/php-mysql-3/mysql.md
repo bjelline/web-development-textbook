@@ -3,6 +3,8 @@ title: Database Engines
 order: 10
 ---
 
+<script>document.location="/php-db-optimierung/";</script>
+
 Achtung: während Indexes von MySQL und MariaDB immer unterstütz
 werden, sind Constraints und Transaktionen nur in manchen "Database Engines"
 verfügbar.

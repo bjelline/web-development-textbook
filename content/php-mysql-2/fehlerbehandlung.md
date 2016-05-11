@@ -3,6 +3,8 @@ title: Fehlerbehandlung
 order: 50
 ---
 
+<script>document.location="/php-db-schreiben/fehlerbehandlung/";</script>
+
 Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
 könnte.  Zum Beispiel könnte beim Einfügen in die Datenbank ein Constraint verletzt werden
 und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?

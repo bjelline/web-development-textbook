@@ -3,7 +3,7 @@ title: Constraints
 order: 30
 ---
 
-TODO
+<script>document.location="/php-db-optimierung/constraints/";</script>
 
 
 <sql>
