@@ -47,10 +47,11 @@ keine Implementierungen, siehe [Draft: CSS Shapes](https://drafts.csswg.org/css-
 Seit 2013 liegt der Standard für CSS Transforms vor, er
 ist aber immer noch ein "Draft".  In den Browsern sind [3D Transforms aber längst implementiert](http://caniuse.com/#search=perspective)
 
-![Bild](/images/weather-app-transition.png)
+![Bild](/images/weather-app-transition.jpg)
 
 Von David DeSandro gibt es ein ausführliches [Tutorial](http://desandro.github.io/3dtransforms/) dazu.
 
+## Resume
 
-* [CSS Tricks: Shapes](https://css-tricks.com/examples/ShapesOfCSS/)
-* [Perspective in CSS](https://www.w3.org/TR/css-transforms-1/)
+Im zweifelsfall sollten Sie immer die einfachste technische Lösung
+für ihr Problem wählen. Bei Grafik kann das ganz oft einfaches HTML + CSS sein.
