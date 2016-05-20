@@ -7,7 +7,7 @@ Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
 
 <javascript caption="Funktionen definieren">
   function r1( s, x ) {
-    var result = "";
+    let result = "";
     while( x ) {
       result += s;
       x--;
@@ -16,13 +16,40 @@ Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
   }
 
   r2 = function ( s, x ) {
-    var result = "";
+    let result = "";
     while( x ) {
       result += s;
       x--;
     }
     return result;
   }
+</javascript>
+
+§
+Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function
+
+<javascript caption="Arrow Function">
+  ( s, x ) => {
+    let result = "";
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+</javascript>
+
+Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer:
+
+<javascript caption="Arrow Function">
+  ( s, x ) => s + " mal " + x;
+</javascript>
+
+Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
+die Argumente weglassen:
+
+<javascript caption="Arrow Function">
+  x => x + " ist das beste";
 </javascript>
 
 §
@@ -32,23 +59,31 @@ Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktione
 Teile von Objekten oder Arrays definieren:
 
 <javascript caption="Funktionen in JSON">
-  var objekt = {
+  objekt = {
     prop1 : "string",
     prop2 : 42,
-    method_1 : function () {  console.log( "method 1" ) }
+    method_1 : function () {  console.log( "method 1" ); },
+    method_2 : x => x + " ist das beste"
   }
+</javascript>
+
+Die beiden Methoden kann man ganz normal aufrufen:
+
+<javascript caption="Methoden aufrufen">
+objekt.method_1();
+objekt.method_2("Schokolade");
 </javascript>
 
 §
 
-Es gibt auch mehrere Arten eine (schon definierte) Funktion aufzurufen: neben
-der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
+Zusätzlich zum einfachen Aufruf mit Funktionsname, Klammern, Argumenten `f(x)`
+gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen: 
 `call` und `apply`:
 
-<javascript caption="Funktion aufrufen">
-  repeat("hallo ", 10);
-  repeat.call(null, "hallo ", 10);
-  repeat.apply(null, [  "hallo ", 10 ]  );
+<javascript caption="Funktion r aufrufen">
+  r("hallo ", 10);
+  r.call(null, "hallo ", 10);
+  r.apply(null, [  "hallo ", 10 ]  );
 </javascript>
 
 ## Eine Funktion ist ein Objekt
@@ -114,22 +149,30 @@ Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist `this` au
   // this.prop2 = 42
 </javascript>
 
+Achtung: Arrow Functions verhalten sich hier anders!  
+
 §
 
-Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen `f()`,
-dann nimmt Javascript ein implizites Objekt an:
+Wird eine Methode mit einer Arrow Function definiert, dann bezieht
+sich `this` nicht auf das aufrufende Objekt, sondern behält seinen
+Wert:
 
-<javascript caption="this in einer normalen Funktion (explizite Schreibweise)">
-  window.f = function() {
-    console.log("this = " + this);
+<javascript caption="this in einer Methode">
+  var objekt = {
+    prop1 : "string",
+    prop2 : 42,
+    f : () => {  
+      console.log( "this = " + this ) 
+      console.log( "this.prop2 = " + this.prop2 ) 
+    }
   }
 
-  window.f();
+  objekt.f();
 
   // output auf der Console:
   // this = [object Window]
+  // this.prop2 = 42
 </javascript>
-
 §
 
 Nun macht auch das erste Argument der Funktionen `call` und `apply` Sinn: das erste
@@ -146,7 +189,7 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:
 
 §
 
-Bei Event-Handlern wird `this` anders gesetzt:
+Bei Event-Handlern wird `this` wieder anders gesetzt:
 
 <javascript caption="this im Event Handler">
   function f() {
