@@ -26,6 +26,7 @@ Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
 </javascript>
 
 §
+
 Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function
 
 <javascript caption="Arrow Function">
@@ -86,45 +87,21 @@ gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen:
   r.apply(null, [  "hallo ", 10 ]  );
 </javascript>
 
-## Eine Funktion ist ein Objekt
-
-Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
-die man mit der ganz normalen Schreibweise setzten kann:
-
-<javascript caption="Funktion mit einem Attribut">
-  function repeat( s, x ) {
-    var result = "";
-    while( x ) {
-      result += s;
-      if( repeat.sep && x > 1 ) result += repeat.sep;
-      x--;
-    }
-    console.log(result);
-    return result;
-  } 
-
-  repeat("x", 3);
-  // rückgabewert ist "xxx";
-
-  repeat.sep = ", ";
-  repeat("x", 3);
-  // rückgabewert ist "x, x, x";
-</javascript>
-
-
 ## Was ist this?
 
 Die Variable `this` hat eine besondere Bedeutung in Javascript Funktionen.
-Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist `this` auf das `window` Objekt:
+Erst einmal verweist `this` auf das `window` Objekt:
 
 <javascript caption="this in einer normalen Funktion">
   function f() {
     console.log("this = " + this);
   }
 
+  console.log("this = " + this);
   f();
 
   // output auf der Console:
+  // this = [object Window]
   // this = [object Window]
 </javascript>
 
@@ -171,8 +148,9 @@ Wert:
 
   // output auf der Console:
   // this = [object Window]
-  // this.prop2 = 42
+  // this.prop2 = undefined
 </javascript>
+
 §
 
 Nun macht auch das erste Argument der Funktionen `call` und `apply` Sinn: das erste
@@ -186,6 +164,15 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:
   objekt.f.call(anderes_objekt, "hallo ", 10);
   objekt.f.apply(anderes_objekt, [  "hallo ", 10 ]  );
 </javascript>
+
+Es gibt noch eine dritte method `bind` die nur `this` neu festsetzt,
+und die funktion sonst unverändert lässt:
+
+<javascript>  
+  f2 = objekt.f.bind(anderes_objekt);
+  f2.("hallo ", 10);
+</javascript>
+
 
 §
 
@@ -208,13 +195,14 @@ HTML-Element aufgerufen. `this` zeigt in diesem Fall also auf den Button.
 
 §
 
-Die Funktion erhält aber noch mehr Informationen zum Event,
+Die als Listener definierte Funktion erhält aber noch mehr Infos zum Event,
 und zwar als Argument:
 
 <javascript caption="this und event im Event Handler">
   function f( ev ) {
     console.log("this = " + this);
     console.log("ev = " + ev);
+    console.log("ev.target = " + ev.target);
   }
  
   document.getElementById("button").addEventListener("click", f);
@@ -223,6 +211,7 @@ und zwar als Argument:
   // output in der Console:
   // this = [object HTMLInputElement]
   // ev = [object MouseEvent]
+  // ev.target = [object HTMLInputElement]
 </javascript>
 
 §
@@ -253,4 +242,35 @@ Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen.
 Innerhalb der Konstruktur-Funktion `Studiengang` ist bereits
 ein neues Objekt vorhanden, und über `this` zugänglich. Dieses
 Objekt ist auch automatisch Rückgabewert der Funktion.
+
+Arrow Funktionen können nicht als Constructor verwendet werden.
+Dafür gibt es in Javascript 2015 `class` und `constructor` als Alternative.
+
+§
+
+## Eine Funktion ist ein Objekt
+
+Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
+die man mit der ganz normalen Schreibweise setzten kann:
+
+<javascript caption="Funktion mit einem Attribut">
+  function repeat( s, x ) {
+    var result = "";
+    while( x ) {
+      result += s;
+      if( repeat.sep && x > 1 ) result += repeat.sep;
+      x--;
+    }
+    console.log(result);
+    return result;
+  } 
+
+  repeat("x", 3);
+  // rückgabewert ist "xxx";
+
+  repeat.sep = ", ";
+  repeat("x", 3);
+  // rückgabewert ist "x, x, x";
+</javascript>
+
 
