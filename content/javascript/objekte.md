@@ -5,46 +5,53 @@ order: 20
 
 Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
 Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
-z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in Javascript oder .. oder .. nicht der Fall.
+z.B. in Java, C++, C#, PHP diese Objekte immer in Klassen organisiert sind, ist das in Javascript nicht
+zwingend der Fall.
 
 Trotzdem gibt es in Javascript Mechanismen wie Vererbung und Komposition.
-
 In diesem Kapitel lernen wir diese Mechanismen kennen.
 
-## Objekt mit Objekten
+## Ein einzelnes Objekt 
 
-In folgendem Beispiel hat der Konstruktor `Studiengang` drei Argumente. Als
-drittes Argument wird ein Objekt übergeben:
+Wie Sie ein einzelnes Objekt, das Properties und Methoden haben kann, mittels
+JSON erzeugen wissen Sie ja schon:
 
-<javascript caption="Objekt mit Objekt">
+<javascript caption="Objekt in JSON Schreibweise">
 var hs = {
   name: "FH Salzburg",
   typ: "Fachhochschule",
-  seit: 1996
+  seit: 1996,
+  alter: function() { return  (new Date).getYear() + 1900 - this.seit }
 };
 
-function Studiengang(name, seit, hs) {
-  this.name = name;
-  this.seit = seit;
-  this.hs = hs;
-}
-
-mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs );
-mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs );
+console.log( hs.alter() );  // 20
 </javascript>
 
-§
 
-Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
-beiden Studiengangs-Objekten `mmtb` und `mmtb` auf das gleiche Objekt 
-verwiesen:
+## Konstruktur-Funktion für mehrere gleiche Objekte
 
-![Abbildung: Objekt mit Objekt](/images/objekt-mit-objekt.png)
+Sollen mehrere gleichartige Objekte erzeugt werden, dann
+geschieht das in Javascript mit einer Konstruktur Funktion: 
 
-## Objekt und Konstruktor
+<javascript caption="Konstruktor für Objekte">
+function Studiengang(name, seit, hochschule) {
+  this.name = name;
+  this.seit = seit;
+  this.hs = hochschule;
+}
 
-Jedes Objekt enthält auch einen Verweis auf die Konstruktor-Funktion - falls
-keine verwendet wurde auf die Funktion `Object()`.
+mmad = new Studiengang( "DI(FH) MultiMediaArt", 1996, hs);
+mmab = new Studiengang( "BA MultiMediaArt", 2006, hs);
+mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs);
+mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs);
+</javascript>
+
+Jedes dieser Objekte hat nun eine Eigenschaft `name`
+ und eine Eigenschaft `seit`.
+
+Die so erzeugten Objekte bleiben mit der Konstruktor-Funktion
+verbunden - falls keine verwendet wurde auf die Funktion `Object()`:
+
 
 <javascript caption="Fortsetzung: Konstruktor-Funktionen">
 // folgende Ausdrücke sind true:
@@ -92,6 +99,8 @@ Studiengang.prototype.toString = function () {
     " @ " + this.hs.name + ")";
 }
 
+typeof Studiengang;  // function! 
+
 mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs );
 mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs );
 
@@ -118,104 +127,55 @@ wird das Attribut `min` direkt im Objekt gefunden, hier ist kein Zugriff auf den
 
 ![Abbildung: Objekt mit Konstruktor](/images/objekt-mit-prototyp.png)
 
-## Vererbung
 
-Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Prototypen:
+## Javascript 2015 Schreibweise mit `class`
 
-<javascript caption="Vererbung von Attributen">
-  // ----- Pet ---------
-  function Pet() {
-    this.status = "sleeping";
-  }
-  Pet.prototype.log = function() {
-    console.log("i am " + this.status.get() + 
-      ". " + this.word + "!");
-  }
+In Javascript 2015 wurde eine neue Schreibweise für Objekte und Konstruktoren
+eingeführt. Die Funktionsweise der Objekte, Konstruktur-Funktionen und Prototypen
+wurde dadurch nicht verändert.
 
-  // ----- Mammal ---------
-  function Mammal() {
-    this.legs = 4;
-  }
-  Mammal.prototype = new Pet();
-  Mammal.prototype.constructor = Mammal;
+Einziger Unterschied zwischen dieser Schreibeweise und der Schreibweise
+als Funktion ist die Sichtbarkeit: in der Funktions-Schreibweise wird der Konstruktor
+gehoisted (ist weiter oben schon sichtbar), in der Klassen-Schreibweise nicht. 
 
-  // ----- Dog --------
-  function Dog( b ) {
-    this.breed = b;
-    this.word = "wau! ";
-  }
-  Dog.prototype = new Mammal();
-  Dog.prototype.constructor = Dog;
+<javascript caption="Methoden und Attribute definieren mit dem Prototyp">
 
-  Dog.prototype.sit = function() {
-    this.status.set("sitting");
+class Studiengang {
+
+  constructor (name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
   }
 
-  d = new Dog("beagle");
-  d.word    // direkt im Objekt gespeichert
-  d.legs    // im Prototyp von Dog gespeichert 
-            // (einem Mammal-Objekt)
-  d.status  // im Prototyp von mammal gespeichert 
-            // (einem Pet-Objekt)
+
+  toString () {
+    return "Studiengang " + this.name + 
+      " (seit " + this.seit + 
+      " @ " + this.hs.name + ")";
+  }
+
+} 
+
+// Zwei Attribute am prototyp des Konstruktors
+Studiengang.prototype.min = 2;
+Studiengang.prototype.max = 42;
+
+typeof Studiengang;  // function! 
+
+mmtb = new Studiengang( "BSc MultiMediaTechnology", 2008, hs );
+mmtm = new Studiengang( "MSc MultiMediaTechnology", 2011, hs );
+
+mmtb.toString();  // findet toString Methode des 
+            // Prototypen und ruft sie auf
+
+mmtb.min    // findet min Attribut des Prototypen
+            // gibt Wert 2 
+mmtb.min=5  // speichert Wert 5 im Objekt selbst
+mmtb.min    // gibt jetzt Wert 5
+mmtm.min    // findet min Attribut des Prototypen, 
+            // gibt Wert 2 
 </javascript>
-
-[Demo mit Visualisierung](/images/js-vererbung-vis.html)
-
-Diese Vererbungs-Kette über die Prototypen nenn man auf english "prototype chain". 
-
-Achtung: die Konstruktoren der übergeordenten Objekte werden nur einmal aufgerufen,
-das kann zu unerwarteten Effekten führen:
-
-<javascript caption="Vererbung von Attributen">
-  // ----- Pet ---------
-  function Pet() {
-    this.status = new Status();
-  }
-  // ....
-  Mammal.prototype = new Pet();
-  // ....
-  d1 = new Dog("Beagle");
-  d2 = new Dog("Schnauzer");
-  
-  d1.status === d2.status // es gibt nur ein Status-Objekt 
-                          // für alle Mammals!
-  d1.hasOwnProperty('status'); // false
-
-  d1.status = new Status('playing');
-
-  d1.status === d2.status      // false
-  d1.hasOwnProperty('status'); // true
-</javascript>
-
-
-## Das Wunder des dreibeinigen Hundes
-
-Der Schnauzer hat einen schrecklichen Unfall, und verliert ein Bein:
-
-<javascript caption="Vererbung von Attributen">
-d1 = new Dog("Beagle");
-d2 = new Dog("Schnauzer");
-d2.legs = 3;
-
-console.log(d1.legs); // 4 Beine von Mammal
-console.log(d2.legs); // 3 Beine 
-
-d1.hasOwnProperty('legs') // ... false
-d2.hasOwnProperty('legs') // ... true
-</javascript>
-
-Doch nun geschieht ein Wunder: wenn wir mit `delete` das
-Attribut `legs` aus `d2` entfernen hat er wieder 4 Beine - weil
-das im prototypen so gespeichert ist.
-
-<javascript caption="Vererbung von Attributen">
-delete(d2.legs);
-
-console.log(d2.legs);     // 4 Beine 
-d2.hasOwnProperty('legs') // ... false
-</javascript>
-
-
 
 ## Verteifung
 

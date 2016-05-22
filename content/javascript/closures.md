@@ -11,56 +11,6 @@ In diesem Kapitel lernen wir die Besonderheiten
 von Funktionen in Javascript kennen, darunter
 auch Closures [&rarr;](http://de.wikipedia.org/wiki/Closure).
 
-## Funktionen und Sichtbarkeit von Variablen
-
-In einer Funktion in Javascript sind lokale und globale
-Variablen sichtbar.  Da Funktionen auch innerhalb von
-Funktionen definiert werden können sind in folgendem Code
-die Variablen a, b und c in der innern Funktion f sichtbar
-
-<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
-  var a = 1;
-  function g( x ) {
-    var b = 2;
-    var s = "Ein String aus g ... ";
-    function f( y ) {
-      var c = 3;
-      return "die Werte sind " + [a,b,c,x,y].join(", ");
-    }
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
-  console.log(a);  // 1
-  console.log(b);  // ReferenceError: b is not defined
-  console.log(c);  // ReferenceError: c is not defined
-  console.log(x);  // ReferenceError: x is not defined
-  console.log(y);  // ReferenceError: y is not defined
-</javascript>
-
-§
-
-Eine Besonderheit von Javascript ist das "Hochziehen" (hoisting): Alle
-Variablen-Deklarationen mit `var` werden an den Anfang der jeweiligen Funktion 
-vor-verlegt.  Folgender Code ist also gleichbedeutent:
-
-<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
-  function g( x ) {
-    var s = "Ein String aus g ... ";
-    function f( y ) {
-      var c = 3;
-      return "die Werte sind " + [a,b,c,x,y].join(", ");
-    }
-    var b = 2; // var b wird hochgezogen zum Beginn von g()
-               // die Initialisierung b = 2 bleibt hier!
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
-</javascript>
-
 
 ## Funktionen und Lebenszeit von Variablen
 
