@@ -1,5 +1,5 @@
 ---
-title: Beispiel SVG
+title: SVG - Vektor Grafik
 order: 20
 ---
 
@@ -220,6 +220,41 @@ lokales Koordinatensystem definieren.
   ...
 </g>
 </xml>
+
+
+## SVG mit Javascript erzeugen
+
+Der SVG-Tag kann direkt in einem HTML-Dokument verwendet werden, so wie auf dieser Seite.
+Wenn man SVG-Nodes mit Javascript in das DOM einfügen will braucht man
+eine neue Variante des `createElement` befehls: create Element with Namespace.
+Der Namespace für SVG ist `http://www.w3.org/2000/svg`.
+
+<javascript>
+const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width", width);
+svg.setAttribute("height", height);
+
+document.getElementById('grafik').appendChild( svg );
+
+rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+svg.appendChild( rect );
+</javascript>
+
+Achtung: jQuery kennt nur Methoden zum Erzeugen von HTML, nicht von
+SVG. Aber man kann sich schnell eine SVG-Erzeugungs-Method bauen 
+(Lösung [von Matthieu Charbonnier](http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466))
+
+
+<javascript>
+function $s(elem) {
+  return $(document.createElementNS('http://www.w3.org/2000/svg', elem));
+}
+
+var $svg = $s("svg");
+var $circle = $s("circle").attr({...});
+$svg.append($circle);
+</javascript>
+  
 
 ## Mehr
 
