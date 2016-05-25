@@ -170,7 +170,7 @@ document.querySelector('h2')
 
 // Form-Element deaktivieren
 document.querySelector('input')
-  .disabled = "disabled";
+  .disabled = true;
 
 // existiert nicht
 
@@ -226,15 +226,6 @@ Klassen setzen:
 
 <javascript caption="Klassen setzen">
 // Klassen setzen
-
-
-$('#foo').addClass('bar');
-$('#foo').removeClass('bar');
-$('#foo').toggle('bar');
-// Klassen abfragen
-$('#foo').hasClass('bar');
-__|__
-// Klassen setzen
 var cl = d.querySelector('#foo')
            .classList;
 cl.add('bar');
@@ -242,6 +233,15 @@ cl.remove('bar');
 cl.toggle('bar');
 // Klassen abfragen
 cl.contains('bar');
+__|__
+// Klassen setzen
+
+
+$('#foo').addClass('bar');
+$('#foo').removeClass('bar');
+$('#foo').toggle('bar');
+// Klassen abfragen
+$('#foo').hasClass('bar');
 </javascript>
 
 ## HTML einfügen
