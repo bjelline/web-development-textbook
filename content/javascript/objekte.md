@@ -177,7 +177,7 @@ mmtm.min    // findet min Attribut des Prototypen,
             // gibt Wert 2 
 </javascript>
 
-## Verteifung
+## Vertiefung
 
 Dies war nur ein erster Einstieg in die objektorientierte Programmierung mit Javascript.
 Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:

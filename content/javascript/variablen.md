@@ -126,6 +126,7 @@ y[2].push( 200 );   //               und kann erweitert werden!
 JSON.stringify(yy); // "[1,2,[100,200]]"
 
 const z = { farbe: 'grün', anzahl : 4, other : { a:1, b:2, c:3 } }
+Object.freeze(z);
 z['farbe'] = 'rot'; // Wert wird nicht verändert, kein Fehler
 z.kg = 12;          // Wert wird nicht hinzu gefügt, kein Fehler
 z.other.a = 100;    // Wert im verschachtelten Objekt kann geändert werden!
