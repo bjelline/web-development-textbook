@@ -314,17 +314,18 @@ In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Varia
   alert("Die Beschriftung lautet " + c[e] );
 </javascript>
 
-### Schleife über Eigenschaften
+### Einfache Schleife 
 
-Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:
+Neben der `while` und `for` Schleife mit index 
+gibt es in Javascript noch möglichkeiten über
+die Werte in einem Array zu iterieren **ohne** den
+index zu benötigen:
 
 <javascript>
-  var i,t;
-  t = "Das Objekt:\n";
-  for( i in c ) {
-      t += "Eigenschaft = " + i    + ", ";
-      t += "Wert        = " + c[i] + "\n";
-  }   
-  alert(t);
+  let liste = [10, 20, 30];
+
+  for (let element of liste) {
+    console.log(element);
+  }
 </javascript>
 
