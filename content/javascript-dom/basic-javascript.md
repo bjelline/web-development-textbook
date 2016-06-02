@@ -195,12 +195,24 @@ Folgendes Beispiel verwendet die Methode `getElementById` des `document`-Objekts
 
 ### Variablen
 
-In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. 
+In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript war die Deklaration lange nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. 
 
 Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. 
 
 
 ![Abbildung 58: Javascript Console in Firebug](/images/image264.png)
+
+Mit Javascript 2015 gibt nun drei Arten eine Variable zu deklarieren:
+
+<javascript caption="deklaration">
+var a;  // altmodisch
+
+let b;    // neumodisch, variable
+const c;  // neumodisch, konstante
+</javascript>
+
+Die Details zu `let` und `const` lernen Sie später im Kapitel [Variablen und Scope](/javascript/variablen/)
+
 
 ### Datentypen
 
@@ -218,6 +230,19 @@ Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden:
 bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
 darüber nur noch floats.  Die Details
 können Sie in [How numbers are encoded in JavaScript](http://www.2ality.com/2012/04/number-encoding.html) nachlesen.
+
+### Strings
+
+In Javascript gibt es drei Arten Strings zu schreiben.
+
+<javascript caption="drei Arten Strings zu schreiben">
+a = "Hallo"; 
+b = 'Welt';
+c = `Hallo ${b}, der brutto Preis ist ${100 * 1.5}`;
+</javascript>
+
+Die letzte, genannt  **template literals**, erlaubt das einbinden von Variablen und das
+Auswerten von Javascript-Expressions.  Siehe auch [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
 ### Arrays
 
