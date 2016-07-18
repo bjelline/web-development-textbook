@@ -21,3 +21,4 @@ intro: Nachdem Sie nun einfache Formatierungen im CSS beherrschen lernen Sie wie
 
 * Marcotte(2011): [Responsive Design](http://www.amazon.com/Responsive-Design-Brief-People-Websites/dp/098444257X/)
 * Responsive News(2013): [Tables](http://responsivenews.co.uk/post/52382349921/tables) - Wie macht man Tabellen responsive?  eine harte Nuss
+* Takada(2015): [Learn CSS Layout the pedantic way](http://book.mixu.net/css/index.html)
