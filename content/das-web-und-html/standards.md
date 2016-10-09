@@ -5,15 +5,14 @@ order: 20
 
 Für diese Lehrbuch ist eine technische Sicht auf das World Wide Web die relevante. 
 Das World Wide Web ist also ein verteiltes (Client/Server) Informationssystem, 
-das durch folgende drei Standards in der jeweils aktuellen Form definiert wird:
+das durch folgende drei Standards definiert wird:
 
-* URL  <!-- XE "URL" -->   (Uniform Resource Locators) nach [RFC 1738](http://www.w3.org/Addressing/rfc1738.txt)
-* HTTP  <!-- XE "HTTP" -->   (Hypertext Transfer Protocol) nach [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616.html)
+* URL  <!-- XE "URL" -->   (Uniform Resource Locators) ursprünglich [RFC 1738](http://www.w3.org/Addressing/rfc1738.txt)
+* HTTP  <!-- XE "HTTP" -->   (Hypertext Transfer Protocol) ursprünglich [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616.html)
 * HTML  <!-- XE "HTML" -->    <!-- XE "XHTML" -->   (Hypertext Markup Language) 
 
-Wir befinden uns gerade im Übergang auf HTML 5. Noch ist der HTML 5 Standard
-nicht ganz fertig und ganz offiziell - aber er wird 
-schon von den gängigen Browsern umgetzt.  
+Die aktuelle Version von HTTP ist 1.2, wir befinden uns gerade im Übergang auf HTTP 2.0
+HTML verwenden wir in der Version 5. 
 
 Rund um diese drei Standards ordnen sich weitere wichtige Begriffe an:
 
@@ -24,13 +23,13 @@ Das Client  <!-- XE "Client" -->  /Server  <!-- XE "Server" -->   Prinzip ist ei
 Dienste in einem Computernetzwerk aufgebaut sein können: Ein Server ist ein Computer der 
 einen bestimmten Dienst anbietet, ein Client ist der „Kunde“, also der Computer der den 
 Dienst in Anspruch nimmt.
-Nach diesem Prinzip funktionieren Web, E-Mail, FTP:
+Nach diesem Prinzip funktionieren Web, E-Mail, SFTP:
 
 | Dienst | Client | Server |
 |:--------|:-------|:-------|
 |Web|Webbrowser  <!-- XE "Webbrowser" --> - lädt Webseiten vom Server und stellt sie dar|Webserver  <!-- XE "Webserver" -->   – liefert auf Anfrage die Webseiten|
 |E-Mail|E-Mail  <!-- XE "E-Mail" --> Programm – lädt E-Mails vom Server, zeigt sie an, kann neue E-Mails an einen Server schicken der sie zustellt, …|Mailserver – speichert E-Mail in verschiedenen Postfächern, leitet E- Mail weiter (an den Server der EmpfängerIn)|
-|FTP|FTP-Client  <!-- XE "FTP" -->   – lädt Dateien von einem Server herunter oder auf einen Server hinauf|FTP-Server – speichert Dateien|
+|SFTP|SFTP-Client  <!-- XE "SFTP" -->   – lädt Dateien (verlüsselt) von einem Server herunter oder auf einen Server hinauf|SFTP-Server – speichert Dateien|
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 
@@ -51,32 +50,32 @@ mit grafischer Oberflächen stark zur Verbreitung des World Wide Web beigetragen
 die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->,   Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" -->  
 und Chrome (in Versionen aus verschiedenen Jahren).
  
-![Abbildung 4: Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)](/images/browsers.png)
+![Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)](/images/browsers.png)
 
 §
 
 Alle eben erwähnten Browser haben gemeinsam, dass sie auf einem typischen „Büro-
 Computer“ eingesetzt werden, einem Computer mit grafischer Oberfläche und einem Farb-
 Monitor. 
-Es gibt aber auch „exotischere“ Browser. Abbildung 5 zeigt den Browser lynx,
+Es gibt aber auch „exotischere“ Browser. Die nächste Abbildung zeigt den Browser lynx,
 der nur Text darstellt, aber keine Bilder. Daneben sehen Sie eine 
 „Braille  <!-- XE "Braille" -->   Ausgabezeile“, ein Gerät, das eine Zeile Text in eine Zeile 
 Blindenschrift übersetzt. Mit diesem Webbrowser und diesem Ausgabegerät können Blinde 
 im Web surfen. 
     
-![Abbildung 5: Text-Only Browser "links" und Braille Ausgabegerät](/images/anderebrowser.png)
+![Text-Only Browser "lynx" und Braille Ausgabegerät](/images/anderebrowser.png)
 
 §
 
 In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutung 
 zugenommen: Smartphones und Tablets. 
 
-![Abbildung 6a: Aufstieg und Fall des PCs, zitiert aus asymco.com/2012](/images/rise-and-fall-pc.png)
+![Aufstieg und Fall des PCs, zitiert aus asymco.com/2012](/images/rise-and-fall-pc.png)
 
 Auf diesen neuen Geräten gibt es auch Webbrowser - teilweise spezialisierte Software (Android Browser), teilweise
 adaptionen der klassischen Desktop Browser (Firefox).
  
-![Abbildung 6b: Browser auf mobilen Geräten: Handys und iPad, 2010](/images/image031.png)
+![Browser auf mobilen Geräten: Handys und iPad, 2010](/images/image031.png)
 
 Webseite
 --------
@@ -94,7 +93,23 @@ dem englischen Wort Website  <!-- XE "Website" -->  . Eine Website besteht aus m
 Webseiten, die zusammen gehören und untereinander verlinkt sind. Achtung: es gibt kein Wort <strike>Webside</strike>. 
 
  
-![Abbildung 7: Ein Browser zeigt eine lange Webseite an](/images/image033.png)
+![Ein Browser zeigt eine lange Webseite an](/images/image033.png)
+
+Webserver
+---
+
+Als Webserver bezeichnet man entweder den ganzen Computer, 
+oder speziell nur die Software, die eine Webseite liefert. 
+
+Es gibt zwei Open Source Projekte die
+meist als Webserver verwendet werden und auf allen
+Betriebssystemen laufen:
+
+* Apache
+* nginx
+
+Von Microsoft gibt es noch den Internet Information Server (IIS),
+der nur auf Windows läuft.
 
 URL
 ---
@@ -481,4 +496,6 @@ Das war ein sehr einfachs Beispiel, wie das Protokoll ablaufen kann. Einen tiefe
 Quellen und weiter Lektüre
 ---------
 
-* [Aufstieg und Fall des PCs](http://www.asymco.com/2012/01/17/the-rise-and-fall-of-personal-computing/)  (Abbildung 6a)
+* [Aufstieg und Fall des PCs](http://www.asymco.com/2012/01/17/the-rise-and-fall-of-personal-computing/)  
+* [HTML5 Candidate Recommendation](https://www.w3.org/TR/html5/)
+* [RFC 7540 - HTTP/2](https://tools.ietf.org/html/rfc7540)

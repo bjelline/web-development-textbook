@@ -44,7 +44,7 @@ Upload
 
 <!-- XE "Upload" -->  
 Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH Salzburg steht Ihnen 
-dafür der  Webserver multimediatechnology.at zur Verfügung. 
+dafür der  Webserver users.multimediatechnology.at zur Verfügung. 
 Um die Daten vom eigenen Computer auf den Webserver zu laden gibt es verschiedene 
 Methoden, die wichtigsten sind FTP,  <!-- XE "FTP" -->   WebDAV,  <!-- XE "WebDAV" -->  SFTP.
 
@@ -67,9 +67,9 @@ Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähn
 
 Ein paar Programme zum Upload:
 
-* [Secure File Transfer Client](http://winscp.net)  <!-- XE "Secure File Transfer Client" -->  : nur für SFTP, nur auf Windows.
 * [FireFTP](https://addons.mozilla.org/en-US/firefox/addon/fireftp/),  <!-- XE "FireFTP" -->    <!-- XE "Firefox AddOn:FireFTP" -->  ein AddOn von Firefox, Windows und Mac.
-* [Dreamweaver](http://www.adobe.com/products/dreamweaver.html)  <!-- XE "Dreamweaver" -->  :  Upload ist nach der Definition einer „Site“ möglich, auf Windows und Mac.
+* [Secure File Transfer Client](http://winscp.net)  <!-- XE "Secure File Transfer Client" -->  : nur für SFTP, nur auf Windows.
+* [PHPStorm](https://www.jetbrains.com/help/phpstorm/2016.2/working-with-web-servers-copying-files.html)  <!-- XE "PHPStorm" -->  :  Upload ist nach der Definition einer „Server Access Configuration“ möglich, auf Windows und Mac.
 
 §
 

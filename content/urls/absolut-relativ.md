@@ -77,8 +77,8 @@ Zwei Punkte als Ordnernamen bedeuten dabei: „raus aus dem aktuellen Ordner“:
 Dieser Schreibweise erlaubt auch sehr umständliche Formulierungen
 (mit Redundanz):
 
-    http://multimediatechnology.at/2011/06/19/ruby
-                   +     ../../2008/05/../04/17/rattenscharfes-computergame = 
+    http://multimediatechnology.at/2011/06/19/ruby.html
+                   +     ../../../2008/05/../04/17/rattenscharfes-computergame.html = 
     http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame
 
 ## Alles nur im Client 
