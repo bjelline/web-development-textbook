@@ -361,6 +361,9 @@ Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberich
 Als Datenformate für <img>-Bilder werden drei Pixel-Formate von vielen Browsern 
 unterstützt, erst seit kurzem auch das Vektor-Format svg:
 
+svg
+: Vektor-Format, das Bild kann beliebig groß oder klein dargestellt werden.  
+
 gif
 : Palette von 255 Farben + 1 Transparenz-Farbe (kein Alpha). „animiertes 
 Gif“ enthält mehrere Bilder, die der Reihe nach angezeigt werden (Daumenkino). 
@@ -373,9 +376,6 @@ Besonders geeignet für Bilder mit Farbverläufen, z. B. Photos.   <!-- XE "jpg"
 
 png
 : Palette von 255 oder von x Farben, mit Alpha-Transparenz.  <!-- XE "png" -->  
-
-svg
-: Vektor-Format, das Bild kann beliebig groß oder klein dargestellt werden.  
 
 
 Ideal wäre, das Format auszuwählen, in dem das Bild nichts an Qualität verliert, und die 

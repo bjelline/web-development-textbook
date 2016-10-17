@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Seite für Responsive Images</title>
+    <style>
+      img { 
+        width: 1353px; height: 461px;
+        clip-path: polygon(0% 0%, 10% 0%, 10% 100%, 0% 100%, 0% 0%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bild in drei Versionen</h1>
+
+    <p>Bild in Größe 1353px mal 461px</p>
+    <img src="salzburg.jpg">
+    
+    <p>Bild in Größe 1353px mal 461px, mit Version mit doppelter Auflösung</p>
+    <img src="salzburg.jpg" srcset="salzburg.jpg, salzburg@2.jpg 2x">
+    
+    <p>Bild in Größe 1353px mal 461px, mit Version mit doppelter und vierfacher Auflösung</p>
+    <img src="salzburg.jpg" srcset="salzburg.jpg, salzburg@2.jpg 2x, salzburg@4jpg 4x">
+  </body>
+  </body>
+</html>

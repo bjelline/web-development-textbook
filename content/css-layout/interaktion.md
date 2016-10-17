@@ -34,7 +34,7 @@ Beim Laden des zweiten Hintergrundbildes kann es dabei
 zu einer Verzögerung kommen. Um das zu verhindern kann man die beiden 
 Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechseln:
 
-[Beipiel Bilder mit Hover](/images/hover-image.html)
+[Beispiel Bilder mit Hover](/images/hover-image.html)
 
 <css>
 #logo {

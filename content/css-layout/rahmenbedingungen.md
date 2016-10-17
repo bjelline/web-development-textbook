@@ -1,5 +1,5 @@
 ---
-title: Rahmenbedingungen für Layout
+title: Rahmenbedingungen 
 order: 10
 ---
 Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle. 
@@ -31,9 +31,9 @@ Vergleichen Sie die höchsten hier dargestellte Auflösungen mit der geringsten 
 Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.
 
  
-![Abbildung 26: Statistik über die Bildschirmauflösung,](/images/image097.png)
+![Abbildung 26: Statistik über die Bildschirmauflösung,](/images/display-stats.png)
 
-http://www.w3schools.com/browsers/browsers_display.asp
+[Datenquelle: w3schools](http://www.w3schools.com/browsers/browsers_display.asp)
 
 Pixeldichte
 -----------
@@ -49,11 +49,12 @@ Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabeger�
 |15” Macbook Pro 'Retina'|06/2012|2880 × 1800|15.4 in |220 ppi|
 |Apple iPhone4|06/2010|960 × 640|3.5 in|326 ppi |
 |Apple iPad 3rd gen|03/2011|2048×1536|12 in|264 ppi |
-|Apple iIPhone6||1920x1080|5.5 in |401 ppi|
+|Apple IPhone7|10/2016|1334×750|4.7 in |326 ppi|
 |Amazon Kindle Paperwhite|12/2012|768×1024|6 in |212 ppi |
 |ASUS Zenbook UX305|04/2015|3200 x 1800|13.3 in |577 ppi|
 |Google Nexus One |1/2010|800 × 480|3.7 in |254 ppi |
-|Samsung Galaxy S6 Edge|1/2015|1440 x 2560|5.1 in |577 ppi |
+|Samsung Galaxy S7|2/2016|2560×1440 pixel|5.1 in |577 ppi |
+|12” Macbook 'Retina'|03/2015| 2304 × 1440|12 in |226 ppi|
 {: class="table table-condensed table-bordered" style="width:auto"}
 
 
@@ -80,137 +81,5 @@ Dazu ein strenges Urteil:
 2. Zeigt schon ein Minimum an Wissen über das Web, ignoriert aber die gestalterische Herausforderung des Mediums. Weil solch ein Entwurf auf einem Bildschirm mit hoher Auflösung sehr klein auf einer großen leeren Fläche erscheint wird es spöttisch „Briefmarkenlayout“ genannt.
 3. Nur das verdient wirklich die Bezeichnung „Webdesign“.
 
-Technische Umsetzung 
---------------------
-
-Kleine Unterschiede im vorhandenen Platz kann man durch Zentrierung des Inhalts augleichen (siehe auch "Briefmarkenlayout")
-
-![Abbildung 28: Homepage der FH Salzburg (August 2012)](/images/image110.png)
-
-§
-
-<css caption="fixen Breite und automatischer Seitenabstand ergeben eine Zentierung des Inhalts">
-div#wrap {
-  width: 76em;
-  margin: 0 auto;
-}
-</css>
-
-Responsive Design
---------------------
-
-Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in "A List Apart" unter dem Begriff "Responsive Webdesign" popularisiert [&rarr;](http://www.alistapart.com/articles/responsive-web-design/). 
-
-![Das erste Beispiel für "Responsive Webdesign": Darstellung der Seite auf verschiedenen Breiten](/images/responsive.png)
-
-Mobile First
---------------------
-
-Luke Wroblewski schlug schon 2009 unter dem Slogan "Mobile First" vor, zuerst die mobile Version der Website zu gestalten, und davon dann die "größeren" Versionen abzuleiten [&rarr;](http://www.lukew.com/ff/entry.asp?933).
-
-Mediaqueries
---------------------
-
-Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine "Verzweigung" in CSS.
-
-<css caption="CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel">
-@media screen and (max-width: 480px) {
-  .column {
-    float: none;
-  }
-  /* weitere Regeln für kleine Screens */
-}
-/* allgemein gültige Regeln */
-</css>
-
-Bilder
--------
-Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.
-
-### Pixel
-Als Bildformate für `<img>` Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:
-
-
-![Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt](/images/image117.png)
-
-Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
-dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.
-
-
-![Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt](/images/image119.png)
-
-### Vektor
-
-Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag: 
-
-    <img src="circle.svg">
-
-![Abbildung: Kreis in SVG-Darstelllung](/images/circle.svg)
-
-### SVG erstellen
-
-SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder anderen Vektor-Programmen erstellen.
-
-<htmlcode>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     version="1.1" baseProfile="full" width="100%" height="100%"
-     preserveAspectRatio="xMinYMin meet" viewBox="0 0 300 300">
-    <linearGradient id="orange_red"
-        x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%"
-            style="stop-color:rgb(255,255,0); stop-opacity:1"/>
-        <stop offset="100%" 
-            style="stop-color:rgb(255,0,0); stop-opacity:1"/>
-    </linearGradient>
-    <circle id="myCircle" cx="50%" cy="50%" r="100" 
-       fill="url(#orange_red)" />
-</svg>
-</htmlcode>
-
-Das Attribut `preserveAspectRatio` im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.
-
-### Canvas
-
-Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.
-
-Schriftgröße
----------------
-Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG – 
-
-Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt. 
-
-
-![Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen](/images/zeilenumbruch.png)
-
-Skalieren
-----------
-
-Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei
-verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und
-verkleinert (heute default), oder nur der Text wird verändern, die Bilder aber bleiben gleich. 
-Hier das entsprechende Menü in Firefox. 
-
-![Abbildung 32: Zoom Menü in Firefox](/images/zoom.png)
-
-Retina Displays
---------------
-
-Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor eine
-neue Herausforderung: soll man - wegen der Pixeldichte - riesige Bilder ausliefern?  
-Oder - weil es doch ein mobiles Gerät ist, und die Datenübertragung über
-das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?
-
-Dafür wurden die neuen attribute "srcset" und "sizes" entwickelt, diese
-werden aber derzeit noch nicht von allen Browsern unterstützt [caniuse srcset](http://caniuse.com/#feat=srcset).
-
-Mit Hilfe der Javascript Library [picturefill](http://scottjehl.github.io/picturefill/) kann man 
-diese feature trotzdem schon verwenden, und so verschiedene Bilder für verschiedene Bildschirmauflösungen
-ausliefern.
-
-Vertiefung
-----------
-
-* [Responsive Tables](http://blog.cloudfour.com/picking-responsive-tables-solution/)
+Im nächsten Kapitel werden mit "Responsive Design" und "Responsive Images" die aktuellen
+Antworten im Web Design vorgestellt.
