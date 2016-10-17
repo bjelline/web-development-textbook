@@ -90,35 +90,6 @@ Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur V
 
 ![Abbildung: Kreis in SVG-Darstelllung](/images/circle.svg)
 
-### SVG erstellen
-
-SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder anderen Vektor-Programmen erstellen.
-
-<htmlcode>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     version="1.1" baseProfile="full" width="100%" height="100%"
-     preserveAspectRatio="xMinYMin meet" viewBox="0 0 300 300">
-    <linearGradient id="orange_red"
-        x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%"
-            style="stop-color:rgb(255,255,0); stop-opacity:1"/>
-        <stop offset="100%" 
-            style="stop-color:rgb(255,0,0); stop-opacity:1"/>
-    </linearGradient>
-    <circle id="myCircle" cx="50%" cy="50%" r="100" 
-       fill="url(#orange_red)" />
-</svg>
-</htmlcode>
-
-Das Attribut `preserveAspectRatio` im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.
-
-### Canvas
-
-Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.
-
 Schriftgröße
 ---------------
 Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG – 
