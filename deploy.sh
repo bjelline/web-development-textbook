@@ -40,6 +40,9 @@ rm -rf output/**/* || exit 0
 echo "installing ruby gems"
 bundle install
 
+echo "where is nanoc?"
+find ./vendor/bundle -ls
+
 echo "doing the build"
 nanoc compile
 
