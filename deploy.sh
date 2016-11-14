@@ -37,6 +37,9 @@ git clone $REPO output
 echo "Clean out existing contents"
 rm -rf output/**/* || exit 0
 
+echo "installing ruby gems"
+bundle install
+
 echo "doing the build"
 nanoc compile
 
