@@ -37,14 +37,8 @@ git clone $REPO output
 echo "Clean out existing contents"
 rm -rf output/**/* || exit 0
 
-echo "installing ruby gems"
-bundle install
-
-echo "where is nanoc?"
-find ./vendor/bundle -ls
-
 echo "doing the build"
-nanoc compile
+./vendor/bundle/ruby/2.2.0/bin/nanoc compile
 
 # Now let's go have some fun with the cloned repo
 cd output
