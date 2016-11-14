@@ -135,6 +135,9 @@ werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinande
   
 ![Abbildung 39: Zwei Darstellungen der Bildergalerie mit float](/images/image140.png)
 
+
+
+
 Absolute Positionierung
 ------------------------
 Mit der Deklaration `position: absolute` wird ein Tag aus der normalen Darstellung 

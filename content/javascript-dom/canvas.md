@@ -10,8 +10,8 @@ Der Canvas-Tag stellt eine rechteckige Zeichenfläche zur Verfügung. Es handelt
 Der Canvas wird durch zwei Objekte in Javascript repräsentiert: ein Canvas-Objekt und ein Context-Objekt. Zuerste müssen wir diese beiden Objekte finden und in Variablen speichern:
 
 <javascript>
-var my_canvas = document.getElementById("c");
-var my_context = my_canvas.getContext("2d");
+let my_canvas = document.getElementById("c");
+let my_context = my_canvas.getContext("2d");
 </javascript>
 
 Wir verwenden erst einmal die 2-dimensionale Zeichenfläche des Canvas. Wenn Sie mehr von Computergrafik verstehen können Sie auch die 3d-Version, genannt „webgl“ verwenden. 
@@ -47,7 +47,7 @@ my_context.fillText("hier bin ich", 10, 50);
 Bilder die sich bereits in der Webseite befinden kann man in den Canvas kopieren:
 
 <javascript>
-var cat = document.getElementById("cat");   
+let cat = document.getElementById("cat");   
 my_context.drawImage(cat, 0, 0);
 </javascript>
 
@@ -58,7 +58,7 @@ einige Zeit dauert verwenden wir hier das onload Event:
 erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:
 
 <javascript>
-var cat = new Image();   
+let cat = new Image();   
 cat.src = "images/cat.png";   
 cat.onload = function() {     
   my_context.drawImage(cat, 0, 0);   
