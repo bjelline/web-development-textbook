@@ -30,15 +30,17 @@ echo "adding to ssh-agent"
 eval `ssh-agent -s`
 ssh-add deploy.key
 
-# Clone the existing github pages into out/
-echo "git clone $REPO out"
+# Clone the existing github pages into output/
+echo "git clone $REPO output"
 git clone $REPO output
 
 echo "Clean out existing contents"
 rm -rf output/**/* || exit 0
 
 echo "doing the build"
-./vendor/bundle/ruby/2.2.0/bin/nanoc compile
+PWD=`pwd`
+PATH=$PATH:$PWD/vendor/bundle/ruby/2.2.0/bin/
+nanoc compile
 
 # Now let's go have some fun with the cloned repo
 cd output
