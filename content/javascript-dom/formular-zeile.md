@@ -16,8 +16,8 @@ Dieser Klon ist zuerst einmal nicht Teil des Originaldokuments. Man muss ihn ers
 einfügen:
 
 <javascript>
-var p = document.querySelector("div.pizza");
-var new_pizza = p.cloneNode(true);
+let p = document.querySelector("div.pizza");
+let new_pizza = p.cloneNode(true);
 </javascript>
 
 §

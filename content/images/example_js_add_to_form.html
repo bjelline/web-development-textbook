@@ -61,17 +61,17 @@
 
   <script>
     function removeMe(e){
-      var me = e.target;
-      var my_pizza = me.parentNode.parentNode;
+      let me = e.target;
+      let my_pizza = me.parentNode.parentNode;
       my_pizza.parentNode.removeChild( my_pizza );
     }	
     function dontRemoveMe(e) {
       console.log("don't remove the first one, we need it for cloning!");
     }
     function addPizza(){
-      var f = document.querySelector("form");
-      var p = document.querySelector("div.pizza");
-      var new_pizza = p.cloneNode(true);
+      let f = document.querySelector("form");
+      let p = document.querySelector("div.pizza");
+      let new_pizza = p.cloneNode(true);
       new_pizza.children[0].children[0].addEventListener("click", removeMe);
       f.insertBefore(new_pizza, p);
     }		
