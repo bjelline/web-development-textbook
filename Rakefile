@@ -9,7 +9,6 @@ task :compile => [:clean] do
     abort "Compilation failed: #{$?.to_i}\n" +
           "#{out}\n"
   end
-  cp 'README.md', 'output/', :verbose => true
   sh './deploy.sh'
 end
 

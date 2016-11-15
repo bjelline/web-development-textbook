@@ -39,7 +39,6 @@ cp -a output/* out/
 
 # Now let's go have some fun with the cloned repo
 cd out
-cp -a 
 git config user.name "$AUTHOR via Travis CI"
 git config user.email "$EMAIL"
 
