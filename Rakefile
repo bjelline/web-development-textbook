@@ -9,15 +9,12 @@ task :compile => [:clean] do
     abort "Compilation failed: #{$?.to_i}\n" +
           "#{out}\n"
   end
+  cp 'README.md', 'output/', :verbose => true
+  sh './deploy.sh'
 end
 
 task :clean do
   FileUtils.rm_r('output') if File.exist?('output')
 end
 
-Rake::TestTask.new do |t|
-  t.libs << "_test"
-  t.test_files = FileList["_test/*_test.rb"]
-  t.verbose = true
-end
-
+task :default => 'compile'
