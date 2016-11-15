@@ -50,7 +50,7 @@ node.replaceChild()
 Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:
 
 <javascript>
-d = document.getElementById("person_25");
+let d = document.getElementById("person_25");
 d.setAttribute("style", "display:none");
 </javascript>
 
@@ -67,8 +67,8 @@ Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieb
 Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode `document.querySelectorAll()`:
 
 <javascript>
-inputs = document.querySelectorAll("input");
-i=0;
+let inputs = document.querySelectorAll("input");
+let i=0;
 while(i < inputs.length) {
   console.log("input mit name " + inputs[i].name );
   i++;
@@ -86,13 +86,13 @@ Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen
 Das erste und einzige Kind des Span ist ein Text-Node:
 
 <javascript>
-vn = document.getElementById("v_25").firstChild.data;
+let vn = document.getElementById("v_25").firstChild.data;
 </javascript>
 
 oder – etwas kürzer – über die Eigenschaft textContent:
 
 <javascript>
-vn = document.getElementById("v_25").textContent;
+let vn = document.getElementById("v_25").textContent;
 </javascript>
 
 `textContent` funktioniert auch bei Nodes die noch weitere verschachtelte 
@@ -103,19 +103,19 @@ Manipulation des DOM
 Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:
 
 <javascript>
-node = document.createElement("h1");  
+let node = document.createElement("h1");  
        // erzeugt eine Node, Tag-Name angeben
 node.innerHTML = "bla <strong>bla</strong> bla";                
        // Zugriff auf den "Inhalt" der node als String, 
        // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
        // fügt die newchild als Kind an 
-newnode = node.cloneNode()    
+let newnode = node.cloneNode()    
        // gibt eine Kopie der Node zurück, 
        // die Kopie ist noch nicht im DOM Baum eingefügt! 
 node.insertBefore(newchild, oldchild)    
        // fügt newchild als Kind von node ein, vor dem oldchild 
-oldchild = node.removeChild(child)    
+let oldchild = node.removeChild(child)    
        // löscht child als Kind von node, 
        // gibt es als "frei schwebende" node zurück 
 node.replaceChild(newchild, oldchild)  
@@ -154,8 +154,8 @@ Mit `cloneNode` kann man einen ganzen Teil-Baum duplizieren, und wo anders wiede
 Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:
 
 <javascript>
-  var first_pizza = document.querySelector("div.pizza");
-  var new_pizza = first_pizza.cloneNode(true);
+  let  first_pizza = document.querySelector("div.pizza");
+  let  new_pizza = first_pizza.cloneNode(true);
   first_pizza.insertBefore(new_pizza, null);
 </javascript>
 
@@ -191,7 +191,7 @@ wie Event-Handler direkt im HTML definiert werden können:
 </form>
 <script>
   function setcolor( c ) {
-    b = document.getElementById('farbfeld');
+    let b = document.getElementById('farbfeld');
     b.style.backgroundColor = c
   }
 </script>
@@ -212,7 +212,7 @@ müssen wir eine id hinzufügen:
 </form>
 <script>
   function setcolor( ev ) {
-    b = document.getElementById('farbfeld');
+    let b = document.getElementById('farbfeld');
     b.style.backgroundColor = 'red';
   }
   document.getElementById('r').addEventListener('click', setcolor);
@@ -246,7 +246,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:
 </form>
 <script>
   function setcolor( ev ) {
-    b = document.getElementById('farbfeld');
+    let b = document.getElementById('farbfeld');
     b.style.backgroundColor = this.style.backgroundColor;
   }
   document.getElementById('r').addEventListener('click', setcolor);
@@ -286,8 +286,8 @@ zuständig für das click-event am spam `.removthis` definieren.
 
 <javascript>
 function removeMe(e){
-  var me = e.target;
-  var my_pizza = me.parentNode.parentNode;
+  let me = e.target;
+  let my_pizza = me.parentNode.parentNode;
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
 document.querySelector(".removethis")
