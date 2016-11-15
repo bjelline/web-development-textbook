@@ -30,20 +30,16 @@ echo "adding to ssh-agent"
 eval `ssh-agent -s`
 ssh-add deploy.key
 
-# Clone the existing github pages into output/
-echo "git clone $REPO output"
-git clone $REPO output
+# Clone the existing github pages into out/
+echo "git clone $REPO out"
+git clone $REPO out
 
-echo "Clean out existing contents"
-rm -rf output/**/* || exit 0
-
-echo "doing the build"
-PWD=`pwd`
-PATH=$PATH:$PWD/vendor/bundle/ruby/2.2.0/bin/
-nanoc compile
+# copy over built pages (done before by rake)
+cp -a output/* out/
 
 # Now let's go have some fun with the cloned repo
-cd output
+cd out
+cp -a 
 git config user.name "$AUTHOR via Travis CI"
 git config user.email "$EMAIL"
 
