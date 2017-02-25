@@ -40,6 +40,10 @@ Die Authentisierung kann dabei entweder über ein Passwort oder mit private/publ
 
 ![Authentisierung für SSH mit private/public key](/images/ssh_login_with_public_key.svg)
 
+
+§
+
+
 Das "Schüsselpaar" kann man jederzeit selbst erzeugen: mit dem Kommandozeilen-Programm
 ssh-keygen:
 
@@ -66,6 +70,9 @@ The key's randomart image is:
 |        . ..  .+o|
 +-----------------+
 </shell>
+
+§
+
 
 Das Endergebnis sind zwei Dateien: `id_rsa` enthält den privaten Schlüssel,
 `id_rsa.pub` den öffentlichen Schlüssel.  Beide Schlüssel könnne in einem Text-Editor

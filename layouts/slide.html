@@ -53,11 +53,31 @@
 
 <!-- Create any number of elements with class slide within the container -->
           <div class="slide"><h1><%= @item[:title] %></h1>
-          <p><a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel [esc]</a></p>
+            <p>
+            <% if @item[:previous_item] %>
+              <% prev = @items[ @item[:previous_item] ] %>
+              vorige Präsentation: <a href="<%= prev.path %>/slide.html"><%= prev[:title] %></a> |
+            <% end %>            
+            <a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel [esc]</a>
+            <% if @item[:next_item] %>
+              <% next_item = @items[ @item[:next_item] ] %>
+             | Nächste Präsentation <a href="<%= next_item.path %>/slide.html"><%= next_item[:title] %></a>
+            <% end %>
+            </p>
           </div>
 	  <%= yield %>
-          <div class="slide"><h1>Ende</h1>
-          <p><a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel [esc]</a></p>
+          <div class="slide"><h1><%= @item[:title] %></h1>
+            <p>
+            <% if @item[:previous_item] %>
+              <% prev = @items[ @item[:previous_item] ] %>
+              vorige Präsentation: <a href="<%= prev.path %>/slide.html"><%= prev[:title] %></a> |
+            <% end %>            
+            <a href="<%= @item.rep_named(:default).path %>">zurück zum Buch-Kapitel [esc]</a>
+            <% if @item[:next_item] %>
+              <% next_item = @items[ @item[:next_item] ] %>
+             | Nächste Präsentation <a href="<%= next_item.path %>/slide.html"><%= next_item[:title] %></a>
+            <% end %>
+            </p>
           </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->

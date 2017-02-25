@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.5'
+ruby '2.3.3'
 
 gem "rake"
 gem "curb"

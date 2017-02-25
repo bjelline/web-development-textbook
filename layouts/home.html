@@ -5,12 +5,12 @@
 		<div class="span8">
 
 			<% if @item[:title] %>
-				<h1 class="title"><%= @item[:title] %></h1>
+				<h2 class="title"><%= @item[:title] %></h2>
 			<% end %>
 			
 			<%= yield %>
 
-                </div>
+    </div>
 		
 		<%= render 'sidebar' %>
 			
