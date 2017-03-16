@@ -206,9 +206,9 @@ erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist
 §
 
 Dieser Footer könnte auch eine statische HTML-Datei sein, 
-da hier gar keine Variablen oder PHP-Code verwendet warden:
+da hier gar keine Variablen oder PHP-Code verwendet werden:
 
-<php caption="Datei header.php">
+<php caption="Datei footer.php">
   <footer>&copy; 2012 Brigitte</footer>
 </body>
 </html>
@@ -284,17 +284,34 @@ Variableninterpolation funktioniert.
 
 §
 
-Variablen in PHP müssen nicht deklariert oder initialisiert werden. 
 PHP unterscheidet zwischen den Datentypen boolean, integer, 
 float, string, array, object, resource und NULL. 
+
 In einer Variablen können nacheinander verschiedene Datentypen 
 gespeichert werden, die Variable selbst hat also keinen Typ! 
+
+<php>
+<?php
+  $foo = "Hallo 🦄";   // $foo contains a string
+  $foo = 2;           // $foo now contains an integer (2)
+  $foo = 3.3;        // $foo now contins a float (3.3)
+?>
+</php>
+
+
+§ 
+
+Variablen in PHP müssen nicht deklariert oder initialisiert werden. 
+
+Seit PHP 7 **kann** man für Funktions-Parameter und Rückgabewerte
+einen Datentyp deklarieren, siehe [PHP Dokumentation: Funktionsparameter](http://php.net/manual/de/functions.arguments.php#functions.arguments.type-declaration).
+
 Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:
 
 <php>
 <?php
   $foo = "0";         // $foo is a string with one character (ASCII 48)
-  $foo += 2;          // $foo is now an integer (2)
+  $foo = $foo + 2;    // $foo is now an integer (2)
   $foo = $foo + 1.3;  // $foo is now a float (3.3)
   $bar = 5 + "10 Little Piggies"; // $bar is an integer (15)
   $baz = 5 . "10 Small Pigs";     // $baz is a longer string "510 ..." 
@@ -448,6 +465,8 @@ $a = inhalt($r);
 echo("ein Kreis mit Radius $r hat eine Fläche von $a");
 // korrekte Berechnung und Ausgabe
 </php>
+
+Siehe auch [PHP Dokumentation: Geltungsbereich von Variablen](http://php.net/manual/de/language.variables.scope.php)
 
 §
 
