@@ -9,7 +9,7 @@ abrufen oder ob eine Person die Seite 10 mal lädt.
 ![HTTP als "stateless protocol"](/images/stateless-http.svg)
 
 Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das
-Gegenteil davon wäre „statefull“ (zustandsbehaftet).
+Gegenteil davon wäre „stateful“ (zustandsbehaftet).
 
 Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“
 schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
