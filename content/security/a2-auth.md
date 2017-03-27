@@ -1,6 +1,6 @@
 ---
 title: Authentifizierung und Session-Management
-order: 30
+order: 20
 ---
 
 Rund um Authentifizierung und Session-Management treten viele Probleme auf.

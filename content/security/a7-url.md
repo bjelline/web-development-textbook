@@ -1,17 +1,17 @@
 ---
-title: Mangelhafter URL-Zugriffsschutz
-order: 80
+title: Fehlerhafte Autorisierung auf Anwendungsebene
+order: 70
 ---
 
 Die OWASP beschreibt dieses Problem allgemein so:
 
-> In Anwendungen wird der Zugriff auf Seiten nicht immer verlässlich abgesichert. Manchmal wird Zugriffsschutz durch Konfiguration realisiert, die ggf. auch fehlerhaft sein kann. Manchmal vergessen die Entwickler auch nur, die notwendige Prüfung zu implementieren.
+> Die meisten betroffenen Anwendungen realisieren Zugriffsberechtigungen nur durch das Anzeigen  oder Ausblenden von Funktionen in der Benutzeroberfläche. Allerdings muss auch beim direkten Zugriff auf eine geschützte Funktion eine Prüfung der Zugriffsberechtigung auf dem Server stattfinden, ansonsten können Angreifer durch gezieltes Manipulieren von Anfragen ohne Autorisierung trotzdem auf diese zugreifen.
 
 ## Nur was serverseitig geprüft wird ist sicher
 
 Bei der Programmierung von Web-Applikationen muss man sich immer bewusst sein,
 dass Alles was im Client passiert, bzw vom Client geschickt wird, manipuliert werden kann.
-Meine Serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
+Meine serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
 sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist.
 
 Gängige Fehleinschätzungen dieser Art sind:
@@ -23,7 +23,7 @@ Gängige Fehleinschätzungen dieser Art sind:
 * Wenn die Daten des Formulars per POST übertragen werden, können sie nicht manipuliert werden
 * Das ist falsch!
 
-## Jede PHP-Datei ist ein Einstiegspunkt
+## Jede PHP-Datei, Jede URL ist ein Einstiegspunkt
 
 Jede einzelne PHP-Datei die im Webspace liegt kann auch direkt
 über HTTP aufgerufen werden. Es bietet sich deswegen an in jeder

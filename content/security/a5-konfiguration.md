@@ -1,6 +1,6 @@
 ---
 title: Sicherheitsrelevante Fehlkonfiguration
-order: 60
+order: 50
 ---
 
 Die OWASP beschreibt dieses Problem allgemein so:
