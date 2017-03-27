@@ -12,6 +12,7 @@ Zehn Problemfelder die sie kennen sollten:
 * A2 - Fehler in Authentifizierung und Session Management
 * A3 – Cross-Site Scripting (XSS)
 * A4 - Unsichere direkte Objektreferenzen
+* A5 - Sicherheitsrelevante Fehlkonfiguration
 * A6 - Verlust der Vertraulichkeit sensibler Daten
 * A7 - Fehlerhafte Autorisierung auf  Anwendungsebene
 * A8 – Cross-Site Request Forgery (CSRF)
