@@ -81,6 +81,10 @@ Die Demo-Seite zeigt drei Abstufungen:
 
 [Demo-Seite für "Responsive Images"](/images/responsive-images.html)
 
+Das kann man auch mit Hintergrundbilder machen:
+
+[Demo-Seite für "Responsive Background Images"](/images/responsive-background-images.html)
+
 
 ### Vektor
 
