@@ -30,9 +30,9 @@ und es bleibt `s it` übrig. Die Fehlermeldung von MySQL lautet:
 
 Für dieses Problem gab es in PHP bis Version 5.3.0 eine **einfache** und **falsche** Lösung:
 
-Urspünglich veränderte PHP automatisch alle Daten die über GET, POST  und
-Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.
-Aus „That's it“ wird also automatisch „That\\'s it“ , das SQL-Statement
+Urspünglich veränderte PHP automatisch alle Daten die über GET, POST und
+Cookies hereinkommen: Vor alle Anführungszeichen wird ein Backslash eingefügt.
+Aus „That's it“ wird also automatisch „That\\'s it“, das SQL-Statement
 funktioniert wieder:
 
 <sql>
@@ -45,15 +45,15 @@ anderen Kontexten muss man ganz anders Escapen.
 
 §
 
-Wenn Sie eine PHP Version größer als 5.4.0 verwenden brauchen
-Sie sich nicht mehr darum zu kümmern. Bei änternen Versionen 
+Wenn Sie eine PHP-Version größer als 5.4.0 verwenden, brauchen
+Sie sich nicht mehr darum zu kümmern. Bei älteren Versionen 
 sollten Sie die `magic_quotes` abschalten:
 
 <code caption="In der Apache Konfiguration: magic quotes abschalten">
 php_flag magic_quotes_gpc off
 </code>
 
-Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:
+Mit folgendem Programm können Sie testen, ob auf dem Server magic quotes ein- oder ausgeschalten sind:
 
 <php caption="Testen ob magic quotes eingeschalten sind">
 if (get_magic_quotes_gpc() ) {
@@ -66,13 +66,13 @@ print_r($_POST);
 echo("</pre>");
 </php>
 
-In Wirklichkeit konnte man die magic Quotes bis Verison nicht ganz abschalten, wie man in der
-PHP Doku nachlesen kann[&rarr;](http://at.php.net/manual/de/security.magicquotes.disabling.php).
+In Wirklichkeit konnte man die magic quotes bis Version nicht ganz abschalten, wie man in der
+PHP-Doku nachlesen kann[&rarr;](http://at.php.net/manual/de/security.magicquotes.disabling.php).
 Das Problem betrifft allerdings nur Array-Parameter.
 
 ### die richtige Lösung
 
-Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. 
+Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared statements. 
 
 <php caption="Einfügen von Daten in die Datenbank mit prepared statements">
 $sth = $dbh->prepare(
@@ -95,11 +95,11 @@ $sth->execute(
 
 §
 
-Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die
-Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man
-hier einfach nichts eingibt gibt das einen Fehler.
+Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen: Die
+Tabelle verlangt, zum Beispiel, für email einen eindeutigen Eintrag. Wenn man
+hier einfach nichts eingibt, ergibt das einen Fehler.
 
-So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem
+So weit wollen Sie es nicht kommen lassen: Sie sollten die Eingaben aus dem
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
 deutsche Fehlermeldungen ausgeben.
 
@@ -119,8 +119,8 @@ $id = $dbh->lastInsertId('users_id_seq');
 header("Location: person.php?id=$id");
 </php>
 
-Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem
+Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: Nach dem
 Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
-weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu
-angezeigt, aber keinesfalls ein zweites Mal eingefügt.
+weitergeleitet. Falls man danach auf „Reload“ drückt, wird der Datensatz zwar neu
+angezeigt, aber so verhindert, dass er ein zweites Mal eingefügt wird.
 
