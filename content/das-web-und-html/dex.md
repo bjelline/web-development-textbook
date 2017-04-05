@@ -13,7 +13,7 @@ intro: Das erste Kapitel bietet einen theoretischen und praktischen Einstieg in 
 * Ich verstehe wie eine HTTP Anfrage aufgebaut ist: Request und Response
 * Ich weiss wie ein Dokument im HTML aufgebaut ist: head + body, tags, attribute, character entities
 * Ich kenne die HTML-Tags für Überschriften, Absätze, Links, Bilder
-* Ich verstehe, dass es mehrere Methoden des Uploads es gibt
+* Ich verstehe, dass es mehrere Upload-Methoden gibt
 
 ### Was Sie können sollten
 
