@@ -75,11 +75,28 @@ Das Problem betrifft allerdings nur Array-Parameter.
 Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. 
 
 <php caption="Einfügen von Daten in die Datenbank mit prepared statements">
+
+// Variante 1: mySQL (mit NULL für den autoincrement id-Wert)
 $sth = $dbh->prepare(
   "INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
       VALUES
-    (NULL,        ?,      ?,    ?,              ?)");
+    (NULL, ?, ?, ?, ?)");
+    
+// Variante 2: postgreSQL (mit DEFAULT für den autoincrement id-Wert)
+$sth = $dbh->prepare(
+  "INSERT INTO users
+    (id,  firstname,surname,email,profile_visible)
+      VALUES
+    (DEFAULT, ?, ?, ?, ?)");
+
+// Variante 3: mySQL + postgreSQL (id-Wert weglassen)
+$sth = $dbh->prepare(
+  "INSERT INTO users
+    (firstname, surname, email, profile_visible)
+      VALUES
+    (?, ?, ?, ?)");
+
 
 $sth->execute(
   array(
