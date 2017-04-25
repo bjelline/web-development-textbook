@@ -1,6 +1,8 @@
 # Das Buch 'Web Development'
 
-A german language text book on Web Development. Developed on github, published at
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/web-development/web-development-textbook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+A german language Textbook on Web Development. Developed on github, published at
 http://web-development.github.io
 
 ## Similar Projects
