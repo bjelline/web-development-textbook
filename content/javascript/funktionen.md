@@ -3,7 +3,37 @@ title: Funktionen und this
 order: 10
 ---
 
-Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
+In Javascript kann eine Funktion mit Namen definiert werden, oder anonym:
+
+<javascript caption="Funktionen definieren">
+  function r1( s, x ) {
+    let result = "";
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  function ( s, x ) {
+    let result = "";
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  // Aufruf:
+  r1('*', 10);
+</javascript>
+
+Die zweite Funktion kann aber nicht aufgerufen werden.
+
+§
+
+Damit man eine anonyme Funktion verwenden kann, muss sie erst
+auf eine Variable zugewiesen werden:
 
 <javascript caption="Funktionen definieren">
   function r1( s, x ) {
@@ -23,14 +53,19 @@ Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:
     }
     return result;
   }
+
+  // Aufruf:
+  r1('*', 10);
+  r2('*', 10);
 </javascript>
 
 §
 
-Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function
+Seit Javascript 2015 gibt es doch eine weitere Schreibweise für anonyme 
+Funktionen: die Arrow Function
 
 <javascript caption="Arrow Function">
-  ( s, x ) => {
+  let f1 = ( s, x ) => {
     let result = "";
     while( x ) {
       result += s;
@@ -43,28 +78,28 @@ Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function
 Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer:
 
 <javascript caption="Arrow Function">
-  ( s, x ) => s + " mal " + x;
+  let f2 = ( s, x ) => s + " mal " + x;
 </javascript>
 
 Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
 die Argumente weglassen:
 
 <javascript caption="Arrow Function">
-  x => x + " ist das beste";
+  let f3 = x => `${x} ist das beste`;
 </javascript>
 
 §
 
 Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
-Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
+Kombiniert mit der anonymen Schreibweise für Funktionen können wir so Funktionen als
 Teile von Objekten oder Arrays definieren:
 
 <javascript caption="Funktionen in JSON">
   objekt = {
-    prop1 : "string",
+    prop1 : "Schokolade",
     prop2 : 42,
     method_1 : function () {  console.log( "method 1" ); },
-    method_2 : x => x + " ist das beste"
+    method_2 : x => `${x} ist das beste`
   }
 </javascript>
 
@@ -72,20 +107,10 @@ Die beiden Methoden kann man ganz normal aufrufen:
 
 <javascript caption="Methoden aufrufen">
 objekt.method_1();
-objekt.method_2("Schokolade");
+objekt.method_2("Eis");
+objekt.method_2(objekt.prop1);
 </javascript>
 
-§
-
-Zusätzlich zum einfachen Aufruf mit Funktionsname, Klammern, Argumenten `f(x)`
-gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen: 
-`call` und `apply`:
-
-<javascript caption="Funktion r aufrufen">
-  r("hallo ", 10);
-  r.call(null, "hallo ", 10);
-  r.apply(null, [  "hallo ", 10 ]  );
-</javascript>
 
 ## Was ist this?
 
@@ -130,8 +155,9 @@ Achtung: Arrow Functions verhalten sich hier anders!
 
 §
 
+Eine Arrow Function hat nie ein eigenes this.
 Wird eine Methode mit einer Arrow Function definiert, dann bezieht
-sich `this` nicht auf das aufrufende Objekt, sondern behält seinen
+sich `this` also nicht auf das aufrufende Objekt, sondern behält seinen
 Wert:
 
 <javascript caption="this in einer Methode">
@@ -150,29 +176,6 @@ Wert:
   // this = [object Window]
   // this.prop2 = undefined
 </javascript>
-
-§
-
-Nun macht auch das erste Argument der Funktionen `call` und `apply` Sinn: das erste
-Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: 
-
-<javascript caption="Verschiedene Arten eine Methode aufzurufen">
-  objekt.f("hallo ", 10);
-  objekt.f.call(objekt, "hallo ", 10);
-  objekt.f.apply(objekt, [  "hallo ", 10 ]  );
-  
-  objekt.f.call(anderes_objekt, "hallo ", 10);
-  objekt.f.apply(anderes_objekt, [  "hallo ", 10 ]  );
-</javascript>
-
-Es gibt noch eine dritte method `bind` die nur `this` neu festsetzt,
-und die funktion sonst unverändert lässt:
-
-<javascript>  
-  f2 = objekt.f.bind(anderes_objekt);
-  f2.("hallo ", 10);
-</javascript>
-
 
 §
 
@@ -195,8 +198,24 @@ HTML-Element aufgerufen. `this` zeigt in diesem Fall also auf den Button.
 
 §
 
-Die als Listener definierte Funktion erhält aber noch mehr Infos zum Event,
-und zwar als Argument:
+Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:
+
+<javascript caption="keine Argument an den event handler!">
+  function f( mein_argument ) {
+    console.log("this = " + mein_argument); 
+    // funktioniert nicht wie erwartet !!!
+  }
+ 
+  document.getElementById("button").addEventListener("click", f(43) );
+
+  // hier wird die Funktion f aufgerufen, 
+  // der listener an das Event gebunden wird,
+  // das funktioniert so nicht !!!
+</javascript>
+
+§
+
+Die als Listener definierte Funktion erhält als Argument Infos zum Event:
 
 <javascript caption="this und event im Event Handler">
   function f( ev ) {
@@ -213,6 +232,7 @@ und zwar als Argument:
   // ev = [object MouseEvent]
   // ev.target = [object HTMLInputElement]
 </javascript>
+
 
 §
 
@@ -245,8 +265,6 @@ Objekt ist auch automatisch Rückgabewert der Funktion.
 
 Arrow Funktionen können nicht als Constructor verwendet werden.
 Dafür gibt es in Javascript 2015 `class` und `constructor` als Alternative.
-
-§
 
 ## Eine Funktion ist ein Objekt
 

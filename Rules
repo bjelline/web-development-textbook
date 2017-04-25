@@ -267,6 +267,7 @@ preprocess do
     "json",
     "xml",
     "---",
+    "advanced-javascript",
     "apache", 
     "wordpress",
     "qualitaet",

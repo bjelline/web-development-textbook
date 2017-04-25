@@ -1,6 +1,6 @@
 ---
 title: Funktionen und Closures
-order: 15
+order: 25
 ---
 
 Javascript baut nicht nur auf die Traditionen der

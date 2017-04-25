@@ -8,58 +8,6 @@ Bis zum Jahre 2015 wurden Variablen in Javascript gar nicht oder mit `var` dekla
 Seit Javascript 2015 gibt es auch `let` und `const`.
 
 
-## Sichtbarkeit von Variablen mit var
-
-In einer Funktion in Javascript sind lokale und globale
-Variablen sichtbar.  Da Funktionen auch innerhalb von
-Funktionen definiert werden können sind in folgendem Code
-die Variablen a, b und c in der innern Funktion f sichtbar
-
-<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
-var a = 1;
-function g( x ) {
-  var b = 2;
-  var s = "Ein String aus g ... ";
-  function f( y ) {
-    var c = 3;
-    return "die Werte sind " + [a,b,c,x,y].join(", ");
-  }
-  return s + f( x );
-}
-
-g(10);
-// Rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
-console.log(a);  // 1
-console.log(b);  // ReferenceError: b is not defined
-console.log(c);  // ReferenceError: c is not defined
-console.log(x);  // ReferenceError: x is not defined
-console.log(y);  // ReferenceError: y is not defined
-</javascript>
-
-§
-
-Eine Besonderheit von Javascript Variablen die mit `var` deklariert
-wurden ist das "Hochziehen" (auf englisch: hoisting): Alle
-Variablen-Deklarationen werden an den Anfang der jeweiligen Funktion 
-vorverlegt.  Falls auch eine Zuweisung eines Wertes erfolgt
-bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.
-
-<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
-  function g( x ) {
-    var s = "Ein String aus g ... ";
-    function f( y ) {
-      var c = 3;
-      return "die Werte sind " + [a,b,c,x,y].join(", ");
-    }
-    var b = 2; // var b wird hochgezogen zum Beginn von g()
-               // die Initialisierung b = 2 bleibt hier!
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
-</javascript>
-
 
 ## Sichtbarkeit von Variablen mit `let` und Konstanten mit `const`
 
@@ -158,5 +106,58 @@ let p     = [10,12];
 let [x1,y1] = p;      // zwei Werte werden an zwei Variablen zugewiesen
 let circle = { m: p, r: 20 };
 let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r 
+</javascript>
+
+
+## Sichtbarkeit von Variablen mit var
+
+In einer Funktion in Javascript sind lokale und globale
+Variablen sichtbar.  Da Funktionen auch innerhalb von
+Funktionen definiert werden können sind in folgendem Code
+die Variablen a, b und c in der innern Funktion f sichtbar
+
+<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
+var a = 1;
+function g( x ) {
+  var b = 2;
+  var s = "Ein String aus g ... ";
+  function f( y ) {
+    var c = 3;
+    return "die Werte sind " + [a,b,c,x,y].join(", ");
+  }
+  return s + f( x );
+}
+
+g(10);
+// Rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
+console.log(a);  // 1
+console.log(b);  // ReferenceError: b is not defined
+console.log(c);  // ReferenceError: c is not defined
+console.log(x);  // ReferenceError: x is not defined
+console.log(y);  // ReferenceError: y is not defined
+</javascript>
+
+## Hoisting von Variablen mit var
+
+Eine Besonderheit von Javascript Variablen die mit `var` deklariert
+wurden ist das "Hochziehen" (auf englisch: hoisting): Alle
+Variablen-Deklarationen werden an den Anfang der jeweiligen Funktion 
+vorverlegt.  Falls auch eine Zuweisung eines Wertes erfolgt
+bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.
+
+<javascript caption="Sichtbarkeit von a, b, c in Funktionen">
+  function g( x ) {
+    var s = "Ein String aus g ... ";
+    function f( y ) {
+      var c = 3;
+      return "die Werte sind " + [a,b,c,x,y].join(", ");
+    }
+    var b = 2; // var b wird hochgezogen zum Beginn von g()
+               // die Initialisierung b = 2 bleibt hier!
+    return s + f( x );
+  }
+
+  g(10);
+  // rückgabewert: "Ein String aus g ... die Werte sind 1, 2, 3, 10, 10"
 </javascript>
 
