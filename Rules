@@ -262,15 +262,13 @@ preprocess do
     "---",
     "grafik",
     "javascript",
-    "applied-jquery",
-    "applied-javascript",
-    "security",
+    "applied-jquery-and-css",
     "json",
     "xml",
     "---",
-    "advanced-javascript",
+    "security",    
+    "wordpress",    
     "apache", 
-    "wordpress",
     "qualitaet",
   ]
 

@@ -10,14 +10,14 @@ Während Texte in Beiträgen und Seiten gespeichert werden, müssen Bild-, Audio
 
 ### Speicherung von Medien
 
-Die hochgeladenen Dateien werden einen Unter-Ordner von wp-content/uploads hochgeladen, und haben damit euch eine entsprechende URL.  zeigt den relevanten Teil der Ordnerstruktur:
+Die hochgeladenen Dateien werden einen Unter-Ordner von wp-content/uploads hochgeladen, und haben damit euch eine entsprechende URL. Die folgnde Abbildung zeigt den relevanten Teil der Ordnerstruktur:
 
 
 ![Abbildung 111: Ordnerstruktur für hochgeladene Attachment-Dateien (Audio, Video)](/images/wordpress-uploads.png)
 
 ### Zugriffsrechte
 
-Bei der genauen Betrachtung dieser Dateien und Ordner erkennen Sie, dass Wordpress unter einem andere (UNIX) User arbeitet als Sie selbst. Meist hat dieser User einen Namen wie „wwwdata“ oder „apache“. Die Zugriffsrechte im upload-Ordner müssen also so gesetzt sein, dass dieser fremde User Dateien speichern darf!
+Bei der genauen Betrachtung dieser Dateien und Ordner erkennen Sie, dass Wordpress unter einem andere (UNIX) User arbeitet als Sie selbst. Meist hat dieser User einen Namen wie „www-data“ oder „apache“. Die Zugriffsrechte im upload-Ordner müssen also so gesetzt sein, dass dieser fremde User Dateien speichern darf!
 
 Hinweis: nur die Bilder (z.B. mit FTP) in den richtigen Ordner zu speichern ist nicht ausreichend, es ist auch ein Eintrag in der Datenbank notwendig.  Dieser Eintrag wird gemacht, wenn man den Wordpress Uploader verwendet.
 
