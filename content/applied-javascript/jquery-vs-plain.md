@@ -1,6 +1,6 @@
 ---
 title: jQuery und reines Javascript
-order: 10
+order: 5
 ---
 
 Im ersten Teil des Buches, in den Kapiteln [Formular und Javascript](/formulare/javascript/),
