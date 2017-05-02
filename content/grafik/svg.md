@@ -260,6 +260,7 @@ $svg.append($circle);
 
 * [RFC zu SVG](http://www.w3.org/TR/SVG11/)
 * [Raphael Javascript Library](http://raphaeljs.com/)
+* [gsap Library for Animation in SVG](http://github.com/greensock/GreenSock-JS/)
 * [Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL](http://css-tricks.com/using-svg/)
 * [Tutorial: CSS Animationen auf SVG anwenden](http://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations/)
 * [Tutorial: SMIL Animationen in SVG verwenden](https://developer.mozilla.org/en-US/docs/SVG/SVG_animation_with_SMIL)

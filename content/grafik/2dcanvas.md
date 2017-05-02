@@ -51,7 +51,7 @@ for (var x = 0; x <= w; x += 25) {
 my_context.stroke();
 </javascript>
 
-[fertiges bild](https://jsfiddle.net/bjelline/Gu83s/)
+![fertiges bild](images/lineto.png)
 
 ### Bild kopieren
 
@@ -62,19 +62,16 @@ var image = document.getElementById("the_img_tag");
 context.drawImage(image, 0, 0);
 </javascript>
 
-### Tutorials
+## Referenz
+
+Tutorials
 
 * [Dive into Canvas](http://diveintohtml5.info/canvas.html)
 * [MDN Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images)
 
-## Library
-
 Aufbauend auf den Canvas gibt es viele Libraries, z.B:
 
 * [Library Isomer](http://jdan.github.io/isomer/)
-
-
-## Webcam
 
 Mit der `getUserMedia` API kann man von einer Webcam entweder
 Standbilder oder Video Streams übertragen.  Die Kombination
@@ -83,6 +80,3 @@ Webcam + 2d Canvas ermöglicht damit viele interessante Anwendungen.
 * [Tutorial zu getUserMedia](http://www.html5rocks.com/en/tutorials/getusermedia/intro/)
 * [Library Camvas](https://github.com/cbrandolino/camvas)
 * [Webcamtoy](https://webcamtoy.com/)
-
-
-

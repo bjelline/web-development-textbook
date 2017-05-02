@@ -262,6 +262,7 @@ preprocess do
     "---",
     "grafik",
     "javascript",
+    "applied-jquery",
     "applied-javascript",
     "security",
     "json",

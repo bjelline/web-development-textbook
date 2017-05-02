@@ -1,8 +1,9 @@
 ---
 title: Formulardaten Prüfen mit jQuery
-order: 50
+order: 10
 ---
-Im Kapitel über Formulare haben Sie gelernt, 
+
+Im [Kapitel über Formulare](/formulare/) haben Sie gelernt, 
 wie Sie mit Javascript die Daten eines Webformulars prüfen können 
 bevor das Formular abgesendet wird. 
 

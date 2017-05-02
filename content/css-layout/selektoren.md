@@ -96,7 +96,7 @@ Dieser Selector wählt das direkte Geschwister-Node aus.
 Kombinationen von Selektoren
 ---------
 
-Wenn man mehrere Selektoren kombiniert hat das Komma die geringste präzedenz:
+Wenn man mehrere Selektoren kombiniert hat das Komma die geringste Präzedenz:
 
 <css>
   p, div a { color: yellow; }
@@ -104,3 +104,12 @@ Wenn man mehrere Selektoren kombiniert hat das Komma die geringste präzedenz:
 
 
 ![Document Object Model und Selektor](/images/selector-precedence.png)
+
+
+CSS Selektoren Üben
+-------
+
+
+* [flukeout - css üben mit japanischem essen](http://flukeout.github.io/)
+
+
