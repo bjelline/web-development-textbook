@@ -66,7 +66,7 @@ echo "Wert von 0: " . $o->{'0'};
 §
 
 Im zweiten Argument von `json_decode` kann man angeben ob
-'''alle''' Objekte als Assoziative Arrays decodiert werden sollen:
+**alle** Objekte als Assoziative Arrays decodiert werden sollen:
 
 <php>
 $string = '{"foo":10,"bar":30,"baz":30,"0":"a"}';

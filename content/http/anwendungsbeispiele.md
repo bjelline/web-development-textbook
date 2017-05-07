@@ -113,7 +113,7 @@ Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe vo
      
 ![Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern](/images/image337.png)
 
-Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable $_SERVER['PHP_AUTH_USER'].
+Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable `$_SERVER['PHP_AUTH_USER']`.
 
 Auf Ebene des HTTP-Protokolls betrachtet funktioniert diese Authentisierung wie folgt: bei der ersten Anfrage des Clients schickt der Server einen Status-Code 401 (nicht autorisiert). 
 

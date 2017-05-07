@@ -13,7 +13,6 @@ langsam zur Zielposition scrollen.
 
 ## Interne Links mit Hash
 
-<html>
     <nav>
       <li><a href="#hero">Home</a></li>
       <li><a href="#menu">Speisekarte</a></li>
@@ -22,16 +21,10 @@ langsam zur Zielposition scrollen.
       <li><a href="#newsletter">Newsletter</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </nav>
-
-    <!-- .... -->
-
+    ....
     <section id="order">
-       
-    <!-- .... -->
-
+    ....
     <footer id="contact">
-      
-</html>
 
 
 ## Normalen Link verhindern
@@ -43,6 +36,8 @@ langsam zur Zielposition scrollen.
       event.preventDefault();
       var hash = this.hash; // z.B. '#order'
 
+      ...
+    }
   }); 
 </javascript>
 

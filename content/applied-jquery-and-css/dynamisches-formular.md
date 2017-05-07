@@ -13,28 +13,31 @@ erst drei Zeilen zum Formular hinzu gefügt werden:
 ## Dynamisches Formular planen
 
 Das Hinzufügen von zusätzlichen Zeilen bzw. Eingabeelementen
-kann man mit jQuery gut umsetzen. Achtung: die Eingabefelder
+kann man mit jQuery gut umsetzen. 
+
+![](/images/dynamic-pizza-form.png)
+
+
+Achtung: die Eingabefelder
 brauchen eindeutige Namen.
 
-<html>
-<li class="a_pizza">
-  <p>Pizza Sicilia</p>
-    <div class="flex-inner">
-      <label><input name="hot[2]" type="checkbox"> Scharf</label>
-      <label><input name="cheese[2]" type="checkbox"> mit extra Käse</label>
-      <label>für <input name="fuer[2]" placeholder="Christian" type="text"></label>
-      <input name="pizza[2]" value="Pizza Sicilia" type="hidden">
-  </div></li>
-<li class="a_pizza">
-  <p>Pizza Margherita</p>
-    <div class="flex-inner">
-      <label><input name="hot[1]" type="checkbox"> Scharf</label>
-      <label><input name="cheese[1]" type="checkbox"> mit extra Käse</label>
-      <label>für <input name="fuer[1]" placeholder="Christian" type="text"></label>
-      <input name="pizza[1]" value="Pizza Margherita" type="hidden">
-  </div>
-</li>      
-</html>
+    <li class="a_pizza">
+      <p>Pizza Sicilia</p>
+        <div class="flex-inner">
+          <label><input name="hot[2]" type="checkbox"> Scharf</label>
+          <label><input name="cheese[2]" type="checkbox"> mit extra Käse</label>
+          <label>für <input name="fuer[2]" placeholder="Christian" type="text"></label>
+          <input name="pizza[2]" value="Pizza Sicilia" type="hidden">
+      </div></li>
+    <li class="a_pizza">
+      <p>Pizza Margherita</p>
+        <div class="flex-inner">
+          <label><input name="hot[1]" type="checkbox"> Scharf</label>
+          <label><input name="cheese[1]" type="checkbox"> mit extra Käse</label>
+          <label>für <input name="fuer[1]" placeholder="Christian" type="text"></label>
+          <input name="pizza[1]" value="Pizza Margherita" type="hidden">
+      </div>
+    </li>      
 
 Wenn PHP die Daten entgegen nimmt speichert
 es sie gleich in Arrays:
