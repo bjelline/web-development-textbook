@@ -76,27 +76,26 @@ Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen:
 
 <php caption="Einfügen von Daten in die Datenbank mit prepared statements">
 
-// Variante 1: mySQL (mit NULL für den autoincrement id-Wert)
+// Variante 1: mySQL + postgreSQL (id-Wert weglassen)
 $sth = $dbh->prepare(
   "INSERT INTO users
-    (id,  firstname,surname,email,profile_visible)
+    (firstname, surname, email, profile_visible)
       VALUES
-    (NULL, ?, ?, ?, ?)");
+    (?, ?, ?, ?)");
     
-// Variante 2: postgreSQL (mit DEFAULT für den autoincrement id-Wert)
+// Variante 2: nur postgreSQL (mit DEFAULT für den autoincrement id-Wert)
 $sth = $dbh->prepare(
   "INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
       VALUES
     (DEFAULT, ?, ?, ?, ?)");
 
-// Variante 3: mySQL + postgreSQL (id-Wert weglassen)
+// Variante 3: nur mySQL (mit NULL für den autoincrement id-Wert)
 $sth = $dbh->prepare(
   "INSERT INTO users
-    (firstname, surname, email, profile_visible)
+    (id,  firstname,surname,email,profile_visible)
       VALUES
-    (?, ?, ?, ?)");
-
+    (NULL, ?, ?, ?, ?)");
 
 $sth->execute(
   array(
