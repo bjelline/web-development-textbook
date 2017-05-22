@@ -1,6 +1,6 @@
 ---
 title: Regular Expressions
-order: 25
+order: 70
 ---
 
 Regular Expressions sind eine kleine "Programmiersprache in der Programmiersprache",
@@ -12,6 +12,7 @@ und Ersetzungen vorzunehmen.
 Mit Regular Expressions kann man die Welt retten:
 
 ![](/images/regex-hero.png)
+
 Basierend auf [http://xkcd.com/208/](http://xkcd.com/208/) von Randall Munroe - verändert und verwendet unter der [CC-BY-NC](http://creativecommons.org/licenses/by-nc/2.5/) Lizenz
 
 §

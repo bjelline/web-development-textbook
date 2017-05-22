@@ -269,6 +269,7 @@ preprocess do
     "security",    
     "wordpress",    
     "apache", 
+    "advanced-javascript",
     "qualitaet",
   ]
 

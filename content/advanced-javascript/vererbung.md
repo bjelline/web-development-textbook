@@ -1,6 +1,6 @@
 ---
 title: Prototypen + Vererbung
-order: 25
+order: 30
 ---
 
 
