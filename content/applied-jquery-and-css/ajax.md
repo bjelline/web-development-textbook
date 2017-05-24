@@ -228,7 +228,7 @@ mit dem parameter `term`.  Also zum Beispiel:
 
 Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:
 
-<json>
+<javascript>
   [
     {"id":6552916,"label":"Salzbergen, DE"},
     {"id":2842173,"label":"Salzböden, DE"},
@@ -236,7 +236,7 @@ Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:
     {"id":6554266,"label":"Salzburg, DE"},
     {"id":2766824,"label":"Salzburg, AT"},
   ]
-</json>
+</javascript>
 
 Die Attribute `id` und `label` des Objekts werden verwendet, alle anderen
 werden ignoriert.
