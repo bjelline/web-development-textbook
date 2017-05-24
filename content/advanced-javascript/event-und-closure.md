@@ -1,6 +1,6 @@
 ---
 title: Events und Closures
-order: 40
+order: 20
 ---
 
 Dieses Kapitel ist ein Tutorial zu folgenden Projekt:

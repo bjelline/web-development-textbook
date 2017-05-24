@@ -204,6 +204,52 @@ AJAX-Anfrage an die angegebene URL abgesetzt. Wenn der HTTP-Response
 beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element eingefügt. 
 (Die gelieferten Daten sollten also reiner Text oder ein HTML-Fragment sein.)
 
+## Autocomplete mit jQuery-UI
+
+In der Library jquery-ui gibt es eine fertige [autocomplete funktion](https://jqueryui.com/autocomplete/#remote). So sieht der Beispiel-Code aus, der
+ein input feld `#birds` in ein autocomplete-feld verwandelt:
+
+<javascript>
+$("#birds").autocomplete({
+  source: "search.php",
+  minLength: 2,
+  select: function( event, ui ) {
+    console.log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+  }
+});
+</javascript>
+
+
+Wenn nun in das eingabefeld mehr als 2 (Option `minLength`) Buchstaben
+eingetippt werden, dann wird ein HTTP Request and `source` geschickt,
+mit dem parameter `term`.  Also zum Beispiel:
+
+`search.php?term=abc`
+
+Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:
+
+<json>
+  [
+    {"id":6552916,"label":"Salzbergen, DE"},
+    {"id":2842173,"label":"Salzböden, DE"},
+    {"id":2842172,"label":"Salzbrunn, DE"},
+    {"id":6554266,"label":"Salzburg, DE"},
+    {"id":2766824,"label":"Salzburg, AT"},
+  ]
+</json>
+
+Die Attribute `id` und `label` des Objekts werden verwendet, alle anderen
+werden ignoriert.
+
+Wenn die Daten erfolgreich vom Server geladen wurden, wird eine funktion aufgerufen (`select`).
+
+Zum Testen kann man das Backend zuerst faken: einfach eine statische JSON-Datei
+unter dem Namen `search.php` abspeichern, und schon funktioniert es.
+Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
+und die resultierenden Daten mit [json_encode](https://secure.php.net/manual/de/function.json-encode.php) umwandeln.
+
+
+
 
 ## jQuery Beispiel mit Callback-Funktion
 
@@ -229,7 +275,7 @@ Beim Zugriff auf die API muss jeweils der API-Key als parameter
 mit gesendet werden:
 
 <javascript caption="Zugriff auf die openweathermap API">
-$.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&apikey=....", 
+$.get("http://api.openweathermap.org/data/2.5/weather?&units=metric&q=London,uk&apikey=....", 
   (data) => {
   console.log("Daten von der API sind angekommen:");
   console.log(data);
@@ -238,7 +284,16 @@ $.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&apikey=....",
 </javascript>
 
 Die genaue Struktur der Daten und wie man sie zerlegt kann man entweder
-der Dokumentation entnehmen, oder einfach in der console erforschen.
+[der Dokumentation](https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2) entnehmen, oder einfach in der console erforschen.
+
+
+
+ABER ACHTUNG: diese API ist (gratis) nur über http zugänglich.
+Die resultierende Webseite kann wieder nur auf http veröffentlicht werden, nicht
+auf https.
+
+Um die openweahtermap api auch über https verwenden zu können
+ist die nächste Lösung notwendig:
 
 
 ## Zugriff auf eine API über lokales backend
@@ -255,6 +310,7 @@ Statt dessen muss man die Daten über das eigene Backend laden.
 In PHP ist der Zugriff auf die API ohne Problem möglich:
 
 <php caption="zugriff auf die wetter-at.tk API">
+header('Content-Type: application/json');
 $url = "http://at-wetter.tk/api/v1/station/11150/t/$date/7";
 $text=file_get_contents( $url );
 </php>
