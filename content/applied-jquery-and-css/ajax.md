@@ -298,30 +298,35 @@ ist die nächste Lösung notwendig:
 
 ## Zugriff auf eine API über lokales backend
 
-Die API von at-wetter.tk kann man nicht direkt vom eigenen Frontend abfrage.
+Manchmal kann man nicht vom Frontend direkt auf die API zugreifen.
+
+Einen Grund haben wir schon bei openweathermap gesehen: die API ist über
+http zugänglich, das frontend wird auf https gehosted.  So ist es verboten
+auf die API zuzugreifen.
+
+
+Der zweite mögliche Grund ist CORS.  Das tritt zum Beispiel bei der API
+ at-wetter.tk auf.
 Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
 in manchen Browsern eine Meldung angezeigt:
 
 ![CORS Fehlermeldung](/images/cors-error.png)
 
 
-Statt dessen muss man die Daten über das eigene Backend laden.
+
+In beiden Fällen ist die Lösung dieselbe: man muss die Daten
+über das eigene Backend laden.
 
 In PHP ist der Zugriff auf die API ohne Problem möglich:
 
 <php caption="zugriff auf die wetter-at.tk API">
 header('Content-Type: application/json');
+...
 $url = "http://at-wetter.tk/api/v1/station/11150/t/$date/7";
 $text=file_get_contents( $url );
+...
 </php>
 
 
-Die Daten die von der API geliefert werden sind nicht
-im JSON Format.  Das könnte jetzt das PHP-Script noch
-erledigen, und dann direkt JSON an das Frontend liefern.
 
-
-Ein besonderes Problem bei JSON stellen Datum und Uhrzeit dar:
-Dafür gibt es keinen Standard.  Man kann Datum und Uhrzeit als String
-ausliefern, oder eine Epoch-Zahl  (Millisekunden seit dem 1.1.1970) liefern.
 
