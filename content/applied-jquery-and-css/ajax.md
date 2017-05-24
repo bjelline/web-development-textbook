@@ -206,7 +206,23 @@ beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element e
 
 ## Autocomplete mit jQuery-UI
 
-In der Library jquery-ui gibt es eine fertige [autocomplete funktion](https://jqueryui.com/autocomplete/#remote). So sieht der Beispiel-Code aus, der
+In der Library jquery-ui gibt es eine fertige [autocomplete funktion](https://jqueryui.com/autocomplete/#remote). Um sie zu verwenden, zwei muss man sowohl CSS als auch Javascript
+einbinden:
+
+Auf https://code.jquery.com/ui/ findet man die Links zu:
+
+* Dem "base" Theme - das ist die CSS Datei
+* der aktuellen jquery UI version, minified - das ist die Javscript Datei.
+
+<css caption="einbindung des themes in einer css datei">
+  @import "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css";
+</css>
+
+<html>
+  <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+</html>
+
+So sieht der Beispiel-Code aus, der
 ein input feld `#birds` in ein autocomplete-feld verwandelt:
 
 <javascript>
@@ -244,7 +260,23 @@ werden ignoriert.
 Wenn die Daten erfolgreich vom Server geladen wurden, wird eine funktion aufgerufen (`select`).
 
 Zum Testen kann man das Backend zuerst faken: einfach eine statische JSON-Datei
-unter dem Namen `search.php` abspeichern, und schon funktioniert es.
+unter dem Namen `search.json` abspeichern, und schon funktioniert es.
+
+Oder eine ganz kleine PHP-Datei, die nur den richtigen Content-Type setzt,
+und dann statische Daten zurück gibt:
+
+<php>
+  <?php
+  header('Content-Type: application/json');
+  ?>
+  [
+    {"id":6552916,"label":"Salzbergen, DE"},
+    {"id":2842173,"label":"Salzböden, DE"},
+    {"id":2842172,"label":"Salzbrunn, DE"},
+    {"id":6554266,"label":"Salzburg, DE"},
+    {"id":2766824,"label":"Salzburg, AT"},
+  ]
+</php>
 Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
 und die resultierenden Daten mit [json_encode](https://secure.php.net/manual/de/function.json-encode.php) umwandeln.
 
@@ -328,5 +360,12 @@ $text=file_get_contents( $url );
 </php>
 
 
+## Ausblick
+
+Das waren nur einige wenige Anwendungsbeispiele für AJAX,
+es gibt natürlich noch viel mehr.
+
+Aber bevor man sich in AJAX Abenteuer stürzt sollte man sich auch
+über die Probleme bewusst sein, dazu mehr im nächsten Kapitel.
 
 
