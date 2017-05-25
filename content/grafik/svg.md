@@ -4,8 +4,10 @@ order: 20
 ---
 
 <svg width="200" height="200" style="float:left;">
-    <circle cx="100" cy="100" r="80"                 stroke="black" stroke-width="2" fill="#4e9a06" />
-    <rect    x="80"   y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
+    <circle cx="100" cy="100" r="80"                 
+            stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect x="80"   y="100" width="90" height="90" 
+          stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
 
 Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
@@ -24,8 +26,10 @@ im Browser nativ dargestellt.
 
 <xml caption="Einbindung von SVG in HTML (Inline-SVG)">
 <svg width="200" height="200" style="float:left;">
-  <circle cx="100" cy="100" r="80"                 stroke="black" stroke-width="2" fill="#4e9a06" />
-  <rect    x="80"   y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
+  <circle cx="100" cy="100" r="80"                 
+          stroke="black" stroke-width="2" fill="#4e9a06" />
+  <rect x="80"   y="100" width="90" height="90" 
+        stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
 </xml>
 
@@ -82,10 +86,19 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 Viele Attribute kann man alternativ auch über CSS definieren.
 
 <xml caption="Attribute per CSS">
-<circle style="cx: 144px; cy: 38px; r: 18px; stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;"  />
-<ellipse cx="170" cy="43" rx="27" ry="15" 
-        style="stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;" />
+<circle r="80px" cx="150px" cy="100px" 
+    style="stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;" />
+<ellipse cx="390" cy="100" rx="300" ry="80" 
+    style="stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;" />
 </xml>
+
+
+<svg width="700" height="200">
+<circle r="80px" cx="150px" cy="100px" 
+    style="stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;" />
+<ellipse cx="390" cy="100" rx="300" ry="80" 
+    style="stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;" />
+</svg>
 
 ### Pfad und Polygon
 
@@ -259,8 +272,7 @@ $svg.append($circle);
 ## Mehr
 
 * [RFC zu SVG](http://www.w3.org/TR/SVG11/)
-* [Raphael Javascript Library](http://raphaeljs.com/)
+* [Snap Javascript Library für die Erzeugung von SVG](http://snapsvg.io/)
 * [gsap Library for Animation in SVG](http://github.com/greensock/GreenSock-JS/)
 * [Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL](http://css-tricks.com/using-svg/)
-* [Tutorial: CSS Animationen auf SVG anwenden](http://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations/)
-* [Tutorial: SMIL Animationen in SVG verwenden](https://developer.mozilla.org/en-US/docs/SVG/SVG_animation_with_SMIL)
+
