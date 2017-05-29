@@ -22,7 +22,7 @@ enthält z.B.
 * für das Teilen von Inhalten auf Sozialen Netzwerkden, z.B. [Facebook-Like-Button](https://developers.connect.facebook.com/docs/reference/plugins/like/)
 * für Feedback zu Webseite z.B. [UserVoice](http://uservoice.com)
 * für Kommentare auf der Webseite, z.B.  [Disqus](http://docs.disqus.com/developers/universal/)
-* für das Einbinden einer Landkarte, z.B. [Open Street Map mit MapQuery](http://mapquery.org/)
+* für das Einbinden einer Landkarte, z.B. mit [Leaflet](http://leafletjs.com/) oder [Openlayers](http://openlayers.org/)
 
 Mit ein bisschen Copy-und-Paste kann man die verschiedenen
 Programme schnell in die eigene Webseite einbauen. All diese
@@ -70,6 +70,17 @@ APP.f = function(x) {
 
 APP.objekt = new APP.Ding();
 </javascript>
+
+## Nachteile des Objekts als Namensraum
+
+Wenn man modernes Javascript (z.B. ES6) oder ES5 mit "use strict" verwendet,
+dann erhält man Fehlermeldungen beim Zugriff auf nicht deklarierte Variablen.
+
+Das Objekt als Namensraum kann das nicht bieten: ein nicht existierendes Attribut des Objekt
+liefert einfach den Wert `undefined`, aber keinen Fehler:
+
+![Kein Error im namensraum](/images/js-namensraum.png)
+
 
 ## Namensräume anlegen
 

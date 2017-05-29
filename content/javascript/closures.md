@@ -9,7 +9,7 @@ auf die der Funktionalen Programmierung[&rarr;](http://de.wikipedia.org/wiki/Fun
 
 In diesem Kapitel lernen wir die Besonderheiten
 von Funktionen in Javascript kennen, darunter
-auch Closures [&rarr;](http://de.wikipedia.org/wiki/Closure).
+auch Closures [&rarr;](http://de.wikipedia.org/wiki/Closure) (Funktionsabschlüsse).
 
 
 ## Funktionen und Lebenszeit von Variablen
@@ -56,11 +56,11 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: "Funktions
   // output: ich bin eine Funktion und verwende b = 10
 </javascript>
 
-Die Funktion f hat also immer noch zugriff auf die "alte" Variable b!
+Die Funktion `f` hat also immer noch Zugriff auf die "alte" Variable `b`!
 
 §
 
-Closure kann man zum Beispiel verwenden um einen Countdown zu erzeugen:
+Closures kann man zum Beispiel verwenden um einen Countdown zu erzeugen:
 
 <javascript caption="Erzeuge eine Countdown-Funktion">
   function create_countdown( max ) {
@@ -71,9 +71,78 @@ Closure kann man zum Beispiel verwenden um einen Countdown zu erzeugen:
     }
   } 
   top10 = create_countdown(10);
+  top20 = create_countdown(20);
+
   while( i = top10() ) {
     console.log("und auf Platz " + i + " .... ");
   }
 </javascript>
 
+
+§
+
+Wozu werden Closures verwendet?  Eine erste Anwendung sind Eventhandler.
+Betrachten wir eine Funktion die bei  `addEventListener` oder in jQuery bei `on`
+als Eventhanlder angegeben wird:
+
+<javascript caption="Eventhandler wird übergeben">
+  button.on('click', do_something);
+</javascript>
+
+Die Funktion kann an dieser stelle keine Argumente
+erhalten, weil sie ja nicht **aufgerufen** werden soll,
+sondern nur **übergeben** werden soll!
+
+<javascript caption="Eventhandler wird aufgerufen - funktioniert nicht!">
+  button.on('click', do_something(10, 'Hallo'));
+</javascript>
+
+Hier ein größeres Beispiel: Die Schriftart der Seite soll
+mittels 3 Buttons verändert werden können.  Die Buttons und die
+dazugehörigen Eventhandler werden dynamisch erzeugt:
+
+[Demo: so funktioniert es nicht](/images/closure-for-event-broken.html)
+
+Als Eventhandler kann nur eine Funktion eingesetzt werden, die schon alle
+notwendigen Parameter enthält, und keine weiteren Argumente braucht.
+Diese Funktion erzeugt man zuerst, und verwendet dabei eine Closure
+um die Parameter zu speichern: 
+
+
+<javascript caption="Eventhandler ist eine Closure, enthält Argumente schon">
+  function insert_button(text) {
+    return $(`<button>${text}</button>`).insertAfter('h1');
+  }
+  
+  function makeSizer(size) {
+    return function() {
+      document.body.style.fontSize = size + 'px';
+    };
+  }
+
+  var b,f;
+
+  b = insert_button('Schrift 16');
+  f = makeSizer(16);
+  b.on('click', f);
+
+  b = insert_button('Schrift 14');
+  f = makeSizer(14);
+  b.on('click', f);
+
+  b = insert_button('Schrift 12');
+  f = makeSizer(12);
+  b.on('click', f);  
+</javascript>
+
+
+[Demo: so funktioniert es](/images/closure-for-event.html)
+
+
+
+
+
+## Siehe auch
+
+* [](https://developer.mozilla.org/de/docs/Web/JavaScript/Closures)
 

@@ -313,6 +313,7 @@ So sieht das Ergebnis aus:
         dur="10s" repeatCount="indefinite" />
       </textPath>
     </text>
+  </g>
 </svg>
 
 
@@ -447,6 +448,8 @@ einbauen und manipulieren.
   </g>
 </svg>
 
+
+Für fortgeschrittene Animationen kann  man zusätzlich die Library [gsap](http://github.com/greensock/GreenSock-JS/) verwenden. 
 
 ## Mehr
 
