@@ -17,22 +17,22 @@ Besonders deutlich wird das beim Vergleich der folgenden beiden Programme:
 
 <javascript caption="Countdown mit Closures - menschenfreundliche Version">
  function create_countdown( max ) {
-    var i = max+1;
+    const i = max+1;
     return function() {
       i--;
       return i;
     }
   } 
-  var top10 = create_countdown(10);
-  var i;
+  const top10 = create_countdown(10);
+  const i;
   while( i = top10() ) {
     console.log("und auf Platz " + i + " .... ");
   }
 </javascript>
 
 <javascript caption="Countdown mit Closures - andere Version">
-  function create_countdown(b){var a=b+1;return function(){a--;return a}}
-  for(var top10=create_countdown(10),i;i=top10();)console.log("und auf Platz "+i+" .... ");
+  function create_countdown(b){const a=b+1;return function(){a--;return a}}
+  for(const top10=create_countdown(10),i;i=top10();)console.log("und auf Platz "+i+" .... ");
 </javascript>
 
 ## Refactoring
@@ -46,7 +46,7 @@ fertig gestellt ist kann man das Programm weiter verbessern: besser lesbar mache
 
 Eine Veränderung am Programm, die die Funktionalität unverändert lässt, und andere Aspekte
 des Programmes verbessert, nennt man **Refactoring**. Dabei geht man in kleinen Schritten vor:
-zum Beispiel in einem Schritt einen Variablennamen verändern, im nächsten Schritt Code in
+zum Beispiel in einem Schritt einen constiablennamen verändern, im nächsten Schritt Code in
 eine Funktion zusammen fassen, im nächsten Schritt einen Funktionsnamen ändern, ... nach jedem
 einzelnen Schritt ist das Programm wieder funktionstüchtig.
 
@@ -56,21 +56,21 @@ passenden log-message machen.
 Wenn man Code liest, und Stellen entdeckt, die man verbessern könnte, dann nennt man
 die üblen Stellen **Code Smells**.
 
-## Variablen
+## constiablen
 
-Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
-Variablen sollen so kurz wie möglich, aber nicht kürzer sein.
+Der Name einer constiable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
+constiablen sollen so kurz wie möglich, aber nicht kürzer sein.
 
-### Konvenelle Variablennamen
+### Konvenelle constiablennamen
 
 Aus der Mathematik wurde Konventionen übernommen, z.B. dass i,j,k als Zähler für Schleifen
 verwendet werden; x,y,z für Koordinaten. Diese Konvention muss man nicht einhalten,
 aber man sollte nicht gegen sie arbeiten:
 
-<javascript caption="Kurze Variablennamen und Konventionen aus der Mathematik">
+<javascript caption="Kurze constiablennamen und Konventionen aus der Mathematik">
 // gegen die Konvention
-var x=0;
-var i,k;
+const x=0;
+const i,k;
 while( x < 10 ) {
   i = rand(0,100);
   k = rand(0,200);
@@ -79,8 +79,8 @@ while( x < 10 ) {
 }
 §
 // mit der Konvention
-var i=0;
-var x,y;
+const i=0;
+const x,y;
 while( i < 10 ) {
   x = rand(0,100);
   y = rand(0,200);
@@ -90,21 +90,19 @@ while( i < 10 ) {
 </javascript>
 
 
-### Fixe Werte durch Variablen ersetzen
+### Fixe Werte durch Konstanten ersetzen
 
-Nebenbemerkung: In Javascript gibt es keine Konstanten im Sinne von C/C++/Java: Der Wert jeder Variable kann
-im Lauf des Programms verändert werden.  
 
 Wenn in einem Programm dieselbe Zahl mehrmals vorkommt kann das ein Hinweis
-sein, dass man eine Konstante / Variable verwenden sollte. Folgendes Programm
+sein, dass man eine Konstante oder constiable verwenden sollte. Folgendes Programm
 zeichnet ein Rechteck in ein neu geschaffens SVG:
 
 <javascript caption="Rechteck zeichnen - mit fixen Zahlen">
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width",  1024);
   svg.setAttribute("height", 768);
 
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   frame.setAttribute( 'x', 0 );
   frame.setAttribute( 'y', 0 );
   frame.setAttribute( 'width', 1024 );
@@ -120,16 +118,16 @@ zeichnet ein Rechteck in ein neu geschaffens SVG:
 §
 
 Die Größe des Rahmens ist hier eigentlich von der Größe des SVG abhängig,
-es macht also Sinn eine Variable zu verwenden:
+es macht also Sinn eine Konstante zu verwenden:
 
 <javascript caption="Rechteck zeichnen - mit fixen Zahlen">
-  var svg_width  = 1024;
-  var svg_height = 768;
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const svg_width  = 1024;
+  const svg_height = 768;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width",  svg_width);
   svg.setAttribute("height", svg_height);
 
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   frame.setAttribute( 'x', 0 );
   frame.setAttribute( 'y', 0 );
   frame.setAttribute( 'width', svg_width );
@@ -144,18 +142,18 @@ es macht also Sinn eine Variable zu verwenden:
 
 §
 
-Nun kann man auch die Breite des Rahmens in einer Variablen speichern:
+Nun kann man auch die Breite des Rahmens in einer Konstanten speichern:
 
 
-<javascript caption="Rechteck zeichnen - mit Variable für Rahmenbreite">
-  var svg_width  = 1024;
-  var svg_height = 768;
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+<javascript caption="Rechteck zeichnen - mit constiable für Rahmenbreite">
+  const svg_width  = 1024;
+  const svg_height = 768;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width",  svg_width);
   svg.setAttribute("height", svg_height);
 
-  var frame_border_width = 10;
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  const frame_border_width = 10;
+  const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   frame.setAttribute( 'x', frame_border_width/2 );
   frame.setAttribute( 'y', frame_border_width/2 );
   frame.setAttribute( 'width', svg_width - frame_border_width );
@@ -187,13 +185,13 @@ wurde der Code zum Zeichnen des Quadrats kopiert, nur die X-Koordinate
 unterscheidet sich.
 
 <javascript caption="Zeichne drei Quadrate - mit kopiertem Code">
-var svg_width  = 1024;
-var svg_height = 768;
-var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+const svg_width  = 1024;
+const svg_height = 768;
+const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 svg.setAttribute("width",  svg_width);
 svg.setAttribute("height", svg_height);
 
-var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 frame.setAttribute( 'x', 1 );
 frame.setAttribute( 'y', 1 );
 frame.setAttribute( 'width', 20 );
@@ -203,8 +201,8 @@ frame.setAttribute( 'stroke-width',  1);
 frame.setAttribute( 'fill', 'red' );
 svg.appendChild( frame );
 
-var frame_border_width = 10;
-var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+const frame_border_width = 10;
+const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 frame.setAttribute( 'x', 21 );
 frame.setAttribute( 'y', 1 );
 frame.setAttribute( 'width', 20 );
@@ -214,8 +212,8 @@ frame.setAttribute( 'stroke-width',  1);
 frame.setAttribute( 'fill', 'red' );
 svg.appendChild( frame );
 
-var frame_border_width = 10;
-var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+const frame_border_width = 10;
+const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 frame.setAttribute( 'x', 41 );
 frame.setAttribute( 'y', 1 );
 frame.setAttribute( 'width', 20 );
@@ -234,20 +232,22 @@ Da der einzige Unterschied zwischen den kopierten Code-Zeilen die
 X-Koordinate ist, und diese stetig ansteigt, kann man hier eine 
 Schleife verwenden, um den Code wiederzuverwenden.
 
-Aus der Schleifenvariable i = 0,1,2 kann ganz einfach
-die X-Koordinate x = 1, 21, 41 berechnet werden: `x = i * 20 + 1`;
+Aus der Schleifenconstiable i = 0, 1, 2 kann ganz einfach
+die X-Koordinate x = 1, 21, 41 berechnet werden: 
+
+`x = i * 20 + 1;`
 
 <javascript caption="Zeichne drei Quadrate - mit Schleife">
-var svg_width  = 1024;
-var svg_height = 768;
-var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+const svg_width  = 1024;
+const svg_height = 768;
+const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 svg.setAttribute("width",  svg_width);
 svg.setAttribute("height", svg_height);
 
 var i=0;
 while( i < 3 ) {
 
-  var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   frame.setAttribute( 'x', i * 20 + 1 );
   frame.setAttribute( 'y', 1 );
   frame.setAttribute( 'width', 20 );
@@ -273,14 +273,14 @@ Weise der Code wieder verwendet werden soll ergeben sich andere
 Argumente.
 
 <javascript caption="Zeichne drei Quadrate - mit Funktion">
-  var svg_width  = 1024;
-  var svg_height = 768;
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const svg_width  = 1024;
+  const svg_height = 768;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width",  svg_width);
   svg.setAttribute("height", svg_height);
 
   function addRect( svg, x,y,w,h ) {
-    var frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     frame.setAttribute( 'x', x);
     frame.setAttribute( 'y', y );
     frame.setAttribute( 'width',w);
@@ -308,8 +308,8 @@ Dieses Kapitel beschreibt u.a. einen Teil der Coding Conventions von Douglas Cro
 * [Crockford, Douglas(2008): Das Beste an JavaScript. O'Reilly.](http://www.amazon.de/Das-Beste-JavaScript-Douglas-Crockford/dp/3897218763/)
 
 Das Beispiel für nicht-lesbaren Code wurde mit dem Google Closure Compiler erzeugt.
-(achtung: "Closure" ist hier ein Eigenname - ein sehr verwirrender Eigenname. Stellen
+(Achtung: "Closure" ist hier ein Eigenname - ein sehr verwirrender Eigenname. Stellen
 Sie sich vor man würde ein Modell eines Autos nach einem Bauteil benennen, 
-z.B. 'Opel Kurbelwelle', 'VW Fensterheber', 'Fiat Zündkerze' als Name eines bestimmten Modells.)
+z.B. 'Opel Kurbelwelle', 'VW Fensterheber', 'Fiat Zündkerze')
 
 * [Google Closure Compiler](http://closure-compiler.appspot.com/home)
