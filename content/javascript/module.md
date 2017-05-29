@@ -123,7 +123,7 @@ if( GAME ) {
 ## Sofort ausgewertete Funktionen
 
 Eine andere Methode um den globalen Namensraum sauber zu halten
-sind die sogenannten "sofort augewerteten Funktionen" ("immediate funktions").
+sind die sogenannten "sofort augewerteten Funktionen" ("immediately invoked funktion" oder "immediate function").
 
 Dabei wird eine Funktion definiert und sofort - und nur einmal - aufgerufen.
 Nur der Rückgabewert wird ein einer globalen Variable `g` gespeichert.
@@ -138,65 +138,25 @@ var g = (function(){
 
 §
 
-Beispiel einer sofort ausgewerteten Funktion:
+Hier eine komplexere Version. Die vielen Variablen und Funktionen die innerhalb
+der sofort ausgewertete Funktion definiert sind, bleiben unsichtbar. Sie
+sind "von aussen" nicht zugänglich.
 
 <javascript caption="sofort ausgwertete Funktion">
 var g = (function(){
   var a,b,c;
-  function d() {
+  function d(x) {
+    return 2*x;
   }
-  function Ding() {
-    return this;
+  function Ding(v) {
+    this.value = v;
   }
 
   a = 10;
   b = d( a );
-  c = new Ding();
+  c = new Ding(b);
 
   return a;
-})();
-</javascript>
-
-§
-
-Eine Verwendung von sofort ausgewerteten Funktionen sind
-Polyfills. Im Artikel [requestAnimationFrame for smart animating](http://paulirish.com/2011/requestanimationframe-for-smart-animating/)
-stellt Paul Irish einen Polyfill für `requestAnimationFrame` vor:
-
-
-Dieses Funktion wir einmal aufgerufen und stellt sicher,
-dass unter `window.requestAnimationFrame` die jeweilige Implementierung 
-im Browser verfügbar ist.
-
-
-<javascript caption="Polyfill für requestAnimationFrame - einfache Version">
-    window.requestAnimFrame = (function(){
-      return  window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
-              window.mozRequestAnimationFrame    || 
-              window.oRequestAnimationFrame      || 
-              window.msRequestAnimationFrame;
-    })();
-</javascript>
-
-§
-
-Im gleichen Artikel stellt Irish eine bessere Implementierung
-von Erik Möller vor:
-
-<javascript caption="Polyfill für requestAnimationFrame - Ausschnitt">
-(function() {
-    var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-    }
- 
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
-            // verwende setTimeout 
-            // ...
-        };
 })();
 </javascript>
 
@@ -213,19 +173,26 @@ In diesem Beispiel ist das Modul ein Objekt:
 
 <javascript caption="Schreibweise für ein Modul: ein Objekt">
 var APP = (function(){
-var a,b,f;      // private 
-var c,d,g;      // öffentlich
-f = function() {  // private Funktion
-};
-g = function() {  // öffentliche Funktion
-};
-return {
-  c: c,
-  d: d,  
-  g: g
-};
+  var a,b,f;      // private 
+  var c,d,g;      // öffentlich
+  f = function() {  
+    // private Funktion
+  };
+  g = function() {  
+    // öffentliche Funktion
+  };
+  return {
+    c: c,
+    d: d,  
+    g: g
+  };
 })();
 </javascript>
 
 
-<div class="alert"><strong>ToDo</strong> fertig stellen </div>
+## Siehe Auch
+
+
+* [Stefanov(2010): Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do), Kapitel 5.
+* [Osmani(2012): Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript)
+* [Wikipedia: Immediately-invoked function](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)
