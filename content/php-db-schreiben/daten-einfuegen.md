@@ -127,11 +127,10 @@ Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein
 autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
 Schlüssels im neuen Datensatz mit 
 `lastInsertId`[*](http://php.net/manual/en/pdo.lastinsertid.php) 
-auslesen und weiter verwenden. Nur in Postgres ist dazu der
-Name der Sequenz nötig, in MySQL reicht der Aufruf von lastInsterId ohne Argument.
+auslesen und weiter verwenden. 
 
 <php caption="Primärschlüssel des neuen Datensatzes auslesen">
-$id = $dbh->lastInsertId('users_id_seq');
+$id = $dbh->lastInsertId();
 header("Location: person.php?id=$id");
 </php>
 
