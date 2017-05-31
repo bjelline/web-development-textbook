@@ -9,8 +9,7 @@ Was Sie wissen sollten
 
 Was Sie können sollten
 
-* Mit prepared Statements Daten in der Datenbank löschen, einfügen und verändern.
-
+* Mit prepared Statements Daten in der Datenbank lesen, löschen, einfügen und verändern.
 
 Vertiefung:
 
