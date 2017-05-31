@@ -39,6 +39,7 @@ Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil in
 das SQL etwas "injiziert" wird.
 
 ### SQL Injection verhindern
+
 Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei `id` um eine ganze Zahl handelt, darf sie
 verwendet werde. Das kann man auf verschiedene Arten prüfen, 
@@ -89,6 +90,53 @@ $sth->execute(array($id));
 
 `execute` kann auch mehrfach ausgeführt werden, das ist effektiver als eine
 normale query zu wiederholen.
+
+### SQL Injection gibt es nicht nur bei DELETE
+
+Wir haben diese Attacke am Beispil einer Löschoperation kennen gelert.
+Aber auch ein einfaches `SELECT` kann mittels SQL Injection missbraucht werden
+um zusätzliche Informationen aus der Datenbank auszulesen, die wir nicht
+vorgesehen haben.
+
+Die Attacke mit `1=1` ermöglicht das Lesen von Datensätzen aus derselben Tabelle:
+
+<sql>
+SELECT * FROM comments WHERE id=9 OR 1=1
+</sql>
+
+§
+
+Aber es gibt auch komplexere Attacken, die Daten aus anderen Tabellen oder
+ganz anderen Informationsquellen lesen:
+
+<php caption="verwundbarer code">
+$query = "SELECT id, name FROM cities WHERE name = '$name'";
+$dbh->query($query);
+</php>
+
+<plain caption"attacke">
+hallo' UNTION SELECT id, password FROM users WHERE '' LIKE '%
+</plain>
+
+Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:
+
+<sql>
+  SELECT id, name FROM cities WHERE name = 'hallo' 
+  UNTION 
+  SELECT id, password FROM users WHERE '' LIKE '%'
+</sql>
+
+§
+
+Wir hätten also nie `query` verwenden sollen, sondern von Anfang an
+immer prepared Statements! 
+
+<php caption="sicherer code">
+$query = "SELECT id, name FROM cities WHERE name=?";
+$sth = $dbh->execute($query);
+$sth->execute($name);
+</php>
+
 
 ### Authorisierung nicht vergessen!
 
