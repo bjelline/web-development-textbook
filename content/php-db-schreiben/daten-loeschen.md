@@ -115,14 +115,14 @@ $dbh->query($query);
 </php>
 
 <plain caption"attacke">
-hallo' UNTION SELECT id, password FROM users WHERE '' LIKE '%
+hallo' UNION SELECT id, password FROM users WHERE '' LIKE '%
 </plain>
 
 Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:
 
 <sql>
   SELECT id, name FROM cities WHERE name = 'hallo' 
-  UNTION 
+  UNION 
   SELECT id, password FROM users WHERE '' LIKE '%'
 </sql>
 
